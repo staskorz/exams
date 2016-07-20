@@ -2,11 +2,11 @@ import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { render } from 'react-dom';
 
-import App from '../../ui/App';
+import Routes from '../../ui/Routes';
 
 import '../../static/main.html';
 
 
 Meteor.startup(() => {
-	render(<App />, document.getElementById('render-target'));
+	render(<Routes />, document.getElementById('render-target'));
 });
