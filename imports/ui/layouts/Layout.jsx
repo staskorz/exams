@@ -31,6 +31,7 @@ export default ({ children }) => (
 			iconElementRight={ <span>
 				<Link to='/' style={ styles.link } activeStyle={ styles.linkActive } onlyActiveOnIndex={ true }>Home</Link>
 				<Link to='/page1' style={ styles.link } activeStyle={ styles.linkActive }>Page1</Link>
+				<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }>Create Exam</Link>
 			</span> }
 		/>}
 		
