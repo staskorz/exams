@@ -1,5 +1,6 @@
 import React from 'react';
 import { AppBar } from 'material-ui';
+import SchoolIcon from 'material-ui/svg-icons/social/school';
 import { Link } from 'react-router';
 
 
@@ -7,6 +8,12 @@ const styles = {
 	title: {
 		color: 'white',
 		textDecoration: 'none'
+	},
+	
+	titleIcon: {
+		marginRight: '8px',
+		marginBottom: '2px',
+		verticalAlign: 'text-bottom'		
 	},
 	
 	link: {
@@ -26,7 +33,7 @@ const styles = {
 export default ({ children }) => (
 	<div>
 		{<AppBar
-			title={ <Link to='/' style={ styles.title }>Exams</Link> }
+			title={ <Link to='/' style={ styles.title }><SchoolIcon color='white' style={ styles.titleIcon } />Exams</Link> }
 			showMenuIconButton={ false }
 			iconElementRight={ <span>
 				<Link to='/' style={ styles.link } activeStyle={ styles.linkActive } onlyActiveOnIndex={ true }>Home</Link>
