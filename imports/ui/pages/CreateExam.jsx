@@ -8,9 +8,9 @@ import QuestionEdit from '/imports/ui/components/QuestionEdit'
 export default class CreateExam extends Component {
 	style = {
 		card: {
-			margin: '80px',
-			marginTop: '40px',
-			padding: '90px'
+			padding: '120px',
+			paddingTop: '40px',
+			height: '100%'
 		},
 		
 		addQuestionButton: {

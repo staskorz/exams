@@ -5,6 +5,10 @@ import { Link } from 'react-router';
 
 
 const styles = {
+	mainContainer: {
+		height: '100%'
+	},
+	
 	title: {
 		color: 'white',
 		textDecoration: 'none'
@@ -31,7 +35,7 @@ const styles = {
 
 
 export default ({ children }) => (
-		<div>
+		<div style={ styles.mainContainer }>
 			<AppBar
 					title={ <Link to='/' style={ styles.title }><SchoolIcon color='white' style={ styles.titleIcon } />Exams</Link> }
 					showMenuIconButton={ false }
