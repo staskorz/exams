@@ -3,9 +3,18 @@ import { Card, CardTitle, CardText, CardActions, TextField, FlatButton } from 'm
 
 
 export default class CreateExam extends Component {
+	style = {
+		card: {
+			margin: '80px',
+			marginTop: '40px',
+			padding: '90px'
+		}
+	};
+	
+	
 	render() {
 		return (
-			<Card>
+			<Card style={ this.style.card }>
 				<CardTitle title='Create Exam' />
 				<CardText>
 					<form>
