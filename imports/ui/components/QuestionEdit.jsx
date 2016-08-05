@@ -1,9 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Paper, Badge, TextField, Checkbox, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 
 
 export default class QuestionEdit extends Component {
+	static propTypes = {
+		questionNumber: PropTypes.number,
+		onRemove: PropTypes.func
+	};
+	
 	state = {
 		numOfAnswers: 1,
 		multipleAnswers: false
