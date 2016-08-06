@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { Paper, Badge, TextField, Checkbox, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 
+import AnswersEdit from './AnswersEdit';
+
 
 export default class QuestionEdit extends Component {
 	static propTypes = {
@@ -67,6 +69,8 @@ export default class QuestionEdit extends Component {
 								   style={ this.style.numOfAnswers } />
 						
 						<Checkbox style={ this.style.multipleAnswersCheckbox } label='Multiple Answers' labelPosition='left' />
+						
+						<AnswersEdit />
 					</div>
 					<FloatingActionButton mini={true} style={ this.style.removeQuestionButton } onTouchTap={ this.handleQuestionRemoveButtonClick }>
 						<IconRemove />
