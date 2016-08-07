@@ -72,9 +72,9 @@ export default class AnswersEdit extends Component {
 							multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 					/>
 					<div style={ this.style.addRemoveAnswerButtonsContainer }>
-						<IconButton iconStyle={ this.style.addRemoveAnswerButtonIcons } style={ this.style.addRemoveAnswerButtons }>
+						{/*<IconButton iconStyle={ this.style.addRemoveAnswerButtonIcons } style={ this.style.addRemoveAnswerButtons }>
 							<IconAdd />
-						</IconButton>
+						</IconButton>*/}
 						<IconButton iconStyle={ this.style.addRemoveAnswerButtonIcons } style={ this.style.addRemoveAnswerButtons }>
 							<IconRemove />
 						</IconButton>
