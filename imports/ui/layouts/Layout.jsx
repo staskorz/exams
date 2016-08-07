@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar } from 'material-ui';
 import SchoolIcon from 'material-ui/svg-icons/social/school';
-import { Link } from 'react-router';
+import { Link, IndexLink } from 'react-router';
 
 
 const styles = {
@@ -35,17 +35,19 @@ const styles = {
 
 
 export default ({ children }) => (
-		<div style={ styles.mainContainer }>
-			<AppBar
-					title={ <Link to='/' style={ styles.title }><SchoolIcon color='white' style={ styles.titleIcon } />Exams</Link> }
-					showMenuIconButton={ false }
-					iconElementRight={ <span>
+	<div style={ styles.mainContainer }>
+		<AppBar
+			title={ <Link to='/' style={ styles.title }>
+				<SchoolIcon color='white' style={ styles.titleIcon } />Exams
+			</Link> }
+			showMenuIconButton={ false }
+			iconElementRight={ <span>
 				<Link to='/' style={ styles.link } activeStyle={ styles.linkActive } onlyActiveOnIndex={ true }>Home</Link>
 				<Link to='/page1' style={ styles.link } activeStyle={ styles.linkActive }>Page1</Link>
 				<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }>Create Exam</Link>
 			</span> }
-			/>
-			
-			{ children }
-		</div>
+		/>
+		
+		{ children }
+	</div>
 );
