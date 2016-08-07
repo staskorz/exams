@@ -68,7 +68,7 @@ export default class AnswersEdit extends Component {
 						<Checkbox style={ this.style.checkbox } />
 					</div>
 					<TextField
-							floatingLabelText={ textLabel } hintText={ textLabel }
+							floatingLabelText={ textLabel }
 							style={ this.style.answerTextField }
 							multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 					/>

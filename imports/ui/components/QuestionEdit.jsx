@@ -72,7 +72,7 @@ export default class QuestionEdit extends Component {
 					<div style={ this.style.fieldsContainer }>
 						<TextField name='text'
 								   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
-								   floatingLabelText='Question Body' hintText='Question Body' /><br />
+								   floatingLabelText='Question Body' /><br />
 						
 						<Checkbox style={ this.style.multipleAnswersCheckbox } className='text' label='Multiple Answers' labelPosition='left' />
 						
