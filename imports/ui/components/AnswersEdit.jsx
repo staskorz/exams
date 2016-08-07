@@ -10,27 +10,28 @@ export default class AnswersEdit extends Component {
 			display: 'table'
 		},
 		
+		numberContainer: {
+			display: 'table-cell',
+			verticalAlign: 'bottom'
+		},
+		
 		number: {
 			fontSize: '16px',
 			lineHeight: '24px',
 			fontFamily: 'Roboto, sans-serif',
-			display: 'table-cell',
-			verticalAlign: 'bottom',
 			marginBottom: '11px',
+			position: 'relative',
+			display: 'inline-block'
+		},
+		
+		checkboxContainer: {
+			display: 'table-cell',
+			verticalAlign: 'bottom'
 		},
 		
 		checkbox: {
-			display: 'table-cell',
-			width: '24px',
-			verticalAlign: 'bottom',
 			marginBottom: '12px',
-			marginLeft: '8px',
-			marginRight: '12px'
-		},
-		
-		answerTextFieldContainer: {
-			display: 'inline-block',
-			width: 'auto'
+			marginLeft: '8px'
 		},
 		
 		answerTextField: {
@@ -59,8 +60,12 @@ export default class AnswersEdit extends Component {
 	render() {
 		return (
 				<div style={ this.style.answersContainer }>
-					<span style={ this.style.number }>1.</span>
-					<Checkbox style={ this.style.checkbox } />
+					<div style={ this.style.numberContainer }>
+						<span style={ this.style.number }>1.</span>
+					</div>
+					<div style={ this.style.checkboxContainer }>
+						<Checkbox style={ this.style.checkbox } />
+					</div>
 					<TextField
 							floatingLabelText='Answer 1' hintText='Answer 1'
 							style={ this.style.answerTextField }
