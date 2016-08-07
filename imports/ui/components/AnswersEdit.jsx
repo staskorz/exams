@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Badge, TextField, Checkbox, RadioButtonGroup, RadioButton, IconButton } from 'material-ui';
-import IconAdd from 'material-ui/svg-icons/content/add-circle'
 import IconRemove from 'material-ui/svg-icons/content/remove-circle'
 
 
@@ -12,16 +11,14 @@ export default class AnswersEdit extends Component {
 		
 		numberContainer: {
 			display: 'table-cell',
-			verticalAlign: 'bottom'
+			verticalAlign: 'bottom',
+			position: 'relative',
+			paddingRight: '8px'
 		},
 		
-		number: {
-			fontSize: '16px',
-			lineHeight: '24px',
-			fontFamily: 'Roboto, sans-serif',
-			marginBottom: '11px',
-			position: 'relative',
-			display: 'inline-block'
+		numberBadge: {
+			display: 'inline-block',
+			verticalAlign: 'bottom'
 		},
 		
 		checkboxContainer: {
@@ -61,7 +58,8 @@ export default class AnswersEdit extends Component {
 		return (
 				<div style={ this.style.answersContainer }>
 					<div style={ this.style.numberContainer }>
-						<span style={ this.style.number }>1.</span>
+						{/*<span style={ this.style.number }>1.</span>*/}
+						<Badge badgeContent='1' secondary={ true } style={ this.style.numberBadge } />
 					</div>
 					<div style={ this.style.checkboxContainer }>
 						<Checkbox style={ this.style.checkbox } />
@@ -72,9 +70,6 @@ export default class AnswersEdit extends Component {
 							multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 					/>
 					<div style={ this.style.addRemoveAnswerButtonsContainer }>
-						{/*<IconButton iconStyle={ this.style.addRemoveAnswerButtonIcons } style={ this.style.addRemoveAnswerButtons }>
-							<IconAdd />
-						</IconButton>*/}
 						<IconButton iconStyle={ this.style.addRemoveAnswerButtonIcons } style={ this.style.addRemoveAnswerButtons }>
 							<IconRemove />
 						</IconButton>
