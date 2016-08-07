@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Badge, TextField, Checkbox, RadioButtonGroup, RadioButton, IconButton } from 'material-ui';
-import IconRemove from 'material-ui/svg-icons/content/remove-circle'
+import { Badge, TextField, Checkbox, RadioButtonGroup, RadioButton, FlatButton } from 'material-ui';
 
 
 export default class AnswersEdit extends Component {
@@ -48,8 +47,6 @@ export default class AnswersEdit extends Component {
 		addRemoveAnswerButtons: {
 			display: 'inline-block',
 			verticalAlign: 'bottom',
-			paddingLeft: '0px',
-			paddingRight: '0px'
 		},
 		
 		addRemoveAnswerButtonIcons: {
@@ -75,9 +72,7 @@ export default class AnswersEdit extends Component {
 							multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 					/>
 					<div style={ this.style.addRemoveAnswerButtonsContainer }>
-						<IconButton iconStyle={ this.style.addRemoveAnswerButtonIcons } style={ this.style.addRemoveAnswerButtons }>
-							<IconRemove />
-						</IconButton>
+						<FlatButton label='Remove' secondary={ true } />
 					</div>
 				</div>
 		);
