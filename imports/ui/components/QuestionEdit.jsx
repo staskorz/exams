@@ -23,17 +23,23 @@ export default class QuestionEdit extends Component {
 			position: 'relative'
 		},
 		
+		weightContainer: {
+			position: 'absolute',
+			top: '10px',
+			right: '40px'
+		},
+		
+		weightLabel: {
+			
+		},
+		
+		weight: {
+			width: '45px'
+		},
+		
 		fieldsContainer: {
 			padding: '40px',
 			paddingTop: '0px'
-		},
-		
-		numOfAnswersLabel: {
-			color: '#000000de'
-		},
-		
-		numOfAnswers: {
-			width: '25px'
 		},
 		
 		multipleAnswersCheckbox: {
@@ -58,15 +64,15 @@ export default class QuestionEdit extends Component {
 				<Paper style={ this.style.paper }>
 					<Badge badgeContent={ this.props.questionNumber } primary={ true } />
 					
+					<div style={ this.style.weightContainer }>
+						<span style={ this.style.weightLabel }>Weight </span>
+						<TextField name='weight' type='number' defaultValue={ 10 } style={ this.style.weight } />
+					</div>
+					
 					<div style={ this.style.fieldsContainer }>
 						<TextField name='text'
 								   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 								   floatingLabelText='Question Body' hintText='Question Body' /><br />
-						
-						<span style={ this.style.numOfAnswersLabel } className='text'>Number Of Answers </span>
-						<TextField name='numOfAnswers'
-								   type='number' defaultValue={ 4 }
-								   style={ this.style.numOfAnswers } />
 						
 						<Checkbox style={ this.style.multipleAnswersCheckbox } className='text' label='Multiple Answers' labelPosition='left' />
 						
