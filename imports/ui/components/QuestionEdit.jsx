@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Paper, Badge, TextField, Checkbox, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 
-import AnswersEdit from './AnswersEdit';
+import AnswerEdit from './AnswerEdit';
 
 
 export default class QuestionEdit extends Component {
@@ -76,7 +76,7 @@ export default class QuestionEdit extends Component {
 						
 						<Checkbox style={ this.style.multipleAnswersCheckbox } className='text' label='Multiple Answers' labelPosition='left' />
 						
-						<AnswersEdit />
+						<AnswerEdit />
 					</div>
 					<FloatingActionButton mini={true} style={ this.style.removeQuestionButton } onTouchTap={ this.handleQuestionRemoveButtonClick }>
 						<IconRemove />
