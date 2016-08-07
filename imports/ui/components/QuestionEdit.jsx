@@ -76,7 +76,8 @@ export default class QuestionEdit extends Component {
 						
 						<Checkbox style={ this.style.multipleAnswersCheckbox } className='text' label='Multiple Answers' labelPosition='left' />
 						
-						<AnswerEdit />
+						<AnswerEdit number={ 1 } />
+						<AnswerEdit number={ 2 } />
 					</div>
 					<FloatingActionButton mini={true} style={ this.style.removeQuestionButton } onTouchTap={ this.handleQuestionRemoveButtonClick }>
 						<IconRemove />

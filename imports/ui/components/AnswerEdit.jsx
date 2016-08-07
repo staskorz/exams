@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Badge, TextField, Checkbox, RadioButtonGroup, RadioButton, IconButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove-circle'
 
 
 export default class AnswersEdit extends Component {
+	static propTypes = {
+		number: PropTypes.number
+	};
+	
 	style = {
 		answersContainer: {
 			display: 'table'
@@ -55,17 +59,18 @@ export default class AnswersEdit extends Component {
 	
 	
 	render() {
+		const textLabel = 'Answer ' + this.props.number;
+		
 		return (
 				<div style={ this.style.answersContainer }>
 					<div style={ this.style.numberContainer }>
-						{/*<span style={ this.style.number }>1.</span>*/}
-						<Badge badgeContent='1' secondary={ true } style={ this.style.numberBadge } />
+						<Badge badgeContent={ this.props.number } secondary={ true } style={ this.style.numberBadge } />
 					</div>
 					<div style={ this.style.checkboxContainer }>
 						<Checkbox style={ this.style.checkbox } />
 					</div>
 					<TextField
-							floatingLabelText='Answer 1' hintText='Answer 1'
+							floatingLabelText={ textLabel } hintText={ textLabel }
 							style={ this.style.answerTextField }
 							multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 					/>
