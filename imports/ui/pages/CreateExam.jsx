@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardText, CardActions, TextField, FlatButton, FloatingActionButton } from 'material-ui';
+import { TextField, FlatButton, FloatingActionButton } from 'material-ui';
 import IconAdd from 'material-ui/svg-icons/content/add';
 
 import QuestionEdit from '/imports/ui/components/QuestionEdit'
@@ -7,7 +7,7 @@ import QuestionEdit from '/imports/ui/components/QuestionEdit'
 
 export default class CreateExam extends Component {
 	style = {
-		card: {
+		mainContainer: {
 			padding: '120px',
 			paddingTop: '40px',
 			height: '100%'
@@ -22,9 +22,9 @@ export default class CreateExam extends Component {
 	
 	render() {
 		return (
-				<Card style={ this.style.card }>
-					<CardTitle title='Create Exam' />
-					<CardText>
+				<div style={ this.style.mainContainer }>
+					<h1>Create Exam</h1>
+					<div className='formContainer'>
 						<form>
 							<TextField name='name' hintText='Exam Name' /><br />
 							<TextField name='number' type='number' hintText='Exam Number' />
@@ -32,11 +32,11 @@ export default class CreateExam extends Component {
 						
 						<QuestionEdit questionNumber={ 1 } />
 						<FloatingActionButton mini={true} style={ this.style.addQuestionButton }><IconAdd /></FloatingActionButton>
-					</CardText>
-					<CardActions>
+					</div>
+					<div className='buttonsContainer'>
 						<FlatButton label='Save' primary={ true } /><FlatButton label='Cancel' />
-					</CardActions>
-				</Card>
+					</div>
+				</div>
 		);
 	}
 }

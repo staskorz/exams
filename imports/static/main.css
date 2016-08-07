@@ -7,6 +7,30 @@ body {
 	margin: 0;
 }
 
+h1 {
+	font-size: 24px;
+	font-weight: normal;
+	line-height: 36px;
+	font-family: Roboto, sans-serif;
+	color: rgba(0, 0, 0, 0.870588);
+	padding: 16px;
+}
+
 #render-target {
 	height: 100%;
+}
+
+.text {
+	padding: 16px;
+	font-size: 14px;
+	font-family: Roboto, sans-serif;
+	color: rgba(0, 0, 0, 0.870588);
+}
+
+.formContainer {
+	padding: 16px;
+}
+
+.buttonsContainer {
+	padding: 8px;
 }
