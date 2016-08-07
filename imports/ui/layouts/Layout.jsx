@@ -5,10 +5,6 @@ import { Link, IndexLink } from 'react-router';
 
 
 const styles = {
-	mainContainer: {
-		height: '100%'
-	},
-	
 	title: {
 		color: 'white',
 		textDecoration: 'none'
@@ -35,7 +31,7 @@ const styles = {
 
 
 export default ({ children }) => (
-	<div style={ styles.mainContainer }>
+	<div>
 		<AppBar
 			title={ <Link to='/' style={ styles.title }>
 				<SchoolIcon color='white' style={ styles.titleIcon } />Exams
