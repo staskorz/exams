@@ -63,12 +63,12 @@ export default class QuestionEdit extends Component {
 								   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 								   floatingLabelText='Question Body' hintText='Question Body' /><br />
 						
-						<span style={ this.style.numOfAnswersLabel }>Number Of Answers </span>
+						<span style={ this.style.numOfAnswersLabel } className='text'>Number Of Answers </span>
 						<TextField name='numOfAnswers'
 								   type='number' defaultValue={ 4 }
 								   style={ this.style.numOfAnswers } />
 						
-						<Checkbox style={ this.style.multipleAnswersCheckbox } label='Multiple Answers' labelPosition='left' />
+						<Checkbox style={ this.style.multipleAnswersCheckbox } className='text' label='Multiple Answers' labelPosition='left' />
 						
 						<AnswersEdit />
 					</div>
