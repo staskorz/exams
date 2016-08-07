@@ -4,7 +4,8 @@ import { Badge, TextField, Checkbox, RadioButtonGroup, RadioButton, FlatButton }
 
 export default class AnswersEdit extends Component {
 	static propTypes = {
-		number: PropTypes.number
+		number: PropTypes.number,
+		removable: PropTypes.bool
 	};
 	
 	style = {
@@ -72,7 +73,7 @@ export default class AnswersEdit extends Component {
 							multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 					/>
 					<div style={ this.style.addRemoveAnswerButtonsContainer }>
-						<FlatButton label='Remove' secondary={ true } />
+						<FlatButton label='Remove' secondary={ true } disabled={ !this.props.removable } />
 					</div>
 				</div>
 		);
