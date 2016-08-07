@@ -25,8 +25,8 @@ export default class CreateExam extends Component {
 					<h1>Create Exam</h1>
 					<div className='formContainer'>
 						<form>
-							<TextField name='name' hintText='Exam Name' /><br />
-							<TextField name='number' type='number' hintText='Exam Number' />
+							<TextField name='name' floatingLabelText='Exam Name' /><br />
+							<TextField name='number' type='number' floatingLabelText='Exam Number' />
 						</form>
 						
 						<QuestionEdit questionNumber={ 1 } />
