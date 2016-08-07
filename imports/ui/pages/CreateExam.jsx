@@ -9,7 +9,15 @@ export default class CreateExam extends Component {
 	style = {
 		mainContainer: {
 			padding: '120px',
-			paddingTop: '40px'
+			paddingTop: '20px'
+		},
+		
+		h1: {
+			marginBottom: '0px'
+		},
+		
+		formContainer: {
+			paddingTop: '0px'
 		},
 		
 		addQuestionButton: {
@@ -22,8 +30,8 @@ export default class CreateExam extends Component {
 	render() {
 		return (
 				<div style={ this.style.mainContainer }>
-					<h1>Create Exam</h1>
-					<div className='formContainer'>
+					<h1 style={ this.style.h1 }>Create Exam</h1>
+					<div className='formContainer' style={ this.style.formContainer }>
 						<form>
 							<TextField name='name' floatingLabelText='Exam Name' /><br />
 							<TextField name='number' type='number' floatingLabelText='Exam Number' />
