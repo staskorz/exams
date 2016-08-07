@@ -9,8 +9,7 @@ export default class CreateExam extends Component {
 	style = {
 		mainContainer: {
 			padding: '120px',
-			paddingTop: '40px',
-			height: '100%'
+			paddingTop: '40px'
 		},
 		
 		addQuestionButton: {

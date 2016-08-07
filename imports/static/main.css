@@ -1,9 +1,4 @@
-html {
-	height: 100%;
-}
-
 body {
-	min-height: 100%;
 	margin: 0;
 }
 
@@ -14,10 +9,6 @@ h1 {
 	font-family: Roboto, sans-serif;
 	color: rgba(0, 0, 0, 0.870588);
 	padding: 16px;
-}
-
-#render-target {
-	height: 100%;
 }
 
 .text {
