@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { Field } from 'redux-form';
+import { Field, FieldArray } from 'redux-form';
 import { TextField, Toggle } from 'redux-form-material-ui';
 import { Paper, Badge, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
+import IconAdd from 'material-ui/svg-icons/content/add';
 
 import AnswerEdit from './AnswerEdit';
 
@@ -48,41 +49,61 @@ export default class QuestionEdit extends Component {
 			position: 'absolute',
 			bottom: '10px',
 			right: '10px'
+		},
+		
+		addQuestionButton: {
+			marginLeft: '10px',
+			marginTop: '10px'
 		}
 	};
 	
 	
-	handleQuestionRemoveButtonClick = () => {
-		this.props.onRemove(this.props.questionNumber);
-	};
+	componentWillMount() {
+		const { fields } = this.props;
+		
+		if(fields.length === 0) {
+			fields.push({});
+		}
+	}
 	
 	
 	render() {
+		const { fields } = this.props;
+		
 		return (
-				<Paper style={ this.style.paper }>
-					<Badge badgeContent={ this.props.questionNumber } primary={ true } />
+				<div>
+					{ fields.map((question, index) => (
+							<Paper style={ this.style.paper } key={ index }>
+								<Badge badgeContent={ index + 1 } primary={ true } />
+								
+								<div style={ this.style.weightContainer }>
+									<span style={ this.style.weightLabel }>Weight </span>
+									<Field component={ TextField } name={ `${ question }.weight` } type='number' defaultValue={ 10 }
+										   style={ this.style.weight } />
+								</div>
+								
+								<div style={ this.style.fieldsContainer }>
+									<Field component={ TextField } name={ `${ question }.text` }
+										   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
+										   floatingLabelText='Question Body' /><br />
+									
+									<Field component={ Toggle } name={ `${ question }.multiple` }
+										   style={ this.style.multipleAnswersToggle } className='text' label='Multiple Correct Answers'
+										   labelPosition='right' />
+									
+									<FieldArray name={ `${ question }.answers` } component={ AnswerEdit } />
+								</div>
+								<FloatingActionButton mini={true} style={ this.style.removeQuestionButton }
+													  onClick={ () => fields.remove(index) } disabled={ fields.length < 2 }>
+									<IconRemove />
+								</FloatingActionButton>
+							</Paper>
+					)) }
 					
-					<div style={ this.style.weightContainer }>
-						<span style={ this.style.weightLabel }>Weight </span>
-						<Field component={ TextField } name='weight' type='number' defaultValue={ 10 } style={ this.style.weight } />
-					</div>
-					
-					<div style={ this.style.fieldsContainer }>
-						<Field component={ TextField } name='text'
-							   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
-							   floatingLabelText='Question Body' /><br />
-						
-						<Field component={ Toggle } name='multiple'
-							   style={ this.style.multipleAnswersToggle } className='text' label='Multiple Answers'
-							   labelPosition='right' />
-						
-						<AnswerEdit number={ 1 } />
-						<AnswerEdit number={ 2 } />
-					</div>
-					<FloatingActionButton mini={true} style={ this.style.removeQuestionButton } onTouchTap={ this.handleQuestionRemoveButtonClick }>
-						<IconRemove />
+					<FloatingActionButton mini={true} style={ this.style.addQuestionButton } onClick={ () => fields.push({}) }>
+						<IconAdd />
 					</FloatingActionButton>
-				</Paper>
+				</div>
 		);
 	}
 }

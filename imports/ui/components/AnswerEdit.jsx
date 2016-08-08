@@ -1,15 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { TextField, Checkbox } from 'redux-form-material-ui';
 import { Badge, FlatButton } from 'material-ui';
 
 
 export default class AnswersEdit extends Component {
-	static propTypes = {
-		number: PropTypes.number,
-		removable: PropTypes.bool
-	};
-	
 	style = {
 		answersContainer: {
 			display: 'table'
@@ -58,26 +53,44 @@ export default class AnswersEdit extends Component {
 	};
 	
 	
+	componentWillMount() {
+		const { fields } = this.props;
+		
+		if(fields.length === 0) {
+			fields.push({});
+			fields.push({});
+		}
+	}
+	
+	
 	render() {
-		const textLabel = 'Answer ' + this.props.number;
+		const { fields } = this.props;
 		
 		return (
-				<div style={ this.style.answersContainer }>
-					<div style={ this.style.numberContainer }>
-						<Badge badgeContent={ this.props.number } secondary={ true } style={ this.style.numberBadge } />
-					</div>
-					<div style={ this.style.checkboxContainer }>
-						<Field component={ Checkbox } name='correct' style={ this.style.checkbox } />
-					</div>
-					<Field component={ TextField } name='text'
-							floatingLabelText={ textLabel }
-							style={ this.style.answerTextField }
-							multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
-					/>
-					<div style={ this.style.addRemoveAnswerButtonsContainer }>
-						<FlatButton label='Remove' secondary={ true } disabled={ !this.props.removable } />
-					</div>
+				<div>
+					{ fields.map((answer, index) => (
+							<div style={ this.style.answersContainer } key={ index }>
+								<div style={ this.style.numberContainer }>
+									<Badge badgeContent={ index + 1 } secondary={ true } style={ this.style.numberBadge } />
+								</div>
+								<div style={ this.style.checkboxContainer }>
+									<Field component={ Checkbox } name={ `${ answer }.correct` } style={ this.style.checkbox } />
+								</div>
+								<Field component={ TextField } name={ `${ answer }.text` }
+									   floatingLabelText={ 'Answer ' + (index + 1) }
+									   style={ this.style.answerTextField }
+									   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
+								/>
+								<div style={ this.style.addRemoveAnswerButtonsContainer }>
+									<FlatButton label='Remove' secondary={ true } disabled={ fields.length < 3 }
+												onClick={ () => fields.remove(index) }
+									/>
+								</div>
+							</div>
+					)) }
+					
+					<FlatButton label='Add' secondary={ true } disabled={ fields.length > 3 } onClick={ () => fields.push({}) } />
 				</div>
 		);
-	}
+	};
 };
