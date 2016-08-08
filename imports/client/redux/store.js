@@ -1,3 +1,3 @@
 import { createStore } from 'redux';
 
-export default createStore();
+export default createStore(() => null);
