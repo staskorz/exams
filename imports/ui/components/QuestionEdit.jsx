@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { Paper, Badge, TextField, Toggle, FloatingActionButton } from 'material-ui';
+import { Field } from 'redux-form';
+import { TextField, Toggle } from 'redux-form-material-ui';
+import { Paper, Badge, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 
 import AnswerEdit from './AnswerEdit';
@@ -29,9 +31,7 @@ export default class QuestionEdit extends Component {
 			right: '40px'
 		},
 		
-		weightLabel: {
-			
-		},
+		weightLabel: {},
 		
 		weight: {
 			width: '45px'
@@ -42,9 +42,7 @@ export default class QuestionEdit extends Component {
 			paddingTop: '0px'
 		},
 		
-		multipleAnswersToggle: {
-			
-		},
+		multipleAnswersToggle: {},
 		
 		removeQuestionButton: {
 			position: 'absolute',
@@ -66,15 +64,17 @@ export default class QuestionEdit extends Component {
 					
 					<div style={ this.style.weightContainer }>
 						<span style={ this.style.weightLabel }>Weight </span>
-						<TextField name='weight' type='number' defaultValue={ 10 } style={ this.style.weight } />
+						<Field component={ TextField } name='weight' type='number' defaultValue={ 10 } style={ this.style.weight } />
 					</div>
 					
 					<div style={ this.style.fieldsContainer }>
-						<TextField name='text'
-								   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
-								   floatingLabelText='Question Body' /><br />
+						<Field component={ TextField } name='text'
+							   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
+							   floatingLabelText='Question Body' /><br />
 						
-						<Toggle style={ this.style.multipleAnswersToggle } className='text' label='Multiple Answers' labelPosition='right' />
+						<Field component={ Toggle } name='multiple'
+							   style={ this.style.multipleAnswersToggle } className='text' label='Multiple Answers'
+							   labelPosition='right' />
 						
 						<AnswerEdit number={ 1 } />
 						<AnswerEdit number={ 2 } />

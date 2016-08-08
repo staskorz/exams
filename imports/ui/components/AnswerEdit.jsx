@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { Badge, TextField, Checkbox, RadioButtonGroup, RadioButton, FlatButton } from 'material-ui';
+import { Field } from 'redux-form';
+import { TextField, Checkbox } from 'redux-form-material-ui';
+import { Badge, FlatButton } from 'material-ui';
 
 
 export default class AnswersEdit extends Component {
@@ -65,9 +67,9 @@ export default class AnswersEdit extends Component {
 						<Badge badgeContent={ this.props.number } secondary={ true } style={ this.style.numberBadge } />
 					</div>
 					<div style={ this.style.checkboxContainer }>
-						<Checkbox style={ this.style.checkbox } />
+						<Field component={ Checkbox } name='correct' style={ this.style.checkbox } />
 					</div>
-					<TextField
+					<Field component={ TextField } name='text'
 							floatingLabelText={ textLabel }
 							style={ this.style.answerTextField }
 							multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
