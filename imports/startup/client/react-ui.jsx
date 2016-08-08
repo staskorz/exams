@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 
 import ReactRoot from '/imports/ui/ReactRoot';
 
-import '../../static/main.html';
+import '/imports/static/main.html';
 
 
 Meteor.startup(() => {
