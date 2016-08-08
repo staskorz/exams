@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Paper, Badge, TextField, Checkbox, FloatingActionButton } from 'material-ui';
+import { Paper, Badge, TextField, Toggle, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 
 import AnswerEdit from './AnswerEdit';
@@ -42,8 +42,8 @@ export default class QuestionEdit extends Component {
 			paddingTop: '0px'
 		},
 		
-		multipleAnswersCheckbox: {
-			width: '174px'
+		multipleAnswersToggle: {
+			
 		},
 		
 		removeQuestionButton: {
@@ -74,7 +74,7 @@ export default class QuestionEdit extends Component {
 								   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 								   floatingLabelText='Question Body' /><br />
 						
-						<Checkbox style={ this.style.multipleAnswersCheckbox } className='text' label='Multiple Answers' labelPosition='left' />
+						<Toggle style={ this.style.multipleAnswersToggle } className='text' label='Multiple Answers' labelPosition='right' />
 						
 						<AnswerEdit number={ 1 } />
 						<AnswerEdit number={ 2 } />
