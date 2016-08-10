@@ -80,7 +80,7 @@ export default class QuestionsEdit extends Component {
 									
 									<Field component={ Toggle } name={ `${ question }.multiple` }
 										   style={ this.style.multipleAnswersToggle } className='text' label='Multiple Correct Answers'
-										   labelPosition='right' />
+										   labelPosition='right' defaultToggled={ false } />
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } />
 								</div>
