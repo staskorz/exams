@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Field, FieldArray } from 'redux-form';
 import { TextField, Toggle } from 'redux-form-material-ui';
 import { Paper, Badge, FloatingActionButton } from 'material-ui';
@@ -9,11 +9,6 @@ import AnswerEdit from './AnswerEdit';
 
 
 export default class QuestionEdit extends Component {
-	static propTypes = {
-		questionNumber: PropTypes.number,
-		onRemove: PropTypes.func
-	};
-	
 	state = {
 		numOfAnswers: 1,
 		multipleAnswers: false
