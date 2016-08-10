@@ -3,7 +3,7 @@ import { FloatingActionButton, Dialog, FlatButton } from 'material-ui';
 
 
 export default class ConfirmedFloatingActionButton extends Component {
-	static PropTypes = {
+	static propTypes = {
 		onConfirm: PropTypes.func.isRequired
 	};
 	
