@@ -9,11 +9,6 @@ import AnswerEdit from './AnswerEdit';
 
 
 export default class QuestionEdit extends Component {
-	state = {
-		numOfAnswers: 1,
-		multipleAnswers: false
-	};
-	
 	style = {
 		paper: {
 			marginTop: '40px',
