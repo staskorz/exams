@@ -3,7 +3,7 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { FlatButton } from 'material-ui';
 
-import QuestionEdit from '/imports/ui/components/QuestionEdit'
+import QuestionsEdit from '/imports/ui/components/QuestionsEdit'
 
 
 class CreateExam extends Component {
@@ -40,7 +40,7 @@ class CreateExam extends Component {
 							<Field component={ TextField } name='name' floatingLabelText='Exam Name' /><br />
 							<Field component={ TextField } name='number' type='number' floatingLabelText='Exam Number' />
 							
-							<FieldArray name='questions' component={ QuestionEdit } />
+							<FieldArray name='questions' component={ QuestionsEdit } />
 						</div>
 						
 						<div className='buttonsContainer'>

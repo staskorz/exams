@@ -9,7 +9,7 @@ import AnswerEdit from './AnswerEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
 
 
-export default class QuestionEdit extends Component {
+export default class QuestionsEdit extends Component {
 	style = {
 		paper: {
 			marginTop: '40px',
