@@ -6,6 +6,7 @@ import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
 
 import AnswerEdit from './AnswerEdit';
+import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
 
 
 export default class QuestionEdit extends Component {
@@ -83,10 +84,15 @@ export default class QuestionEdit extends Component {
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswerEdit } />
 								</div>
-								<FloatingActionButton mini={true} style={ this.style.removeQuestionButton }
-													  onClick={ () => fields.remove(index) } disabled={ fields.length < 2 }>
+								<ConfirmedFloatingActionButton
+										mini={ true }
+										style={ this.style.removeQuestionButton }
+										disabled={ fields.length < 2 }
+										onConfirm={ () => fields.remove(index) }
+										text='Are you sure?'
+								>
 									<IconRemove />
-								</FloatingActionButton>
+								</ConfirmedFloatingActionButton>
 							</Paper>
 					)) }
 					
