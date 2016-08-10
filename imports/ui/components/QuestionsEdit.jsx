@@ -5,7 +5,7 @@ import { Paper, Badge, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
 
-import AnswerEdit from './AnswerEdit';
+import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
 
 
@@ -82,7 +82,7 @@ export default class QuestionsEdit extends Component {
 										   style={ this.style.multipleAnswersToggle } className='text' label='Multiple Correct Answers'
 										   labelPosition='right' />
 									
-									<FieldArray name={ `${ question }.answers` } component={ AnswerEdit } />
+									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } />
 								</div>
 								<ConfirmedFloatingActionButton
 										mini={ true }
