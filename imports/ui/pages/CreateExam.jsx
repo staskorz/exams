@@ -3,6 +3,8 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { FlatButton } from 'material-ui';
 
+import ExamsCollection from '/imports/api/exams/collection';
+import simpleSchemaValidator from '/imports/client/validators/simple-schema-validator';
 import QuestionsEdit from '/imports/ui/components/QuestionsEdit'
 
 
@@ -73,14 +75,33 @@ const validate = values => {
 		
 		if(weight > 100) {
 			values.questions.forEach((elem, index) => {
-				errors.questions[index] = Object.assign({}, errors.questions[index], { weight: "Σ > 100" });
+				errors.questions[index] = { weight: "Σ > 100" };
 			});
 		} else if(weight < 100) {
 			values.questions.forEach((elem, index) => {
-				errors.questions[index] = Object.assign({}, errors.questions[index], { weight: "Σ < 100" });
+				errors.questions[index] = { weight: "Σ < 100" };
 			});
 		}
+		
+		values.questions.forEach((elem, index) => {
+			errors.questions[index] = Object.assign({}, errors.questions[index], {
+				text: simpleSchemaValidator(ExamsCollection, 'questions.$.text', elem.text)
+			});
+			
+			if(elem.answers) {
+				errors.questions[index].answers = [];
+				
+				elem.answers.forEach((elem2, index2) => {
+					errors.questions[index].answers[index2] = {
+						text: simpleSchemaValidator(ExamsCollection, 'questions.$.answers.$.text', elem2.text)
+					};
+				});
+			}
+		});
 	}
+	
+	errors.name = simpleSchemaValidator(ExamsCollection, 'name', values.name);
+	errors.number = simpleSchemaValidator(ExamsCollection, 'number', values.number);
 	
 	return errors;
 };
