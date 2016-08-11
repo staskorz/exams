@@ -71,9 +71,13 @@ const validate = values => {
 			}
 		}, 0);
 		
-		if(weight !== 100) {
+		if(weight > 100) {
 			values.questions.forEach((elem, index) => {
-				errors.questions[index] = Object.assign({}, errors.questions[index], { weight: ' ' });
+				errors.questions[index] = Object.assign({}, errors.questions[index], { weight: "Σ > 100" });
+			});
+		} else if(weight < 100) {
+			values.questions.forEach((elem, index) => {
+				errors.questions[index] = Object.assign({}, errors.questions[index], { weight: "Σ < 100" });
 			});
 		}
 	}

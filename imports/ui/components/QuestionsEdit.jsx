@@ -23,7 +23,12 @@ export default class QuestionsEdit extends Component {
 			right: '40px'
 		},
 		
-		weightLabel: {},
+		weightLabel: {
+			display: 'inline-block',
+			marginTop: '15px',
+			marginRight: '8px',
+			verticalAlign: 'top'
+		},
 		
 		weight: {
 			width: '45px'
