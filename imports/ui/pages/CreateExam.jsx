@@ -91,6 +91,10 @@ const validate = values => {
 			if(elem.answers) {
 				errors.questions[index].answers = [];
 				
+				if(!elem.answers.some(elem2 => elem2 && elem2.correct)) {
+					errors.questions[index]._error = 'At least one correct answer required';
+				}
+				
 				elem.answers.forEach((elem2, index2) => {
 					errors.questions[index].answers[index2] = {
 						text: simpleSchemaValidator(ExamsCollection, 'questions.$.answers.$.text', elem2.text)
