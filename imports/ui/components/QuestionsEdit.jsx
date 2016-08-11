@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, FieldArray } from 'redux-form';
-import { TextField, Toggle } from 'redux-form-material-ui';
+import { TextField } from 'redux-form-material-ui';
 import { Paper, Badge, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
@@ -38,8 +38,6 @@ export default class QuestionsEdit extends Component {
 			padding: '40px',
 			paddingTop: '0px'
 		},
-		
-		multipleAnswersToggle: {},
 		
 		removeQuestionButton: {
 			position: 'absolute',
@@ -82,10 +80,6 @@ export default class QuestionsEdit extends Component {
 									<Field component={ TextField } name={ `${ question }.text` }
 										   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 										   floatingLabelText='Question Body' /><br />
-									
-									<Field component={ Toggle } name={ `${ question }.multiple` }
-										   style={ this.style.multipleAnswersToggle } className='text' label='Multiple Correct Answers'
-										   labelPosition='right' />
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } />
 								</div>
