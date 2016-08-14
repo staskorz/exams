@@ -62,7 +62,7 @@ export default class QuestionsEdit extends Component {
 	
 	
 	render() {
-		const { fields } = this.props;
+		const { fields, submitFailed } = this.props;
 		
 		return (
 				<div>
@@ -81,7 +81,7 @@ export default class QuestionsEdit extends Component {
 										   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 										   floatingLabelText='Question Body' /><br />
 									
-									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } />
+									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />
 								</div>
 								<ConfirmedFloatingActionButton
 										mini={ true }

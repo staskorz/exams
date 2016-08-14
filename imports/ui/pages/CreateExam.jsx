@@ -31,7 +31,7 @@ class CreateExam extends Component {
 	
 	
 	render() {
-		const { handleSubmit } = this.props;
+		const { handleSubmit, submitFailed } = this.props;
 		
 		return (
 				<div style={ this.style.mainContainer }>
@@ -42,7 +42,7 @@ class CreateExam extends Component {
 							<Field component={ TextField } name='name' floatingLabelText='Exam Name' /><br />
 							<Field component={ TextField } name='number' type='number' floatingLabelText='Exam Number' />
 							
-							<FieldArray name='questions' component={ QuestionsEdit } />
+							<FieldArray name='questions' component={ QuestionsEdit } props={{ submitFailed }} />
 						</div>
 						
 						<div className='buttonsContainer'>
@@ -92,7 +92,7 @@ const validate = values => {
 				errors.questions[index].answers = [];
 				
 				if(!elem.answers.some(elem2 => elem2 && elem2.correct)) {
-					errors.questions[index]._error = 'At least one correct answer required';
+					errors.questions[index].answers._error = 'At least one correct answer required';
 				}
 				
 				elem.answers.forEach((elem2, index2) => {

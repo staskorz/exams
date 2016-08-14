@@ -64,7 +64,15 @@ export default class AnswersEdit extends Component {
 	
 	
 	render() {
-		const { fields } = this.props;
+		const { fields, submitFailed, meta: { error } } = this.props;
+		
+		let iconStyle;
+		
+		if(error && submitFailed) {
+			iconStyle = {
+				fill: 'rgb(244, 67, 54)'
+			};
+		}
 		
 		return (
 				<div>
@@ -74,7 +82,7 @@ export default class AnswersEdit extends Component {
 									<Badge badgeContent={ index + 1 } secondary={ true } style={ this.style.numberBadge } />
 								</div>
 								<div style={ this.style.checkboxContainer }>
-									<Field component={ Checkbox } name={ `${ answer }.correct` } style={ this.style.checkbox } />
+									<Field component={ Checkbox } name={ `${ answer }.correct` } style={ this.style.checkbox } iconStyle={ iconStyle } />
 								</div>
 								<Field component={ TextField } name={ `${ answer }.text` }
 									   floatingLabelText={ 'Answer ' + (index + 1) }
