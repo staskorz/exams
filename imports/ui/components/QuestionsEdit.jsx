@@ -31,7 +31,7 @@ export default class QuestionsEdit extends Component {
 		},
 		
 		weight: {
-			width: '45px'
+			width: '65px'
 		},
 		
 		fieldsContainer: {

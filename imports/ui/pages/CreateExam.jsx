@@ -75,11 +75,11 @@ const validate = values => {
 		
 		if(weight > 100) {
 			values.questions.forEach((elem, index) => {
-				errors.questions[index] = { weight: "Σ > 100" };
+				errors.questions[index] = { weight: weight + " > 100" };
 			});
 		} else if(weight < 100) {
 			values.questions.forEach((elem, index) => {
-				errors.questions[index] = { weight: "Σ < 100" };
+				errors.questions[index] = { weight: weight + " < 100" };
 			});
 		}
 		
