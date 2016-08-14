@@ -82,7 +82,8 @@ export default class AnswersEdit extends Component {
 									<Badge badgeContent={ index + 1 } secondary={ true } style={ this.style.numberBadge } />
 								</div>
 								<div style={ this.style.checkboxContainer }>
-									<Field component={ Checkbox } name={ `${ answer }.correct` } style={ this.style.checkbox } iconStyle={ iconStyle } />
+									<Field component={ Checkbox } name={ `${ answer }.correct` } style={ this.style.checkbox }
+										   iconStyle={ iconStyle } />
 								</div>
 								<Field component={ TextField } name={ `${ answer }.text` }
 									   floatingLabelText={ 'Answer ' + (index + 1) }
