@@ -8,12 +8,19 @@ const answer = new SimpleSchema({
 	},
 	
 	correct: {
-		type: Boolean
+		type: Boolean,
+		optional: true
 	}
 });
 
 
 const question = new SimpleSchema({
+	weight: {
+		type: Number,
+		min: 1,
+		max: 100
+	},
+	
 	text: {
 		type: String,
 		min: 1
