@@ -4,6 +4,7 @@ import { TextField } from 'redux-form-material-ui';
 import { FlatButton } from 'material-ui';
 
 import ExamsCollection from '/imports/api/exams/collection';
+import { insert as insertExam } from '/imports/api/exams/methods';
 import simpleSchemaValidator from '/imports/client/validators/simple-schema-validator';
 import QuestionsEdit from '/imports/ui/components/QuestionsEdit'
 
@@ -35,6 +36,14 @@ class CreateExam extends Component {
 	
 	handleSubmit = (formFields) => {
 		console.log('formFields:', formFields);
+		
+		insertExam.call(formFields, (error, result) => {
+			if(error) {
+				console.log('insertExam error:', error);
+			} else {
+				console.log('insertExam result:', result);
+			}
+		});
 	};
 	
 	
