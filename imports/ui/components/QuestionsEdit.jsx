@@ -34,6 +34,10 @@ export default class QuestionsEdit extends Component {
 			width: '65px'
 		},
 		
+		questionText: {
+			marginBottom: '14px'
+		},
+		
 		fieldsContainer: {
 			padding: '40px',
 			paddingTop: '0px'
@@ -79,6 +83,7 @@ export default class QuestionsEdit extends Component {
 								<div style={ this.style.fieldsContainer }>
 									<Field component={ TextField } name={ `${ question }.text` }
 										   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
+										   style={ this.style.questionText }
 										   floatingLabelText='Question Body' /><br />
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />

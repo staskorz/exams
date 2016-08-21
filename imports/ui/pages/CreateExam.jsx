@@ -21,6 +21,14 @@ class CreateExam extends Component {
 		
 		formContainer: {
 			paddingTop: '0px'
+		},
+		
+		examName: {
+			marginBottom: '28px'
+		},
+		
+		examNumber: {
+			marginBottom: '28px'
 		}
 	};
 	
@@ -39,8 +47,9 @@ class CreateExam extends Component {
 					
 					<form onSubmit={ handleSubmit(this.handleSubmit) }>
 						<div className='formContainer' style={ this.style.formContainer }>
-							<Field component={ TextField } name='name' floatingLabelText='Exam Name' /><br />
-							<Field component={ TextField } name='number' type='number' floatingLabelText='Exam Number' />
+							<Field component={ TextField } name='name' floatingLabelText='Exam Name' style={ this.style.examName } /><br />
+							<Field component={ TextField } name='number' type='number' floatingLabelText='Exam Number'
+								   style={ this.style.examNumber } />
 							
 							<FieldArray name='questions' component={ QuestionsEdit } props={{ submitFailed }} />
 						</div>
