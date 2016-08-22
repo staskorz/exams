@@ -24,8 +24,8 @@ export default ({ ready, exams }) => (
 									<TableRowColumn>{ exam.name }</TableRowColumn>
 									<TableRowColumn>{ exam.number }</TableRowColumn>
 									<TableRowColumn>
-										<IconButton><EditIcon /></IconButton>
-										<IconButton><SearchIcon /></IconButton>
+										<IconButton onClick={ () => console.log('edit id:', exam._id) }><EditIcon /></IconButton>
+										<IconButton onClick={ () => console.log('view id:', exam._id) }><SearchIcon /></IconButton>
 									</TableRowColumn>
 								</TableRow>
 						)) }
