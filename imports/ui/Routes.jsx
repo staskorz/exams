@@ -5,6 +5,7 @@ import Layout from './layouts/Layout';
 import Home from './pages/Home';
 import Page1 from './pages/Page1';
 import CreateExam from './pages/CreateExam';
+import EditExam from './pages/EditExam';
 import ListExamsContainer from './containers/ListExamsContainer';
 import NotFound from './pages/NotFound';
 
@@ -15,6 +16,7 @@ export default () => (
 			<IndexRoute component={ Home } />
 			<Route path='page1' component={ Page1 }/>
 			<Route path='create-exam' component={ CreateExam }/>
+			<Route path='edit-exam/:examId' component={ EditExam }/>
 			<Route path='list-exams' component={ ListExamsContainer }/>
 			<Route path='*' component={ NotFound }/>
 		</Route>

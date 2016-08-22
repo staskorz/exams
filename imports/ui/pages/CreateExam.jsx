@@ -49,11 +49,25 @@ class CreateExam extends Component {
 	
 	
 	render() {
-		const { handleSubmit, submitFailed } = this.props;
+		const { handleSubmit, submitFailed, edit, ready } = this.props;
+		
+		if(edit && !ready) {
+			return (
+					<div>Loading...</div>
+			);
+		}
+		
+		let title;
+		
+		if(edit) {
+			title = 'Edit Exam';
+		} else {
+			title = 'Create Exam';
+		}
 		
 		return (
 				<div style={ this.style.mainContainer }>
-					<h1 style={ this.style.h1 }>Create Exam</h1>
+					<h1 style={ this.style.h1 }>{ title }</h1>
 					
 					<form onSubmit={ handleSubmit(this.handleSubmit) }>
 						<div className='formContainer' style={ this.style.formContainer }>
@@ -135,5 +149,6 @@ const CreateExamWithRouter = withRouter(CreateExam);
 
 export default reduxForm({
 	form: 'createExam',
-	validate
+	validate,
+	enableReinitialize: true
 })(CreateExamWithRouter);
