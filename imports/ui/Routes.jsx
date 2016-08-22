@@ -13,9 +13,9 @@ export default () => (
 	<Router history={ browserHistory }>
 		<Route path='/' component={ Layout }>
 			<IndexRoute component={ Home } />
-			<Route path='/page1' component={ Page1 }/>
-			<Route path='/create-exam' component={ CreateExam }/>
-			<Route path='/list-exams' component={ ListExamsContainer }/>
+			<Route path='page1' component={ Page1 }/>
+			<Route path='create-exam' component={ CreateExam }/>
+			<Route path='list-exams' component={ ListExamsContainer }/>
 			<Route path='*' component={ NotFound }/>
 		</Route>
 	</Router>
