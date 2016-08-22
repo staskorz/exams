@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { FlatButton } from 'material-ui';
+import { withRouter } from 'react-router';
 
 import ExamsCollection from '/imports/api/exams/collection';
 import { insert as insertExam } from '/imports/api/exams/methods';
@@ -41,7 +42,7 @@ class CreateExam extends Component {
 			if(error) {
 				console.log('insertExam error:', error);
 			} else {
-				console.log('insertExam result:', result);
+				this.props.router.push('/list-exams');
 			}
 		});
 	};
@@ -129,7 +130,10 @@ const validate = values => {
 };
 
 
+const CreateExamWithRouter = withRouter(CreateExam);
+
+
 export default reduxForm({
 	form: 'createExam',
 	validate
-})(CreateExam);
+})(CreateExamWithRouter);
