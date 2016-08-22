@@ -10,7 +10,7 @@ const showCheckboxes = false;
 export default ({ ready, exams }) => (
 		{ ready } ?
 				
-				<Table>
+				<Table selectable={ false }>
 					<TableHeader displaySelectAll={ showCheckboxes } adjustForCheckbox={ showCheckboxes }>
 						<TableRow>
 							<TableHeaderColumn>Name</TableHeaderColumn>
