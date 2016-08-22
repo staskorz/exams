@@ -2,12 +2,13 @@ import React from 'react';
 import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
 import ViewIcon from 'material-ui/svg-icons/action/view-headline';
+import { withRouter } from 'react-router';
 
 
 const showCheckboxes = false;
 
 
-export default ({ ready, exams }) => (
+const ListExams = ({ ready, exams, router }) => (
 		{ ready } ?
 				
 				<Table selectable={ false }>
@@ -24,8 +25,8 @@ export default ({ ready, exams }) => (
 									<TableRowColumn>{ exam.name }</TableRowColumn>
 									<TableRowColumn>{ exam.number }</TableRowColumn>
 									<TableRowColumn>
-										<IconButton onClick={ () => console.log('edit id:', exam._id) }><EditIcon /></IconButton>
-										<IconButton onClick={ () => console.log('view id:', exam._id) }><ViewIcon /></IconButton>
+										<IconButton onClick={ () => router.push('/edit-exam/' + exam._id) }><EditIcon /></IconButton>
+										<IconButton onClick={ () => router.push('/exam-results/' + exam._id) }><ViewIcon /></IconButton>
 									</TableRowColumn>
 								</TableRow>
 						)) }
@@ -34,3 +35,6 @@ export default ({ ready, exams }) => (
 				
 				: <div>Loading...</div>
 );
+
+
+export default withRouter(ListExams);
