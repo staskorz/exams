@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
-import SearchIcon from 'material-ui/svg-icons/action/search';
+import ViewIcon from 'material-ui/svg-icons/action/view-headline';
 
 
 const showCheckboxes = false;
@@ -25,7 +25,7 @@ export default ({ ready, exams }) => (
 									<TableRowColumn>{ exam.number }</TableRowColumn>
 									<TableRowColumn>
 										<IconButton onClick={ () => console.log('edit id:', exam._id) }><EditIcon /></IconButton>
-										<IconButton onClick={ () => console.log('view id:', exam._id) }><SearchIcon /></IconButton>
+										<IconButton onClick={ () => console.log('view id:', exam._id) }><ViewIcon /></IconButton>
 									</TableRowColumn>
 								</TableRow>
 						)) }
