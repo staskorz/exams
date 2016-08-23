@@ -1,19 +1,37 @@
-import React from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Meteor } from 'meteor/meteor';
+import React, { Component } from 'react';
 
-import Exams from '/imports/api/exams/collection';
+import { findOne as findOneExam } from '/imports/api/exams/methods';
 import CreateExam from '/imports/ui/pages/CreateExam';
 
 
-export default createContainer(({ examId }) => {
-	const handle = Meteor.subscribe('exams.private.findOne', examId);
-	const ready = handle.ready();
-	const exam = ready ? Exams.findOne(examId) : {};
-	
-	return {
-		ready,
-		initialValues: exam,
-		edit: true
+export default class EditExamContainer extends Component {
+	state = {
+		ready: false,
+		exam: {}
 	};
-}, CreateExam);
+	
+	
+	componentDidMount = () => {
+		const { examId } = this.props;
+		
+		findOneExam.call({ examId }, (err, res) => {
+			if(err) {
+				console.log('findOneExam error:', err);
+			} else {
+				this.setState({
+					ready: true,
+					exam: res
+				});
+			}
+		});
+	};
+	
+	
+	render() {
+		const { ready, exam } = this.state;
+		
+		return (
+				<CreateExam ready={ ready } initialValues={ exam } edit={ true } />
+		);
+	};
+};

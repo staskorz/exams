@@ -21,3 +21,18 @@ export const update = new ValidatedMethod({
 		return collection.update({ _id: _id }, { $set: rest });
 	}
 });
+
+
+const examsFindOneSchema = new SimpleSchema({
+	examId: {
+		type: SimpleSchema.RegEx.Id
+	}
+});
+
+export const findOne = new ValidatedMethod({
+	name: 'exams.findOne',
+	validate: examsFindOneSchema.validator(),
+	run({ examId }) {
+		return collection.findOne(examId);
+	}
+});
