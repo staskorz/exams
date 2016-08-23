@@ -36,17 +36,24 @@ class CreateExam extends Component {
 	};
 	
 	
+	goBack = () => {
+		const { router } = this.props;
+		
+		router.push('/list-exams');
+	};
+	
+	
 	handleSubmit = (formFields) => {
 		console.log('formFields:', formFields);
 		
-		const { edit, router } = this.props;
+		const { edit } = this.props;
 		
 		if(edit) {
 			updateExam.call(formFields, (error, result) => {
 				if(error) {
 					console.log('updateExam error:', error);
 				} else {
-					router.push('/list-exams');
+					this.goBack();
 				}
 			});
 		} else {
@@ -54,7 +61,7 @@ class CreateExam extends Component {
 				if(error) {
 					console.log('insertExam error:', error);
 				} else {
-					router.push('/list-exams');
+					this.goBack();
 				}
 			});
 		}
