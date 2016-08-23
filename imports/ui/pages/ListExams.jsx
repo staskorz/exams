@@ -4,6 +4,8 @@ import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
 import ViewIcon from 'material-ui/svg-icons/action/view-headline';
 import { withRouter } from 'react-router';
 
+import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
+
 
 const showCheckboxes = false;
 
@@ -33,7 +35,7 @@ const ListExams = ({ ready, exams, router }) => (
 					</TableBody>
 				</Table>
 				
-				: <div>Loading...</div>
+				: <LoadingIndicator />
 );
 
 
