@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import { FloatingActionButton, Dialog, FlatButton } from 'material-ui';
+import { FloatingActionButton } from 'material-ui';
+
+import ConfirmationDialog from  './ConfirmationDialog';
 
 
 export default class ConfirmedFloatingActionButton extends Component {
@@ -44,40 +46,22 @@ export default class ConfirmedFloatingActionButton extends Component {
 	};
 	
 	
-	handleRequestClose = () => {
-		this.closeDialog();
-	};
-	
-	
 	render() {
 		const { children, text, ...rest } = this.props;
 		
 		delete rest['onConfirm'];
-		
-		const actions = [
-			<FlatButton
-					label="Yes"
-					secondary={ true }
-					onTouchTap={ this.handleYesButtonClick }
-			/>,
-			<FlatButton
-					label="No"
-					primary={ true }
-					onTouchTap={ this.handleNoButtonClick }
-			/>,
-		];
 		
 		return (
 				<div>
 					<FloatingActionButton { ...rest } onClick={ this.handleFloatingButtonClick }>
 						{ children }
 					</FloatingActionButton>
-					<Dialog
+					
+					<ConfirmationDialog
 							open={ this.state.open }
-							modal={ false }
-							title={ text }
-							actions={ actions }
-							onRequestClose={ this.handleRequestClose }
+							text={ text }
+							onYesButtonClick={ this.handleYesButtonClick }
+							onNoButtonClick={ this.handleNoButtonClick }
 					/>
 				</div>
 		);
