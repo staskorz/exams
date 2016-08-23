@@ -5,7 +5,7 @@ import { FlatButton } from 'material-ui';
 import { withRouter } from 'react-router';
 
 import ExamsCollection from '/imports/api/exams/collection';
-import { insert as insertExam } from '/imports/api/exams/methods';
+import { insert as insertExam, update as updateExam } from '/imports/api/exams/methods';
 import simpleSchemaValidator from '/imports/client/validators/simple-schema-validator';
 import QuestionsEdit from '/imports/ui/components/QuestionsEdit'
 
@@ -38,13 +38,25 @@ class CreateExam extends Component {
 	handleSubmit = (formFields) => {
 		console.log('formFields:', formFields);
 		
-		insertExam.call(formFields, (error, result) => {
-			if(error) {
-				console.log('insertExam error:', error);
-			} else {
-				this.props.router.push('/list-exams');
-			}
-		});
+		const { edit, router } = this.props;
+		
+		if(edit) {
+			updateExam.call(formFields, (error, result) => {
+				if(error) {
+					console.log('updateExam error:', error);
+				} else {
+					router.push('/list-exams');
+				}
+			});
+		} else {
+			insertExam.call(formFields, (error, result) => {
+				if(error) {
+					console.log('insertExam error:', error);
+				} else {
+					router.push('/list-exams');
+				}
+			});
+		}
 	};
 	
 	

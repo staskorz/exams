@@ -10,3 +10,14 @@ export const insert = new ValidatedMethod({
 		return collection.insert(record);
 	}
 });
+
+
+export const update = new ValidatedMethod({
+	name: 'exams.update',
+	validate: collection.simpleSchema().validator(),
+	run(record) {
+		const { _id, ...rest } = record;
+		
+		return collection.update({ _id: _id }, { $set: rest });
+	}
+});
