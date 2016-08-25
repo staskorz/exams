@@ -1,3 +1,4 @@
+import '/imports/startup/server/ie-compatibility';
 import '/imports/startup/server/api';
 
 // import { Meteor } from 'meteor/meteor';
