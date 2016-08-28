@@ -60,7 +60,9 @@ export default class QuestionsEdit extends Component {
 		const { fields } = this.props;
 		
 		if(fields.length === 0) {
-			fields.push({});
+			fields.push({
+				weight: 10
+			});
 		}
 	}
 	
@@ -76,8 +78,7 @@ export default class QuestionsEdit extends Component {
 								
 								<div style={ this.style.weightContainer }>
 									<span style={ this.style.weightLabel }>Weight </span>
-									<Field component={ TextField } name={ `${ question }.weight` } type='number' defaultValue={ 10 }
-										   style={ this.style.weight } />
+									<Field component={ TextField } name={ `${ question }.weight` } type='number' style={ this.style.weight } />
 								</div>
 								
 								<div style={ this.style.fieldsContainer }>
