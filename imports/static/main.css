@@ -27,4 +27,5 @@ h1 {
 
 .buttonsContainer {
 	padding: 8px;
+	display: inline-block;
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
-import { FlatButton } from 'material-ui';
 import { withRouter } from 'react-router';
 
 import ExamsCollection from '/imports/api/exams/collection';
@@ -9,6 +8,7 @@ import { insert as insertExam, update as updateExam } from '/imports/api/exams/m
 import simpleSchemaValidator from '/imports/client/validators/simple-schema-validator';
 import QuestionsEdit from '/imports/ui/components/QuestionsEdit'
 import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
+import ConfirmedFlatButton from '/imports/ui/components/ConfirmedFlatButton';
 
 
 class CreateExam extends Component {
@@ -89,7 +89,7 @@ class CreateExam extends Component {
 				<div style={ this.style.mainContainer }>
 					<h1 style={ this.style.h1 }>{ title }</h1>
 					
-					<form onSubmit={ handleSubmit(this.handleSubmit) }>
+					<form>
 						<div className='formContainer' style={ this.style.formContainer }>
 							<Field component={ TextField } name='name' floatingLabelText='Exam Name' style={ this.style.examName } /><br />
 							<Field component={ TextField } name='number' type='number' floatingLabelText='Exam Number'
@@ -99,7 +99,8 @@ class CreateExam extends Component {
 						</div>
 						
 						<div className='buttonsContainer'>
-							<FlatButton label='Save' primary={ true } type='submit' /><FlatButton label='Cancel' />
+							<ConfirmedFlatButton text='Are you sure?' label='Save' primary={ true } onConfirm={ handleSubmit(this.handleSubmit) } />
+							<ConfirmedFlatButton text='Are you sure?' label='Cancel' onConfirm={ this.goBack } />
 						</div>
 					</form>
 				</div>
