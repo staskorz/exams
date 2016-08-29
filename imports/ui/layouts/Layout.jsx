@@ -3,6 +3,8 @@ import { AppBar } from 'material-ui';
 import SchoolIcon from 'material-ui/svg-icons/social/school';
 import { Link, IndexLink } from 'react-router';
 
+import ConnectionStatusContainer from '/imports/ui/containers/ConnectionStatusContainer';
+
 
 const styles = {
 	appBar: {
@@ -46,6 +48,7 @@ export default ({ children }) => (
 			</Link> }
 			showMenuIconButton={ false }
 			iconElementRight={ <span>
+				<ConnectionStatusContainer />
 				<IndexLink to='/' style={ styles.link } activeStyle={ styles.linkActive }>Home</IndexLink>
 				<Link to='/page1' style={ styles.link } activeStyle={ styles.linkActive }>Page1</Link>
 				<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }>Create Exam</Link>
