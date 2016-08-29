@@ -5,6 +5,10 @@ import { Link, IndexLink } from 'react-router';
 
 
 const styles = {
+	appBar: {
+		position: 'fixed'
+	},
+	
 	title: {
 		color: 'white',
 		textDecoration: 'none'
@@ -26,6 +30,10 @@ const styles = {
 	
 	linkActive: {
 		textDecoration: 'underline'
+	},
+	
+	placeholder: {
+		height: '64px'
 	}
 };
 
@@ -43,7 +51,12 @@ export default ({ children }) => (
 				<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }>Create Exam</Link>
 				<Link to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }>List Exams</Link>
 			</span> }
+			style={ styles.appBar }
 		/>
+		
+		<div style={ styles.placeholder }>
+			
+		</div>
 		
 		{ children }
 	</div>
