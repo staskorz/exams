@@ -56,13 +56,20 @@ export default class QuestionsEdit extends Component {
 	};
 	
 	
+	addQuestion = () => {
+		const { fields } = this.props;
+		
+		fields.push({
+			weight: 10
+		});
+	};
+	
+	
 	componentWillMount() {
 		const { fields } = this.props;
 		
 		if(fields.length === 0) {
-			fields.push({
-				weight: 10
-			});
+			this.addQuestion();
 		}
 	}
 	
@@ -101,7 +108,7 @@ export default class QuestionsEdit extends Component {
 							</Paper>
 					)) }
 					
-					<FloatingActionButton mini={true} style={ this.style.addQuestionButton } onClick={ () => fields.push({}) }>
+					<FloatingActionButton mini={true} style={ this.style.addQuestionButton } onClick={ this.addQuestion }>
 						<IconAdd />
 					</FloatingActionButton>
 				</div>
