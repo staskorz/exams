@@ -115,29 +115,19 @@ const validate = values => {
 	};
 	
 	if(values.questions) {
-		const weight = values.questions.reduce((acc, elem) => {
-			const { weight } = elem;
-			
-			if(weight === 0 || weight === '') {
-				return acc;
-			} else if(weight) {
-				return acc + weight;
-			} else {
-				return acc + 10;
-			}
-		}, 0);
-		
-		if(weight > 100) {
-			values.questions.forEach((elem, index) => {
-				errors.questions[index] = { weight: weight + " > 100" };
-			});
-		} else if(weight < 100) {
-			values.questions.forEach((elem, index) => {
-				errors.questions[index] = { weight: weight + " < 100" };
-			});
-		}
+		let totalWeight = 0;
+		let weightHasErrors = false;
 		
 		values.questions.forEach((elem, index) => {
+			const weightError = simpleSchemaValidator(ExamsCollection, 'questions.$.weight', elem.weight);
+			
+			if(weightError) {
+				errors.questions[index] = { weight: weightError };
+				weightHasErrors = true;
+			} else {
+				totalWeight += elem.weight;
+			}
+			
 			errors.questions[index] = Object.assign({}, errors.questions[index], {
 				text: simpleSchemaValidator(ExamsCollection, 'questions.$.text', elem.text)
 			});
@@ -156,6 +146,22 @@ const validate = values => {
 				});
 			}
 		});
+		
+		if(!weightHasErrors) {
+			let weightError;
+			
+			if(totalWeight > 100) {
+				weightError = totalWeight + " > 100";
+			} else if(totalWeight < 100) {
+				weightError = totalWeight + " < 100";
+			}
+			
+			if(weightError) {
+				values.questions.forEach((elem, index) => {
+					errors.questions[index] = Object.assign({}, errors.questions[index], { weight: weightError });
+				});
+			}
+		}
 	}
 	
 	errors.name = simpleSchemaValidator(ExamsCollection, 'name', values.name);
