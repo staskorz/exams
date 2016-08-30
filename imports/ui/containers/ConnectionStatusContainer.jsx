@@ -5,18 +5,30 @@ import { Meteor } from 'meteor/meteor';
 import ConnectionStatus from '/imports/ui/components/ConnectionStatus';
 
 
+let firstConnection = true;
+
 export default createContainer(() => {
-	const { connected, retryTime } = Meteor.status();
+	const { connected, status, retryTime } = Meteor.status();
 	
-	let retryingIn;
-	
-	if(retryTime) {
-		retryingIn = Math.round((retryTime - (new Date()).getTime()) / 1000);
+	if(firstConnection && status === 'connecting') {
+		return {
+			connected: true,
+			retryingIn: 0,
+			reconnect: Meteor.reconnect
+		};
+	} else {
+		firstConnection = false;
+		
+		let retryingIn;
+		
+		if(retryTime) {
+			retryingIn = Math.round((retryTime - (new Date()).getTime()) / 1000);
+		}
+		
+		return {
+			connected,
+			retryingIn,
+			reconnect: Meteor.reconnect
+		};
 	}
-	
-	return {
-		connected,
-		retryingIn,
-		reconnect: Meteor.reconnect
-	};
 }, ConnectionStatus);
