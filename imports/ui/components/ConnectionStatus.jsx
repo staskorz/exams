@@ -1,10 +1,20 @@
 import React from 'react';
-import { FlatButton } from 'material-ui';
+import { Paper, FlatButton } from 'material-ui';
+import { pinkA200 } from 'material-ui/styles/colors'
 
 
 const style = {
 	mainContainer: {
-		display: 'inline-block'
+		display: 'inline-block',
+		marginRight: '20px',
+		paddingLeft: '16px',
+		backgroundColor: pinkA200,
+		color: 'white'
+	},
+	
+	buttonLabel: {
+		color: 'white',
+		textDecoration: 'underline'
 	}
 };
 
@@ -18,6 +28,10 @@ export default ({ connected, retryingIn, reconnect }) => {
 			message = 'Retrying in ' + retryingIn + 's';
 		}
 		
-		return <div style={ style.mainContainer }>{ message } <FlatButton label={ 'Reconnect Now' } onClick={ reconnect } /></div>;
+		return (
+				<Paper style={ style.mainContainer }>
+					{ message } <FlatButton label={ 'Reconnect Now' } labelStyle={ style.buttonLabel } onClick={ reconnect } />
+				</Paper>
+		);
 	}
 };
