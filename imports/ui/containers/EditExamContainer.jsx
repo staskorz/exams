@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { findOne as findOneExam } from '/imports/api/exams/methods';
-import CreateExam from '/imports/ui/pages/CreateExam';
+import ExamEditForm from '/imports/ui/components/ExamEditForm';
 
 
 export default class EditExamContainer extends Component {
@@ -31,7 +31,7 @@ export default class EditExamContainer extends Component {
 		const { ready, exam } = this.state;
 		
 		return (
-				<CreateExam ready={ ready } initialValues={ exam } edit={ true } />
+				<ExamEditForm ready={ ready } initialValues={ exam } edit={ true } />
 		);
 	};
 };
