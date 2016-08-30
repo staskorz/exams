@@ -28,12 +28,15 @@ export default ({ connected, retryingIn, reconnect }) => {
 		let message;
 		
 		if(retryingIn) {
-			message = <span style={ style.message }>{ 'Retrying in ' + retryingIn + 's' }</span>;
+			message = 'Retrying in ' + retryingIn + 's.';
+		} else {
+			message = 'Disconnected.';
 		}
 		
 		return (
 				<Paper style={ style.mainContainer }>
-					{ message } <FlatButton label={ 'Reconnect Now' } labelStyle={ style.buttonLabel } onClick={ reconnect } />
+					<span style={ style.message }>{ message }</span>
+					<FlatButton label={ 'Reconnect Now' } labelStyle={ style.buttonLabel } onClick={ reconnect } />
 				</Paper>
 		);
 	}
