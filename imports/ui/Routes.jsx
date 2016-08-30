@@ -7,6 +7,7 @@ import Page1 from './pages/Page1';
 import ExamCreate from './pages/ExamCreate';
 import ExamEdit from './pages/ExamEdit';
 import ExamsListContainer from './containers/ExamsListContainer';
+import ExamChoiceContainer from './containers/ExamChoiceContainer';
 import NotFound from './pages/NotFound';
 
 
@@ -18,6 +19,7 @@ export default () => (
 			<Route path='create-exam' component={ ExamCreate }/>
 			<Route path='edit-exam/:examId' component={ ExamEdit }/>
 			<Route path='list-exams' component={ ExamsListContainer }/>
+			<Route path='exam-choice' component={ ExamChoiceContainer }/>
 			<Route path='*' component={ NotFound }/>
 		</Route>
 	</Router>

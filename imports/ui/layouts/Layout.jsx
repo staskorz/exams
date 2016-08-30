@@ -53,6 +53,7 @@ export default ({ children }) => (
 				<Link to='/page1' style={ styles.link } activeStyle={ styles.linkActive }>Page1</Link>
 				<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }>Create Exam</Link>
 				<Link to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }>List Exams</Link>
+				<Link to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }>Choose Exam</Link>
 			</span> }
 			style={ styles.appBar }
 		/>
