@@ -3,7 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 
 import Exams from '/imports/api/exams/collection';
-import ListExams from '/imports/ui/pages/ListExams';
+import ExamsList from '/imports/ui/pages/ExamsList';
 
 
 export default createContainer(() => {
@@ -15,4 +15,4 @@ export default createContainer(() => {
 		ready,
 		exams
 	};
-}, ListExams);
+}, ExamsList);

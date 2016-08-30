@@ -4,9 +4,9 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Layout from './layouts/Layout';
 import Home from './pages/Home';
 import Page1 from './pages/Page1';
-import CreateExam from './pages/CreateExam';
-import EditExam from './pages/EditExam';
-import ListExamsContainer from './containers/ListExamsContainer';
+import ExamCreate from './pages/ExamCreate';
+import ExamEdit from './pages/ExamEdit';
+import ExamsListContainer from './containers/ExamsListContainer';
 import NotFound from './pages/NotFound';
 
 
@@ -15,9 +15,9 @@ export default () => (
 		<Route path='/' component={ Layout }>
 			<IndexRoute component={ Home } />
 			<Route path='page1' component={ Page1 }/>
-			<Route path='create-exam' component={ CreateExam }/>
-			<Route path='edit-exam/:examId' component={ EditExam }/>
-			<Route path='list-exams' component={ ListExamsContainer }/>
+			<Route path='create-exam' component={ ExamCreate }/>
+			<Route path='edit-exam/:examId' component={ ExamEdit }/>
+			<Route path='list-exams' component={ ExamsListContainer }/>
 			<Route path='*' component={ NotFound }/>
 		</Route>
 	</Router>
