@@ -7,9 +7,12 @@ const style = {
 	mainContainer: {
 		display: 'inline-block',
 		marginRight: '20px',
-		paddingLeft: '16px',
 		backgroundColor: pinkA200,
 		color: 'white'
+	},
+	
+	message: {
+		paddingLeft: '16px'
 	},
 	
 	buttonLabel: {
@@ -25,7 +28,7 @@ export default ({ connected, retryingIn, reconnect }) => {
 		let message;
 		
 		if(retryingIn) {
-			message = 'Retrying in ' + retryingIn + 's';
+			message = <span style={ style.message }>{ 'Retrying in ' + retryingIn + 's' }</span>;
 		}
 		
 		return (
