@@ -55,6 +55,11 @@ export default new SimpleSchema({
 		decimal: true
 	},
 	
+	published: {
+		type: Boolean,
+		optional: true
+	},
+	
 	questions: {
 		type: [question],
 		minCount: 1

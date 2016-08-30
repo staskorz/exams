@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, FieldArray, reduxForm } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
+import { TextField, Checkbox } from 'redux-form-material-ui';
 import { withRouter } from 'react-router';
 
 import ExamsCollection from '/imports/api/exams/collection';
@@ -94,6 +94,7 @@ class ExamEditForm extends Component {
 							<Field component={ TextField } name='name' floatingLabelText='Exam Name' style={ this.style.examName } /><br />
 							<Field component={ TextField } name='number' type='number' floatingLabelText='Exam Number'
 								   style={ this.style.examNumber } />
+							<Field component={ Checkbox } name='published' label='Published' />
 							
 							<FieldArray name='questions' component={ QuestionsEdit } props={{ submitFailed }} />
 						</div>

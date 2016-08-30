@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
 import ViewIcon from 'material-ui/svg-icons/action/view-headline';
+import CheckIcon from 'material-ui/svg-icons/navigation/check';
 import { withRouter } from 'react-router';
 
 import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
@@ -18,6 +19,7 @@ const ListExams = ({ ready, exams, router }) => (
 						<TableRow>
 							<TableHeaderColumn>Name</TableHeaderColumn>
 							<TableHeaderColumn>Number</TableHeaderColumn>
+							<TableHeaderColumn>Published</TableHeaderColumn>
 							<TableHeaderColumn>Actions</TableHeaderColumn>
 						</TableRow>
 					</TableHeader>
@@ -26,6 +28,7 @@ const ListExams = ({ ready, exams, router }) => (
 								<TableRow key={ index }>
 									<TableRowColumn>{ exam.name }</TableRowColumn>
 									<TableRowColumn>{ exam.number }</TableRowColumn>
+									<TableRowColumn>{ exam.published ? <CheckIcon /> : '' }</TableRowColumn>
 									<TableRowColumn>
 										<IconButton onClick={ () => router.push('/edit-exam/' + exam._id) }><EditIcon /></IconButton>
 										<IconButton onClick={ () => router.push('/exam-results/' + exam._id) }><ViewIcon /></IconButton>
