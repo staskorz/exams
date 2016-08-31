@@ -29,9 +29,16 @@ export default class ConnectionStatus extends Component {
 	};
 	
 	
-	clearRunningInterval = () => {
+	clearRunningInterval = (resetState) => {
 		if(this.state.intervalId) {
 			clearInterval(this.state.intervalId);
+			
+			if(resetState) {
+				this.setState({
+					intervalId: null,
+					retryingIn: null
+				});
+			}
 		}
 	};
 	
@@ -49,12 +56,7 @@ export default class ConnectionStatus extends Component {
 							retryingIn: retryingIn - 1
 						});
 					} else {
-						this.clearRunningInterval();
-						
-						this.setState({
-							intervalId: null,
-							retryingIn: null
-						});
+						this.clearRunningInterval(true);
 					}
 				}, 1000),
 				
@@ -62,12 +64,7 @@ export default class ConnectionStatus extends Component {
 			});
 		} else {
 			if(this.state.intervalId) {
-				this.clearRunningInterval();
-				
-				this.setState({
-					intervalId: null,
-					retryingIn: null
-				});
+				this.clearRunningInterval(true);
 			}
 		}
 	};
