@@ -52,7 +52,8 @@ export default class ConnectionStatus extends Component {
 						this.clearRunningInterval();
 						
 						this.setState({
-							intervalId: null
+							intervalId: null,
+							retryingIn: null
 						});
 					}
 				}, 1000),
