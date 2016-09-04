@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardText, CardActions, RaisedButton } from 'material-ui';
+import { withRouter } from 'react-router';
 
 import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
 
 
-export default class TakeExam extends Component {
+class TakeExam extends Component {
 	style = {
 		mainContainer: {
 			padding: '120px',
@@ -26,7 +27,7 @@ export default class TakeExam extends Component {
 	
 	
 	render() {
-		const { exam: { _id, name, number, numOfQuestions }, ready } = this.props;
+		const { exam: { _id, name, number, numOfQuestions }, ready, router } = this.props;
 		
 		return (
 				<div style={ this.style.mainContainer }>
@@ -43,7 +44,7 @@ export default class TakeExam extends Component {
 								
 								<CardActions style={ this.style.cardActions }>
 									<RaisedButton label='Yes' primary={ true } />
-									<RaisedButton label='No' />
+									<RaisedButton label='No' onClick={ () => router.goBack() } />
 								</CardActions>
 							</Card>
 							
@@ -54,4 +55,7 @@ export default class TakeExam extends Component {
 				</div>
 		);
 	};
-};
+}
+
+
+export default withRouter(TakeExam);
