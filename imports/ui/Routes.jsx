@@ -12,15 +12,15 @@ import NotFound from './pages/NotFound';
 
 
 export default () => (
-	<Router history={ browserHistory }>
-		<Route path='/' component={ Layout }>
-			<IndexRoute component={ Home } />
-			<Route path='page1' component={ Page1 }/>
-			<Route path='create-exam' component={ ExamCreate }/>
-			<Route path='edit-exam/:examId' component={ ExamEdit }/>
-			<Route path='list-exams' component={ ExamsListContainer }/>
-			<Route path='exam-choice' component={ ExamChoiceContainer }/>
-			<Route path='*' component={ NotFound }/>
-		</Route>
-	</Router>
+		<Router history={ browserHistory }>
+			<Route path='/' component={ Layout }>
+				<IndexRoute component={ Home } />
+				<Route path='page1' component={ Page1 } />
+				<Route path='create-exam' component={ ExamCreate } />
+				<Route path='edit-exam/:examId' component={ ExamEdit } />
+				<Route path='list-exams' component={ ExamsListContainer } />
+				<Route path='exam-choice' component={ ExamChoiceContainer } />
+				<Route path='*' component={ NotFound } />
+			</Route>
+		</Router>
 );
