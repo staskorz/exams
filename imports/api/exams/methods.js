@@ -36,3 +36,24 @@ export const findOne = new ValidatedMethod({
 		return collection.findOne(examId);
 	}
 });
+
+
+const examsGetBriefDetailsSchema = new SimpleSchema({
+	examId: {
+		type: SimpleSchema.RegEx.Id
+	}
+});
+
+export const getBriefDetails = new ValidatedMethod({
+	name: 'exams.getBriefDetails',
+	validate: examsGetBriefDetailsSchema.validator(),
+	run({ examId }) {
+		return collection.findOne(examId, {
+			fields: {
+				name: 1,
+				number: 1,
+				"questions.{}": 1
+			}
+		});
+	}
+});
