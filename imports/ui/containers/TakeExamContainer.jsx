@@ -28,7 +28,9 @@ export default class TakeExamContainer extends Component {
 	
 	
 	render() {
-		const { ready, exam } = this.state;
+		const { ready, exam: { questions, ...rest } } = this.state;
+		
+		const exam = Object.assign({}, rest, { numOfQuestions: Array.isArray(questions) ? questions.length : null });
 		
 		return (
 				<TakeExam ready={ ready } exam={ exam } />

@@ -5,7 +5,7 @@ import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
 
 export default class TakeExam extends Component {
 	render() {
-		const { exam: { _id, name, number, questions }, ready } = this.props;
+		const { exam: { _id, name, number, numOfQuestions }, ready } = this.props;
 		
 		return (
 				<div>
@@ -14,7 +14,7 @@ export default class TakeExam extends Component {
 								<h1>Exam ID: { _id }</h1>
 								<p>Exam Name: { name }</p>
 								<p>Exam Number: { number }</p>
-								<p>Number of Questions: { questions.length }</p>
+								<p>Number of Questions: { numOfQuestions }</p>
 							</div>
 							
 							:
