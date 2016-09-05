@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardText, CardActions, RaisedButton } from 'material-ui';
+import { Paper, RaisedButton } from 'material-ui';
 import { withRouter } from 'react-router';
 
 import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
@@ -12,16 +12,35 @@ class TakeExam extends Component {
 			paddingTop: '20px'
 		},
 		
-		confirmationText: {
-			fontSize: '20px',
+		mainPaper: {
+			padding: '32px'
+		},
+		
+		descriptionText: {
+			fontSize: '16px',
+			fontWeight: 'normal',
+			lineHeight: '36px',
+			fontFamily: 'Roboto, sans-serif',
+			color: 'rgba(0, 0, 0, 0.870588)',
+			marginRight: '16px',
+			width: '200px',
+			display: 'inline-block'
+		},
+		
+		mainText: {
+			fontSize: '24px',
 			fontWeight: 'normal',
 			lineHeight: '36px',
 			fontFamily: 'Roboto, sans-serif',
 			color: 'rgba(0, 0, 0, 0.870588)'
 		},
 		
-		cardActions: {
-			padding: '16px'
+		actions: {
+			paddingTop: '32px'
+		},
+		
+		button: {
+			marginRight: '16px'
 		}
 	};
 	
@@ -32,21 +51,27 @@ class TakeExam extends Component {
 		return (
 				<div style={ this.style.mainContainer }>
 					{ ready ?
-							<Card>
-								<CardTitle
-										title={ 'Exam Name: ' + name }
-										subtitle={ 'Exam Number: ' + number + ', Number of Questions: ' + numOfQuestions }
-								/>
+							<Paper style={ this.style.mainPaper }>
+								<div>
+									<span style={ this.style.descriptionText }>Exam Name:</span>
+									<span style={ this.style.mainText }>{ name }</span>
+								</div>
 								
-								<CardText>
-									<span style={ this.style.confirmationText }>Are you sure you want to take this exam <strong>now</strong>?</span>
-								</CardText>
+								<div>
+									<span style={ this.style.descriptionText }>Exam Number:</span>
+									<span style={ this.style.mainText }>{ number }</span>
+								</div>
 								
-								<CardActions style={ this.style.cardActions }>
-									<RaisedButton label='Yes' primary={ true } />
-									<RaisedButton label='No' onClick={ () => router.goBack() } />
-								</CardActions>
-							</Card>
+								<div>
+									<span style={ this.style.descriptionText }>Number of Questions:</span>
+									<span style={ this.style.mainText }>{ numOfQuestions }</span>
+								</div>
+								
+								<div style={ this.style.actions }>
+									<RaisedButton label='Next' primary={ true } style={ this.style.button } />
+									<RaisedButton label='Cancel' onClick={ () => router.goBack() } />
+								</div>
+							</Paper>
 							
 							:
 							
