@@ -8,8 +8,7 @@ import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
 class TakeExam extends Component {
 	style = {
 		mainContainer: {
-			padding: '120px',
-			paddingTop: '20px'
+			padding: '120px'
 		},
 		
 		mainPaper: {
@@ -51,7 +50,7 @@ class TakeExam extends Component {
 		return (
 				<div style={ this.style.mainContainer }>
 					{ ready ?
-							<Paper style={ this.style.mainPaper }>
+							<Paper style={ this.style.mainPaper } zDepth={ 5 }>
 								<div>
 									<span style={ this.style.descriptionText }>Exam Name:</span>
 									<span style={ this.style.mainText }>{ name }</span>
