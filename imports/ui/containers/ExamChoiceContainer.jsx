@@ -9,7 +9,7 @@ import ExamChoice from '/imports/ui/pages/ExamChoice';
 export default createContainer(() => {
 	const examsHandle = Meteor.subscribe('exams.published');
 	const ready = examsHandle.ready();
-	const exams = ready ? Exams.find().fetch() : [];
+	const exams = ready ? Exams.find({}, { sort: { name: 1 } }).fetch() : [];
 	
 	return {
 		ready,
