@@ -3,9 +3,14 @@ import { Paper, RaisedButton } from 'material-ui';
 import { withRouter } from 'react-router';
 
 import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
+import NextQuestionContainer from '/imports/ui/containers/NextQuestionContainer';
 
 
 class TakeExam extends Component {
+	state = {
+		questionNumber: -1
+	};
+	
 	style = {
 		mainContainer: {
 			padding: '120px'
@@ -44,8 +49,22 @@ class TakeExam extends Component {
 	};
 	
 	
+	handleNextButtonClick = () => {
+		const { exam: { numOfQuestions } } = this.props;
+		const { questionNumber } = this.state;
+		
+		if(questionNumber + 1 < numOfQuestions) {
+			this.setState({
+				questionNumber: questionNumber + 1
+			});
+		}
+	};
+	
+	
 	render() {
-		const { exam: { _id, name, number, numOfQuestions }, ready, router } = this.props;
+		const { exam, ready, router } = this.props;
+		const { _id, name, number, numOfQuestions } = exam || {};
+		const { questionNumber } = this.state;
 		
 		return (
 				<div style={ this.style.mainContainer }>
@@ -66,8 +85,16 @@ class TakeExam extends Component {
 									<span style={ this.style.mainText }>{ numOfQuestions }</span>
 								</div>
 								
+								{ questionNumber > -1 ?
+										<NextQuestionContainer examId={ _id } questionNumber={ questionNumber } />
+										
+										:
+										
+										''
+								}
+								
 								<div style={ this.style.actions }>
-									<RaisedButton label='Next' primary={ true } style={ this.style.button } />
+									<RaisedButton label='Next' primary={ true } style={ this.style.button } onClick={ this.handleNextButtonClick } />
 									<RaisedButton label='Cancel' onClick={ () => router.goBack() } />
 								</div>
 							</Paper>
