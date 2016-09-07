@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Paper, RaisedButton } from 'material-ui';
 import { withRouter } from 'react-router';
 
-import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
-
 
 class ExamInfo extends Component {
 	style = {
@@ -45,38 +43,32 @@ class ExamInfo extends Component {
 	
 	
 	render() {
-		const { exam, ready, router, onNext } = this.props;
-		const { name, number, numOfQuestions } = exam || {};
+		const { exam, router, onStart } = this.props;
+		const { name, number, questions } = exam || {};
 		
 		return (
 				<div style={ this.style.mainContainer }>
-					{ ready ?
-							<Paper style={ this.style.mainPaper } zDepth={ 5 }>
-								<div>
-									<span style={ this.style.descriptionText }>Exam Name:</span>
-									<span style={ this.style.mainText }>{ name }</span>
-								</div>
-								
-								<div>
-									<span style={ this.style.descriptionText }>Exam Number:</span>
-									<span style={ this.style.mainText }>{ number }</span>
-								</div>
-								
-								<div>
-									<span style={ this.style.descriptionText }>Number of Questions:</span>
-									<span style={ this.style.mainText }>{ numOfQuestions }</span>
-								</div>
-								
-								<div style={ this.style.actions }>
-									<RaisedButton label='Next' primary={ true } style={ this.style.button } onClick={ onNext } />
-									<RaisedButton label='Cancel' onClick={ () => router.goBack() } />
-								</div>
-							</Paper>
-							
-							:
-							
-							<LoadingIndicator />
-					}
+					<Paper style={ this.style.mainPaper } zDepth={ 5 }>
+						<div>
+							<span style={ this.style.descriptionText }>Exam Name:</span>
+							<span style={ this.style.mainText }>{ name }</span>
+						</div>
+						
+						<div>
+							<span style={ this.style.descriptionText }>Exam Number:</span>
+							<span style={ this.style.mainText }>{ number }</span>
+						</div>
+						
+						<div>
+							<span style={ this.style.descriptionText }>Number of Questions:</span>
+							<span style={ this.style.mainText }>{ questions.length }</span>
+						</div>
+						
+						<div style={ this.style.actions }>
+							<RaisedButton label='Start' primary={ true } style={ this.style.button } onClick={ onStart } />
+							<RaisedButton label='Cancel' onClick={ () => router.goBack() } />
+						</div>
+					</Paper>
 				</div>
 		);
 	};

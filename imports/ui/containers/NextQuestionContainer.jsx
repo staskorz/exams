@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { getQuestion } from '/imports/api/exams/methods';
-import NextQuestion from '/imports/ui/components/NextQuestion';
+import NextQuestion from '/imports/ui/components/QuestionAsk';
 
 
 export default class NextQuestionContainer extends Component {

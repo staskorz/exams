@@ -39,23 +39,40 @@ export const findOne = new ValidatedMethod({
 });
 
 
-const examsGetBriefDetailsSchema = new SimpleSchema({
+const examsGetExamineeVersionSchema = new SimpleSchema({
 	examId: {
 		type: SimpleSchema.RegEx.Id
 	}
 });
 
-export const getBriefDetails = new ValidatedMethod({
-	name: 'exams.getBriefDetails',
-	validate: examsGetBriefDetailsSchema.validator(),
+const hasMultipleCorrectAnswers = answers => answers.reduce((acc, { correct }) => correct ? acc + 1 : acc, 0) > 1;
+
+export const getExamineeVersion = new ValidatedMethod({
+	name: 'exams.getExamineeVersion',
+	validate: examsGetExamineeVersionSchema.validator(),
 	run({ examId }) {
-		return collection.findOne(examId, {
+		const rawExam = collection.findOne(examId, {
 			fields: {
 				name: 1,
 				number: 1,
-				"questions.{}": 1
+				'questions.text': 1,
+				'questions.answers': 1
 			}
 		});
+		
+		if(rawExam && rawExam.questions) {
+			const { questions, ...exam } = rawExam;
+			
+			exam.questions = questions.map(({ text, answers }) => ({
+				text,
+				answers: answers.map(({ text }) => (text)),
+				multiple: hasMultipleCorrectAnswers(answers)
+			}));
+			
+			return exam;
+		} else {
+			return null;
+		}
 	}
 });
 

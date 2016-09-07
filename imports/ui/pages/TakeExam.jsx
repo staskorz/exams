@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 
-import ExamInfoContainer from '/imports/ui/containers/ExamInfoContainer';
-import NextQuestionContainer from '/imports/ui/containers/NextQuestionContainer';
+import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
+import ExamInfo from '/imports/ui/components/ExamInfo';
+import QuestionAsk from '/imports/ui/components/QuestionAsk';
 
 
 export default class TakeExam extends Component {
 	state = {
-		numOfQuestions: null,
 		questionNumber: -1
 	};
 	
 	
 	handleNextButtonClick = () => {
-		const { numOfQuestions, questionNumber } = this.state;
+		const { questionNumber } = this.state;
+		const { exam: { questions } } = this.props;
 		
-		if(questionNumber + 1 < numOfQuestions) {
+		if(questionNumber + 1 < questions.length) {
 			this.setState({
 				questionNumber: questionNumber + 1
 			});
@@ -22,26 +23,43 @@ export default class TakeExam extends Component {
 	};
 	
 	
-	handleNumOfQuestionsChange = numOfQuestions => {
-		this.setState({
-			numOfQuestions
-		});
+	handlePrevButtonClick = () => {
+		const { questionNumber } = this.state;
+		
+		if(questionNumber > 0) {
+			this.setState({
+				questionNumber: questionNumber - 1
+			});
+		}
+	};
+	
+	
+	handleFinishButtonClick = () => {
+		
 	};
 	
 	
 	render() {
-		const { routeParams: { examId } } = this.props;
+		const { ready, exam } = this.props;
 		const { questionNumber } = this.state;
 		
 		return (
 				<div>
-					{ questionNumber === -1 ?
-							<ExamInfoContainer examId={ examId } onNext={ this.handleNextButtonClick }
-											   onNumOfQuestionsChange={ this.handleNumOfQuestionsChange } />
+					{ ready ?
+							<div>
+								{ questionNumber === -1 ?
+										<ExamInfo exam={ exam } onStart={ this.handleNextButtonClick } />
+										
+										:
+										
+										<QuestionAsk exam={ exam } questionNumber={ questionNumber } onNext={ this.handleNextButtonClick }
+													 onPrev={ this.handlePrevButtonClick } onFinish={ this.handleFinishButtonClick } />
+								}
+							</div>
 							
 							:
 							
-							<NextQuestionContainer examId={ examId } questionNumber={ questionNumber } />
+							<LoadingIndicator />
 					}
 				</div>
 		);
