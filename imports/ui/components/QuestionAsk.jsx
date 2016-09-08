@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardTitle, CardText, CardActions, RaisedButton, Checkbox } from 'material-ui';
+import { Card, CardTitle, CardText, CardActions, RaisedButton, Checkbox, Badge } from 'material-ui';
 
 import ConfirmedRaisedButton from './ConfirmedRaisedButton';
 
@@ -60,7 +60,10 @@ const style = {
 	},
 	
 	answerNumberContainer: {
-		display: 'table-cell'
+		display: 'table-cell',
+		verticalAlign: 'bottom',
+		position: 'relative',
+		paddingRight: '16px'
 	},
 	
 	answerCheckboxContainer: {
@@ -68,7 +71,17 @@ const style = {
 	},
 	
 	answerTextContainer: {
-		display: 'table-cell'
+		display: 'table-cell',
+		verticalAlign: 'bottom'
+	},
+	
+	answerText: {
+		fontSize: '16px',
+		fontWeight: 'normal',
+		fontFamily: 'Roboto, sans-serif',
+		color: 'rgba(0, 0, 0, 0.870588)',
+		display: 'block',
+		marginBottom: '16px'
 	}
 };
 
@@ -92,13 +105,13 @@ export default ({ exam, questionNumber, onNext, onPrev, onFinish }) => {
 						{ answers.map((answer, index) => (
 								<div style={ style.answerContainer } key={ index }>
 									<div style={ style.answerNumberContainer }>
-										{ index + 1 + '. ' }
+										<Badge badgeContent={ index + 1 } secondary={ true } />
 									</div>
 									<div style={ style.answerCheckboxContainer }>
 										<Checkbox />
 									</div>
 									<div style={ style.answerTextContainer }>
-										{ answer }
+										<span style={ style.answerText }>{ answer }</span>
 									</div>
 								</div>
 						)) }
