@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { FloatingActionButton, Dialog, FlatButton } from 'material-ui';
+import { Dialog, FlatButton } from 'material-ui';
 
 
 export default class ConfirmedFloatingActionButton extends Component {
