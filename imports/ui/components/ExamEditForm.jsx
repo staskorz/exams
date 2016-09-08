@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 import ExamsCollection from '/imports/api/exams/collection';
 import { insert as insertExam, update as updateExam } from '/imports/api/exams/methods';
 import simpleSchemaValidator from '/imports/client/validators/simple-schema-validator';
-import QuestionsEdit from '/imports/ui/components/QuestionsEdit'
+import QuestionsEdit from '/imports/ui/components/QuestionsEdit';
 import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
 import ConfirmedFlatButton from '/imports/ui/components/ConfirmedFlatButton';
 
