@@ -27,11 +27,6 @@ export default class AnswersEdit extends Component {
 			verticalAlign: 'bottom'
 		},
 		
-		checkbox: {
-			marginBottom: '12px',
-			marginLeft: '8px'
-		},
-		
 		answerTextField: {
 			display: 'table-cell'
 		},
