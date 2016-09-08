@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardTitle, CardText, CardActions, RaisedButton } from 'material-ui';
+import { Card, CardTitle, CardText, CardActions, RaisedButton, Checkbox } from 'material-ui';
 
 import ConfirmedRaisedButton from './ConfirmedRaisedButton';
 
@@ -53,6 +53,22 @@ const style = {
 	
 	button: {
 		marginRight: '16px'
+	},
+	
+	answerContainer: {
+		display: 'table'
+	},
+	
+	answerNumberContainer: {
+		display: 'table-cell'
+	},
+	
+	answerCheckboxContainer: {
+		display: 'table-cell'
+	},
+	
+	answerTextContainer: {
+		display: 'table-cell'
 	}
 };
 
@@ -74,7 +90,17 @@ export default ({ exam, questionNumber, onNext, onPrev, onFinish }) => {
 						<span style={ style.secondaryText }>{ multiple ? '* Please choose multiple answers' : ' ' }</span><br /><br />
 						
 						{ answers.map((answer, index) => (
-								<div key={ index }>{ index + 1 + '. ' + answer }</div>
+								<div style={ style.answerContainer } key={ index }>
+									<div style={ style.answerNumberContainer }>
+										{ index + 1 + '. ' }
+									</div>
+									<div style={ style.answerCheckboxContainer }>
+										<Checkbox />
+									</div>
+									<div style={ style.answerTextContainer }>
+										{ answer }
+									</div>
+								</div>
 						)) }
 					</CardText>
 					
