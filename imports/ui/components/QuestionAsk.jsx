@@ -87,7 +87,7 @@ const style = {
 
 
 export default ({ exam, questionNumber, onNext, onPrev, onFinish }) => {
-	const { name, number, questions } = exam;
+	const { name, questions } = exam;
 	const numOfQuestions = questions.length;
 	const { text, multiple, answers } = questions[questionNumber];
 	
@@ -95,7 +95,7 @@ export default ({ exam, questionNumber, onNext, onPrev, onFinish }) => {
 			<div style={ style.mainContainer }>
 				<Card zDepth={ 5 } style={ style.card }>
 					<CardTitle title={ name }
-							   subtitle={ 'Exam Number: ' + number + ', Question Number: ' + (questionNumber + 1) + '/' + numOfQuestions } />
+							   subtitle={ 'Question Number: ' + (questionNumber + 1) + '/' + numOfQuestions } />
 					
 					<CardText>
 						<span style={ style.primaryText }>{ text }</span><br />

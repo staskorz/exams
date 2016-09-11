@@ -22,7 +22,6 @@ const ExamChoice = ({ ready, exams, router }) => (
 					<TableHeader displaySelectAll={ showCheckboxes } adjustForCheckbox={ showCheckboxes }>
 						<TableRow>
 							<TableHeaderColumn>Name</TableHeaderColumn>
-							<TableHeaderColumn>Number</TableHeaderColumn>
 							<TableHeaderColumn>&nbsp;</TableHeaderColumn>
 						</TableRow>
 					</TableHeader>
@@ -30,7 +29,6 @@ const ExamChoice = ({ ready, exams, router }) => (
 						{ exams.map((exam, index) => (
 								<TableRow key={ index }>
 									<TableRowColumn>{ exam.name }</TableRowColumn>
-									<TableRowColumn>{ exam.number }</TableRowColumn>
 									<TableRowColumn>
 										<FlatButton style={ style.button } onClick={ () => router.push('/take-exam/' + exam._id) } label={ 'Take Exam' } />
 									</TableRowColumn>

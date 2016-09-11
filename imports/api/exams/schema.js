@@ -50,11 +50,6 @@ export default new SimpleSchema({
 		min: 1
 	},
 	
-	number: {
-		type: Number,
-		decimal: true
-	},
-	
 	published: {
 		type: Boolean,
 		optional: true

@@ -36,10 +36,6 @@ class ExamEditForm extends Component {
 		
 		examName: {
 			marginBottom: '28px'
-		},
-		
-		examNumber: {
-			marginBottom: '28px'
 		}
 	};
 	
@@ -129,8 +125,6 @@ class ExamEditForm extends Component {
 					<form>
 						<div className='formContainer' style={ this.style.formContainer }>
 							<Field component={ TextField } name='name' floatingLabelText='Exam Name' style={ this.style.examName } /><br />
-							<Field component={ TextField } name='number' type='number' floatingLabelText='Exam Number'
-								   style={ this.style.examNumber } />
 							<Field component={ Checkbox } name='published' label='Published' />
 							
 							<FieldArray name='questions' component={ QuestionsEdit } props={{ submitFailed }} />
@@ -210,7 +204,6 @@ const validate = values => {
 	}
 	
 	errors.name = simpleSchemaValidator(ExamsCollection, 'name', values.name);
-	errors.number = simpleSchemaValidator(ExamsCollection, 'number', values.number);
 	
 	return errors;
 };

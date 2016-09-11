@@ -55,11 +55,6 @@ class ExamInfo extends Component {
 						</div>
 						
 						<div>
-							<span style={ this.style.descriptionText }>Exam Number:</span>
-							<span style={ this.style.mainText }>{ number }</span>
-						</div>
-						
-						<div>
 							<span style={ this.style.descriptionText }>Number of Questions:</span>
 							<span style={ this.style.mainText }>{ questions.length }</span>
 						</div>

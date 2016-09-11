@@ -34,7 +34,13 @@ export const findOne = new ValidatedMethod({
 	name: 'exams.findOne',
 	validate: examsFindOneSchema.validator(),
 	run({ examId }) {
-		return collection.findOne(examId);
+		return collection.findOne(examId, {
+			fields: {
+				_id: 1,
+				name: 1,
+				questions: 1
+			}
+		});
 	}
 });
 
@@ -54,7 +60,6 @@ export const getExamineeVersion = new ValidatedMethod({
 		const rawExam = collection.findOne(examId, {
 			fields: {
 				name: 1,
-				number: 1,
 				'questions.text': 1,
 				'questions.answers': 1
 			}
