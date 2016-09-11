@@ -122,6 +122,14 @@ export default class QuestionAsk extends Component {
 	};
 	
 	
+	submit = () => {
+		const { onFinish } = this.props;
+		const { answers } = this.state;
+		
+		onFinish(answers);
+	};
+	
+	
 	render() {
 		const { exam, questionNumber, onNext, onPrev, onFinish } = this.props;
 		const { name, questions } = exam;
@@ -163,7 +171,7 @@ export default class QuestionAsk extends Component {
 									
 									:
 									
-									<ConfirmedRaisedButton label='Finish' onConfirm={ onFinish } primary={ true } style={ this.style.button }
+									<ConfirmedRaisedButton label='Finish' onConfirm={ this.submit } primary={ true } style={ this.style.button }
 														   text='Are you sure?' />
 							}
 						</CardActions>

@@ -34,8 +34,8 @@ export default class TakeExam extends Component {
 	};
 	
 	
-	handleFinishButtonClick = () => {
-		
+	handleFinishButtonClick = (answers) => {
+		console.log('answers:', answers);
 	};
 	
 	
