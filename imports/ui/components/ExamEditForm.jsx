@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FlatButton } from 'material-ui';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { TextField, Checkbox } from 'redux-form-material-ui';
 import { withRouter } from 'react-router';
@@ -9,9 +10,16 @@ import simpleSchemaValidator from '/imports/client/validators/simple-schema-vali
 import QuestionsEdit from '/imports/ui/components/QuestionsEdit';
 import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
 import ConfirmedFlatButton from '/imports/ui/components/ConfirmedFlatButton';
+import ConfirmationDialog from '/imports/ui/components/ConfirmationDialog';
 
 
 class ExamEditForm extends Component {
+	state = {
+		saveConfirmationDialogOpen: false,
+		formFields: null
+	};
+	
+	
 	style = {
 		mainContainer: {
 			padding: '120px',
@@ -43,7 +51,36 @@ class ExamEditForm extends Component {
 	};
 	
 	
-	handleSubmit = (formFields) => {
+	handleSubmit = formFields => {
+		this.setState({
+			saveConfirmationDialogOpen: true,
+			formFields
+		});
+	};
+	
+	
+	closeSaveConfirmationDialog = () => {
+		this.setState({
+			saveConfirmationDialogOpen: false
+		});
+	};
+	
+	
+	handleSaveConfirmationDialogYesButtonClick = () => {
+		this.closeSaveConfirmationDialog();
+		
+		this.save();
+	};
+	
+	
+	handleSaveConfirmationDialogNoButtonClick = () => {
+		this.closeSaveConfirmationDialog();
+	};
+	
+	
+	save = () => {
+		const { formFields } = this.state;
+		
 		console.log('formFields:', formFields);
 		
 		const { edit } = this.props;
@@ -100,10 +137,17 @@ class ExamEditForm extends Component {
 						</div>
 						
 						<div className='buttonsContainer'>
-							<ConfirmedFlatButton text='Are you sure?' label='Save' primary={ true } onConfirm={ handleSubmit(this.handleSubmit) } />
+							<FlatButton label='Save' primary={ true } onClick={ handleSubmit(this.handleSubmit) } />
 							<ConfirmedFlatButton text='Are you sure?' label='Cancel' onConfirm={ this.goBack } />
 						</div>
 					</form>
+					
+					<ConfirmationDialog
+							open={ this.state.saveConfirmationDialogOpen }
+							text='Are you sure?'
+							onYesButtonClick={ this.handleSaveConfirmationDialogYesButtonClick }
+							onNoButtonClick={ this.handleSaveConfirmationDialogNoButtonClick }
+					/>
 				</div>
 		);
 	}
