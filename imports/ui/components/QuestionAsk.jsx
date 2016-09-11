@@ -92,18 +92,20 @@ export default class QuestionAsk extends Component {
 	};
 	
 	
-	createCheckboxClickHandler = (questionNumber, answerNumber) => (e, isChecked) => {
-		let answers = Object.assign({}, this.state.answers);
+	prepareAnswersState = props => {
+		const { questionNumber, exam: { questions } } = props;
 		
-		if(!answers) {
-			answers = [];
+		let answers;
+		
+		if(this.state.answers.length === 0) {
+			answers = new Array(questions.length);
+		} else {
+			answers = Array.from(this.state.answers);
 		}
 		
-		if(!answers[questionNumber]) {
-			answers[questionNumber] = [];
+		if((!answers[questionNumber]) || (answers[questionNumber].length === 0)) {
+			answers[questionNumber] = new Array(questions[questionNumber].answers.length).fill(false);
 		}
-		
-		answers[questionNumber][answerNumber] = !!isChecked;
 		
 		this.setState({
 			answers
@@ -111,14 +113,24 @@ export default class QuestionAsk extends Component {
 	};
 	
 	
-	getAnswer = (questionNumber, answerNumber) => {
-		const { answers } = this.state;
+	componentWillMount() {
+		this.prepareAnswersState(this.props);
+	};
+	
+	
+	componentWillReceiveProps(nextProps) {
+		this.prepareAnswersState(nextProps);
+	};
+	
+	
+	createCheckboxClickHandler = (questionNumber, answerNumber) => (e, isChecked) => {
+		const answers = Array.from(this.state.answers);
 		
-		const questions = answers || [];
+		answers[questionNumber][answerNumber] = !!isChecked;
 		
-		const question = questions[questionNumber] || [];
-		
-		return !!question[answerNumber];
+		this.setState({
+			answers
+		});
 	};
 	
 	
@@ -154,7 +166,7 @@ export default class QuestionAsk extends Component {
 										</div>
 										<div style={ this.style.answerCheckboxContainer }>
 											<Checkbox onCheck={ this.createCheckboxClickHandler(questionNumber, index) }
-													  checked={ this.getAnswer(questionNumber, index) } />
+													  checked={ this.state.answers[questionNumber][index] } />
 										</div>
 										<div style={ this.style.answerTextContainer }>
 											<span style={ this.style.answerText }>{ answer }</span>
