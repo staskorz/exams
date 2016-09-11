@@ -1,135 +1,138 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Card, CardTitle, CardText, CardActions, RaisedButton, Checkbox, Badge } from 'material-ui';
 
 import ConfirmedRaisedButton from './ConfirmedRaisedButton';
 
 
-const style = {
-	mainContainer: {
-		padding: '120px'
-	},
+export default class QuestionAsk extends Component {
+	style = {
+		mainContainer: {
+			padding: '120px'
+		},
+		
+		card: {
+			padding: '16px'
+		},
+		
+		primaryLabel: {
+			fontSize: '16px',
+			fontWeight: 'normal',
+			lineHeight: '36px',
+			fontFamily: 'Roboto, sans-serif',
+			color: 'rgba(0, 0, 0, 0.870588)'
+		},
+		
+		primaryText: {
+			fontSize: '24px',
+			fontWeight: 'normal',
+			lineHeight: '36px',
+			fontFamily: 'Roboto, sans-serif',
+			color: 'rgba(0, 0, 0, 0.870588)'
+		},
+		
+		secondaryLabel: {
+			fontSize: '14px',
+			fontWeight: 'normal',
+			lineHeight: '36px',
+			fontFamily: 'Roboto, sans-serif',
+			color: 'rgba(0, 0, 0, 0.870588)',
+			marginRight: '16px'
+		},
+		
+		secondaryText: {
+			fontSize: '16px',
+			fontWeight: 'normal',
+			lineHeight: '36px',
+			fontFamily: 'Roboto, sans-serif',
+			color: 'rgba(0, 0, 0, 0.870588)',
+			marginRight: '16px'
+		},
+		
+		actions: {
+			paddingTop: '32px'
+		},
+		
+		button: {
+			marginRight: '16px'
+		},
+		
+		answerContainer: {
+			display: 'table'
+		},
+		
+		answerNumberContainer: {
+			display: 'table-cell',
+			verticalAlign: 'bottom',
+			position: 'relative',
+			paddingRight: '16px'
+		},
+		
+		answerCheckboxContainer: {
+			display: 'table-cell'
+		},
+		
+		answerTextContainer: {
+			display: 'table-cell',
+			verticalAlign: 'bottom'
+		},
+		
+		answerText: {
+			fontSize: '16px',
+			fontWeight: 'normal',
+			fontFamily: 'Roboto, sans-serif',
+			color: 'rgba(0, 0, 0, 0.870588)',
+			display: 'block',
+			marginBottom: '16px'
+		}
+	};
 	
-	card: {
-		padding: '16px'
-	},
 	
-	primaryLabel: {
-		fontSize: '16px',
-		fontWeight: 'normal',
-		lineHeight: '36px',
-		fontFamily: 'Roboto, sans-serif',
-		color: 'rgba(0, 0, 0, 0.870588)'
-	},
-	
-	primaryText: {
-		fontSize: '24px',
-		fontWeight: 'normal',
-		lineHeight: '36px',
-		fontFamily: 'Roboto, sans-serif',
-		color: 'rgba(0, 0, 0, 0.870588)'
-	},
-	
-	secondaryLabel: {
-		fontSize: '14px',
-		fontWeight: 'normal',
-		lineHeight: '36px',
-		fontFamily: 'Roboto, sans-serif',
-		color: 'rgba(0, 0, 0, 0.870588)',
-		marginRight: '16px'
-	},
-	
-	secondaryText: {
-		fontSize: '16px',
-		fontWeight: 'normal',
-		lineHeight: '36px',
-		fontFamily: 'Roboto, sans-serif',
-		color: 'rgba(0, 0, 0, 0.870588)',
-		marginRight: '16px'
-	},
-	
-	actions: {
-		paddingTop: '32px'
-	},
-	
-	button: {
-		marginRight: '16px'
-	},
-	
-	answerContainer: {
-		display: 'table'
-	},
-	
-	answerNumberContainer: {
-		display: 'table-cell',
-		verticalAlign: 'bottom',
-		position: 'relative',
-		paddingRight: '16px'
-	},
-	
-	answerCheckboxContainer: {
-		display: 'table-cell'
-	},
-	
-	answerTextContainer: {
-		display: 'table-cell',
-		verticalAlign: 'bottom'
-	},
-	
-	answerText: {
-		fontSize: '16px',
-		fontWeight: 'normal',
-		fontFamily: 'Roboto, sans-serif',
-		color: 'rgba(0, 0, 0, 0.870588)',
-		display: 'block',
-		marginBottom: '16px'
-	}
-};
-
-
-export default ({ exam, questionNumber, onNext, onPrev, onFinish }) => {
-	const { name, questions } = exam;
-	const numOfQuestions = questions.length;
-	const { text, multiple, answers } = questions[questionNumber];
-	
-	return (
-			<div style={ style.mainContainer }>
-				<Card zDepth={ 5 } style={ style.card }>
-					<CardTitle title={ name }
-							   subtitle={ 'Question Number: ' + (questionNumber + 1) + '/' + numOfQuestions } />
-					
-					<CardText>
-						<span style={ style.primaryText }>{ text }</span><br />
+	render() {
+		const { exam, questionNumber, onNext, onPrev, onFinish } = this.props;
+		const { name, questions } = exam;
+		const numOfQuestions = questions.length;
+		const { text, multiple, answers } = questions[questionNumber];
+		
+		return (
+				<div style={ this.style.mainContainer }>
+					<Card zDepth={ 5 } style={ this.style.card }>
+						<CardTitle title={ name }
+								   subtitle={ 'Question Number: ' + (questionNumber + 1) + '/' + numOfQuestions } />
 						
-						<span style={ style.secondaryText }>{ multiple ? '* Please choose multiple answers' : ' ' }</span><br /><br />
+						<CardText>
+							<span style={ this.style.primaryText }>{ text }</span><br />
+							
+							<span style={ this.style.secondaryText }>{ multiple ? '* Please choose multiple answers' : ' ' }</span><br /><br />
+							
+							{ answers.map((answer, index) => (
+									<div style={ this.style.answerContainer } key={ index }>
+										<div style={ this.style.answerNumberContainer }>
+											<Badge badgeContent={ index + 1 } secondary={ true } />
+										</div>
+										<div style={ this.style.answerCheckboxContainer }>
+											<Checkbox />
+										</div>
+										<div style={ this.style.answerTextContainer }>
+											<span style={ this.style.answerText }>{ answer }</span>
+										</div>
+									</div>
+							)) }
+						</CardText>
 						
-						{ answers.map((answer, index) => (
-								<div style={ style.answerContainer } key={ index }>
-									<div style={ style.answerNumberContainer }>
-										<Badge badgeContent={ index + 1 } secondary={ true } />
-									</div>
-									<div style={ style.answerCheckboxContainer }>
-										<Checkbox />
-									</div>
-									<div style={ style.answerTextContainer }>
-										<span style={ style.answerText }>{ answer }</span>
-									</div>
-								</div>
-						)) }
-					</CardText>
-					
-					<CardActions>
-						<RaisedButton label='Prev' onClick={ onPrev } disabled={ questionNumber === 0 } />
-						
-						{ questionNumber + 1 < numOfQuestions ?
-								<RaisedButton label='Next' onClick={ onNext } primary={ true } style={ style.button } />
-								
-								:
-								
-								<ConfirmedRaisedButton label='Finish' onConfirm={ onFinish } primary={ true } style={ style.button }
-													   text='Are you sure?' />
-						}
-					</CardActions>
-				</Card>
-			</div>
-	)
+						<CardActions>
+							<RaisedButton label='Prev' onClick={ onPrev } disabled={ questionNumber === 0 } />
+							
+							{ questionNumber + 1 < numOfQuestions ?
+									<RaisedButton label='Next' onClick={ onNext } primary={ true } style={ this.style.button } />
+									
+									:
+									
+									<ConfirmedRaisedButton label='Finish' onConfirm={ onFinish } primary={ true } style={ this.style.button }
+														   text='Are you sure?' />
+							}
+						</CardActions>
+					</Card>
+				</div>
+		);
+	};
 };
