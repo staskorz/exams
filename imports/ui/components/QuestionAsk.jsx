@@ -126,7 +126,15 @@ export default class QuestionAsk extends Component {
 	createCheckboxClickHandler = (questionNumber, answerNumber) => (e, isChecked) => {
 		const answers = Array.from(this.state.answers);
 		
-		answers[questionNumber][answerNumber] = !!isChecked;
+		const { exam: { questions } } = this.props;
+		
+		const { multiple } = questions[questionNumber];
+		
+		if(multiple || !isChecked) {
+			answers[questionNumber][answerNumber] = !!isChecked;
+		} else {
+			answers[questionNumber] = answers[questionNumber].map((answer, index) => index === answerNumber);
+		}
 		
 		this.setState({
 			answers
