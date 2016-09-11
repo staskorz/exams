@@ -5,6 +5,11 @@ import ConfirmedRaisedButton from './ConfirmedRaisedButton';
 
 
 export default class QuestionAsk extends Component {
+	state = {
+		answers: []
+	};
+	
+	
 	style = {
 		mainContainer: {
 			padding: '120px'
@@ -87,6 +92,36 @@ export default class QuestionAsk extends Component {
 	};
 	
 	
+	createCheckboxClickHandler = (questionNumber, answerNumber) => (e, isChecked) => {
+		let answers = Object.assign({}, this.state.answers);
+		
+		if(!answers) {
+			answers = [];
+		}
+		
+		if(!answers[questionNumber]) {
+			answers[questionNumber] = [];
+		}
+		
+		answers[questionNumber][answerNumber] = !!isChecked;
+		
+		this.setState({
+			answers
+		});
+	};
+	
+	
+	getAnswer = (questionNumber, answerNumber) => {
+		const { answers } = this.state;
+		
+		const questions = answers || [];
+		
+		const question = questions[questionNumber] || [];
+		
+		return !!question[answerNumber];
+	};
+	
+	
 	render() {
 		const { exam, questionNumber, onNext, onPrev, onFinish } = this.props;
 		const { name, questions } = exam;
@@ -110,7 +145,8 @@ export default class QuestionAsk extends Component {
 											<Badge badgeContent={ index + 1 } secondary={ true } />
 										</div>
 										<div style={ this.style.answerCheckboxContainer }>
-											<Checkbox />
+											<Checkbox onCheck={ this.createCheckboxClickHandler(questionNumber, index) }
+													  checked={ this.getAnswer(questionNumber, index) } />
 										</div>
 										<div style={ this.style.answerTextContainer }>
 											<span style={ this.style.answerText }>{ answer }</span>
