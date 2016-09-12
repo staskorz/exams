@@ -4,6 +4,7 @@ import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
 import ViewIcon from 'material-ui/svg-icons/action/view-headline';
 import CheckIcon from 'material-ui/svg-icons/navigation/check';
 import { withRouter } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 
 import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
 
@@ -17,9 +18,9 @@ const ListExams = ({ ready, exams, router }) => (
 				<Table selectable={ false }>
 					<TableHeader displaySelectAll={ showCheckboxes } adjustForCheckbox={ showCheckboxes }>
 						<TableRow>
-							<TableHeaderColumn>Name</TableHeaderColumn>
-							<TableHeaderColumn>Published</TableHeaderColumn>
-							<TableHeaderColumn>Actions</TableHeaderColumn>
+							<TableHeaderColumn><FormattedMessage id='examName' /></TableHeaderColumn>
+							<TableHeaderColumn><FormattedMessage id='published' /></TableHeaderColumn>
+							<TableHeaderColumn><FormattedMessage id='actions' /></TableHeaderColumn>
 						</TableRow>
 					</TableHeader>
 					<TableBody displayRowCheckbox={ showCheckboxes }>
