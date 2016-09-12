@@ -1,6 +1,7 @@
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, FlatButton } from 'material-ui';
 import { withRouter } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 
 import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
 
@@ -21,7 +22,7 @@ const ExamChoice = ({ ready, exams, router }) => (
 				<Table selectable={ false }>
 					<TableHeader displaySelectAll={ showCheckboxes } adjustForCheckbox={ showCheckboxes }>
 						<TableRow>
-							<TableHeaderColumn>Name</TableHeaderColumn>
+							<TableHeaderColumn><FormattedMessage id='examName' /></TableHeaderColumn>
 							<TableHeaderColumn>&nbsp;</TableHeaderColumn>
 						</TableRow>
 					</TableHeader>
@@ -30,7 +31,7 @@ const ExamChoice = ({ ready, exams, router }) => (
 								<TableRow key={ index }>
 									<TableRowColumn>{ exam.name }</TableRowColumn>
 									<TableRowColumn>
-										<FlatButton style={ style.button } onClick={ () => router.push('/take-exam/' + exam._id) } label={ 'Take Exam' } />
+										<FlatButton style={ style.button } onClick={ () => router.push('/take-exam/' + exam._id) } label={ <FormattedMessage id='takeExam' /> } />
 									</TableRowColumn>
 								</TableRow>
 						)) }

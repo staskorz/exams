@@ -8,4 +8,5 @@ export default {
 	examName: 'שם מבחן',
 	published: 'פורסם',
 	actions: 'פעולות',
+	takeExam: 'גש למבחן',
 };
