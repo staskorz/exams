@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Paper, FlatButton } from 'material-ui';
-import { pinkA200 } from 'material-ui/styles/colors'
+import { pinkA200 } from 'material-ui/styles/colors';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 
-export default class ConnectionStatus extends Component {
+class ConnectionStatus extends Component {
 	state = {
 		retryingIn: null,
 		intervalId: null
@@ -81,7 +82,7 @@ export default class ConnectionStatus extends Component {
 	
 	
 	render() {
-		const { connected, reconnect } = this.props;
+		const { connected, reconnect, intl: { formatMessage } } = this.props;
 		
 		const { retryingIn } = this.state;
 		
@@ -91,17 +92,20 @@ export default class ConnectionStatus extends Component {
 			let message;
 			
 			if(retryingIn) {
-				message = 'Retrying in ' + retryingIn + 's.';
+				message = formatMessage({ id: 'retryingInX' }, { seconds: retryingIn });
 			} else {
-				message = 'Disconnected.';
+				message = formatMessage({ id: 'disconnected' });
 			}
 			
 			return (
 					<Paper style={ this.style.mainContainer }>
 						<span style={ this.style.message }>{ message }</span>
-						<FlatButton label={ 'Reconnect Now' } labelStyle={ this.style.buttonLabel } onClick={ reconnect } />
+						<FlatButton label={ <FormattedMessage id='reconnectNow' /> } labelStyle={ this.style.buttonLabel } onClick={ reconnect } />
 					</Paper>
 			);
 		}
 	};
-};
+}
+
+
+export default injectIntl(ConnectionStatus);

@@ -24,7 +24,10 @@ export default {
 	save: 'שמור',
 	weight: 'משקל',
 	questionBody: 'גוף השאלה',
-	answer: 'תשובה {number}',
+	answer: 'תשובה { number }',
 	add: 'הוסף',
 	remove: 'הסר',
+	retryingInX: 'מנסה שוב בעוד { seconds } שניות',
+	disconnected: 'מנותק',
+	reconnectNow: 'התחבר עכשיו'
 };
