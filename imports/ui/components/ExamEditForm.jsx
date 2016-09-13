@@ -78,8 +78,6 @@ class ExamEditForm extends Component {
 	save = () => {
 		const { formFields } = this.state;
 		
-		console.log('formFields:', formFields);
-		
 		const { edit } = this.props;
 		
 		if(edit) {
