@@ -51,7 +51,6 @@ export default ({ children }) => (
 			iconElementRight={ <span>
 				<ConnectionStatusContainer />
 				<IndexLink to='/' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='home' /></IndexLink>
-				<Link to='/page1' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='page1' /></Link>
 				<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='createExam' /></Link>
 				<Link to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='listExams' /></Link>
 				<Link to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='chooseExam' /></Link>
