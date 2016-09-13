@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { TextField, Checkbox } from 'redux-form-material-ui';
 import { Badge, FlatButton } from 'material-ui';
+import { FormattedMessage } from 'react-intl';
 
 
 export default class AnswersEdit extends Component {
@@ -86,19 +87,19 @@ export default class AnswersEdit extends Component {
 										   iconStyle={ iconStyle } />
 								</div>
 								<Field component={ TextField } name={ `${ answer }.text` }
-									   floatingLabelText={ 'Answer ' + (index + 1) }
+									   floatingLabelText={ <FormattedMessage id='answer' values={{ number: index + 1 }} /> }
 									   style={ this.style.answerTextField }
 									   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 								/>
 								<div style={ this.style.addRemoveAnswerButtonsContainer }>
-									<FlatButton label='Remove' secondary={ true } disabled={ fields.length < 3 }
+									<FlatButton label={ <FormattedMessage id='remove' /> } secondary={ true } disabled={ fields.length < 3 }
 												onClick={ () => fields.remove(index) }
 									/>
 								</div>
 							</div>
 					)) }
 					
-					<FlatButton label='Add' secondary={ true } disabled={ fields.length > 3 } onClick={ () => fields.push({}) } />
+					<FlatButton label={ <FormattedMessage id='add' /> } secondary={ true } disabled={ fields.length > 3 } onClick={ () => fields.push({}) } />
 				</div>
 		);
 	};

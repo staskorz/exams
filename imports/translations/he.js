@@ -24,4 +24,7 @@ export default {
 	save: 'שמור',
 	weight: 'משקל',
 	questionBody: 'גוף השאלה',
+	answer: 'תשובה {number}',
+	add: 'הוסף',
+	remove: 'הסר',
 };
