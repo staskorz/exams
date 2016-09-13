@@ -3,7 +3,7 @@ import { Dialog, FlatButton } from 'material-ui';
 import { FormattedMessage } from 'react-intl';
 
 
-export default class ConfirmedFloatingActionButton extends Component {
+export default class ConfirmationDialog extends Component {
 	static propTypes = {
 		text: PropTypes.string.isRequired,
 		open: PropTypes.bool,
