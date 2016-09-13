@@ -9,4 +9,7 @@ export default {
 	published: 'פורסם',
 	actions: 'פעולות',
 	takeExam: 'גש למבחן',
+	numberOfQuestions: 'משפר שאלות',
+	start: 'התחל',
+	cancel: 'בטל',
 };

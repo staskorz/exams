@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Paper, RaisedButton } from 'material-ui';
 import { withRouter } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 
 
 class ExamInfo extends Component {
@@ -50,18 +51,18 @@ class ExamInfo extends Component {
 				<div style={ this.style.mainContainer }>
 					<Paper style={ this.style.mainPaper } zDepth={ 5 }>
 						<div>
-							<span style={ this.style.descriptionText }>Exam Name:</span>
+							<span style={ this.style.descriptionText }><FormattedMessage id='examName' />:</span>
 							<span style={ this.style.mainText }>{ name }</span>
 						</div>
 						
 						<div>
-							<span style={ this.style.descriptionText }>Number of Questions:</span>
+							<span style={ this.style.descriptionText }><FormattedMessage id='numberOfQuestions' />:</span>
 							<span style={ this.style.mainText }>{ questions.length }</span>
 						</div>
 						
 						<div style={ this.style.actions }>
-							<RaisedButton label='Start' primary={ true } style={ this.style.button } onClick={ onStart } />
-							<RaisedButton label='Cancel' onClick={ () => router.goBack() } />
+							<RaisedButton label={ <FormattedMessage id='start' /> } primary={ true } style={ this.style.button } onClick={ onStart } />
+							<RaisedButton label={ <FormattedMessage id='cancel' /> } onClick={ () => router.goBack() } />
 						</div>
 					</Paper>
 				</div>
