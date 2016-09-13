@@ -20,7 +20,7 @@ class ConnectionStatus extends Component {
 		},
 		
 		message: {
-			paddingLeft: '16px'
+			paddingRight: '16px'
 		},
 		
 		buttonLabel: {
