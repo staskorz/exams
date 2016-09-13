@@ -31,7 +31,8 @@ const ListExams = ({ ready, exams, router }) => (
 									<TableRowColumn>{ exam.published ? <CheckIcon /> : '' }</TableRowColumn>
 									<TableRowColumn>
 										<IconButton onClick={ () => router.push('/edit-exam/' + exam._id) }><EditIcon /></IconButton>
-										<IconButton onClick={ () => router.push('/take-exam/' + exam._id) } disabled={ !exam.published }><AssignmentIcon /></IconButton>
+										<IconButton onClick={ () => router.push('/take-exam/' + exam._id) }
+													disabled={ !exam.published }><AssignmentIcon /></IconButton>
 										<IconButton onClick={ () => router.push('/exam-results/' + exam._id) }><PeopleIcon /></IconButton>
 									</TableRowColumn>
 								</TableRow>
