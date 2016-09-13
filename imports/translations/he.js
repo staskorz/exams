@@ -31,3 +31,38 @@ export default {
 	disconnected: 'מנותק',
 	reconnectNow: 'התחבר עכשיו'
 };
+
+
+export const SimpleSchemaMessages = {
+	required: 'שדה חובה',
+	minString: 'יש להזין לפחות [min] תוים',
+	maxString: 'יש להזין לא יותר מ- [max] תוים',
+	minNumber: 'מינימום [min]',
+	maxNumber: 'לא יותר מ- [max]',
+	minDate: 'לא לפני [min]',
+	maxDate: 'לא אחרי [max]',
+	badDate: 'תאריך לא תקין',
+	minCount: 'יש להזין [minCount] ערכים לפחות',
+	maxCount: 'יש להזין לא יותר מ- [maxCount] ערכים',
+	noDecimal: 'מספר שלם בלבד',
+	notAllowed: 'ערך לא מאושר',
+	expectedString: 'מחרוזת תוים בלבד',
+	expectedNumber: 'מספר בלבד',
+	expectedBoolean: 'ערך בוליאני בלבד',
+	expectedArray: 'מערך בלבד',
+	expectedObject: 'אובייקט בלבד',
+	expectedConstructor: 'מסוג [type] בלבד',
+	regEx: [
+		{ msg: 'ערך לא חוקי' },
+		{ exp: SimpleSchema.RegEx.Email, msg: 'כתובת דואר אלקטרוני בלבד' },
+		{ exp: SimpleSchema.RegEx.WeakEmail, msg: 'כתובת דואר אלקטרוני בלבד' },
+		{ exp: SimpleSchema.RegEx.Domain, msg: 'דומיין בלבד' },
+		{ exp: SimpleSchema.RegEx.WeakDomain, msg: 'דומיין בלבד' },
+		{ exp: SimpleSchema.RegEx.IP, msg: 'כתובת IP מגרסה 4 או 6 בלבד' },
+		{ exp: SimpleSchema.RegEx.IPv4, msg: 'כתובת IP מגרסה 4 בלבד' },
+		{ exp: SimpleSchema.RegEx.IPv6, msg: 'כתובת IP מגרסה 6 בלבד' },
+		{ exp: SimpleSchema.RegEx.Url, msg: 'URL בלבד' },
+		{ exp: SimpleSchema.RegEx.Id, msg: 'ID אלפאנומרי בלבד' }
+	],
+	keyNotInSchema: '[key] לא מאושר בסכמה'
+};
