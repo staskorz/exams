@@ -22,4 +22,6 @@ export default {
 	no: 'לא',
 	editExam: 'ערוך מבחן',
 	save: 'שמור',
+	weight: 'משקל',
+	questionBody: 'גוף השאלה',
 };

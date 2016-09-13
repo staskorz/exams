@@ -4,12 +4,13 @@ import { TextField } from 'redux-form-material-ui';
 import { Paper, Badge, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
 
 
-export default class QuestionsEdit extends Component {
+class QuestionsEdit extends Component {
 	style = {
 		paper: {
 			marginTop: '40px',
@@ -75,7 +76,7 @@ export default class QuestionsEdit extends Component {
 	
 	
 	render() {
-		const { fields, submitFailed } = this.props;
+		const { fields, submitFailed, intl: { formatMessage } } = this.props;
 		
 		return (
 				<div>
@@ -84,7 +85,7 @@ export default class QuestionsEdit extends Component {
 								<Badge badgeContent={ index + 1 } primary={ true } />
 								
 								<div style={ this.style.weightContainer }>
-									<span style={ this.style.weightLabel }>Weight </span>
+									<span style={ this.style.weightLabel }><FormattedMessage id='weight' /> </span>
 									<Field component={ TextField } name={ `${ question }.weight` } type='number' style={ this.style.weight } />
 								</div>
 								
@@ -92,7 +93,7 @@ export default class QuestionsEdit extends Component {
 									<Field component={ TextField } name={ `${ question }.text` }
 										   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 										   style={ this.style.questionText }
-										   floatingLabelText='Question Body' /><br />
+										   floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />
 								</div>
@@ -101,7 +102,7 @@ export default class QuestionsEdit extends Component {
 										style={ this.style.removeQuestionButton }
 										disabled={ fields.length < 2 }
 										onConfirm={ () => fields.remove(index) }
-										text='Are you sure?'
+										text={ formatMessage({ id: 'areYouSure' }) }
 								>
 									<IconRemove />
 								</ConfirmedFloatingActionButton>
@@ -115,3 +116,6 @@ export default class QuestionsEdit extends Component {
 		);
 	}
 }
+
+
+export default injectIntl(QuestionsEdit);
