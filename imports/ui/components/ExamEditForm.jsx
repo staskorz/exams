@@ -3,6 +3,7 @@ import { FlatButton } from 'material-ui';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { TextField, Checkbox } from 'redux-form-material-ui';
 import { withRouter } from 'react-router';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import ExamsCollection from '/imports/api/exams/collection';
 import { insert as insertExam, update as updateExam } from '/imports/api/exams/methods';
@@ -102,7 +103,7 @@ class ExamEditForm extends Component {
 	
 	
 	render() {
-		const { handleSubmit, submitFailed, edit, ready } = this.props;
+		const { handleSubmit, submitFailed, edit, ready, intl: { formatMessage } } = this.props;
 		
 		if(edit && !ready) {
 			return (
@@ -113,9 +114,9 @@ class ExamEditForm extends Component {
 		let title;
 		
 		if(edit) {
-			title = 'Edit Exam';
+			title = <FormattedMessage id='editExam' />;
 		} else {
-			title = 'Create Exam';
+			title = <FormattedMessage id='createExam' />;
 		}
 		
 		return (
@@ -124,21 +125,21 @@ class ExamEditForm extends Component {
 					
 					<form>
 						<div className='formContainer' style={ this.style.formContainer }>
-							<Field component={ TextField } name='name' floatingLabelText='Exam Name' style={ this.style.examName } /><br />
-							<Field component={ Checkbox } name='published' label='Published' />
+							<Field component={ TextField } name='name' floatingLabelText={ <FormattedMessage id='examName' /> } style={ this.style.examName } /><br />
+							<Field component={ Checkbox } name='published' label={ <FormattedMessage id='published' /> } />
 							
 							<FieldArray name='questions' component={ QuestionsEdit } props={{ submitFailed }} />
 						</div>
 						
 						<div className='buttonsContainer'>
-							<FlatButton label='Save' primary={ true } onClick={ handleSubmit(this.handleSubmit) } />
-							<ConfirmedFlatButton text='Are you sure?' label='Cancel' onConfirm={ this.goBack } />
+							<FlatButton label={ <FormattedMessage id='save' /> } primary={ true } onClick={ handleSubmit(this.handleSubmit) } />
+							<ConfirmedFlatButton text={ formatMessage({ id: 'areYouSure' }) } label={ <FormattedMessage id='cancel' /> } onConfirm={ this.goBack } />
 						</div>
 					</form>
 					
 					<ConfirmationDialog
 							open={ this.state.saveConfirmationDialogOpen }
-							text='Are you sure?'
+							text={ formatMessage({ id: 'areYouSure' }) }
 							onYesButtonClick={ this.handleSaveConfirmationDialogYesButtonClick }
 							onNoButtonClick={ this.handleSaveConfirmationDialogNoButtonClick }
 					/>
@@ -209,11 +210,14 @@ const validate = values => {
 };
 
 
-const CreateExamWithRouter = withRouter(ExamEditForm);
+const CreateExamWithIntl = injectIntl(ExamEditForm);
+
+
+const CreateExamWithIntlAndRouter = withRouter(CreateExamWithIntl);
 
 
 export default reduxForm({
 	form: 'createExam',
 	validate,
 	enableReinitialize: true
-})(CreateExamWithRouter);
+})(CreateExamWithIntlAndRouter);

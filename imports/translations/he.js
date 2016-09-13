@@ -20,4 +20,6 @@ export default {
 	areYouSure: 'האם אתה בטוח?',
 	yes: 'כן',
 	no: 'לא',
+	editExam: 'ערוך מבחן',
+	save: 'שמור',
 };
