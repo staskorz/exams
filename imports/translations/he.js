@@ -1,7 +1,7 @@
 export default {
 	exams: 'מבחנים',
 	home: 'ראשי',
-	createExam: 'צור מבחן',
+	createExam: 'צור מבחן חדש',
 	listExams: 'רשימת מבחנים',
 	chooseExam: 'בחר מבחן',
 	examName: 'שם מבחן',
