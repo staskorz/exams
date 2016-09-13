@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Dialog, FlatButton } from 'material-ui';
+import { FormattedMessage } from 'react-intl';
 
 
 export default class ConfirmedFloatingActionButton extends Component {
@@ -21,12 +22,12 @@ export default class ConfirmedFloatingActionButton extends Component {
 		
 		const actions = [
 			<FlatButton
-					label="Yes"
+					label={ <FormattedMessage id='yes' /> }
 					secondary={ true }
 					onTouchTap={ onYesButtonClick }
 			/>,
 			<FlatButton
-					label="No"
+					label={ <FormattedMessage id='no' /> }
 					primary={ true }
 					onTouchTap={ onNoButtonClick }
 			/>,

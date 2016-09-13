@@ -18,4 +18,6 @@ export default {
 	next: 'הבא',
 	finish: 'סיים',
 	areYouSure: 'האם אתה בטוח?',
+	yes: 'כן',
+	no: 'לא',
 };
