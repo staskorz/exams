@@ -21,13 +21,13 @@ class QuestionsEdit extends Component {
 		weightContainer: {
 			position: 'absolute',
 			top: '10px',
-			right: '40px'
+			left: '40px'
 		},
 		
 		weightLabel: {
 			display: 'inline-block',
 			marginTop: '15px',
-			marginRight: '8px',
+			marginLeft: '8px',
 			verticalAlign: 'top'
 		},
 		
