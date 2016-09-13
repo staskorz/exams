@@ -44,7 +44,7 @@ class ExamInfo extends Component {
 	
 	render() {
 		const { exam, router, onStart } = this.props;
-		const { name, number, questions } = exam || {};
+		const { name, questions } = exam || {};
 		
 		return (
 				<div style={ this.style.mainContainer }>
