@@ -12,4 +12,10 @@ export default {
 	numberOfQuestions: 'משפר שאלות',
 	start: 'התחל',
 	cancel: 'בטל',
+	questionNumberXofY: 'שאלה מספר { number } מתוך { of }',
+	multipleCorrectAnswersAvailable: '* יש יותר מתשובה אחת נכונה',
+	previous: 'חזור',
+	next: 'הבא',
+	finish: 'סיים',
+	areYouSure: 'האם אתה בטוח?',
 };

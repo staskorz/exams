@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardText, CardActions, RaisedButton, Checkbox, Badge } from 'material-ui';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import ConfirmedRaisedButton from './ConfirmedRaisedButton';
 
 
-export default class QuestionAsk extends Component {
+class QuestionAsk extends Component {
 	state = {
 		answers: []
 	};
@@ -151,7 +152,7 @@ export default class QuestionAsk extends Component {
 	
 	
 	render() {
-		const { exam, questionNumber, onNext, onPrev, onFinish } = this.props;
+		const { exam, questionNumber, onNext, onPrev, intl: { formatMessage } } = this.props;
 		const { name, questions } = exam;
 		const numOfQuestions = questions.length;
 		const { text, multiple, answers } = questions[questionNumber];
@@ -160,12 +161,14 @@ export default class QuestionAsk extends Component {
 				<div style={ this.style.mainContainer }>
 					<Card zDepth={ 5 } style={ this.style.card }>
 						<CardTitle title={ name }
-								   subtitle={ 'Question Number: ' + (questionNumber + 1) + '/' + numOfQuestions } />
+								   subtitle={ <FormattedMessage id='questionNumberXofY'
+																values={{ number: questionNumber + 1, of: numOfQuestions }} /> } />
 						
 						<CardText>
 							<span style={ this.style.primaryText }>{ text }</span><br />
 							
-							<span style={ this.style.secondaryText }>{ multiple ? '* Please choose multiple answers' : ' ' }</span><br /><br />
+							<span style={ this.style.secondaryText }>{ multiple ?
+									<FormattedMessage id='multipleCorrectAnswersAvailable' /> : ' ' }</span><br /><br />
 							
 							{ answers.map((answer, index) => (
 									<div style={ this.style.answerContainer } key={ index }>
@@ -184,19 +187,23 @@ export default class QuestionAsk extends Component {
 						</CardText>
 						
 						<CardActions>
-							<RaisedButton label='Prev' onClick={ onPrev } disabled={ questionNumber === 0 } />
+							<RaisedButton label={ <FormattedMessage id='previous' /> } onClick={ onPrev } disabled={ questionNumber === 0 } />
 							
 							{ questionNumber + 1 < numOfQuestions ?
-									<RaisedButton label='Next' onClick={ onNext } primary={ true } style={ this.style.button } />
+									<RaisedButton label={ <FormattedMessage id='next' /> } onClick={ onNext } primary={ true }
+												  style={ this.style.button } />
 									
 									:
 									
-									<ConfirmedRaisedButton label='Finish' onConfirm={ this.submit } primary={ true } style={ this.style.button }
-														   text='Are you sure?' />
+									<ConfirmedRaisedButton label={ <FormattedMessage id='finish' /> } onConfirm={ this.submit } primary={ true }
+														   style={ this.style.button } text={ formatMessage({ id: 'areYouSure' }) } />
 							}
 						</CardActions>
 					</Card>
 				</div>
 		);
 	};
-};
+}
+
+
+export default injectIntl(QuestionAsk);
