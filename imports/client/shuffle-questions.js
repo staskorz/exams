@@ -10,11 +10,13 @@ const shuffleArray = sourceArray => {
 	
 	const shuffledArray = arrayWithShuffledNumbers.map(number => sourceArray[number]);
 	
+	
 	const unShuffle = (sourceArrayShuffled) => {
 		const targetArray = new Array(sourceArrayShuffled.length);
 
 		return targetArray.map((elem, index) => sourceArrayShuffled[arrayWithShuffledNumbers.indexOf(index)]);
 	};
+	
 	
 	return {
 		shuffledArray,
