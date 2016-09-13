@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
 import ExamInfo from '/imports/ui/components/ExamInfo';
+import ExamMissing from '/imports/ui/components/ExamMissing';
 import QuestionAsk from '/imports/ui/components/QuestionAsk';
 
 
@@ -47,13 +48,21 @@ export default class TakeExam extends Component {
 				<div>
 					{ ready ?
 							<div>
-								{ questionNumber === -1 ?
-										<ExamInfo exam={ exam } onStart={ this.handleNextButtonClick } />
+								{ !!exam ?
+										<div>
+											{ questionNumber === -1 ?
+													<ExamInfo exam={ exam } onStart={ this.handleNextButtonClick } />
+													
+													:
+													
+													<QuestionAsk exam={ exam } questionNumber={ questionNumber } onNext={ this.handleNextButtonClick }
+																 onPrev={ this.handlePrevButtonClick } onFinish={ this.handleFinishButtonClick } />
+											}
+										</div>
 										
 										:
 										
-										<QuestionAsk exam={ exam } questionNumber={ questionNumber } onNext={ this.handleNextButtonClick }
-													 onPrev={ this.handlePrevButtonClick } onFinish={ this.handleFinishButtonClick } />
+										<ExamMissing />
 								}
 							</div>
 							

@@ -29,7 +29,8 @@ export default {
 	remove: 'הסר',
 	retryingInX: 'מנסה שוב בעוד { seconds } שניות',
 	disconnected: 'מנותק',
-	reconnectNow: 'התחבר עכשיו'
+	reconnectNow: 'התחבר עכשיו',
+	examMissing: 'מבחן לא קיים או לא פורסם'
 };
 
 

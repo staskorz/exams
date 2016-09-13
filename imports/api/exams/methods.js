@@ -57,7 +57,7 @@ export const getExamineeVersion = new ValidatedMethod({
 	name: 'exams.getExamineeVersion',
 	validate: examsGetExamineeVersionSchema.validator(),
 	run({ examId }) {
-		const rawExam = collection.findOne(examId, {
+		const rawExam = collection.findOne({ _id: examId, published: true }, {
 			fields: {
 				name: 1,
 				'questions.text': 1,
