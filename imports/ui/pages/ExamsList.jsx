@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
 import EditIcon from 'material-ui/svg-icons/editor/mode-edit';
 import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
-import ViewIcon from 'material-ui/svg-icons/action/view-headline';
+import PeopleIcon from 'material-ui/svg-icons/social/people';
 import CheckIcon from 'material-ui/svg-icons/navigation/check';
 import { withRouter } from 'react-router';
 import { FormattedMessage } from 'react-intl';
@@ -32,7 +32,7 @@ const ListExams = ({ ready, exams, router }) => (
 									<TableRowColumn>
 										<IconButton onClick={ () => router.push('/edit-exam/' + exam._id) }><EditIcon /></IconButton>
 										<IconButton onClick={ () => router.push('/take-exam/' + exam._id) } disabled={ !exam.published }><AssignmentIcon /></IconButton>
-										<IconButton onClick={ () => router.push('/exam-results/' + exam._id) }><ViewIcon /></IconButton>
+										<IconButton onClick={ () => router.push('/exam-results/' + exam._id) }><PeopleIcon /></IconButton>
 									</TableRowColumn>
 								</TableRow>
 						)) }
