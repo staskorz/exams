@@ -4,7 +4,8 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 const answer = new SimpleSchema({
 	text: {
 		type: String,
-		min: 1
+		min: 1,
+		max: 500
 	},
 	
 	correct: {
@@ -23,7 +24,8 @@ const question = new SimpleSchema({
 	
 	text: {
 		type: String,
-		min: 1
+		min: 1,
+		max: 500
 	},
 	
 	answers: {
@@ -47,7 +49,8 @@ export default new SimpleSchema({
 	
 	name: {
 		type: String,
-		min: 1
+		min: 1,
+		max: 50
 	},
 	
 	published: {
