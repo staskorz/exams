@@ -16,7 +16,7 @@ export default sourceArray => {
 	
 	
 	const unShuffle = sourceArrayShuffled => {
-		return arrayWithShuffledNumbers.map(elem => sourceArrayShuffled[elem]);
+		return arrayWithShuffledNumbers.map(number => sourceArrayShuffled[number]);
 	};
 	
 	
