@@ -38,6 +38,7 @@ const ListExams = ({ ready, exams, router }) => (
 													&nbsp;
 													<FormattedDate value={ exam.createdAt } />
 												</span>
+												
 												:
 												
 												''
@@ -50,6 +51,7 @@ const ListExams = ({ ready, exams, router }) => (
 													&nbsp;
 													<FormattedDate value={ exam.updatedAt } />
 												</span>
+												
 												:
 												
 												''
