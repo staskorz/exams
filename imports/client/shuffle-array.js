@@ -16,13 +16,13 @@ export default sourceArray => {
 	
 	
 	const unShuffle = sourceArrayShuffled => {
-		const reconstructedOriginalArray = [];
+		const reconstructedOriginalOrderArray = [];
 		
 		for(let i = 0; i < length; i++) {
-			reconstructedOriginalArray.push(sourceArrayShuffled[arrayWithShuffledNumbers.indexOf(i)]);
+			reconstructedOriginalOrderArray.push(sourceArrayShuffled[arrayWithShuffledNumbers.indexOf(i)]);
 		}
 		
-		return reconstructedOriginalArray;
+		return reconstructedOriginalOrderArray;
 	};
 	
 	
