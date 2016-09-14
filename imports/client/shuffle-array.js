@@ -1,7 +1,7 @@
 import arrayShuffle from 'lodash.shuffle';
 
 
-const shuffleArray = sourceArray => {
+export default sourceArray => {
 	const arrayWithEmptyElements = new Array(sourceArray.length);
 	
 	const arrayWithOrderedNumbers = arrayWithEmptyElements.map((elem, index) => index);
