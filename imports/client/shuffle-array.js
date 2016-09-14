@@ -16,7 +16,13 @@ export default sourceArray => {
 	
 	
 	const unShuffle = sourceArrayShuffled => {
-		return arrayWithShuffledNumbers.map(number => sourceArrayShuffled[number]);
+		const reconstructedOriginalArray = [];
+		
+		for(let i = 0; i < length; i++) {
+			reconstructedOriginalArray.push(sourceArrayShuffled[arrayWithShuffledNumbers.indexOf(i)]);
+		}
+		
+		return reconstructedOriginalArray;
 	};
 	
 	
