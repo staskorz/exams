@@ -16,10 +16,10 @@ export default sourceArray => {
 	
 	
 	const unShuffle = sourceArrayShuffled => {
-		const reconstructedOriginalOrderArray = [];
+		const reconstructedOriginalOrderArray = new Array(length);
 		
 		for(let i = 0; i < length; i++) {
-			reconstructedOriginalOrderArray.push(sourceArrayShuffled[arrayWithShuffledNumbers.indexOf(i)]);
+			reconstructedOriginalOrderArray[arrayWithShuffledNumbers[i]] = sourceArrayShuffled[i];
 		}
 		
 		return reconstructedOriginalOrderArray;
