@@ -29,7 +29,9 @@ export default {
 	retryingInX: 'מנסה שוב בעוד { seconds } שניות',
 	disconnected: 'מנותק',
 	reconnectNow: 'התחבר עכשיו',
-	examMissing: 'מבחן לא קיים או לא פורסם'
+	examMissing: 'מבחן לא קיים או לא פורסם',
+	creationTime: 'זמן הקמה',
+	modificationTime: 'זמן עדכון'
 };
 
 

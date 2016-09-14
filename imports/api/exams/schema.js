@@ -58,6 +58,26 @@ export default new SimpleSchema({
 		optional: true
 	},
 	
+	createdAt: {
+		type: Date,
+		optional: true,
+		autoValue: function() {
+			if(this.isUpdate) {
+				this.unset();
+			} else {
+				return new Date();
+			}
+		}
+	},
+	
+	updatedAt: {
+		type: Date,
+		optional: true,
+		autoValue: function() {
+			return new Date();
+		}
+	},
+	
 	questions: {
 		type: [question],
 		minCount: 1
