@@ -4,11 +4,14 @@ import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
 import ExamInfo from '/imports/ui/components/ExamInfo';
 import ExamMissing from '/imports/ui/components/ExamMissing';
 import QuestionAsk from '/imports/ui/components/QuestionAsk';
+import shuffleArray from '/imports/client/shuffle-array';
 
 
 export default class TakeExam extends Component {
 	state = {
-		questionNumber: -1
+		questionNumber: -1,
+		shuffledExam: null,
+		unShuffleAnswers: null
 	};
 	
 	
@@ -35,27 +38,63 @@ export default class TakeExam extends Component {
 	};
 	
 	
-	handleFinishButtonClick = (answers) => {
+	handleFinishButtonClick = shuffledAnswers => {
+		const answers = this.unShuffleAnswers(shuffledAnswers);
+		
 		console.log('answers:', answers);
 	};
 	
 	
+	unShuffleAnswers = answers => {
+		const { unShuffleAnswers } = this.state;
+		
+		return unShuffleAnswers(answers);
+	};
+	
+	
+	updateShuffledExamInState = ({ ready, exam }) => {
+		if(ready && exam) {
+			const { name, questions } = exam;
+			
+			const { shuffledArray, unShuffle } = shuffleArray(questions);
+			
+			const shuffledExam = Object.assign({}, { name, questions: shuffledArray });
+			
+			this.setState({
+				shuffledExam,
+				unShuffleAnswers: unShuffle
+			});
+		}
+	};
+	
+	
+	componentWillMount() {
+		this.updateShuffledExamInState(this.props);
+	};
+	
+	
+	componentWillReceiveProps(nextProps) {
+		this.updateShuffledExamInState(nextProps);
+	};
+	
+	
 	render() {
-		const { ready, exam } = this.props;
-		const { questionNumber } = this.state;
+		const { ready } = this.props;
+		const { shuffledExam, questionNumber } = this.state;
 		
 		return (
 				<div>
 					{ ready ?
 							<div>
-								{ !!exam ?
+								{ shuffledExam ?
 										<div>
 											{ questionNumber === -1 ?
-													<ExamInfo exam={ exam } onStart={ this.handleNextButtonClick } />
+													<ExamInfo exam={ shuffledExam } onStart={ this.handleNextButtonClick } />
 													
 													:
 													
-													<QuestionAsk exam={ exam } questionNumber={ questionNumber } onNext={ this.handleNextButtonClick }
+													<QuestionAsk exam={ shuffledExam } questionNumber={ questionNumber }
+																 onNext={ this.handleNextButtonClick }
 																 onPrev={ this.handlePrevButtonClick } onFinish={ this.handleFinishButtonClick } />
 											}
 										</div>
