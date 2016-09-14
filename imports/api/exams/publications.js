@@ -10,6 +10,8 @@ Meteor.publish('exams', () => collection.find(
 				_id: 1,
 				name: 1,
 				published: 1,
+				createdAt: 1,
+				updatedAt: 1,
 				questions: 1
 			},
 			
