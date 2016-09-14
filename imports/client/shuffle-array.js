@@ -2,19 +2,21 @@ import arrayShuffle from 'lodash.shuffle';
 
 
 export default sourceArray => {
-	const arrayWithEmptyElements = new Array(sourceArray.length);
+	const length = sourceArray.length;
 	
-	const arrayWithOrderedNumbers = arrayWithEmptyElements.map((elem, index) => index);
+	const arrayWithOrderedNumbers = [];
+	
+	for(let i = 0; i < length; i++) {
+		arrayWithOrderedNumbers.push(i);
+	}
 	
 	const arrayWithShuffledNumbers = arrayShuffle(arrayWithOrderedNumbers);
 	
 	const shuffledArray = arrayWithShuffledNumbers.map(number => sourceArray[number]);
 	
 	
-	const unShuffle = (sourceArrayShuffled) => {
-		const targetArray = new Array(sourceArrayShuffled.length);
-
-		return targetArray.map((elem, index) => sourceArrayShuffled[arrayWithShuffledNumbers.indexOf(index)]);
+	const unShuffle = sourceArrayShuffled => {
+		return arrayWithShuffledNumbers.map(elem => sourceArrayShuffled[elem]);
 	};
 	
 	
