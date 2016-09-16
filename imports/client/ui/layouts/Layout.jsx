@@ -4,7 +4,7 @@ import SchoolIcon from 'material-ui/svg-icons/social/school';
 import { Link, IndexLink } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 
-import ConnectionStatusContainer from '/imports/ui/containers/ConnectionStatusContainer';
+import ConnectionStatusContainer from '/imports/client/ui/containers/ConnectionStatusContainer';
 
 
 const styles = {

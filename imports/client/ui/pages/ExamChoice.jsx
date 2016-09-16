@@ -3,7 +3,7 @@ import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowCol
 import { withRouter } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 
-import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
+import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
 
 
 const showCheckboxes = false;

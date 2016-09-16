@@ -8,10 +8,10 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import ExamsCollection from '/imports/api/exams/collection';
 import { insert as insertExam, update as updateExam } from '/imports/api/exams/methods';
 import simpleSchemaValidator from '/imports/client/validators/simple-schema-validator';
-import QuestionsEdit from '/imports/ui/components/QuestionsEdit';
-import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
-import ConfirmedFlatButton from '/imports/ui/components/ConfirmedFlatButton';
-import ConfirmationDialog from '/imports/ui/components/ConfirmationDialog';
+import QuestionsEdit from '/imports/client/ui/components/QuestionsEdit';
+import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
+import ConfirmedFlatButton from '/imports/client/ui/components/ConfirmedFlatButton';
+import ConfirmationDialog from '/imports/client/ui/components/ConfirmationDialog';
 
 
 class ExamEditForm extends Component {

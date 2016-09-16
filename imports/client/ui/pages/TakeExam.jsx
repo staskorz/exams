@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
-import ExamInfo from '/imports/ui/components/ExamInfo';
-import ExamMissing from '/imports/ui/components/ExamMissing';
-import QuestionAsk from '/imports/ui/components/QuestionAsk';
+import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
+import ExamInfo from '/imports/client/ui/components/ExamInfo';
+import ExamMissing from '/imports/client/ui/components/ExamMissing';
+import QuestionAsk from '/imports/client/ui/components/QuestionAsk';
 import shuffleArray from '/imports/client/shuffle-array';
 
 

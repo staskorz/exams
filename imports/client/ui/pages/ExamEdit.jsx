@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ExamEditContainer from '/imports/ui/containers/ExamEditContainer';
+import ExamEditContainer from '/imports/client/ui/containers/ExamEditContainer';
 
 
 export default ({ routeParams: { examId } }) => (

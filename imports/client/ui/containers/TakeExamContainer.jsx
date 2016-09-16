@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { getExamineeVersion } from '/imports/api/exams/methods';
-import TakeExam from '/imports/ui/pages/TakeExam';
+import TakeExam from '/imports/client/ui/pages/TakeExam';
 
 
 export default class TakeExamContainer extends Component {

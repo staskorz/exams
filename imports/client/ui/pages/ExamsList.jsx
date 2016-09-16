@@ -7,7 +7,7 @@ import CheckIcon from 'material-ui/svg-icons/navigation/check';
 import { withRouter } from 'react-router';
 import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl';
 
-import LoadingIndicator from '/imports/ui/components/LoadingIndicator';
+import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
 
 
 const showCheckboxes = false;

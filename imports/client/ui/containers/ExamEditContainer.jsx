@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { findOne as findOneExam } from '/imports/api/exams/methods';
-import ExamEditForm from '/imports/ui/components/ExamEditForm';
+import ExamEditForm from '/imports/client/ui/components/ExamEditForm';
 
 
 export default class EditExamContainer extends Component {
