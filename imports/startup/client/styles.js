@@ -1,1 +1,1 @@
-import '../../static/main.css';
+import '../../client/static/main.css';
