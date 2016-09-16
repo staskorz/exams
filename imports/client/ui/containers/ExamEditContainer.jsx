@@ -11,7 +11,7 @@ export default class EditExamContainer extends Component {
 	};
 	
 	
-	componentDidMount = () => {
+	componentDidMount() {
 		const { examId } = this.props;
 		
 		findOneExam.call({ examId }, (err, res) => {
