@@ -1,7 +1,7 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 
-import he from '/imports/translations/he';
+import he from '/imports/client/translations/he';
 
 
 export default ({ children }) => (
