@@ -49,7 +49,7 @@ class ExamInfo extends Component {
 		
 		return (
 				<div style={ this.style.mainContainer }>
-					<Paper style={ this.style.mainPaper } zDepth={ 5 }>
+					<Paper style={ this.style.mainPaper }>
 						<div>
 							<span style={ this.style.descriptionText }><FormattedMessage id='examName' />:</span>
 							<span style={ this.style.mainText }>{ name }</span>

@@ -163,7 +163,7 @@ class QuestionAsk extends Component {
 		
 		return (
 				<div style={ this.style.mainContainer }>
-					<Card zDepth={ 5 } style={ this.style.card }>
+					<Card style={ this.style.card }>
 						<CardTitle title={ name }
 								   subtitle={ <FormattedMessage id='questionNumberXofY'
 																values={{ number: questionNumber + 1, of: numOfQuestions }} /> } />
