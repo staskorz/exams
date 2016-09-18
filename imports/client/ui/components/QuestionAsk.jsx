@@ -21,7 +21,7 @@ class QuestionAsk extends Component {
 		},
 		
 		cardText: {
-			height: '250px'
+			minHeight: '250px'
 		},
 		
 		primaryLabel: {
