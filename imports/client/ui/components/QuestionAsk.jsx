@@ -187,7 +187,8 @@ class QuestionAsk extends Component {
 						</CardText>
 						
 						<CardActions>
-							<RaisedButton label={ <FormattedMessage id='previous' /> } onClick={ onPrev } disabled={ questionNumber === 0 } />
+							<RaisedButton label={ <FormattedMessage id='previous' /> } onClick={ onPrev } disabled={ questionNumber === 0 }
+										  style={ this.style.button } />
 							
 							{ questionNumber + 1 < numOfQuestions ?
 									<RaisedButton label={ <FormattedMessage id='next' /> } onClick={ onNext } primary={ true }
