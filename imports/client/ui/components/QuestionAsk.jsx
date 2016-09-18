@@ -70,7 +70,7 @@ class QuestionAsk extends Component {
 			display: 'table-cell',
 			verticalAlign: 'bottom',
 			position: 'relative',
-			paddingRight: '16px'
+			paddingLeft: '16px'
 		},
 		
 		answerCheckboxContainer: {
