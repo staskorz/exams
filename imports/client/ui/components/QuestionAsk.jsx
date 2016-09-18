@@ -20,6 +20,10 @@ class QuestionAsk extends Component {
 			padding: '16px'
 		},
 		
+		cardText: {
+			height: '250px'
+		},
+		
 		primaryLabel: {
 			fontSize: '16px',
 			fontWeight: 'normal',
@@ -164,7 +168,7 @@ class QuestionAsk extends Component {
 								   subtitle={ <FormattedMessage id='questionNumberXofY'
 																values={{ number: questionNumber + 1, of: numOfQuestions }} /> } />
 						
-						<CardText>
+						<CardText style={ this.style.cardText }>
 							<span style={ this.style.primaryText }>{ text }</span><br />
 							
 							<span style={ this.style.secondaryText }>{ multiple ?
