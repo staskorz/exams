@@ -24,7 +24,7 @@ const meteorProxy = httpProxyMiddleware({
 	target: 'http://localhost:3000/',
 	ws: true,
 	onProxyReq: (proxyReq, { connection: { user } }) => {
-		proxyReq.setHeader('x-connection-user', user);
+		proxyReq.setHeader('x-sspi-user', user);
 	}
 });
 
