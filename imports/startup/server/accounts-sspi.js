@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
-
+import { headers } from 'meteor/gadicohen:headers';
 
 // Inspired by https://meteorhacks.com/extending-meteor-accounts/
 Accounts.registerLoginHandler('sspi', ({ sspi }) => {
@@ -11,6 +11,8 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 		
 		return undefined;
 	}
+	
+	console.log('Headers:', headers);
 	
 	return null;
 	
