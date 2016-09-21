@@ -12,7 +12,7 @@ const nodeSSPI = new NodeSSPI();
 app.use((req, res, next) => {
 	nodeSSPI.authenticate(req, res, err => {
 		if(err) {
-			console.log('err:', err);
+			console.log('authentication error:', err);
 		}
 		
 		res.finished || next();
