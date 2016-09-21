@@ -2,6 +2,14 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { headers } from 'meteor/gadicohen:headers';
 
+
+Meteor.methods({
+	getSspiUser() {
+		return headers.get(this, 'x-sspi-user');
+	}
+});
+
+
 // Inspired by https://meteorhacks.com/extending-meteor-accounts/
 Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 	if(sspi) {
@@ -12,17 +20,9 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 		return undefined;
 	}
 	
-	if(headers && headers.list) {
-		const values = Object.values(headers.list);
-		
-		if(values.length === 1) {
-			if(values[0] && values[0]['x-sspi-user']) {
-				console.log('x-sspi-user:', values[0]['x-sspi-user']);
-			}
-		} else {
-			console.log('too many header objects');
-		}
-	}
+	const sspiUser = Meteor.call('getSspiUser');
+	
+	console.log('sspiUser:', sspiUser);
 	
 	return null;
 	
