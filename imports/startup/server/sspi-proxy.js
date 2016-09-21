@@ -1,8 +1,10 @@
+import { Meteor } from 'meteor/meteor';
 import NodeSSPI from 'node-sspi';
 import express from 'express';
 import httpProxyMiddleware from 'http-proxy-middleware';
 
-import { proxyPort } from '/imports/server/settings';
+
+const { proxyPort } = Meteor.settings.private;
 
 
 const app = express();
