@@ -2,6 +2,8 @@ import NodeSSPI from 'node-sspi';
 import express from 'express';
 import httpProxyMiddleware from 'http-proxy-middleware';
 
+import { proxyPort } from '/imports/server/settings';
+
 
 const app = express();
 
@@ -30,9 +32,6 @@ const meteorProxy = httpProxyMiddleware({
 
 
 app.use(meteorProxy);
-
-
-const proxyPort = 3091;
 
 
 app.listen(proxyPort, () => {
