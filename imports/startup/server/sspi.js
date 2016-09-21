@@ -1,5 +1,8 @@
 import NodeSSPI from 'node-sspi';
-import { WebApp } from 'meteor/webapp';
+import express from 'express';
+
+
+const app = express();
 
 
 const nodeSSPI = new NodeSSPI();
@@ -23,7 +26,7 @@ const nodeSSPI = new NodeSSPI();
 // });
 //
 
-WebApp.rawConnectHandlers.use((req, res, next) => {
+app.use((req, res, next) => {
 	console.log('attempting authentication');
 	
 	nodeSSPI.authenticate(req, res, err => {
@@ -40,7 +43,7 @@ WebApp.rawConnectHandlers.use((req, res, next) => {
 });
 
 
-WebApp.rawConnectHandlers.use((req, res, next) => {
+app.use((req, res, next) => {
 	console.log('authenticated user:', req.connection.user);
 	
 	next();
@@ -83,11 +86,11 @@ WebApp.rawConnectHandlers.use((req, res, next) => {
 // 		res.end();
 // 	});
 // });
-//
-//
-// const port = 3091;
-//
-//
-// app.listen(port, () => {
-// 	console.log('Express server listening on port %d', port);
-// });
+
+
+const port = 3091;
+
+
+app.listen(port, () => {
+	console.log('Express server listening on port %d', port);
+});
