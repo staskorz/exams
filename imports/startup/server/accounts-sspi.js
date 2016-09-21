@@ -4,16 +4,22 @@ import { headers } from 'meteor/gadicohen:headers';
 import ActiveDirectory from 'activedirectory';
 
 
-Meteor.methods({
-	getSspiUser() {
-		return headers.get(this, 'x-sspi-user');
-	}
-});
-
-
 const adConfig = Meteor.settings.private.activeDirectory;
 
 const activeDirectory = new ActiveDirectory(adConfig);
+
+
+Meteor.methods({
+	getSspiUser() {
+		return headers.get(this, 'x-sspi-user');
+	},
+	
+	isUserMemberOf({ samAccountName, group }) {
+		let isUserMemberOfAsyncToSync = Meteor.wrapAsync(activeDirectory.isUserMemberOf, activeDirectory);
+		
+		return isUserMemberOfAsyncToSync(samAccountName, group);
+	}
+});
 
 
 // Inspired by https://meteorhacks.com/extending-meteor-accounts/
@@ -28,13 +34,12 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 	
 	const samAccountName = username.split('\\')[1];
 	
-	activeDirectory.isUserMemberOf(samAccountName, 'ad-group-001', (err, isMember) => {
-		if(err) {
-			console.log('Active Directory access error:', err);
-		}
-		
-		console.log('username:', username, 'Member of group:', 'isMember:', isMember);
+	const isMember = Meteor.call('isUserMemberOf', {
+		samAccountName,
+		group: 'ad-group-001'
 	});
+	
+	console.log('username:', username, 'isMember:', isMember);
 	
 	const user = Meteor.users.findOne({ username });
 	
