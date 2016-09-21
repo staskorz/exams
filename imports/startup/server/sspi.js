@@ -1,5 +1,6 @@
 import NodeSSPI from 'node-sspi';
 import express from 'express';
+import httpProxyMiddleware from 'http-proxy-middleware';
 
 
 const app = express();
@@ -86,6 +87,15 @@ app.use((req, res, next) => {
 // 		res.end();
 // 	});
 // });
+
+
+const meteorProxy = httpProxyMiddleware({
+	target: 'http://localhost:3000/',
+	ws: true
+});
+
+
+app.use(meteorProxy);
 
 
 const proxyPort = 3091;
