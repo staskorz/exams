@@ -1,4 +1,5 @@
 import '/imports/startup/server/sspi';
+import '/imports/startup/server/accounts-sspi';
 import '/imports/startup/server/ie-compatibility';
 import '/imports/startup/server/api';
 
