@@ -16,7 +16,7 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 		return undefined;
 	}
 	
-	const username = Meteor.call('getSspiUser');
+	const username = Meteor.call('getSspiUser').toLowerCase();
 	
 	console.log('username:', username);
 	
