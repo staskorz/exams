@@ -28,26 +28,13 @@ const nodeSSPI = new NodeSSPI();
 //
 
 app.use((req, res, next) => {
-	console.log('attempting authentication');
-	
 	nodeSSPI.authenticate(req, res, err => {
 		if(err) {
 			console.log('err:', err);
 		}
 		
-		if(res.finished) {
-			console.log('session finished');
-		}
-		
 		res.finished || next();
 	});
-});
-
-
-app.use((req, res, next) => {
-	console.log('authenticated user:', req.connection.user);
-	
-	next();
 });
 
 
