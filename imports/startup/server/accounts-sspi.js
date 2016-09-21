@@ -12,7 +12,19 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 		return undefined;
 	}
 	
-	console.log('Headers:', headers);
+	if(headers && headers.list) {
+		const values = Object.values(headers.list);
+		
+		console.log('values:', values);
+		
+		if(values.length === 1) {
+			if(values[0] && values[0]['x-sspi-user']) {
+				console.log('x-sspi-user:', values[0]['x-sspi-user']);
+			}
+		} else {
+			console.log('too many header objects');
+		}
+	}
 	
 	return null;
 	
