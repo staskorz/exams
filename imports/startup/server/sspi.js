@@ -88,9 +88,9 @@ app.use((req, res, next) => {
 // });
 
 
-const port = 3091;
+const proxyPort = 3091;
 
 
-app.listen(port, () => {
-	console.log('Express server listening on port %d', port);
+app.listen(proxyPort, () => {
+	console.log('Express server listening on port %d', proxyPort);
 });
