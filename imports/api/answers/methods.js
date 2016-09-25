@@ -1,12 +1,12 @@
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 
-import collection from './collection';
+import answersCollection from './collection';
 
 
 export const insert = new ValidatedMethod({
 	name: 'answers.insert',
-	validate: collection.simpleSchema().validator(),
+	validate: answersCollection.simpleSchema().validator(),
 	run(record) {
-		return collection.insert(record);
+		return answersCollection.insert(record);
 	}
 });
