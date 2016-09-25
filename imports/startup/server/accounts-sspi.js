@@ -53,7 +53,7 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 	
 	const role = isMember ? 'operator' : 'user';
 	
-	const user = Meteor.users.findOne({ username });
+	const user = Meteor.users.findOne({ username }, { fields: { role: 1 } });
 	
 	let userId;
 	
