@@ -44,5 +44,11 @@ export default new SimpleSchema({
 	questions: {
 		type: [question],
 		minCount: 1
+	},
+	
+	mark: {
+		type: Number,
+		min: 0,
+		max: 100
 	}
 });
