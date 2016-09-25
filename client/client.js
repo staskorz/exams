@@ -1,3 +1,4 @@
+import '/imports/startup/client/api';
 import '/imports/startup/client/authenticate';
 import '/imports/startup/client/simple-schema-messages-translation';
 import '/imports/startup/client/material-ui-touch-workaround';
