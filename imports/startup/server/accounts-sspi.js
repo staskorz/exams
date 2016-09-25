@@ -51,6 +51,8 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 	
 	console.log('username:', username, 'isMember:', isMember);
 	
+	const role = isMember ? 'operator' : 'user';
+	
 	const user = Meteor.users.findOne({ username });
 	
 	let userId;
@@ -58,7 +60,7 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 	if(user) {
 		userId = user._id;
 	} else {
-		userId = Meteor.users.insert({ username });
+		userId = Meteor.users.insert({ username, role });
 	}
 	
 	console.log('userId:', userId);
