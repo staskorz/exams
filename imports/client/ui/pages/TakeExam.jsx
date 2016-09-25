@@ -96,36 +96,25 @@ export default class TakeExam extends Component {
 	
 	render() {
 		const { ready } = this.props;
+		
+		if(!ready) {
+			return <LoadingIndicator />;
+		}
+		
 		const { shuffledExam, questionNumber } = this.state;
 		
+		if(!shuffledExam) {
+			return <ExamMissing />;
+		}
+		
+		if(questionNumber === -1) {
+			return <ExamInfo exam={ shuffledExam } onStart={ this.handleNextButtonClick } />;
+		}
+		
 		return (
-				<div>
-					{ ready ?
-							<div>
-								{ shuffledExam ?
-										<div>
-											{ questionNumber === -1 ?
-													<ExamInfo exam={ shuffledExam } onStart={ this.handleNextButtonClick } />
-													
-													:
-													
-													<QuestionAsk exam={ shuffledExam } questionNumber={ questionNumber }
-																 onNext={ this.handleNextButtonClick }
-																 onPrev={ this.handlePrevButtonClick } onFinish={ this.handleFinishButtonClick } />
-											}
-										</div>
-										
-										:
-										
-										<ExamMissing />
-								}
-							</div>
-							
-							:
-							
-							<LoadingIndicator />
-					}
-				</div>
+				<QuestionAsk exam={ shuffledExam } questionNumber={ questionNumber }
+							 onNext={ this.handleNextButtonClick }
+							 onPrev={ this.handlePrevButtonClick } onFinish={ this.handleFinishButtonClick } />
 		);
 	};
 }
