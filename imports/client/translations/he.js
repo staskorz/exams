@@ -4,7 +4,7 @@ export default {
 	createExam: 'צור מבחן חדש',
 	listExams: 'רשימת מבחנים',
 	chooseExam: 'בחר מבחן',
-	examName: 'שם מבחן',
+	examName: 'שם המבחן',
 	published: 'פורסם',
 	actions: 'פעולות',
 	takeExam: 'גש למבחן',
