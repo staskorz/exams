@@ -4,6 +4,7 @@ import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
 import ExamInfo from '/imports/client/ui/components/ExamInfo';
 import ExamMissing from '/imports/client/ui/components/ExamMissing';
 import QuestionAsk from '/imports/client/ui/components/QuestionAsk';
+import ExamMark from '/imports/client/ui/components/ExamMark';
 import shuffleArray from '/imports/client/shuffle-array';
 import { insert as insertAnswers } from '/imports/api/answers/methods';
 
@@ -12,7 +13,8 @@ export default class TakeExam extends Component {
 	state = {
 		questionNumber: -1,
 		shuffledExam: null,
-		unShuffleAnswers: null
+		unShuffleAnswers: null,
+		examMark: -1
 	};
 	
 	
@@ -55,7 +57,9 @@ export default class TakeExam extends Component {
 			if(error) {
 				console.log('insertAnswers error:', error);
 			} else {
-				console.log('insertAnswers result:', result);
+				this.setState({
+					examMark: result
+				});
 			}
 		});
 	};
@@ -101,7 +105,7 @@ export default class TakeExam extends Component {
 			return <LoadingIndicator />;
 		}
 		
-		const { shuffledExam, questionNumber } = this.state;
+		const { shuffledExam, questionNumber, examMark } = this.state;
 		
 		if(!shuffledExam) {
 			return <ExamMissing />;
@@ -111,10 +115,14 @@ export default class TakeExam extends Component {
 			return <ExamInfo exam={ shuffledExam } onStart={ this.handleNextButtonClick } />;
 		}
 		
+		if(examMark !== -1) {
+			return <ExamMark exam={ shuffledExam } examMark={ examMark } />;
+		}
+		
 		return (
 				<QuestionAsk exam={ shuffledExam } questionNumber={ questionNumber }
 							 onNext={ this.handleNextButtonClick }
 							 onPrev={ this.handlePrevButtonClick } onFinish={ this.handleFinishButtonClick } />
 		);
 	};
-}
+};

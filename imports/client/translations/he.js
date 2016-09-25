@@ -31,7 +31,9 @@ export default {
 	reconnectNow: 'התחבר עכשיו',
 	examMissing: 'מבחן לא קיים או לא פורסם',
 	creationTime: 'זמן הקמה',
-	modificationTime: 'זמן עדכון'
+	modificationTime: 'זמן עדכון',
+	exit: 'יציאה',
+	yourMark: 'ציונך'
 };
 
 
