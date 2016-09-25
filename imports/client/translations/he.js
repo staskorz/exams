@@ -33,7 +33,8 @@ export default {
 	creationTime: 'זמן הקמה',
 	modificationTime: 'זמן עדכון',
 	exit: 'יציאה',
-	yourMark: 'ציונך'
+	yourMark: 'ציונך',
+	examMarkError: 'אירעה שגיאה בעת שמירת התשובות או חישוב הציון'
 };
 
 

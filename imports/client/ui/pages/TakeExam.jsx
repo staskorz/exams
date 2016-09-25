@@ -5,6 +5,7 @@ import ExamInfo from '/imports/client/ui/components/ExamInfo';
 import ExamMissing from '/imports/client/ui/components/ExamMissing';
 import QuestionAsk from '/imports/client/ui/components/QuestionAsk';
 import ExamMark from '/imports/client/ui/components/ExamMark';
+import ExamMarkError from '/imports/client/ui/components/ExamMarkError';
 import shuffleArray from '/imports/client/shuffle-array';
 import { insert as insertAnswers } from '/imports/api/answers/methods';
 
@@ -14,7 +15,8 @@ export default class TakeExam extends Component {
 		questionNumber: -1,
 		shuffledExam: null,
 		unShuffleAnswers: null,
-		examMark: -1
+		examMark: -1,
+		examMarkError: false
 	};
 	
 	
@@ -56,6 +58,10 @@ export default class TakeExam extends Component {
 		insertAnswers.call(answersObject, (error, result) => {
 			if(error) {
 				console.log('insertAnswers error:', error);
+				
+				this.setState({
+					examMarkError: true
+				});
 			} else {
 				this.setState({
 					examMark: result
@@ -105,7 +111,7 @@ export default class TakeExam extends Component {
 			return <LoadingIndicator />;
 		}
 		
-		const { shuffledExam, questionNumber, examMark } = this.state;
+		const { shuffledExam, questionNumber, examMark, examMarkError } = this.state;
 		
 		if(!shuffledExam) {
 			return <ExamMissing />;
@@ -113,6 +119,10 @@ export default class TakeExam extends Component {
 		
 		if(questionNumber === -1) {
 			return <ExamInfo exam={ shuffledExam } onStart={ this.handleNextButtonClick } />;
+		}
+		
+		if(examMarkError) {
+			return <ExamMarkError />;
 		}
 		
 		if(examMark !== -1) {
