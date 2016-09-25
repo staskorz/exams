@@ -39,7 +39,7 @@ class ExamInfo extends Component {
 						</div>
 						
 						<div style={ this.style.actions }>
-							<RaisedButton label={ <FormattedMessage id='cancel' /> } onClick={ () => router.goBack() } />
+							<RaisedButton label={ <FormattedMessage id='exit' /> } primary={ true } onClick={ () => router.goBack() } />
 						</div>
 					</Paper>
 				</div>
