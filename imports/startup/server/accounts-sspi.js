@@ -5,6 +5,7 @@ import ActiveDirectory from 'activedirectory';
 
 
 const adConfig = Meteor.settings.private.activeDirectory;
+const operatorsAdGroup = Meteor.settings.private.operatorsAdGroup;
 
 const activeDirectory = new ActiveDirectory(adConfig);
 
@@ -45,7 +46,7 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 	
 	const isMember = Meteor.call('isUserMemberOf', {
 		samAccountName,
-		group: 'ad-group-001'
+		group: operatorsAdGroup
 	});
 	
 	console.log('username:', username, 'isMember:', isMember);

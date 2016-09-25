@@ -6,6 +6,7 @@
 	  "baseDN": "dc=domain,dc=com",
 	  "username": "username@domain.com",
 	  "password": "password"
-	}
+	},
+	"operatorsAdGroup": "AD-Group"
   }
 }
