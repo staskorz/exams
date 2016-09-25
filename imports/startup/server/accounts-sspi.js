@@ -28,7 +28,16 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 		return undefined;
 	}
 	
-	const username = Meteor.call('getSspiUser').toLowerCase();
+	const rawUsername = Meteor.call('getSspiUser');
+	
+	if(!rawUsername) {
+		return {
+			type: 'sspi',
+			error: new Meteor.Error('sspi-could-not-determine-user', 'Could not determine logged-in user')
+		};
+	}
+	
+	const username = rawUsername.toLowerCase();
 	
 	console.log('username:', username);
 	
