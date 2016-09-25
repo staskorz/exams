@@ -59,6 +59,10 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 	
 	if(user) {
 		userId = user._id;
+		
+		if(role !== user.role) {
+			Meteor.users.update({ _id: userId }, { $set: { role } });
+		}
 	} else {
 		userId = Meteor.users.insert({ username, role });
 	}
