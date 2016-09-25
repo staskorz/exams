@@ -16,6 +16,7 @@ export default class TakeExam extends Component {
 		shuffledExam: null,
 		unShuffleAnswers: null,
 		examMark: -1,
+		examMarkCalculating: false,
 		examMarkError: false
 	};
 	
@@ -55,15 +56,21 @@ export default class TakeExam extends Component {
 		
 		console.log('answersObject:', answersObject);
 		
+		this.setState({
+			examMarkCalculating: true
+		});
+		
 		insertAnswers.call(answersObject, (error, result) => {
 			if(error) {
 				console.log('insertAnswers error:', error);
 				
 				this.setState({
+					examMarkCalculating: false,
 					examMarkError: true
 				});
 			} else {
 				this.setState({
+					examMarkCalculating: false,
 					examMark: result
 				});
 			}
@@ -107,11 +114,11 @@ export default class TakeExam extends Component {
 	render() {
 		const { ready } = this.props;
 		
-		if(!ready) {
+		const { shuffledExam, questionNumber, examMark, examMarkCalculating, examMarkError } = this.state;
+		
+		if(examMarkCalculating || !ready) {
 			return <LoadingIndicator />;
 		}
-		
-		const { shuffledExam, questionNumber, examMark, examMarkError } = this.state;
 		
 		if(!shuffledExam) {
 			return <ExamMissing />;
