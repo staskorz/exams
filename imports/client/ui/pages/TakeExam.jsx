@@ -5,6 +5,7 @@ import ExamInfo from '/imports/client/ui/components/ExamInfo';
 import ExamMissing from '/imports/client/ui/components/ExamMissing';
 import QuestionAsk from '/imports/client/ui/components/QuestionAsk';
 import shuffleArray from '/imports/client/shuffle-array';
+import { insert as insertAnswers } from '/imports/api/answers/methods';
 
 
 export default class TakeExam extends Component {
@@ -39,9 +40,24 @@ export default class TakeExam extends Component {
 	
 	
 	handleFinishButtonClick = shuffledAnswers => {
+		const { exam: { _id: examId } } = this.props;
+		
 		const answers = this.unShuffleAnswers(shuffledAnswers);
 		
-		console.log('answers:', answers);
+		const answersObject = {
+			examId,
+			questions: answers.map(answer => ({ answers: answer }))
+		};
+		
+		console.log('answersObject:', answersObject);
+		
+		insertAnswers.call(answersObject, (error, result) => {
+			if(error) {
+				console.log('insertAnswers error:', error);
+			} else {
+				console.log('insertAnswers result:', result);
+			}
+		});
 	};
 	
 	
