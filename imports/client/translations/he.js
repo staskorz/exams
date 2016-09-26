@@ -12,7 +12,7 @@ export default {
 	start: 'התחל',
 	cancel: 'בטל',
 	questionNumberXofY: 'שאלה מספר { number } מתוך { of }',
-	multipleCorrectAnswersAvailable: 'ישנה יותר מתשובה נכונה אחת',
+	multipleCorrectAnswersAvailable: '* ישנה יותר מתשובה נכונה אחת',
 	previous: 'חזור',
 	next: 'הבא',
 	finish: 'סיים',
