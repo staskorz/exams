@@ -1,5 +1,8 @@
+import isAnswerCorrect from './is-answer-correct';
+
+
 export default (questions, examineeAnswers) => questions.reduce((acc, { weight, answers }, questionIndex) => {
-	const isCorrect = answers.every(({ correct }, answerIndex) => !!correct === examineeAnswers[questionIndex].answers[answerIndex]);
+	const isCorrect = isAnswerCorrect(answers, examineeAnswers[questionIndex].answers);
 	
 	if(isCorrect) {
 		return acc + weight;
