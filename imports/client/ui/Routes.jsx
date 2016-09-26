@@ -8,12 +8,13 @@ import ExamEdit from './pages/ExamEdit';
 import ExamsListContainer from './containers/ExamsListContainer';
 import ExamChoiceContainer from './containers/ExamChoiceContainer';
 import TakeExamContainer from './containers/TakeExamContainer';
+import withCurrentUser from './containers/withCurrentUser';
 import NotFound from './pages/NotFound';
 
 
 export default () => (
 		<Router history={ browserHistory }>
-			<Route path='/' component={ Layout }>
+			<Route path='/' component={ withCurrentUser(Layout) }>
 				<IndexRoute component={ Home } />
 				<Route path='create-exam' component={ ExamCreate } />
 				<Route path='edit-exam/:examId' component={ ExamEdit } />

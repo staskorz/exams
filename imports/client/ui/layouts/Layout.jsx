@@ -37,11 +37,16 @@ const styles = {
 	
 	placeholder: {
 		height: '64px'
+	},
+	
+	loggedInUser: {
+		color: 'white',
+		marginRight: '16px'
 	}
 };
 
 
-export default ({ children }) => (
+export default ({ currentUser, children }) => (
 	<div>
 		<AppBar
 			title={ <Link to='/' style={ styles.title }>
@@ -54,6 +59,7 @@ export default ({ children }) => (
 				<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='createExam' /></Link>
 				<Link to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='listExams' /></Link>
 				<Link to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='chooseExam' /></Link>
+				<span style={ styles.loggedInUser }>{ currentUser ? currentUser.username : '' }</span>
 			</span> }
 			style={ styles.appBar }
 		/>
