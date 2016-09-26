@@ -23,12 +23,15 @@ export const insert = new ValidatedMethod({
 	run(record) {
 		if(Meteor.isServer) {
 			import calculateExamMark from '/imports/server/exam-solution-checking/calculate-exam-mark';
+			import getExamAnswersCorrectness from '/imports/server/exam-solution-checking/get-exam-answers-correctness';
 			import fetchExam from '/imports/server/exam-solution-checking/fetch-exam';
 						
 			const exam = fetchExam(record.examId);
 			
 			if(exam) {
-				const mark = calculateExamMark(exam.questions, record.questions);
+				const examAnswersCorrectness = getExamAnswersCorrectness(exam.questions, record.questions);
+				
+				const mark = calculateExamMark(exam.questions, examAnswersCorrectness);
 				
 				const answersWithMark = {
 					...record,
