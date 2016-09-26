@@ -52,7 +52,7 @@ class QuestionAsk extends Component {
 		
 		secondaryText: {
 			fontSize: '16px',
-			fontWeight: 'bold',
+			fontWeight: 'normal',
 			lineHeight: '36px',
 			fontFamily: 'Roboto, sans-serif',
 			color: cyan500,
