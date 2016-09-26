@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardText, CardActions, RaisedButton, Checkbox, Badge } from 'material-ui';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import { cyan500 } from 'material-ui/styles/colors';
 
 import ConfirmedRaisedButton from './ConfirmedRaisedButton';
 
@@ -51,10 +52,10 @@ class QuestionAsk extends Component {
 		
 		secondaryText: {
 			fontSize: '16px',
-			fontWeight: 'normal',
+			fontWeight: 'bold',
 			lineHeight: '36px',
 			fontFamily: 'Roboto, sans-serif',
-			color: 'rgba(0, 0, 0, 0.870588)',
+			color: cyan500,
 			marginRight: '16px'
 		},
 		
