@@ -1,7 +1,11 @@
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 
-export const question = new SimpleSchema({
+const question = new SimpleSchema({
+	correct: {
+		type: Boolean
+	},
+	
 	answers: {
 		type: [Boolean],
 		minCount: 2,
