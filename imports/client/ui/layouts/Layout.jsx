@@ -28,7 +28,7 @@ const styles = {
 		textDecoration: 'none',
 		fontSize: '18px',
 		lineHeight: '48px',
-		marginRight: '16px',
+		marginRight: '24px',
 	},
 	
 	linkActive: {
@@ -42,7 +42,7 @@ const styles = {
 	loggedInUser: {
 		color: 'white',
 		lineHeight: '48px',
-		marginRight: '16px'
+		marginRight: '24px'
 	}
 };
 
