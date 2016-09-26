@@ -162,7 +162,7 @@ Inject = {
   }
 };
 
+Inject.rawModHtml('injectObjects', Inject._injectObjects.bind(Inject));
 Inject.rawModHtml('injectHeads', Inject._injectHeads.bind(Inject));
 Inject.rawModHtml('injectMeta', Inject._injectMeta.bind(Inject));
 Inject.rawModHtml('injectBodies', Inject._injectBodies.bind(Inject));
-Inject.rawModHtml('injectObjects', Inject._injectObjects.bind(Inject));
