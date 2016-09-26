@@ -41,33 +41,66 @@ const styles = {
 	
 	loggedInUser: {
 		color: 'white',
+		lineHeight: '48px',
 		marginRight: '16px'
 	}
 };
 
 
-export default ({ currentUser, children }) => (
-	<div>
-		<AppBar
-			title={ <Link to='/' style={ styles.title }>
-				<SchoolIcon color='white' style={ styles.titleIcon } /><FormattedMessage id='exams' />
-			</Link> }
-			showMenuIconButton={ false }
-			iconElementRight={ <span>
-				<ConnectionStatusContainer />
-				<IndexLink to='/' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='home' /></IndexLink>
-				<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='createExam' /></Link>
-				<Link to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='listExams' /></Link>
-				<Link to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='chooseExam' /></Link>
-				<span style={ styles.loggedInUser }>{ currentUser ? currentUser.username : '' }</span>
-			</span> }
-			style={ styles.appBar }
-		/>
+export default ({ currentUser, children }) => {
+	let username;
+	let role;
+	
+	if(currentUser && currentUser.username) {
+		username = currentUser.username;
+	} else {
+		username = '';
+	}
+	
+	if(currentUser && currentUser.role) {
+		role = currentUser.role;
+	}
+	
+	let title;
+	let menuItems;
+	
+	if(role === 'operator') {
+		title = <Link to='/' style={ styles.title }>
+			<SchoolIcon color='white' style={ styles.titleIcon } /><FormattedMessage id='exams' />
+		</Link>;
 		
-		<div style={ styles.placeholder }>
-			
-		</div>
+		menuItems = <span>
+			<IndexLink to='/' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='home' /></IndexLink>
+			<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='createExam' /></Link>
+			<Link to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='listExams' /></Link>
+			<Link to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='chooseExam' /></Link>
+		</span>;
+	} else {
+		title = <span style={ styles.title }><SchoolIcon color='white' style={ styles.titleIcon } /><FormattedMessage id='exams' /></span>;
 		
-		{ children }
-	</div>
-);
+		menuItems = '';
+	}
+	
+	return (
+			<div>
+				<AppBar style={ styles.appBar }
+						title={ title }
+						showMenuIconButton={ false }
+				
+						iconElementRight={
+							<span>
+								<ConnectionStatusContainer />
+						
+								{ menuItems }
+						
+								<span style={ styles.loggedInUser }>{ username }</span>
+							</span>
+						}
+				/>
+				
+				<div style={ styles.placeholder }></div>
+				
+				{ children }
+			</div>
+	)
+};
