@@ -22,8 +22,8 @@ export const insert = new ValidatedMethod({
 	validate: answersInsertSchema.validator(),
 	run(record) {
 		if(Meteor.isServer) {
-			import calculateExamMark from '/imports/server/calculate-exam-mark';
-			import fetchExam from '/imports/server/fetch-exam';
+			import calculateExamMark from '/imports/server/exam-solution-checking/calculate-exam-mark';
+			import fetchExam from '/imports/server/exam-solution-checking/fetch-exam';
 						
 			const exam = fetchExam(record.examId);
 			
