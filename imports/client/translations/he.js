@@ -34,7 +34,10 @@ export default {
 	modificationTime: 'זמן עדכון',
 	exit: 'יציאה',
 	yourMark: 'ציונך',
-	examMarkError: 'אירעה שגיאה בעת שמירת התשובות או חישוב הציון'
+	examMarkError: 'אירעה שגיאה בעת שמירת התשובות או חישוב הציון',
+	username: 'שם משתמש',
+	date: 'תאריך',
+	mark: 'ציון'
 };
 
 
