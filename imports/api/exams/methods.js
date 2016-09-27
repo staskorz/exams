@@ -9,7 +9,7 @@ export const insert = new ValidatedMethod({
 	validate: collection.simpleSchema().validator(),
 	run(record) {
 		if(getUserRole(this.userId) !== 'operator') {
-			throw new Meteor.Error('exams.notOperator', 'Available only for operators.');
+			throw new Meteor.Error('exams.insert.notOperator', 'Available only for operators.');
 		}
 		
 		return collection.insert(record);
@@ -22,7 +22,7 @@ export const update = new ValidatedMethod({
 	validate: collection.simpleSchema().validator(),
 	run(record) {
 		if(getUserRole(this.userId) !== 'operator') {
-			throw new Meteor.Error('exams.notOperator', 'Available only for operators.');
+			throw new Meteor.Error('exams.update.notOperator', 'Available only for operators.');
 		}
 		
 		const { _id, ...rest } = record;
@@ -43,7 +43,7 @@ export const findOne = new ValidatedMethod({
 	validate: examsFindOneSchema.validator(),
 	run({ examId }) {
 		if(getUserRole(this.userId) !== 'operator') {
-			throw new Meteor.Error('exams.notOperator', 'Available only for operators.');
+			throw new Meteor.Error('exams.findOne.notOperator', 'Available only for operators.');
 		}
 		
 		return collection.findOne(examId, {
