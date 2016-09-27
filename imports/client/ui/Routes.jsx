@@ -7,7 +7,7 @@ import ExamCreate from './pages/ExamCreate';
 import ExamEdit from './pages/ExamEdit';
 import ExamsListContainer from './containers/ExamsListContainer';
 import ExamChoiceContainer from './containers/ExamChoiceContainer';
-import ExamResults from './pages/ExamResults';
+import ExamResultsContainer from './containers/ExamResultsContainer';
 import TakeExamContainer from './containers/TakeExamContainer';
 import withCurrentUser from './containers/withCurrentUser';
 import NotFound from './pages/NotFound';
@@ -21,7 +21,7 @@ export default () => (
 				<Route path='edit-exam/:examId' component={ ExamEdit } />
 				<Route path='list-exams' component={ ExamsListContainer } />
 				<Route path='exam-choice' component={ ExamChoiceContainer } />
-				<Route path='exam-results/:examId' component={ ExamResults } />
+				<Route path='exam-results/:examId' component={ ExamResultsContainer } />
 				<Route path='take-exam/:examId' component={ TakeExamContainer } />
 				<Route path='*' component={ NotFound } />
 			</Route>
