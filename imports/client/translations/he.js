@@ -8,7 +8,7 @@ export default {
 	published: 'פורסם',
 	actions: 'פעולות',
 	takeExam: 'גש למבחן',
-	numberOfQuestions: 'משפר שאלות',
+	numberOfQuestions: 'מספר שאלות',
 	start: 'התחל',
 	cancel: 'בטל',
 	questionNumberXofY: 'שאלה מספר { number } מתוך { of }',
