@@ -28,10 +28,10 @@ export default class ExamResultsContainer extends Component {
 	
 	
 	render() {
-		const { ready, exam } = this.state;
+		const { ready, results } = this.state;
 		
 		return (
-				<ExamResults ready={ ready } exam={ exam } />
+				<ExamResults ready={ ready } examResults={ results } />
 		);
 	};
 };
