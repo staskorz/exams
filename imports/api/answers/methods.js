@@ -101,8 +101,6 @@ export const getExamResults = new ValidatedMethod({
 			return [];
 		}
 		
-		const allUsers = getAllUsersObject();
-		
 		const allExamResultsLength = allExamResults.length;
 		
 		const examResults = [];
@@ -112,6 +110,8 @@ export const getExamResults = new ValidatedMethod({
 				examResults.push(allExamResults[i]);
 			}
 		}
+		
+		const allUsers = getAllUsersObject();
 		
 		const transformedExamResults = examResults.map(({ examineeUserId, ...rest }) => ({
 			username: examineeUserId && allUsers[examineeUserId] ? allUsers[examineeUserId] : '?',
