@@ -25,17 +25,21 @@ Meteor.publish('exams', function() {
 });
 
 
-Meteor.publish('exams.published', () => collection.find(
-		{
-			published: true
-		}, {
-			fields: {
-				_id: 1,
-				name: 1
-			},
-			
-			sort: {
-				name: 1
-			}
-		})
-);
+Meteor.publish('exams.published', function() {
+	if(getUserRole(this.userId) !== 'operator') {
+		throw new Meteor.Error('exams.published.notOperator', 'Available only for operators.');
+	}
+	
+	return collection.find({
+		published: true
+	}, {
+		fields: {
+			_id: 1,
+			name: 1
+		},
+		
+		sort: {
+			name: 1
+		}
+	});
+});
