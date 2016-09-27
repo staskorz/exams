@@ -80,6 +80,10 @@ export const getExamResults = new ValidatedMethod({
 	name: 'answers.getExamResults',
 	validate: getExamResultsSchema.validator(),
 	run({ examId }) {
+		if(Meteor.isClient) {
+			return [];
+		}
+		
 		if(getUserRole(this.userId) !== 'operator') {
 			throw new Meteor.Error('answers.getExamResults.notOperator', 'Available only for operators.');
 		}
