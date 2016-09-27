@@ -3,6 +3,8 @@ import { ValidatedMethod } from 'meteor/mdg:validated-method';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 import answersCollection from './collection';
+import getUserRole from '/imports/api/utils/get-user-role';
+import getAllUsersObject from '/imports/api/utils/get-all-users-object';
 
 
 const questionSchema = new SimpleSchema({
@@ -63,5 +65,69 @@ export const insert = new ValidatedMethod({
 		} else {
 			return '?';
 		}
+	}
+});
+
+
+const getExamResultsSchema = new SimpleSchema({
+	examId: {
+		type: SimpleSchema.RegEx.Id
+	}
+});
+
+
+export const getExamResults = new ValidatedMethod({
+	name: 'answers.getExamResults',
+	validate: getExamResultsSchema.validator(),
+	run({ examId }) {
+		if(getUserRole(this.userId) !== 'operator') {
+			throw new Meteor.Error('answers.getExamResults.notOperator', 'Available only for operators.');
+		}
+		
+		const allExamResults = answersCollection.find({ examId }, {
+			fields: {
+				examineeUserId: 1,
+				examTimestamp: 1,
+				mark: 1
+			},
+			
+			sort: {
+				examineeUserId: 1,
+				examTimestamp: 1
+			}
+		});
+		
+		if(!allExamResults) {
+			return [];
+		}
+		
+		const allUsers = getAllUsersObject();
+		
+		const allExamResultsLength = allExamResults.length;
+		
+		const examResults = [];
+		
+		for(let i = 0; i < allExamResultsLength; i++) {
+			if(!allExamResults[i + 1] || allExamResults[i].examineeUserId !== allExamResults[i + 1].examineeUserId) {
+				examResults.push(allExamResults[i]);
+			}
+		}
+		
+		const transformedExamResults = examResults.map(({ examineeUserId, ...rest }) => ({
+			username: examineeUserId && allUsers[examineeUserId] ? allUsers[examineeUserId] : '?',
+			...rest
+		}));
+		
+		const transformedExamResultsSorted = transformedExamResults.sort(({ username: a }, { username: b }) => {
+			if (a < b) {
+				return -1;
+			} else if (a > b) {
+				return 1;
+			} else {
+				return 0;
+			}
+		});
+		
+		return transformedExamResultsSorted;
 	}
 });
