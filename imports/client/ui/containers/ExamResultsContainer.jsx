@@ -7,12 +7,12 @@ import ExamResults from '/imports/client/ui/pages/ExamResults';
 export default class ExamResultsContainer extends Component {
 	state = {
 		ready: false,
-		exam: {}
+		results: []
 	};
 	
 	
-	componentDidMount() {
-		const { routeParams: { examId } } = this.props;
+	updateState = props => {
+		const { routeParams: { examId } } = props;
 		
 		getExamResults.call({ examId }, (err, results) => {
 			if(err) {
@@ -24,6 +24,16 @@ export default class ExamResultsContainer extends Component {
 				});
 			}
 		});
+	};
+	
+	
+	componentDidMount() {
+		this.updateState(this.props);
+	};
+	
+	
+	componentWillReceiveProps(nextProps) {
+		this.updateState(nextProps);
 	};
 	
 	
