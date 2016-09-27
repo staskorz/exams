@@ -37,9 +37,9 @@ export const insert = new ValidatedMethod({
 		if(Meteor.isServer) {
 			import calculateExamMark from '/imports/server/exam-solution-checking/calculate-exam-mark';
 			import getExamAnswersCorrectness from '/imports/server/exam-solution-checking/get-exam-answers-correctness';
-			import fetchExam from '/imports/server/exam-solution-checking/fetch-exam';
+			import fetchPublishedExam from '/imports/server/exam-solution-checking/fetch-published-exam';
 			
-			const exam = fetchExam(examId);
+			const exam = fetchPublishedExam(examId);
 			
 			if(exam) {
 				const examAnswersCorrectness = getExamAnswersCorrectness(exam.questions, questions);
