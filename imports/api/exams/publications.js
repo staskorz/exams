@@ -21,7 +21,7 @@ Meteor.publish('exams', function() {
 		},
 		
 		sort: { name: 1 }
-	})
+	});
 });
 
 
