@@ -30,6 +30,10 @@ export const insert = new ValidatedMethod({
 	name: 'answers.insert',
 	validate: answersInsertSchema.validator(),
 	run({ examId, questions }) {
+		if(!this.userId) {
+			throw new Meteor.Error('answers.insert.notLoggedIn', 'Must be logged in.');
+		}
+		
 		if(Meteor.isServer) {
 			import calculateExamMark from '/imports/server/exam-solution-checking/calculate-exam-mark';
 			import getExamAnswersCorrectness from '/imports/server/exam-solution-checking/get-exam-answers-correctness';
