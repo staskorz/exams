@@ -95,7 +95,7 @@ export const getExamResults = new ValidatedMethod({
 				examineeUserId: 1,
 				examTimestamp: 1
 			}
-		});
+		}).fetch();
 		
 		if(!allExamResults) {
 			return [];
