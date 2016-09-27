@@ -114,7 +114,7 @@ export const getExamResults = new ValidatedMethod({
 		const allUsers = getAllUsersObject();
 		
 		const transformedExamResults = examResults.map(({ examineeUserId, ...rest }) => ({
-			username: examineeUserId && allUsers[examineeUserId] ? allUsers[examineeUserId] : '?',
+			username: examineeUserId && allUsers[examineeUserId] ? allUsers[examineeUserId].username : '?',
 			...rest
 		}));
 		
