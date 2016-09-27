@@ -70,6 +70,10 @@ export const getExamineeVersion = new ValidatedMethod({
 	name: 'exams.getExamineeVersion',
 	validate: examsGetExamineeVersionSchema.validator(),
 	run({ examId }) {
+		if(!this.userId) {
+			throw new Meteor.Error('exams.getExamineeVersion.notLoggedIn', 'Must be logged in.');
+		}
+		
 		const rawExam = collection.findOne({ _id: examId, published: true }, {
 			fields: {
 				name: 1,
