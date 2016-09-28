@@ -22,7 +22,7 @@ export default () => (
 				<Route path='list-exams' component={ ExamsListContainer } />
 				<Route path='exam-choice' component={ ExamChoiceContainer } />
 				<Route path='exam-results/:examId' component={ withCurrentUser(ExamResultsContainer) } />
-				<Route path='take-exam/:examId' component={ TakeExamContainer } />
+				<Route path='take-exam/:examId' component={ withCurrentUser(TakeExamContainer) } />
 				<Route path='*' component={ NotFound } />
 			</Route>
 		</Router>

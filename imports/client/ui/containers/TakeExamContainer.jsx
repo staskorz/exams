@@ -11,8 +11,10 @@ export default class TakeExamContainer extends Component {
 	};
 	
 	
-	componentDidMount() {
-		const { routeParams: { examId } } = this.props;
+	updateState = ({ currentUser, routeParams: { examId } }) => {
+		if(!currentUser) {
+			return;
+		}
 		
 		getExamineeVersion.call({ examId }, (err, exam) => {
 			if(err) {
@@ -24,6 +26,16 @@ export default class TakeExamContainer extends Component {
 				});
 			}
 		});
+	};
+	
+	
+	componentDidMount() {
+		this.updateState(this.props);
+	};
+	
+	
+	componentWillReceiveProps(nextProps) {
+		this.updateState(nextProps);
 	};
 	
 	
