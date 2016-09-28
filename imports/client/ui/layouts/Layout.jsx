@@ -43,6 +43,16 @@ const styles = {
 		color: 'white',
 		lineHeight: '48px',
 		marginRight: '20px'
+	},
+	
+	by: {
+		position: 'absolute',
+		left: '5px',
+		bottom: '5px',
+		fontFamily: 'Roboto, sans-serif',
+		fontSize: '12px',
+		color: 'rgba(0, 0, 0, 0.270588)',
+		pointerEvents: 'none'
 	}
 };
 
@@ -101,6 +111,8 @@ export default ({ currentUser, children }) => {
 				<div style={ styles.placeholder }></div>
 				
 				{ children }
+				
+				<div style={ styles.by }>Stas Korzovsky, 2016</div>
 			</div>
 	)
 };
