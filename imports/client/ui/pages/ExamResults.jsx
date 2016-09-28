@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardText, Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn } from 'material-ui';
+import { Card, CardTitle, CardText, Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
+import DownloadIcon from 'material-ui/svg-icons/file/file-download';
 import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl';
 
 import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
@@ -7,6 +8,11 @@ import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
 
 export default class ExamResults extends Component {
 	style = {
+		downloadButton: {
+			verticalAlign: 'bottom',
+			height: '40px'
+		},
+		
 		cardText: {
 			padding: '0'
 		}
@@ -25,7 +31,12 @@ export default class ExamResults extends Component {
 		
 		return (
 				<Card>
-					<CardTitle title={ <FormattedMessage id='examResults' /> } />
+					<CardTitle title={
+						<span>
+							<FormattedMessage id='examResults' />
+							<IconButton style={ this.style.downloadButton } onClick={ () => console.log('clicked') }><DownloadIcon /></IconButton>
+						</span>
+					} />
 					<CardText style={ this.style.cardText }>
 						<Table selectable={ false }>
 							<TableHeader displaySelectAll={ showCheckboxes } adjustForCheckbox={ showCheckboxes }>
