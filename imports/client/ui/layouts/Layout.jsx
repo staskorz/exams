@@ -52,7 +52,8 @@ const styles = {
 		fontFamily: 'Roboto, sans-serif',
 		fontSize: '12px',
 		color: 'rgba(0, 0, 0, 0.270588)',
-		pointerEvents: 'none'
+		pointerEvents: 'none',
+		zIndex: '-1'
 	}
 };
 
