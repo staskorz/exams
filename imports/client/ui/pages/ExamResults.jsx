@@ -4,6 +4,7 @@ import DownloadIcon from 'material-ui/svg-icons/file/file-download';
 import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl';
 
 import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
+import csvExport from '/imports/client/csv-export';
 
 
 export default class ExamResults extends Component {
@@ -17,6 +18,14 @@ export default class ExamResults extends Component {
 			padding: '0'
 		}
 	};
+	
+	
+	handleDownloadButtonClick = () => {
+		const { examResults } = this.props;
+		
+		csvExport('exam-results.csv', examResults);
+	};
+	
 	
 	render() {
 		const { ready } = this.props;
@@ -34,7 +43,7 @@ export default class ExamResults extends Component {
 					<CardTitle title={
 						<span>
 							<FormattedMessage id='examResults' />
-							<IconButton style={ this.style.downloadButton } onClick={ () => console.log('clicked') }><DownloadIcon /></IconButton>
+							<IconButton style={ this.style.downloadButton } onClick={ this.handleDownloadButtonClick }><DownloadIcon /></IconButton>
 						</span>
 					} />
 					<CardText style={ this.style.cardText }>
