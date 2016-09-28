@@ -54,8 +54,6 @@ export default class TakeExam extends Component {
 			questions: answers.map(answer => ({ answers: answer }))
 		};
 		
-		console.log('answersObject:', answersObject);
-		
 		this.setState({
 			examMarkCalculating: true
 		});

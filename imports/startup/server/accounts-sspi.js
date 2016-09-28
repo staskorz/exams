@@ -40,16 +40,12 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 	
 	const username = rawUsername.toLowerCase();
 	
-	console.log('username:', username);
-	
 	const samAccountName = username.split('\\')[1];
 	
 	const isMember = Meteor.call('isUserMemberOf', {
 		samAccountName,
 		group: operatorsAdGroup
 	});
-	
-	console.log('username:', username, 'isMember:', isMember);
 	
 	const role = isMember ? 'operator' : 'user';
 	
@@ -66,8 +62,6 @@ Accounts.registerLoginHandler('sspi', ({ sspi }) => {
 	} else {
 		userId = Meteor.users.insert({ username, role });
 	}
-	
-	console.log('userId:', userId);
 	
 	return {
 		userId
