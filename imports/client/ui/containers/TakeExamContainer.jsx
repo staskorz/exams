@@ -11,7 +11,7 @@ export default class TakeExamContainer extends Component {
 	};
 	
 	
-	componentDidMount = () => {
+	componentDidMount() {
 		const { routeParams: { examId } } = this.props;
 		
 		getExamineeVersion.call({ examId }, (err, exam) => {
