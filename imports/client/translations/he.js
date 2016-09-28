@@ -38,7 +38,8 @@ export default {
 	username: 'שם משתמש',
 	date: 'תאריך',
 	mark: 'ציון',
-	examResults: 'תוצאות המבחן'
+	examResults: 'תוצאות המבחן',
+	noExamResultsYet: 'טרם התקבלו תוצאות במבחן זה'
 };
 
 

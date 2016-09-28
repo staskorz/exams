@@ -45,6 +45,18 @@ export default class ExamResults extends Component {
 		
 		const { examResults } = this.props;
 		
+		if(!examResults.length) {
+			return (
+					<Card>
+						<CardTitle title={
+							<span>
+							<FormattedMessage id='noExamResultsYet' />
+						</span>
+						} />
+					</Card>
+			);
+		}
+		
 		const showCheckboxes = false;
 		
 		return (
