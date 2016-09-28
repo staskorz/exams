@@ -37,7 +37,8 @@ export default {
 	examMarkError: 'אירעה שגיאה בעת שמירת התשובות או חישוב הציון',
 	username: 'שם משתמש',
 	date: 'תאריך',
-	mark: 'ציון'
+	mark: 'ציון',
+	examResults: 'תוצאות המבחן'
 };
 
 
