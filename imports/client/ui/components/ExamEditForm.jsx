@@ -23,7 +23,7 @@ class ExamEditForm extends Component {
 	
 	style = {
 		mainContainer: {
-			padding: '120px',
+			paddingBottom: '120px',
 			paddingTop: '20px'
 		},
 		
@@ -118,7 +118,7 @@ class ExamEditForm extends Component {
 		}
 		
 		return (
-				<div style={ this.style.mainContainer }>
+				<div style={ this.style.mainContainer } className='main-container-padding'>
 					<h1 style={ this.style.h1 }>{ title }</h1>
 					
 					<form>

@@ -31,3 +31,19 @@ h1 {
 	padding: 8px;
 	display: inline-block;
 }
+
+.main-container-padding {
+	padding: 0;
+}
+
+@media only screen and (min-width: 600px) {
+	.main-container-padding {
+		padding: 7%;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.main-container-padding {
+		padding: 120px;
+	}
+}

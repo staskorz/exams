@@ -6,10 +6,6 @@ import { FormattedMessage } from 'react-intl';
 
 class ExamInfo extends Component {
 	style = {
-		mainContainer: {
-			padding: '120px'
-		},
-		
 		mainPaper: {
 			padding: '32px'
 		},
@@ -48,7 +44,7 @@ class ExamInfo extends Component {
 		const { name } = exam || {};
 		
 		return (
-				<div style={ this.style.mainContainer }>
+				<div className='main-container-padding'>
 					<Paper style={ this.style.mainPaper }>
 						<div>
 							<span style={ this.style.descriptionText }><FormattedMessage id='examName' />:</span>

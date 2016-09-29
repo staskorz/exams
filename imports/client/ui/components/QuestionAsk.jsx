@@ -13,10 +13,6 @@ class QuestionAsk extends Component {
 	
 	
 	style = {
-		mainContainer: {
-			padding: '120px'
-		},
-		
 		card: {
 			padding: '16px'
 		},
@@ -163,7 +159,7 @@ class QuestionAsk extends Component {
 		const { text, multiple, answers } = questions[questionNumber];
 		
 		return (
-				<div style={ this.style.mainContainer }>
+				<div className='main-container-padding'>
 					<Card style={ this.style.card }>
 						<CardTitle title={ name }
 								   subtitle={ <FormattedMessage id='questionNumberXofY'

@@ -6,10 +6,6 @@ import { FormattedMessage } from 'react-intl';
 
 class ExamInfo extends Component {
 	style = {
-		mainContainer: {
-			padding: '120px'
-		},
-		
 		mainPaper: {
 			padding: '32px'
 		},
@@ -32,7 +28,7 @@ class ExamInfo extends Component {
 		const { router } = this.props;
 		
 		return (
-				<div style={ this.style.mainContainer }>
+				<div className='main-container-padding'>
 					<Paper style={ this.style.mainPaper } zDepth={ 5 }>
 						<div>
 							<span style={ this.style.mainText }><FormattedMessage id='examMarkError' /></span>
