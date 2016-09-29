@@ -37,6 +37,16 @@ class ExamEditForm extends Component {
 		
 		examName: {
 			marginBottom: '28px'
+		},
+		
+		submissionError: {
+			height: '24px',
+			marginTop: '16px',
+			marginRight: '36px',
+			fontFamily: 'Roboto, sans-serif',
+			fontSize: '12px',
+			lineHeight: '12px',
+			color: 'rgb(244, 67, 54)'
 		}
 	};
 	
@@ -101,7 +111,7 @@ class ExamEditForm extends Component {
 	
 	
 	render() {
-		const { handleSubmit, submitFailed, edit, ready, intl: { formatMessage } } = this.props;
+		const { handleSubmit, submitFailed, invalid, edit, ready, intl: { formatMessage } } = this.props;
 		
 		if(edit && !ready) {
 			return (
@@ -128,6 +138,8 @@ class ExamEditForm extends Component {
 							
 							<FieldArray name='questions' component={ QuestionsEdit } props={{ submitFailed }} />
 						</div>
+						
+						<div style={ this.style.submissionError }>{ submitFailed && invalid ? <FormattedMessage id='formHasErrors' /> : ' ' }</div>
 						
 						<div className='buttonsContainer'>
 							<FlatButton label={ <FormattedMessage id='save' /> } primary={ true } onClick={ handleSubmit(this.handleSubmit) } />
