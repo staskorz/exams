@@ -10,7 +10,7 @@ Meteor.users.deny({
 
 Meteor.publish('userData', function() {
 	if(this.userId) {
-		return Meteor.users.find({ _id: this.userId }, { fields: { 'role': 1 } });
+		return Meteor.users.find({ _id: this.userId }, { fields: { role: 1, englishName: 1, hebrewName: 1, employeeId: 1 } });
 	} else {
 		this.ready();
 	}
