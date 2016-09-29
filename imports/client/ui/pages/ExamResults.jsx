@@ -71,14 +71,18 @@ export default class ExamResults extends Component {
 						<Table selectable={ false }>
 							<TableHeader displaySelectAll={ showCheckboxes } adjustForCheckbox={ showCheckboxes }>
 								<TableRow>
+									<TableHeaderColumn><FormattedMessage id='name' /></TableHeaderColumn>
+									<TableHeaderColumn><FormattedMessage id='employeeId' /></TableHeaderColumn>
 									<TableHeaderColumn><FormattedMessage id='username' /></TableHeaderColumn>
 									<TableHeaderColumn><FormattedMessage id='date' /></TableHeaderColumn>
 									<TableHeaderColumn><FormattedMessage id='mark' /></TableHeaderColumn>
 								</TableRow>
 							</TableHeader>
 							<TableBody displayRowCheckbox={ showCheckboxes }>
-								{ examResults.map(({ username, examTimestamp, mark }, index) => (
+								{ examResults.map(({ hebrewName, employeeId, username, examTimestamp, mark }, index) => (
 										<TableRow key={ index }>
+											<TableRowColumn>{ hebrewName }</TableRowColumn>
+											<TableRowColumn>{ employeeId }</TableRowColumn>
 											<TableRowColumn>{ username }</TableRowColumn>
 											<TableRowColumn>
 												{ examTimestamp ?
