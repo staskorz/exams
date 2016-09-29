@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
 export default () => {
-	const users = Meteor.users.find({}, { fields: { 'username': 1 } });
+	const users = Meteor.users.find({}, { fields: { username: 1, englishName: 1, hebrewName: 1, employeeId: 1 } });
 	
 	if(users) {
 		const usersObj = {};

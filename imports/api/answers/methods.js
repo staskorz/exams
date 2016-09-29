@@ -117,12 +117,33 @@ export const getExamResults = new ValidatedMethod({
 		
 		const allUsers = getAllUsersObject();
 		
-		const transformedExamResults = examResults.map(({ examineeUserId, ...rest }) => ({
-			username: examineeUserId && allUsers[examineeUserId] ? allUsers[examineeUserId].username : '?',
-			...rest
-		}));
+		const transformedExamResults = examResults.map(({ examineeUserId, ...rest }) => {
+			let additionalProps = {};
+			
+			if(examineeUserId && allUsers[examineeUserId]) {
+				const { englishName, hebrewName, employeeId } = allUsers[examineeUserId];
+				
+				additionalProps = {
+					englishName,
+					hebrewName,
+					employeeId
+				};
+			} else {
+				additionalProps = {
+					englishName: '?',
+					hebrewName: '?',
+					employeeId: '?'
+				};
+			}
+			
+			return {
+				username: allUsers[examineeUserId].username,
+				...rest,
+				...additionalProps
+			};
+		});
 		
-		const transformedExamResultsSorted = transformedExamResults.sort(({ username: a }, { username: b }) => {
+		const transformedExamResultsSorted = transformedExamResults.sort(({ hebrewName: a }, { hebrewName: b }) => {
 			if (a < b) {
 				return -1;
 			} else if (a > b) {
