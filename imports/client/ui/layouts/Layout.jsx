@@ -46,7 +46,7 @@ const styles = {
 	},
 	
 	by: {
-		position: 'absolute',
+		position: 'fixed',
 		left: '5px',
 		bottom: '5px',
 		fontFamily: 'Roboto, sans-serif',
