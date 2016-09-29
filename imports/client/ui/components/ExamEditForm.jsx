@@ -138,7 +138,8 @@ class ExamEditForm extends Component {
 					
 					<form>
 						<div className='formContainer' style={ this.style.formContainer }>
-							<Field component={ TextField } name='name' floatingLabelText={ <FormattedMessage id='examName' /> } style={ this.style.examName } /><br />
+							<Field component={ TextField } name='name' floatingLabelText={ <FormattedMessage id='examName' /> }
+								   style={ this.style.examName } /><br />
 							<Field component={ Checkbox } name='published' label={ <FormattedMessage id='published' /> } />
 							
 							<FieldArray name='questions' component={ QuestionsEdit } props={{ submitFailed }} />
