@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatButton } from 'material-ui';
+import { RaisedButton } from 'material-ui';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { TextField, Checkbox } from 'redux-form-material-ui';
 import { withRouter } from 'react-router';
@@ -10,7 +10,7 @@ import { insert as insertExam, update as updateExam } from '/imports/api/exams/m
 import simpleSchemaValidator from '/imports/client/validators/simple-schema-validator';
 import QuestionsEdit from '/imports/client/ui/components/QuestionsEdit';
 import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
-import ConfirmedFlatButton from '/imports/client/ui/components/ConfirmedFlatButton';
+import ConfirmedRaisedButton from '/imports/client/ui/components/ConfirmedRaisedButton';
 import ConfirmationDialog from '/imports/client/ui/components/ConfirmationDialog';
 
 
@@ -47,6 +47,11 @@ class ExamEditForm extends Component {
 			fontSize: '12px',
 			lineHeight: '12px',
 			color: 'rgb(244, 67, 54)'
+		},
+		
+		button: {
+			marginLeft: '8px',
+			marginRight: '8px'
 		}
 	};
 	
@@ -142,8 +147,10 @@ class ExamEditForm extends Component {
 						<div style={ this.style.submissionError }>{ submitFailed && invalid ? <FormattedMessage id='formHasErrors' /> : ' ' }</div>
 						
 						<div className='buttonsContainer'>
-							<FlatButton label={ <FormattedMessage id='save' /> } primary={ true } onClick={ handleSubmit(this.handleSubmit) } />
-							<ConfirmedFlatButton text={ formatMessage({ id: 'areYouSure' }) } label={ <FormattedMessage id='cancel' /> } onConfirm={ this.goBack } />
+							<RaisedButton style={ this.style.button } label={ <FormattedMessage id='save' /> } primary={ true }
+										  onClick={ handleSubmit(this.handleSubmit) } />
+							<ConfirmedRaisedButton style={ this.style.button } text={ formatMessage({ id: 'areYouSure' }) }
+												   label={ <FormattedMessage id='cancel' /> } onConfirm={ this.goBack } />
 						</div>
 					</form>
 					
