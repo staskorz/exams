@@ -16,7 +16,7 @@ import NotFound from './pages/NotFound';
 export default () => (
 		<Router history={ browserHistory }>
 			<Route path='/' component={ withCurrentUser(Layout) }>
-				<IndexRoute component={ Home } />
+				<IndexRoute component={ withCurrentUser(Home) } />
 				<Route path='create-exam' component={ ExamCreate } />
 				<Route path='edit-exam/:examId' component={ ExamEdit } />
 				<Route path='list-exams' component={ ExamsListContainer } />
