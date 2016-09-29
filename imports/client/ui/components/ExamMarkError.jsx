@@ -29,7 +29,7 @@ class ExamInfo extends Component {
 		
 		return (
 				<div className='main-container-padding'>
-					<Paper style={ this.style.mainPaper } zDepth={ 5 }>
+					<Paper style={ this.style.mainPaper }>
 						<div>
 							<span style={ this.style.mainText }><FormattedMessage id='examMarkError' /></span>
 						</div>
