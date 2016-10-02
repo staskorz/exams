@@ -8,7 +8,6 @@
 	  "password": "password"
 	},
 	"operatorsAdGroup": "AD-Group",
-	"emergencyAuthOverrideUserDescription": "Make sure to keep the next property empty during normal operation:",
-	"emergencyAuthOverrideUser": ""
+	"emergencyAuthOverride": false
   }
 }
