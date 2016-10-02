@@ -4,8 +4,10 @@ import { headers } from 'meteor/gadicohen:headers';
 import ActiveDirectory from 'activedirectory';
 
 
-const adConfig = Meteor.settings.private.activeDirectory;
-const operatorsAdGroup = Meteor.settings.private.operatorsAdGroup;
+const settings = Meteor.settings.private;
+
+const adConfig = settings.activeDirectory;
+const operatorsAdGroup = settings.operatorsAdGroup;
 
 const activeDirectory = new ActiveDirectory(adConfig);
 
