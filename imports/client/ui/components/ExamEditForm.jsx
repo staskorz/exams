@@ -116,7 +116,7 @@ class ExamEditForm extends Component {
 	
 	
 	render() {
-		const { handleSubmit, submitFailed, invalid, edit, ready, intl: { formatMessage } } = this.props;
+		const { handleSubmit, submitFailed, invalid, edit, ready, submitting, intl: { formatMessage } } = this.props;
 		
 		if(edit && !ready) {
 			return (
@@ -149,9 +149,9 @@ class ExamEditForm extends Component {
 						
 						<div className='buttonsContainer'>
 							<RaisedButton style={ this.style.button } label={ <FormattedMessage id='save' /> } primary={ true }
-										  onClick={ handleSubmit(this.handleSubmit) } />
+										  onClick={ handleSubmit(this.handleSubmit) } disabled={ submitting } />
 							<ConfirmedRaisedButton style={ this.style.button } text={ formatMessage({ id: 'areYouSure' }) }
-												   label={ <FormattedMessage id='cancel' /> } onConfirm={ this.goBack } />
+												   label={ <FormattedMessage id='cancel' /> } onConfirm={ this.goBack } disabled={ submitting } />
 						</div>
 					</form>
 					
