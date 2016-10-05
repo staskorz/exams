@@ -11,11 +11,7 @@ export default class TakeExamContainer extends Component {
 	};
 	
 	
-	updateState = ({ currentUser, routeParams: { examId } }) => {
-		if(!currentUser) {
-			return;
-		}
-		
+	updateState = ({ routeParams: { examId } }) => {
 		getExamineeVersion.call({ examId }, (err, exam) => {
 			if(err) {
 				console.log('getExamineeVersion error:', err);

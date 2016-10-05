@@ -12,11 +12,7 @@ export default class ExamResultsContainer extends Component {
 	
 	
 	updateState = props => {
-		const { routeParams: { examId }, currentUser } = props;
-		
-		if(!currentUser || !currentUser.username) {
-			return;
-		}
+		const { routeParams: { examId } } = props;
 		
 		getExamResults.call({ examId }, (err, results) => {
 			if(err) {
