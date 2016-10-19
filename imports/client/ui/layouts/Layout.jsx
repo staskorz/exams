@@ -45,6 +45,18 @@ const styles = {
 		marginRight: '20px'
 	},
 	
+	logo: {
+		position: 'absolute',
+		top: '6px',
+		left: '4px'
+	},
+	
+	logoSpacer: {
+		display: 'inline-block',
+		width: '175px',
+		height: '1px'
+	},
+	
 	by: {
 		position: 'fixed',
 		left: '5px',
@@ -105,6 +117,10 @@ export default ({ currentUser, children }) => {
 								{ menuItems }
 						
 								<span style={ styles.loggedInUser }>{ username }</span>
+								
+								<img style={ styles.logo } src='/company-logo.png' alt='logo' width='159px' height='54px' />
+								
+								<div style={ styles.logoSpacer }></div>
 							</span>
 						}
 				/>
