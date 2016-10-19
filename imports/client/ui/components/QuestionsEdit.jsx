@@ -57,6 +57,15 @@ class QuestionsEdit extends Component {
 	};
 	
 	
+	parseNumber = numberStr => {
+		if(/^\d+$/.test(numberStr)) {
+			return Number(numberStr);
+		} else {
+			return numberStr;
+		}
+	};
+	
+	
 	addQuestion = () => {
 		const { fields } = this.props;
 		
@@ -86,7 +95,8 @@ class QuestionsEdit extends Component {
 								
 								<div style={ this.style.weightContainer }>
 									<span style={ this.style.weightLabel }><FormattedMessage id='weight' /> </span>
-									<Field component={ TextField } name={ `${ question }.weight` } type='number' style={ this.style.weight } />
+									<Field component={ TextField } name={ `${ question }.weight` } type='number' style={ this.style.weight }
+										   parse={ this.parseNumber } />
 								</div>
 								
 								<div style={ this.style.fieldsContainer }>
