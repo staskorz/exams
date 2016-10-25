@@ -174,7 +174,7 @@ class QuestionAsk extends Component {
 							{ answers.map((answer, index) => (
 									<div style={ this.style.answerContainer } key={ index }>
 										<div style={ this.style.answerNumberContainer }>
-											<Badge badgeContent={ index + 1 } secondary={ true } />
+											<Badge badgeContent={ index + 1 } primary={ true } />
 										</div>
 										<div style={ this.style.answerCheckboxContainer }>
 											<Checkbox onCheck={ this.createCheckboxClickHandler(questionNumber, index) }

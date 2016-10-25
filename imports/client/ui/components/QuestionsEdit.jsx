@@ -91,7 +91,7 @@ class QuestionsEdit extends Component {
 				<div>
 					{ fields.map((question, index) => (
 							<Paper style={ this.style.paper } key={ index }>
-								<Badge badgeContent={ index + 1 } primary={ true } />
+								<Badge badgeContent={ index + 1 } secondary={ true } />
 								
 								<div style={ this.style.weightContainer }>
 									<span style={ this.style.weightLabel }><FormattedMessage id='weight' /> </span>

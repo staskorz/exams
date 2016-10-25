@@ -80,7 +80,7 @@ export default class AnswersEdit extends Component {
 					{ fields.map((answer, index) => (
 							<div style={ this.style.answersContainer } key={ index }>
 								<div style={ this.style.numberContainer }>
-									<Badge badgeContent={ index + 1 } secondary={ true } style={ this.style.numberBadge } />
+									<Badge badgeContent={ index + 1 } primary={ true } style={ this.style.numberBadge } />
 								</div>
 								<div style={ this.style.checkboxContainer }>
 									<Field component={ Checkbox } name={ `${ answer }.correct` } style={ this.style.checkbox }
