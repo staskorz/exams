@@ -13,5 +13,5 @@ const style = {
 
 
 export default () => (
-		<CircularProgress size={ 1.5 } style={ style } />
+		<CircularProgress size={ 80 } thickness={ 5 } style={ style } />
 );
