@@ -3,6 +3,8 @@ import { Paper, RaisedButton } from 'material-ui';
 import { withRouter } from 'react-router';
 import { FormattedMessage } from 'react-intl';
 
+import { canGoBack } from '/imports/client/ui/browserHistoryCounter';
+
 
 class ExamInfo extends Component {
 	style = {
@@ -56,9 +58,15 @@ class ExamInfo extends Component {
 							<span style={ this.style.mainText }>{ examMark }</span>
 						</div>
 						
-						<div style={ this.style.actions }>
-							<RaisedButton label={ <FormattedMessage id='exit' /> } primary={ true } onClick={ () => router.goBack() } />
-						</div>
+						{ canGoBack() ?
+								<div style={ this.style.actions }>
+									<RaisedButton label={ <FormattedMessage id='exit' /> } primary={ true } onClick={ () => router.goBack() } />
+								</div>
+								
+								:
+								
+								''
+						}
 					</Paper>
 				</div>
 		);
