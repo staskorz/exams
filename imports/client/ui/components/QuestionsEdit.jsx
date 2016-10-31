@@ -65,8 +65,8 @@ class QuestionsEdit extends Component {
 			borderRadius: '4px',
 			height: '80px',
 			width: '70px',
-			position: 'relative',
-			transition: 'all 0.5s'
+			transition: 'all 0.5s',
+			textAlign: 'center'
 		},
 		
 		dropzoneActive: {
@@ -75,13 +75,10 @@ class QuestionsEdit extends Component {
 		},
 		
 		dropzoneIcon: {
-			position: 'absolute',
-			top: '50%',
-			left: '50%',
-			transform: 'translate(-50%, -50%)',
 			height: '32px',
 			width: '32px',
-			color: 'rgba(0, 0, 0, 0.2)'
+			color: 'rgba(0, 0, 0, 0.2)',
+			marginTop: '24px'
 		}
 	};
 	
