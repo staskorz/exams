@@ -13,19 +13,22 @@ const style = {
 		height: '80px',
 		width: '70px',
 		transition: 'all 0.5s',
-		textAlign: 'center'
+		textAlign: 'center',
+		color: 'rgba(0, 0, 0, 0.2)'
 	},
 	
 	dropzoneActive: {
 		borderColor: cyan500,
-		borderStyle: 'solid'
+		borderStyle: 'solid',
+		color: cyan500
 	},
 	
 	dropzoneIcon: {
 		height: '32px',
 		width: '32px',
-		color: 'rgba(0, 0, 0, 0.2)',
-		marginTop: '24px'
+		marginTop: '24px',
+		color: 'inherit',
+		transition: 'all 0s',
 	}
 };
 
