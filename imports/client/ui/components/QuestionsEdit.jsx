@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Field, FieldArray } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Paper, Badge, FloatingActionButton } from 'material-ui';
+import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo';
+import { cyan500 } from 'material-ui/styles/colors';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
 import { FormattedMessage, injectIntl } from 'react-intl';
@@ -54,6 +56,32 @@ class QuestionsEdit extends Component {
 		addQuestionButton: {
 			marginLeft: '10px',
 			marginTop: '10px'
+		},
+		
+		dropzone: {
+			borderWidth: '2px',
+			borderColor: 'rgba(0, 0, 0, 0.2)',
+			borderStyle: 'dashed',
+			borderRadius: '4px',
+			height: '80px',
+			width: '70px',
+			position: 'relative',
+			transition: 'all 0.5s'
+		},
+		
+		dropzoneActive: {
+			borderColor: cyan500,
+			borderStyle: 'solid'
+		},
+		
+		dropzoneIcon: {
+			position: 'absolute',
+			top: '50%',
+			left: '50%',
+			transform: 'translate(-50%, -50%)',
+			height: '32px',
+			width: '32px',
+			color: 'rgba(0, 0, 0, 0.2)'
 		}
 	};
 	
@@ -113,10 +141,9 @@ class QuestionsEdit extends Component {
 										   floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
 									
 									<div>
-										<ReactDropzone onDrop={ this.handleFileDrop }>
-											<div>
-												Text goes here...
-											</div>
+										<ReactDropzone onDrop={ this.handleFileDrop }
+													   style={ this.style.dropzone } activeStyle={ this.style.dropzoneActive }>
+											<AddPhotoIcon style={ this.style.dropzoneIcon } />
 										</ReactDropzone>
 									</div>
 									
