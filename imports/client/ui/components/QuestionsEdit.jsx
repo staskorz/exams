@@ -5,6 +5,7 @@ import { Paper, Badge, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import ReactDropzone from 'react-dropzone';
 
 import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
@@ -75,6 +76,12 @@ class QuestionsEdit extends Component {
 	};
 	
 	
+	handleFileDrop = (acceptedFiles, rejectedFiles) => {
+		console.log('Accepted files: ', acceptedFiles);
+		console.log('Rejected files: ', rejectedFiles);
+	};
+	
+	
 	componentWillMount() {
 		const { fields } = this.props;
 		
@@ -104,6 +111,14 @@ class QuestionsEdit extends Component {
 										   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 										   style={ this.style.questionText }
 										   floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
+									
+									<div>
+										<ReactDropzone onDrop={ this.handleFileDrop }>
+											<div>
+												Text goes here...
+											</div>
+										</ReactDropzone>
+									</div>
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />
 								</div>
