@@ -140,12 +140,10 @@ class QuestionsEdit extends Component {
 										   style={ this.style.questionText }
 										   floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
 									
-									<div>
-										<ReactDropzone onDrop={ this.handleFileDrop }
-													   style={ this.style.dropzone } activeStyle={ this.style.dropzoneActive }>
-											<AddPhotoIcon style={ this.style.dropzoneIcon } />
-										</ReactDropzone>
-									</div>
+									<ReactDropzone onDrop={ this.handleFileDrop }
+												   style={ this.style.dropzone } activeStyle={ this.style.dropzoneActive }>
+										<AddPhotoIcon style={ this.style.dropzoneIcon } />
+									</ReactDropzone>
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />
 								</div>
