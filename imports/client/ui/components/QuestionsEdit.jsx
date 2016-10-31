@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import { Field, FieldArray } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Paper, Badge, FloatingActionButton } from 'material-ui';
-import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo';
-import { cyan500 } from 'material-ui/styles/colors';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import ReactDropzone from 'react-dropzone';
 
 import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
+import Dropzone from './Dropzone';
 
 
 class QuestionsEdit extends Component {
@@ -56,29 +54,6 @@ class QuestionsEdit extends Component {
 		addQuestionButton: {
 			marginLeft: '10px',
 			marginTop: '10px'
-		},
-		
-		dropzone: {
-			borderWidth: '2px',
-			borderColor: 'rgba(0, 0, 0, 0.2)',
-			borderStyle: 'dashed',
-			borderRadius: '4px',
-			height: '80px',
-			width: '70px',
-			transition: 'all 0.5s',
-			textAlign: 'center'
-		},
-		
-		dropzoneActive: {
-			borderColor: cyan500,
-			borderStyle: 'solid'
-		},
-		
-		dropzoneIcon: {
-			height: '32px',
-			width: '32px',
-			color: 'rgba(0, 0, 0, 0.2)',
-			marginTop: '24px'
 		}
 	};
 	
@@ -137,10 +112,7 @@ class QuestionsEdit extends Component {
 										   style={ this.style.questionText }
 										   floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
 									
-									<ReactDropzone onDrop={ this.handleFileDrop }
-												   style={ this.style.dropzone } activeStyle={ this.style.dropzoneActive }>
-										<AddPhotoIcon style={ this.style.dropzoneIcon } />
-									</ReactDropzone>
+									<Dropzone onDrop={ this.handleFileDrop } />
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />
 								</div>
