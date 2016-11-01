@@ -13,7 +13,7 @@ import Dropzone from './Dropzone';
 
 class QuestionsEdit extends Component {
 	state = {
-		file: null
+		image: null
 	};
 	
 	style = {
