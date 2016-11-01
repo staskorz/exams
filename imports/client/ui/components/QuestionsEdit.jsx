@@ -12,6 +12,10 @@ import Dropzone from './Dropzone';
 
 
 class QuestionsEdit extends Component {
+	state = {
+		file: null
+	};
+	
 	style = {
 		paper: {
 			marginTop: '40px',
@@ -79,6 +83,12 @@ class QuestionsEdit extends Component {
 	handleFileDrop = (acceptedFiles, rejectedFiles) => {
 		console.log('Accepted files: ', acceptedFiles);
 		console.log('Rejected files: ', rejectedFiles);
+		
+		if(acceptedFiles && acceptedFiles.length) {
+			this.setState({
+				image: window.URL.createObjectURL(acceptedFiles[0])
+			});
+		}
 	};
 	
 	
@@ -93,6 +103,8 @@ class QuestionsEdit extends Component {
 	
 	render() {
 		const { fields, submitFailed, intl: { formatMessage } } = this.props;
+		
+		const { image } = this.state;
 		
 		return (
 				<div>
@@ -113,6 +125,8 @@ class QuestionsEdit extends Component {
 										   floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
 									
 									<Dropzone onDrop={ this.handleFileDrop } />
+									
+									{ image ? <img src={ image } alt='image' /> : '' }
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />
 								</div>
