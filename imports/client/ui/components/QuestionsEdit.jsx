@@ -13,7 +13,8 @@ import Dropzone from './Dropzone';
 
 class QuestionsEdit extends Component {
 	state = {
-		image: null
+		image: null,
+		resizedImage: null
 	};
 	
 	style = {
@@ -104,7 +105,7 @@ class QuestionsEdit extends Component {
 	render() {
 		const { fields, submitFailed, intl: { formatMessage } } = this.props;
 		
-		const { image } = this.state;
+		const { image, resizedImage } = this.state;
 		
 		return (
 				<div>
@@ -127,6 +128,8 @@ class QuestionsEdit extends Component {
 									<Dropzone onDrop={ this.handleFileDrop } />
 									
 									{ image ? <img src={ image } alt='image' /> : '' }
+									
+									{ resizedImage ? <img src={ resizedImage } alt='resizedImage' /> : '' }
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />
 								</div>
