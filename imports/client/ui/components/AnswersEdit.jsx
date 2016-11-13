@@ -5,6 +5,7 @@ import { Badge, FlatButton } from 'material-ui';
 import { FormattedMessage } from 'react-intl';
 
 import AddAnswerButton from './AddAnswerButton';
+import RemoveAnswerButton from './RemoveAnswerButton';
 
 
 export default class AnswersEdit extends Component {
@@ -63,6 +64,13 @@ export default class AnswersEdit extends Component {
 	};
 	
 	
+	handleRemoveAnswerButtonClick = index => {
+		const { fields: { remove } } = this.props;
+		
+		remove(index);
+	};
+	
+	
 	componentWillMount() {
 		const { fields } = this.props;
 		
@@ -101,9 +109,7 @@ export default class AnswersEdit extends Component {
 									   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 								/>
 								<div style={ this.style.addRemoveAnswerButtonsContainer }>
-									<FlatButton label={ <FormattedMessage id='remove' /> } secondary={ true } disabled={ fields.length < 3 }
-												onClick={ () => fields.remove(index) }
-									/>
+									<RemoveAnswerButton disabled={ fields.length < 3 } onClick={ this.handleRemoveAnswerButtonClick } number={ index } />
 								</div>
 							</div>
 					)) }
