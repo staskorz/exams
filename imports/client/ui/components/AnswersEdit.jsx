@@ -4,6 +4,8 @@ import { TextField, Checkbox } from 'redux-form-material-ui';
 import { Badge, FlatButton } from 'material-ui';
 import { FormattedMessage } from 'react-intl';
 
+import AddAnswerButton from './AddAnswerButton';
+
 
 export default class AnswersEdit extends Component {
 	style = {
@@ -54,6 +56,13 @@ export default class AnswersEdit extends Component {
 	};
 	
 	
+	handleAddAnswerButtonClick = () => {
+		const { fields } = this.props;
+		
+		fields.push({});
+	};
+	
+	
 	componentWillMount() {
 		const { fields } = this.props;
 		
@@ -99,7 +108,7 @@ export default class AnswersEdit extends Component {
 							</div>
 					)) }
 					
-					<FlatButton label={ <FormattedMessage id='add' /> } secondary={ true } disabled={ fields.length > 3 } onClick={ () => fields.push({}) } />
+					<AddAnswerButton disabled={ fields.length > 3 } onClick={ this.handleAddAnswerButtonClick } />
 				</div>
 		);
 	};
