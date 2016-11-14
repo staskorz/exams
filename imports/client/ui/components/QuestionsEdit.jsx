@@ -76,6 +76,13 @@ class QuestionsEdit extends Component {
 	};
 	
 	
+	removeQuestion = index => {
+		const { fields: { remove } } = this.props;
+		
+		remove(index);
+	};
+	
+	
 	componentWillMount() {
 		const { fields } = this.props;
 		
@@ -87,6 +94,8 @@ class QuestionsEdit extends Component {
 	
 	render() {
 		const { fields, submitFailed, intl: { formatMessage } } = this.props;
+		
+		const questionRemovalConfirmationMessage = formatMessage({ id: 'areYouSure' });
 		
 		return (
 				<div>
@@ -112,8 +121,9 @@ class QuestionsEdit extends Component {
 										mini={ true }
 										style={ this.style.removeQuestionButton }
 										disabled={ fields.length < 2 }
-										onConfirm={ () => fields.remove(index) }
-										text={ formatMessage({ id: 'areYouSure' }) }
+										onConfirm={ this.removeQuestion }
+										onConfirmParam={ index }
+										text={ questionRemovalConfirmationMessage }
 								>
 									<IconRemove />
 								</ConfirmedFloatingActionButton>

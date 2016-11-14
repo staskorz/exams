@@ -37,7 +37,9 @@ export default class ConfirmedFloatingActionButton extends Component {
 	handleYesButtonClick = () => {
 		this.closeDialog();
 		
-		this.props.onConfirm();
+		const { onConfirm, onConfirmParam } = this.props;
+		
+		onConfirm(onConfirmParam);
 	};
 	
 	
@@ -46,14 +48,20 @@ export default class ConfirmedFloatingActionButton extends Component {
 	};
 	
 	
-	render() {
-		const { children, text, ...rest } = this.props;
+	shouldComponentUpdate(nextProps) {
+		const { mini, style, disabled, onConfirm, onConfirmParam, text } = this.props;
 		
-		delete rest['onConfirm'];
+		return mini !== nextProps.mini || style !== nextProps.style || disabled !== nextProps.disabled || onConfirm !== nextProps.onConfirm ||
+				onConfirmParam !== nextProps.onConfirmParam || text !== nextProps.text;
+	};
+	
+	
+	render() {
+		const { children, mini, style, disabled, text } = this.props;
 		
 		return (
 				<div>
-					<FloatingActionButton { ...rest } onClick={ this.handleFloatingButtonClick }>
+					<FloatingActionButton mini={ mini } style={ style } disabled={ disabled } onClick={ this.handleFloatingButtonClick }>
 						{ children }
 					</FloatingActionButton>
 					
