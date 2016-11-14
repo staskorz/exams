@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Field, FieldArray } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
-import { Paper, Badge, FloatingActionButton } from 'material-ui';
+import { Paper, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
+import NumberBadge from './NumberBadge';
 import Dropzone from './Dropzone';
 
 
@@ -81,6 +82,13 @@ class QuestionsEdit extends Component {
 	};
 	
 	
+	removeQuestion = index => {
+		const { fields: { remove } } = this.props;
+		
+		remove(index);
+	};
+	
+	
 	handleFileDrop = (acceptedFiles, rejectedFiles) => {
 		console.log('Accepted files: ', acceptedFiles);
 		console.log('Rejected files: ', rejectedFiles);
@@ -105,13 +113,15 @@ class QuestionsEdit extends Component {
 	render() {
 		const { fields, submitFailed, intl: { formatMessage } } = this.props;
 		
+		const questionRemovalConfirmationMessage = formatMessage({ id: 'areYouSure' });
+		
 		const { image, resizedImage } = this.state;
 		
 		return (
 				<div>
 					{ fields.map((question, index) => (
 							<Paper style={ this.style.paper } key={ index }>
-								<Badge badgeContent={ index + 1 } secondary={ true } />
+								<NumberBadge content={ index + 1 } secondary={ true } />
 								
 								<div style={ this.style.weightContainer }>
 									<span style={ this.style.weightLabel }><FormattedMessage id='weight' /> </span>
@@ -137,8 +147,9 @@ class QuestionsEdit extends Component {
 										mini={ true }
 										style={ this.style.removeQuestionButton }
 										disabled={ fields.length < 2 }
-										onConfirm={ () => fields.remove(index) }
-										text={ formatMessage({ id: 'areYouSure' }) }
+										onConfirm={ this.removeQuestion }
+										onConfirmParam={ index }
+										text={ questionRemovalConfirmationMessage }
 								>
 									<IconRemove />
 								</ConfirmedFloatingActionButton>

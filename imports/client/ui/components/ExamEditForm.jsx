@@ -167,7 +167,9 @@ class ExamEditForm extends Component {
 }
 
 
-const validate = values => {
+const validate = rawValues => {
+	const values = rawValues || {};	
+	
 	const errors = {
 		questions: []
 	};

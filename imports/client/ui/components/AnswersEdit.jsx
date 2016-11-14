@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { TextField, Checkbox } from 'redux-form-material-ui';
-import { Badge, FlatButton } from 'material-ui';
 import { FormattedMessage } from 'react-intl';
+
+import AddAnswerButton from './AddAnswerButton';
+import RemoveAnswerButton from './RemoveAnswerButton';
+import NumberBadge from './NumberBadge';
 
 
 export default class AnswersEdit extends Component {
@@ -54,6 +57,20 @@ export default class AnswersEdit extends Component {
 	};
 	
 	
+	handleAddAnswerButtonClick = () => {
+		const { fields } = this.props;
+		
+		fields.push({});
+	};
+	
+	
+	handleRemoveAnswerButtonClick = index => {
+		const { fields: { remove } } = this.props;
+		
+		remove(index);
+	};
+	
+	
 	componentWillMount() {
 		const { fields } = this.props;
 		
@@ -80,26 +97,25 @@ export default class AnswersEdit extends Component {
 					{ fields.map((answer, index) => (
 							<div style={ this.style.answersContainer } key={ index }>
 								<div style={ this.style.numberContainer }>
-									<Badge badgeContent={ index + 1 } primary={ true } style={ this.style.numberBadge } />
+									<NumberBadge content={ index + 1 } primary={ true } style={ this.style.numberBadge } />
 								</div>
 								<div style={ this.style.checkboxContainer }>
 									<Field component={ Checkbox } name={ `${ answer }.correct` } style={ this.style.checkbox }
-										   iconStyle={ iconStyle } />
+											iconStyle={ iconStyle } />
 								</div>
 								<Field component={ TextField } name={ `${ answer }.text` }
-									   floatingLabelText={ <FormattedMessage id='answer' values={{ number: index + 1 }} /> }
-									   style={ this.style.answerTextField }
-									   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
+										floatingLabelText={ <FormattedMessage id='answer' values={{ number: index + 1 }} /> }
+										style={ this.style.answerTextField }
+										multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 								/>
 								<div style={ this.style.addRemoveAnswerButtonsContainer }>
-									<FlatButton label={ <FormattedMessage id='remove' /> } secondary={ true } disabled={ fields.length < 3 }
-												onClick={ () => fields.remove(index) }
-									/>
+									<RemoveAnswerButton disabled={ fields.length < 3 } onClick={ this.handleRemoveAnswerButtonClick }
+											number={ index } />
 								</div>
 							</div>
 					)) }
 					
-					<FlatButton label={ <FormattedMessage id='add' /> } secondary={ true } disabled={ fields.length > 3 } onClick={ () => fields.push({}) } />
+					<AddAnswerButton disabled={ fields.length > 3 } onClick={ this.handleAddAnswerButtonClick } />
 				</div>
 		);
 	};
