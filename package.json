@@ -28,6 +28,7 @@
     "redux-form-material-ui": "^4.0.1"
   },
   "devDependencies": {
-    "babel-plugin-transform-class-properties": "^6.10.2"
+    "babel-plugin-transform-class-properties": "^6.10.2",
+    "react-addons-perf": "^15.3.2"
   }
 }
