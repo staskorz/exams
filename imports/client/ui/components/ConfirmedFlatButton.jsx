@@ -4,7 +4,7 @@ import { FlatButton } from 'material-ui';
 import ConfirmationDialog from  './ConfirmationDialog';
 
 
-export default class ConfirmedFloatingActionButton extends Component {
+export default class ConfirmedFlatButton extends Component {
 	static propTypes = {
 		onConfirm: PropTypes.func.isRequired
 	};
