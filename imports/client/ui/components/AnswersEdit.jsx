@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { TextField, Checkbox } from 'redux-form-material-ui';
-import { Badge, FlatButton } from 'material-ui';
+import { Badge } from 'material-ui';
 import { FormattedMessage } from 'react-intl';
 
 import AddAnswerButton from './AddAnswerButton';
