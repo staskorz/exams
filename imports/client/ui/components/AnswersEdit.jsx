@@ -101,15 +101,16 @@ export default class AnswersEdit extends Component {
 								</div>
 								<div style={ this.style.checkboxContainer }>
 									<Field component={ Checkbox } name={ `${ answer }.correct` } style={ this.style.checkbox }
-										   iconStyle={ iconStyle } />
+											iconStyle={ iconStyle } />
 								</div>
 								<Field component={ TextField } name={ `${ answer }.text` }
-									   floatingLabelText={ <FormattedMessage id='answer' values={{ number: index + 1 }} /> }
-									   style={ this.style.answerTextField }
-									   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
+										floatingLabelText={ <FormattedMessage id='answer' values={{ number: index + 1 }} /> }
+										style={ this.style.answerTextField }
+										multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
 								/>
 								<div style={ this.style.addRemoveAnswerButtonsContainer }>
-									<RemoveAnswerButton disabled={ fields.length < 3 } onClick={ this.handleRemoveAnswerButtonClick } number={ index } />
+									<RemoveAnswerButton disabled={ fields.length < 3 } onClick={ this.handleRemoveAnswerButtonClick }
+											number={ index } />
 								</div>
 							</div>
 					)) }
