@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { TextField, Checkbox } from 'redux-form-material-ui';
-import { Badge } from 'material-ui';
 import { FormattedMessage } from 'react-intl';
 
 import AddAnswerButton from './AddAnswerButton';
 import RemoveAnswerButton from './RemoveAnswerButton';
+import NumberBadge from './NumberBadge';
 
 
 export default class AnswersEdit extends Component {
@@ -97,7 +97,7 @@ export default class AnswersEdit extends Component {
 					{ fields.map((answer, index) => (
 							<div style={ this.style.answersContainer } key={ index }>
 								<div style={ this.style.numberContainer }>
-									<Badge badgeContent={ index + 1 } primary={ true } style={ this.style.numberBadge } />
+									<NumberBadge content={ index + 1 } primary={ true } style={ this.style.numberBadge } />
 								</div>
 								<div style={ this.style.checkboxContainer }>
 									<Field component={ Checkbox } name={ `${ answer }.correct` } style={ this.style.checkbox }

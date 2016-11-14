@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Field, FieldArray } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
-import { Paper, Badge, FloatingActionButton } from 'material-ui';
+import { Paper, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
 import { FormattedMessage, injectIntl } from 'react-intl';
 
 import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
+import NumberBadge from './NumberBadge';
 
 
 class QuestionsEdit extends Component {
@@ -91,7 +92,7 @@ class QuestionsEdit extends Component {
 				<div>
 					{ fields.map((question, index) => (
 							<Paper style={ this.style.paper } key={ index }>
-								<Badge badgeContent={ index + 1 } secondary={ true } />
+								<NumberBadge content={ index + 1 } secondary={ true } />
 								
 								<div style={ this.style.weightContainer }>
 									<span style={ this.style.weightLabel }><FormattedMessage id='weight' /> </span>
