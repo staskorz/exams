@@ -5,11 +5,13 @@ import { Paper, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
 import { FormattedMessage, injectIntl } from 'react-intl';
+import pica from 'pica';
 
 import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
 import NumberBadge from './NumberBadge';
 import Dropzone from './Dropzone';
+import canvasToBlob from '/imports/client/canvas-to-blob';
 
 
 class QuestionsEdit extends Component {
@@ -89,6 +91,42 @@ class QuestionsEdit extends Component {
 	};
 	
 	
+	resizeImage = src => {
+		console.log('src:', src);
+		
+		const srcImage = new Image();
+		srcImage.src = window.URL.createObjectURL(src);
+		
+		const dst = document.createElement('canvas');
+		dst.width = 200;
+		dst.height = 300;
+		
+		srcImage.onload = () => {
+			pica.resizeCanvas(srcImage, dst, {
+				unsharpAmount: 80,
+				unsharpRadius: 0.6,
+				unsharpThreshold: 2
+			}, err => {
+				if(err) {
+					console.log('error resizing image:', err);
+					
+					return;
+				}
+				
+				console.log('image resized successfully');
+				
+				canvasToBlob(dst, blob => {
+					console.log('dst blob:', blob);
+					
+					this.setState({
+						resizedImage: URL.createObjectURL(blob)
+					});
+				});
+			})
+		};
+	};
+	
+	
 	handleFileDrop = (acceptedFiles, rejectedFiles) => {
 		console.log('Accepted files: ', acceptedFiles);
 		console.log('Rejected files: ', rejectedFiles);
@@ -97,6 +135,8 @@ class QuestionsEdit extends Component {
 			this.setState({
 				image: window.URL.createObjectURL(acceptedFiles[0])
 			});
+			
+			this.resizeImage(acceptedFiles[0]);
 		}
 	};
 	

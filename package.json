@@ -16,6 +16,7 @@
     "moment": "^2.15.1",
     "node-sspi": "^0.1.13",
     "papaparse": "^4.1.2",
+    "pica": "https://github.com/staskorz/pica#browser-meteor-windows",
     "react": "^15.2.1",
     "react-addons-pure-render-mixin": "^15.2.1",
     "react-dom": "^15.2.1",
