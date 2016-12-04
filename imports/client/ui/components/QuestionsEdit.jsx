@@ -91,13 +91,13 @@ class QuestionsEdit extends Component {
 	
 	
 	resizeImage = src => {
-		resizeImageMethod(src, (err, dst) => {
+		resizeImageMethod(src, (err, { blob }) => {
 			if(err) {
 				console.log('error resizing image:', err);
 			}
 			
 			this.setState({
-				resizedImage: URL.createObjectURL(dst)
+				resizedImage: URL.createObjectURL(blob)
 			});
 		});
 	};
