@@ -5,7 +5,6 @@ import { Paper, FloatingActionButton } from 'material-ui';
 import IconRemove from 'material-ui/svg-icons/content/remove';
 import IconAdd from 'material-ui/svg-icons/content/add';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import pica from 'pica';
 
 import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
