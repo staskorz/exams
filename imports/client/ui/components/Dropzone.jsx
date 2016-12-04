@@ -13,8 +13,10 @@ const style = {
 		height: '80px',
 		width: '70px',
 		transition: 'all 0.5s',
-		textAlign: 'center',
-		color: 'rgba(0, 0, 0, 0.2)'
+		color: 'rgba(0, 0, 0, 0.2)',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 	
 	dropzoneActive: {
@@ -26,7 +28,6 @@ const style = {
 	dropzoneIcon: {
 		height: '32px',
 		width: '32px',
-		marginTop: '24px',
 		color: 'inherit',
 		transition: 'all 0s',
 	}
