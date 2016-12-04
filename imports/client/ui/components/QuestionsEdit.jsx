@@ -11,7 +11,7 @@ import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
 import NumberBadge from './NumberBadge';
 import Dropzone from './Dropzone';
-import canvasToBlob from '/imports/client/canvas-to-blob';
+import resizeImageMethod from '/imports/client/resize-image';
 
 
 class QuestionsEdit extends Component {
@@ -92,38 +92,15 @@ class QuestionsEdit extends Component {
 	
 	
 	resizeImage = src => {
-		console.log('src:', src);
-		
-		const srcImage = new Image();
-		srcImage.src = window.URL.createObjectURL(src);
-		
-		const dst = document.createElement('canvas');
-		dst.width = 200;
-		dst.height = 300;
-		
-		srcImage.onload = () => {
-			pica.resizeCanvas(srcImage, dst, {
-				unsharpAmount: 80,
-				unsharpRadius: 0.6,
-				unsharpThreshold: 2
-			}, err => {
-				if(err) {
-					console.log('error resizing image:', err);
-					
-					return;
-				}
-				
-				console.log('image resized successfully');
-				
-				canvasToBlob(dst, blob => {
-					console.log('dst blob:', blob);
-					
-					this.setState({
-						resizedImage: URL.createObjectURL(blob)
-					});
-				});
-			})
-		};
+		resizeImageMethod(src, (err, dst) => {
+			if(err) {
+				console.log('error resizing image:', err);
+			}
+			
+			this.setState({
+				resizedImage: URL.createObjectURL(dst)
+			});
+		});
 	};
 	
 	
