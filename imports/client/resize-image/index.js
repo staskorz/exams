@@ -1,37 +1,40 @@
 import { resizeCanvas } from 'pica';
 
+import shouldResize from './should-resize';
+import calculateResizedImageSize from './calculate-resized-image-size';
 import canvasToBlob from './canvas-to-blob';
 
 
 export default (src, cb) => {
-	console.log('src:', src);
-	
 	const srcImage = new Image();
 	srcImage.src = URL.createObjectURL(src);
 	
-	const dst = document.createElement('canvas');
-	dst.width = 200;
-	dst.height = 300;
-	
 	srcImage.onload = () => {
-		resizeCanvas(srcImage, dst, {
-			unsharpAmount: 80,
-			unsharpRadius: 0.6,
-			unsharpThreshold: 2
-		}, err => {
-			if(err) {
-				console.log('error resizing image:', err);
-				
-				cb(err);
-			}
+		const { height, width } = srcImage;
+		
+		if(shouldResize({ height, width })) {
+			const newSize = calculateResizedImageSize({ height, width });
 			
-			console.log('image resized successfully');
+			const dst = document.createElement('canvas');
 			
-			canvasToBlob(dst, blob => {
-				console.log('dst blob:', blob);
+			dst.height = newSize.height;
+			dst.width = newSize.width;
+			
+			resizeCanvas(srcImage, dst, {
+				unsharpAmount: 80,
+				unsharpRadius: 0.6,
+				unsharpThreshold: 2
+			}, err => {
+				if(err) {
+					cb(err);
+				}
 				
-				cb(null, blob);
-			});
-		})
+				canvasToBlob(dst, blob => {
+					cb(null, blob);
+				});
+			})
+		} else {
+			cb(null, src);
+		}
 	};
 };
