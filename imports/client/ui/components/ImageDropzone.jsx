@@ -5,6 +5,11 @@ import Dropzone from './Dropzone';
 
 
 const style = {
+	defaultSize: {
+		height: '80px',
+		width: '70px',
+	},
+	
 	dropzoneIcon: {
 		height: '32px',
 		width: '32px',
@@ -14,6 +19,6 @@ const style = {
 };
 
 
-export default ({ onDrop }) => <Dropzone onDrop={ onDrop } >
+export default ({ onDrop }) => <Dropzone onDrop={ onDrop } style={ style.defaultSize } >
 	<AddPhotoIcon style={ style.dropzoneIcon }/>
 </Dropzone>;

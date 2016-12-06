@@ -9,8 +9,6 @@ const style = {
 		borderColor: 'rgba(0, 0, 0, 0.2)',
 		borderStyle: 'dashed',
 		borderRadius: '4px',
-		height: '80px',
-		width: '70px',
 		transition: 'all 0.5s',
 		color: 'rgba(0, 0, 0, 0.2)',
 		display: 'flex',
