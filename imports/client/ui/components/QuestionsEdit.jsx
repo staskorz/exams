@@ -9,7 +9,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
 import NumberBadge from './NumberBadge';
-import Dropzone from './Dropzone';
+import ImageDropzone from './ImageDropzone';
 import resizeImageMethod from '/imports/client/resize-image';
 
 
@@ -151,7 +151,7 @@ class QuestionsEdit extends Component {
 										   style={ this.style.questionText }
 										   floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
 									
-									<Dropzone onDrop={ this.handleFileDrop } />
+									<ImageDropzone onDrop={ this.handleFileDrop } />
 									
 									{ image ? <img src={ image } alt='image' /> : '' }
 									
