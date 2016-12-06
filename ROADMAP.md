@@ -16,3 +16,8 @@
 1. Exam categories
 1. Statistics of wrong answers
 1. ...
+
+#Technical
+
+1. Add notifications with SnackBar
+
