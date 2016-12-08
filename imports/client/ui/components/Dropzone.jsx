@@ -13,7 +13,8 @@ const style = {
 		color: 'rgba(0, 0, 0, 0.2)',
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		overflow: 'hidden'
 	},
 	
 	dropzoneActive: {
