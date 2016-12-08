@@ -10,7 +10,6 @@ import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
 import NumberBadge from './NumberBadge';
 import ImageDropzone from './ImageDropzone';
-import resizeImageMethod from '/imports/client/resize-image';
 
 
 class QuestionsEdit extends Component {
