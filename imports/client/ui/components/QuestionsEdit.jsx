@@ -13,11 +13,6 @@ import ImageDropzone from './ImageDropzone';
 
 
 class QuestionsEdit extends Component {
-	state = {
-		image: null,
-		resizedImage: null
-	};
-	
 	style = {
 		paper: {
 			marginTop: '40px',
@@ -130,8 +125,6 @@ class QuestionsEdit extends Component {
 		
 		const questionRemovalConfirmationMessage = formatMessage({ id: 'areYouSure' });
 		
-		const { image, resizedImage } = this.state;
-		
 		return (
 				<div>
 					{ fields.map((question, index) => (
@@ -151,10 +144,6 @@ class QuestionsEdit extends Component {
 										   floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
 									
 									<ImageDropzone onDrop={ this.handleFileDrop } />
-									
-									{ image ? <img src={ image } alt='image' /> : '' }
-									
-									{ resizedImage ? <img src={ resizedImage } alt='resizedImage' /> : '' }
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />
 								</div>
