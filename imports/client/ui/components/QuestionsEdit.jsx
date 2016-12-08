@@ -115,19 +115,20 @@ class QuestionsEdit extends Component {
 								
 								<div style={ this.style.weightContainer }>
 									<span style={ this.style.weightLabel }><FormattedMessage id='weight' /> </span>
-									<Field component={ TextField } name={ `${ question }.weight` } type='number' style={ this.style.weight }
-										   parse={ this.parseNumber } />
+									<Field component={ TextField } name={ `${ question }.weight` } type='number'
+											style={ this.style.weight } parse={ this.parseNumber } />
 								</div>
 								
 								<div style={ this.style.fieldsContainer }>
 									<Field component={ TextField } name={ `${ question }.text` }
-										   multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
-										   style={ this.style.questionText }
-										   floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
+											multiLine={ true } rows={ 1 } rowsMax={ 7 } fullWidth
+											style={ this.style.questionText }
+											floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
 									
 									<ImageDropzone onChange={ this.onImageChange } />
 									
-									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />
+									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit }
+											props={{ submitFailed }} />
 								</div>
 								<ConfirmedFloatingActionButton
 										mini={ true }
@@ -142,7 +143,8 @@ class QuestionsEdit extends Component {
 							</Paper>
 					)) }
 					
-					<FloatingActionButton mini={true} style={ this.style.addQuestionButton } onClick={ this.addQuestion }>
+					<FloatingActionButton mini={true} style={ this.style.addQuestionButton }
+							onClick={ this.addQuestion }>
 						<IconAdd />
 					</FloatingActionButton>
 				</div>
