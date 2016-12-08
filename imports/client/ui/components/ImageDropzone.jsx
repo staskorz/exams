@@ -27,10 +27,6 @@ export default class ImageDropzone extends Component {
 			width: '32px',
 			color: 'inherit',
 			transition: 'all 0s',
-		},
-		
-		image: {
-			transition: 'all 0s'
 		}
 	};
 	
