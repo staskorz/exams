@@ -84,29 +84,11 @@ class QuestionsEdit extends Component {
 	};
 	
 	
-	resizeImage = src => {
-		resizeImageMethod(src, (err, { blob }) => {
-			if(err) {
-				console.log('error resizing image:', err);
-			}
-			
-			this.setState({
-				resizedImage: URL.createObjectURL(blob)
-			});
-		});
-	};
-	
-	
-	handleFileDrop = (acceptedFiles, rejectedFiles) => {
-		console.log('Accepted files: ', acceptedFiles);
-		console.log('Rejected files: ', rejectedFiles);
-		
-		if(acceptedFiles && acceptedFiles.length) {
-			this.setState({
-				image: window.URL.createObjectURL(acceptedFiles[0])
-			});
-			
-			this.resizeImage(acceptedFiles[0]);
+	onImageChange = (err, image) => {
+		if(err) {
+			console.log('image drop error:', err);
+		} else {
+			console.log('image:', image);
 		}
 	};
 	
@@ -143,7 +125,7 @@ class QuestionsEdit extends Component {
 										   style={ this.style.questionText }
 										   floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
 									
-									<ImageDropzone onDrop={ this.handleFileDrop } />
+									<ImageDropzone onChange={ this.onImageChange } />
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit } props={{ submitFailed }} />
 								</div>
