@@ -37,4 +37,8 @@ export default (src, cb) => {
 			cb(null, { blob: src, height, width });
 		}
 	};
+	
+	srcImage.onerror = () => {
+		cb('Source is not an image');
+	};
 };
