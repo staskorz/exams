@@ -21,6 +21,7 @@ export default (src, cb) => {
 			dst.width = newSize.width;
 			
 			resizeCanvas(srcImage, dst, {
+				alpha: true,
 				unsharpAmount: 80,
 				unsharpRadius: 0.6,
 				unsharpThreshold: 2
