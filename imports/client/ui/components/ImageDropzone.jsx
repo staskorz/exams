@@ -31,6 +31,15 @@ export default class ImageDropzone extends Component {
 	};
 	
 	
+	normalizeDimension = (original, resized, sizeFactor) => {
+		if(original > resized + sizeFactor) {
+			return original;
+		} else {
+			return resized + sizeFactor;
+		}
+	};
+	
+	
 	processImage = (src, cb) => {
 		resizeImage(src, (err, result) => {
 			if(err) {
@@ -41,11 +50,11 @@ export default class ImageDropzone extends Component {
 				
 				cb(err);
 			} else {
-				const { blob, width, height, resized } = result;
+				const { blob, width, height } = result;
 				
 				this.setState({
-					width: width + SIZE_FACTOR,
-					height: height + SIZE_FACTOR,
+					width: this.normalizeDimension(DEFAULT_SIZE.width, width, SIZE_FACTOR),
+					height: this.normalizeDimension(DEFAULT_SIZE.height, height, SIZE_FACTOR),
 					image: URL.createObjectURL(blob)
 				});
 				
