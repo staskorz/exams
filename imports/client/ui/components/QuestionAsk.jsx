@@ -162,8 +162,8 @@ class QuestionAsk extends Component {
 				<div className='main-container-padding'>
 					<Card style={ this.style.card }>
 						<CardTitle title={ name }
-								   subtitle={ <FormattedMessage id='questionNumberXofY'
-																values={{ number: questionNumber + 1, of: numOfQuestions }} /> } />
+								subtitle={ <FormattedMessage id='questionNumberXofY'
+										values={{ number: questionNumber + 1, of: numOfQuestions }} /> } />
 						
 						<CardText style={ this.style.cardText }>
 							<span style={ this.style.primaryText }>{ text }</span><br />
@@ -178,7 +178,7 @@ class QuestionAsk extends Component {
 										</div>
 										<div style={ this.style.answerCheckboxContainer }>
 											<Checkbox onCheck={ this.createCheckboxClickHandler(questionNumber, index) }
-													  checked={ this.state.answers[questionNumber][index] } />
+													checked={ this.state.answers[questionNumber][index] } />
 										</div>
 										<div style={ this.style.answerTextContainer }>
 											<span style={ this.style.answerText }>{ answer }</span>
@@ -188,17 +188,20 @@ class QuestionAsk extends Component {
 						</CardText>
 						
 						<CardActions>
-							<RaisedButton label={ <FormattedMessage id='previous' /> } onClick={ onPrev } disabled={ questionNumber === 0 }
-										  style={ this.style.button } />
+							<RaisedButton label={ <FormattedMessage id='previous' /> } onClick={ onPrev }
+									disabled={ questionNumber === 0 }
+									style={ this.style.button } />
 							
 							{ questionNumber + 1 < numOfQuestions ?
-									<RaisedButton label={ <FormattedMessage id='next' /> } onClick={ onNext } primary={ true }
-												  style={ this.style.button } />
+									<RaisedButton label={ <FormattedMessage id='next' /> } onClick={ onNext }
+											primary={ true }
+											style={ this.style.button } />
 									
 									:
 									
-									<ConfirmedRaisedButton label={ <FormattedMessage id='finish' /> } onConfirm={ this.submit } primary={ true }
-														   style={ this.style.button } text={ formatMessage({ id: 'areYouSure' }) } />
+									<ConfirmedRaisedButton label={ <FormattedMessage id='finish' /> }
+											onConfirm={ this.submit } primary={ true }
+											style={ this.style.button } text={ formatMessage({ id: 'areYouSure' }) } />
 							}
 						</CardActions>
 					</Card>
