@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDropzone from 'react-dropzone';
+import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo';
 import { cyan500 } from 'material-ui/styles/colors';
 
 
@@ -21,13 +22,27 @@ const style = {
 		borderColor: cyan500,
 		borderStyle: 'solid',
 		color: cyan500
+	},
+	
+	dropzoneDisabled: {
+		color: '#eeeeee',
+		borderColor: '#dddddd'
+	},
+	
+	disabledDropzoneIcon: {
+		height: '32px',
+		width: '32px',
+		color: 'inherit',
+		transition: 'all 0s',
 	}
 };
 
 
 export default ({ onDrop, style: propStyle, children, disabled }) => {
 	if(disabled) {
-		return <div style={{ ...style.dropzone, ...propStyle }}></div>;
+		return <div style={{ ...style.dropzone, ...style.dropzoneDisabled, ...propStyle }}>
+			<AddPhotoIcon style={ style.disabledDropzoneIcon } />
+		</div>;
 	}
 	
 	return <ReactDropzone onDrop={ onDrop }

@@ -13,7 +13,7 @@ const style = {
 	
 	inactiveBadge: {
 		color: 'white',
-		backgroundColor: '#cccccc'
+		backgroundColor: '#dddddd'
 	}
 };
 
