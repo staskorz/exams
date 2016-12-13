@@ -25,7 +25,11 @@ const style = {
 };
 
 
-export default ({ onDrop, style: propStyle, children }) => {
+export default ({ onDrop, style: propStyle, children, disabled }) => {
+	if(disabled) {
+		return <div style={{ ...style.dropzone, ...propStyle }}></div>;
+	}
+	
 	return <ReactDropzone onDrop={ onDrop }
 			style={{ ...style.dropzone, ...propStyle }} activeStyle={ style.dropzoneActive }>
 		{ children }

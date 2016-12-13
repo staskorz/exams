@@ -91,6 +91,8 @@ export default class ImageDropzone extends Component {
 		
 		const { image } = this.state;
 		
+		const { disabled } = this.props;
+		
 		let internalElement;
 		
 		if(image) {
@@ -99,7 +101,7 @@ export default class ImageDropzone extends Component {
 			internalElement = <AddPhotoIcon style={ this.style.dropzoneIcon } />;
 		}
 		
-		return <Dropzone onDrop={ this.handleFileDrop } style={ pxSize }>
+		return <Dropzone onDrop={ this.handleFileDrop } style={ pxSize } disabled={ disabled }>
 			{ internalElement }
 		</Dropzone>;
 	}

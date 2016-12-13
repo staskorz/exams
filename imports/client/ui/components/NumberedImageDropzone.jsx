@@ -30,6 +30,6 @@ export default ({ number, style: propStyle, onChange, disabled }) => {
 	return <div style={ propStyle }>
 		<NumberBadge content={ number } style={ style.numberBadge } { ...condProps } />
 		
-		<ImageDropzone onChange={ onChange } />
+		<ImageDropzone onChange={ onChange } disabled={ disabled } />
 	</div>;
 };
