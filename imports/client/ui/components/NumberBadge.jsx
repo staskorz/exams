@@ -11,12 +11,13 @@ export default class NumberBadge extends Component {
 	
 	
 	render() {
-		const { content, primary, secondary, style } = this.props;
+		const { content, primary, secondary, style, badgeStyle } = this.props;
 		
 		const props = {
 			primary,
 			secondary,
-			style
+			style,
+			badgeStyle
 		};
 		
 		return <Badge badgeContent={ content } { ...props } />;
