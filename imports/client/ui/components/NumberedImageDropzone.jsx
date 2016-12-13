@@ -11,15 +11,25 @@ const style = {
 		marginTop: '-12px'
 	},
 	
-	badge: {
+	inactiveBadge: {
 		color: 'white',
 		backgroundColor: '#cccccc'
 	}
 };
 
 
-export default ({ number, style: propStyle, onChange }) => <div style={ propStyle }>
-	<NumberBadge content={ number } badgeStyle={ style.badge } style={ style.numberBadge } />
+export default ({ number, style: propStyle, onChange, disabled }) => {
+	let condProps;
 	
-	<ImageDropzone onChange={ onChange } />
-</div>;
+	if(disabled) {
+		condProps = { badgeStyle: style.inactiveBadge }
+	} else {
+		condProps = { primary: true };
+	}
+	
+	return <div style={ propStyle }>
+		<NumberBadge content={ number } style={ style.numberBadge } { ...condProps } />
+		
+		<ImageDropzone onChange={ onChange } />
+	</div>;
+};
