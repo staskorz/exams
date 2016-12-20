@@ -41,18 +41,20 @@ export default class ImagesDropzoneBlock extends Component {
 	
 	
 	render() {
+		const { images } = this.state;
+		
 		return <div>
 			<NumberedImageDropzone number={ 1 } onChange={ this.handleNumberedImageChange[0] }
 					style={ this.style.imageDropzone } />
 			
 			<NumberedImageDropzone number={ 2 } onChange={ this.handleNumberedImageChange[1] }
-					style={ this.style.imageDropzone } />
+					style={ this.style.imageDropzone } disabled={ !images[0] } />
 			
 			<NumberedImageDropzone number={ 3 } onChange={ this.handleNumberedImageChange[2] }
-					style={ this.style.imageDropzone } />
+					style={ this.style.imageDropzone } disabled={ !images[1] } />
 			
 			<NumberedImageDropzone number={ 4 } onChange={ this.handleNumberedImageChange[3] }
-					style={ this.style.imageDropzone } />
+					style={ this.style.imageDropzone } disabled={ !images[2] } />
 		</div>;
 	}
 }
