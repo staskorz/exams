@@ -43,11 +43,6 @@ export default class ImageDropzone extends Component {
 	processImage = (src, cb) => {
 		resizeImage(src, (err, result) => {
 			if(err) {
-				this.setState({
-					...DEFAULT_SIZE,
-					image: null
-				});
-				
 				cb(err);
 			} else {
 				const { blob, width, height } = result;
