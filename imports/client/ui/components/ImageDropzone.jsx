@@ -45,15 +45,15 @@ export default class ImageDropzone extends Component {
 			if(err) {
 				cb(err);
 			} else {
-				const { blob, width, height } = result;
+				const { image, width, height } = result;
 				
 				this.setState({
 					width: this.normalizeDimension(DEFAULT_SIZE.width, width, SIZE_FACTOR),
 					height: this.normalizeDimension(DEFAULT_SIZE.height, height, SIZE_FACTOR),
-					image: URL.createObjectURL(blob)
+					image: URL.createObjectURL(image)
 				});
 				
-				cb(null, blob);
+				cb(null, image);
 			}
 		});
 	};

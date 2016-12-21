@@ -30,12 +30,12 @@ export default (src, cb) => {
 					cb(err);
 				}
 				
-				canvasToBlob(dst, blob => {
-					cb(null, { blob, ...newSize, resized: true });
+				canvasToBlob(dst, image => {
+					cb(null, { image, ...newSize, resized: true });
 				});
 			})
 		} else {
-			cb(null, { blob: src, height, width });
+			cb(null, { image: src, height, width });
 		}
 	};
 	
