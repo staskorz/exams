@@ -43,7 +43,7 @@ const style = {
 };
 
 
-export default ({ number, style: propStyle, onChange, disabled, removable }) => {
+export default ({ number, style: propStyle, onChange, disabled, removable, image, width, height }) => {
 	let condProps;
 	
 	if(disabled) {
@@ -52,10 +52,18 @@ export default ({ number, style: propStyle, onChange, disabled, removable }) => 
 		condProps = { primary: true };
 	}
 	
+	const props = {
+		onChange,
+		disabled,
+		image,
+		width,
+		height
+	};
+	
 	return <div style={ propStyle }>
 		<NumberBadge content={ number } style={ style.numberBadge } { ...condProps } />
 		
-		<ImageDropzone onChange={ onChange } disabled={ disabled } />
+		<ImageDropzone { ...props } />
 		
 		<div style={ style.removeButtonContainer }>
 			<FloatingActionButton secondary={ true } mini={ true } style={ style.removeButton }

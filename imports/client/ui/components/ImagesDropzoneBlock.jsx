@@ -50,7 +50,7 @@ export default class ImagesDropzoneBlock extends Component {
 		return <div>
 			{ images.map((elem, index) => <NumberedImageDropzone key={ index } number={ index + 1 }
 					onChange={ this.handleNumberedImageChange[index] } disabled={ index !== 0 && !images[index - 1] }
-					style={ this.style.imageDropzone } removable={ isRemovable(index) } />
+					style={ this.style.imageDropzone } removable={ isRemovable(index) } { ...images[index] || {} } />
 			) }
 		</div>;
 	}

@@ -31,6 +31,48 @@ export default class ImageDropzone extends Component {
 	};
 	
 	
+	cleanupImageState = () => {
+		const { image } = this.state;
+		
+		if(image) {
+			URL.revokeObjectURL(image);
+		}
+	};
+	
+	
+	setImageState = ({ image, width, height }) => {
+		this.cleanupImageState();
+		
+		if(image) {
+			this.setState({
+				image: URL.createObjectURL(image),
+				width,
+				height
+			});
+		} else {
+			this.setState({
+				image: null,
+				...DEFAULT_SIZE
+			});
+		}
+	};
+	
+	
+	componentWillMount() {
+		this.setImageState(this.props);
+	};
+	
+	
+	componentWillReceiveProps(nextProps) {
+		this.setImageState(nextProps);
+	};
+	
+	
+	componentWillUnmount() {
+		this.cleanupImageState();
+	};
+	
+	
 	normalizeDimension = (original, resized, sizeFactor) => {
 		if(original > resized + sizeFactor) {
 			return original;
@@ -47,13 +89,11 @@ export default class ImageDropzone extends Component {
 			} else {
 				const { image, width, height } = result;
 				
-				this.setState({
+				cb(null, {
 					width: this.normalizeDimension(DEFAULT_SIZE.width, width, SIZE_FACTOR),
 					height: this.normalizeDimension(DEFAULT_SIZE.height, height, SIZE_FACTOR),
-					image: URL.createObjectURL(image)
+					image
 				});
-				
-				cb(null, image);
 			}
 		});
 	};
