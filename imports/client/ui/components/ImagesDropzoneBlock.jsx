@@ -43,18 +43,22 @@ export default class ImagesDropzoneBlock extends Component {
 	render() {
 		const { images } = this.state;
 		
+		const firstNonExistingIndex = images.findIndex(elem => !elem);
+		
+		const isRemovable = index => images[index] && (firstNonExistingIndex - 1 === index || firstNonExistingIndex === -1 && index === 3);
+		
 		return <div>
 			<NumberedImageDropzone number={ 1 } onChange={ this.handleNumberedImageChange[0] }
-					style={ this.style.imageDropzone } />
+					style={ this.style.imageDropzone } removable={ isRemovable(0) } />
 			
 			<NumberedImageDropzone number={ 2 } onChange={ this.handleNumberedImageChange[1] }
-					style={ this.style.imageDropzone } disabled={ !images[0] } />
+					style={ this.style.imageDropzone } disabled={ !images[0] } removable={ isRemovable(1) } />
 			
 			<NumberedImageDropzone number={ 3 } onChange={ this.handleNumberedImageChange[2] }
-					style={ this.style.imageDropzone } disabled={ !images[1] } />
+					style={ this.style.imageDropzone } disabled={ !images[1] } removable={ isRemovable(2) } />
 			
 			<NumberedImageDropzone number={ 4 } onChange={ this.handleNumberedImageChange[3] }
-					style={ this.style.imageDropzone } disabled={ !images[2] } />
+					style={ this.style.imageDropzone } disabled={ !images[2] } removable={ isRemovable(3) } />
 		</div>;
 	}
 }
