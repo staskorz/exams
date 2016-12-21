@@ -47,6 +47,6 @@ export default (src, cb) => {
 	};
 	
 	srcImage.onerror = () => {
-		cb('Source is not an image');
+		runResultCallback('Source is not an image');
 	};
 };
