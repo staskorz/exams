@@ -7,7 +7,14 @@ import canvasToBlob from './canvas-to-blob';
 
 export default (src, cb) => {
 	const srcImage = new Image();
-	srcImage.src = URL.createObjectURL(src);
+	const imageObjectUrl = URL.createObjectURL(src);
+	srcImage.src = imageObjectUrl;
+	
+	runResultCallback = (err, result) => {
+		URL.revokeObjectURL(imageObjectUrl);
+		
+		cb(err, result);
+	};
 	
 	srcImage.onload = () => {
 		const { height, width } = srcImage;
@@ -27,15 +34,15 @@ export default (src, cb) => {
 				unsharpThreshold: 2
 			}, err => {
 				if(err) {
-					cb(err);
+					runResultCallback(err);
 				}
 				
 				canvasToBlob(dst, image => {
-					cb(null, { image, ...newSize, resized: true });
+					runResultCallback(null, { image, ...newSize, resized: true });
 				});
 			})
 		} else {
-			cb(null, { image: src, height, width });
+			runResultCallback(null, { image: src, height, width });
 		}
 	};
 	
