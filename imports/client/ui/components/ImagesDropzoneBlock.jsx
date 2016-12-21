@@ -5,7 +5,7 @@ import NumberedImageDropzone from './NumberedImageDropzone';
 
 export default class ImagesDropzoneBlock extends Component {
 	state = {
-		images: new Array(4)
+		images: (new Array(4)).fill(null)
 	};
 	
 	
@@ -48,17 +48,10 @@ export default class ImagesDropzoneBlock extends Component {
 		const isRemovable = index => images[index] && (firstNonExistingIndex - 1 === index || firstNonExistingIndex === -1 && index === 3);
 		
 		return <div>
-			<NumberedImageDropzone number={ 1 } onChange={ this.handleNumberedImageChange[0] }
-					style={ this.style.imageDropzone } removable={ isRemovable(0) } />
-			
-			<NumberedImageDropzone number={ 2 } onChange={ this.handleNumberedImageChange[1] }
-					style={ this.style.imageDropzone } disabled={ !images[0] } removable={ isRemovable(1) } />
-			
-			<NumberedImageDropzone number={ 3 } onChange={ this.handleNumberedImageChange[2] }
-					style={ this.style.imageDropzone } disabled={ !images[1] } removable={ isRemovable(2) } />
-			
-			<NumberedImageDropzone number={ 4 } onChange={ this.handleNumberedImageChange[3] }
-					style={ this.style.imageDropzone } disabled={ !images[2] } removable={ isRemovable(3) } />
+			{ images.map((elem, index) => <NumberedImageDropzone key={ index } number={ index + 1 }
+					onChange={ this.handleNumberedImageChange[index] } disabled={ index !== 0 && !images[index - 1] }
+					style={ this.style.imageDropzone } removable={ isRemovable(index) } />
+			) }
 		</div>;
 	}
 }
