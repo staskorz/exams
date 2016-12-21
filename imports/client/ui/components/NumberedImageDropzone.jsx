@@ -43,7 +43,7 @@ const style = {
 };
 
 
-export default ({ number, style: propStyle, onChange, disabled, removable, image, width, height }) => {
+export default ({ number, style: propStyle, onChange, onRemove, disabled, removable, image, width, height }) => {
 	let condProps;
 	
 	if(disabled) {
@@ -67,7 +67,7 @@ export default ({ number, style: propStyle, onChange, disabled, removable, image
 		
 		<div style={ style.removeButtonContainer }>
 			<FloatingActionButton secondary={ true } mini={ true } style={ style.removeButton }
-					iconStyle={ style.removeButtonIcon } disabled={ !removable }>
+					iconStyle={ style.removeButtonIcon } disabled={ !removable } onClick={ onRemove }>
 				<IconRemove color={ pinkA200 } style={ style.removeIcon } />
 			</FloatingActionButton>
 		</div>
