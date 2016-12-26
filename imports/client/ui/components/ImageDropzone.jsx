@@ -85,19 +85,7 @@ export default class ImageDropzone extends Component {
 	
 	
 	processImage = (src, cb) => {
-		resizeImage(src, (err, result) => {
-			if(err) {
-				cb(err);
-			} else {
-				const { image, width, height } = result;
-				
-				cb(null, {
-					width: this.normalizeDimension(DEFAULT_SIZE.width, width, SIZE_FACTOR),
-					height: this.normalizeDimension(DEFAULT_SIZE.height, height, SIZE_FACTOR),
-					image
-				});
-			}
-		});
+		resizeImage(src, cb);
 	};
 	
 	
@@ -131,8 +119,8 @@ export default class ImageDropzone extends Component {
 		const { width, height } = this.state;
 		
 		return {
-			width: width + 'px',
-			height: height + 'px'
+			width: this.normalizeDimension(DEFAULT_SIZE.width, width, SIZE_FACTOR) + 'px',
+			height: this.normalizeDimension(DEFAULT_SIZE.height, height, SIZE_FACTOR) + 'px'
 		};
 	};
 	
