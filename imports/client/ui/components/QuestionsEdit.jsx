@@ -9,7 +9,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import AnswersEdit from './AnswersEdit';
 import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
 import NumberBadge from './NumberBadge';
-import NumberedImageDropzone from './NumberedImageDropzone';
+import ImagesDropzoneBlockRF from './ImagesDropzoneBlockRF';
 
 
 class QuestionsEdit extends Component {
@@ -72,7 +72,8 @@ class QuestionsEdit extends Component {
 		const { fields } = this.props;
 		
 		fields.push({
-			weight: 10
+			weight: 10,
+			images: (new Array(4)).fill(null)
 		});
 	};
 	
@@ -81,15 +82,6 @@ class QuestionsEdit extends Component {
 		const { fields: { remove } } = this.props;
 		
 		remove(index);
-	};
-	
-	
-	onImageChange = (err, image) => {
-		if(err) {
-			console.log('image drop error:', err);
-		} else {
-			console.log('image:', image);
-		}
 	};
 	
 	
@@ -125,7 +117,7 @@ class QuestionsEdit extends Component {
 											style={ this.style.questionText }
 											floatingLabelText={ <FormattedMessage id='questionBody' /> } /><br />
 									
-									<NumberedImageDropzone number={ 1 } onChange={ this.onImageChange } />
+									<Field component={ ImagesDropzoneBlockRF } name={ `${ question }.images` } />
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit }
 											props={{ submitFailed }} />

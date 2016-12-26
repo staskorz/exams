@@ -90,8 +90,45 @@ class ExamEditForm extends Component {
 	};
 	
 	
+	transformFormFieldsClientToServer = formFields => {
+		const { questions, ...restFormFields } = formFields;
+		
+		const transformedQuestions = questions.map(({ images, ...restQuestionFields }) => {
+			if(images) {
+				return {
+					...restQuestionFields,
+					images: images.map(imageData => {
+						if(imageData) {
+							const { image, ...restImageFields } = imageData;
+							
+							return {
+								...restImageFields,
+								imageBlob: {
+									blob: image
+								}
+							};
+						}
+					})
+				};
+			} else {
+				return {
+					...restQuestionFields,
+				};
+			}
+			
+		});
+		
+		return {
+			...restFormFields,
+			questions: transformedQuestions
+		};
+	};
+	
+	
 	save = () => {
-		const { formFields } = this.state;
+		const { formFields: rawFormFields } = this.state;
+		
+		const formFields = this.transformFormFieldsClientToServer(rawFormFields);
 		
 		const { edit } = this.props;
 		
@@ -138,20 +175,26 @@ class ExamEditForm extends Component {
 					
 					<form>
 						<div className='formContainer' style={ this.style.formContainer }>
-							<Field component={ TextField } name='name' floatingLabelText={ <FormattedMessage id='examName' /> }
-								   style={ this.style.examName } /><br />
-							<Field component={ Checkbox } name='published' label={ <FormattedMessage id='published' /> } />
+							<Field component={ TextField } name='name'
+									floatingLabelText={ <FormattedMessage id='examName' /> }
+									style={ this.style.examName } /><br />
+							<Field component={ Checkbox } name='published'
+									label={ <FormattedMessage id='published' /> } />
 							
 							<FieldArray name='questions' component={ QuestionsEdit } props={{ submitFailed }} />
 						</div>
 						
-						<div style={ this.style.submissionError }>{ submitFailed && invalid ? <FormattedMessage id='formHasErrors' /> : ' ' }</div>
+						<div style={ this.style.submissionError }>{ submitFailed && invalid ?
+								<FormattedMessage id='formHasErrors' /> : ' ' }</div>
 						
 						<div className='buttonsContainer'>
-							<RaisedButton style={ this.style.button } label={ <FormattedMessage id='save' /> } primary={ true }
-										  onClick={ handleSubmit(this.handleSubmit) } disabled={ submitting } />
-							<ConfirmedRaisedButton style={ this.style.button } text={ formatMessage({ id: 'areYouSure' }) }
-												   label={ <FormattedMessage id='cancel' /> } onConfirm={ this.goBack } disabled={ submitting } />
+							<RaisedButton style={ this.style.button } label={ <FormattedMessage id='save' /> }
+									primary={ true }
+									onClick={ handleSubmit(this.handleSubmit) } disabled={ submitting } />
+							<ConfirmedRaisedButton style={ this.style.button }
+									text={ formatMessage({ id: 'areYouSure' }) }
+									label={ <FormattedMessage id='cancel' /> } onConfirm={ this.goBack }
+									disabled={ submitting } />
 						</div>
 					</form>
 					
@@ -168,7 +211,7 @@ class ExamEditForm extends Component {
 
 
 const validate = rawValues => {
-	const values = rawValues || {};	
+	const values = rawValues || {};
 	
 	const errors = {
 		questions: []

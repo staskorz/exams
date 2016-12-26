@@ -15,6 +15,24 @@ const answer = new SimpleSchema({
 });
 
 
+const image = new SimpleSchema({
+	imageBlob: {
+		type: Object,
+		blackbox: true
+	},
+	
+	width: {
+		type: Number,
+		min: 1
+	},
+	
+	height: {
+		type: Number,
+		min: 1
+	}
+});
+
+
 const question = new SimpleSchema({
 	weight: {
 		type: Number,
@@ -32,6 +50,12 @@ const question = new SimpleSchema({
 		type: [answer],
 		minCount: 2,
 		maxCount: 4
+	},
+	
+	images: {
+		type: [image],
+		maxCount: 4,
+		optional: true
 	}
 });
 
