@@ -38,7 +38,7 @@ export default (src, cb) => {
 				}
 				
 				canvasToBlob(dst, image => {
-					runResultCallback(null, { image, ...newSize, resized: true });
+					runResultCallback(null, { image, ...newSize });
 				});
 			})
 		} else {
