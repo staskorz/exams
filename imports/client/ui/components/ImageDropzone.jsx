@@ -3,6 +3,8 @@ import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo';
 
 import Dropzone from './Dropzone';
 import resizeImage from '/imports/client/resize-image';
+import blobToUint8array from '/imports/client/blob-to-uint8array';
+import uint8arrayToBlob from '/imports/client/uint8array-to-blob';
 
 
 const DEFAULT_SIZE = {
@@ -45,7 +47,7 @@ export default class ImageDropzone extends Component {
 		
 		if(image) {
 			this.setState({
-				image: URL.createObjectURL(image),
+				image: URL.createObjectURL(uint8arrayToBlob(image)),
 				width,
 				height
 			});
@@ -100,13 +102,27 @@ export default class ImageDropzone extends Component {
 	
 	
 	handleFileDrop = (acceptedFiles, rejectedFiles) => {
-		console.log('Accepted files: ', acceptedFiles);
-		console.log('Rejected files: ', rejectedFiles);
-		
 		if(acceptedFiles && acceptedFiles.length) {
 			const { onChange } = this.props;
 			
-			this.processImage(acceptedFiles[0], onChange);
+			this.processImage(acceptedFiles[0], (err, imageObj) => {
+				if(err) {
+					onChange(err);
+				} else {
+					const { image, ...rest } = imageObj;
+					
+					blobToUint8array(image, (err, uint8arr) => {
+						if(err) {
+							onChange(err);
+						} else {
+							onChange(null, {
+								...rest,
+								image: uint8arr
+							});
+						}
+					})
+				}
+			});
 		}
 	};
 	
