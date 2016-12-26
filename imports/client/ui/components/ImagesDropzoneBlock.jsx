@@ -4,11 +4,6 @@ import NumberedImageDropzone from './NumberedImageDropzone';
 
 
 export default class ImagesDropzoneBlock extends Component {
-	state = {
-		images: (new Array(4)).fill(null)
-	};
-	
-	
 	style = {
 		imageDropzone: {
 			display: 'inline-block',
@@ -20,15 +15,9 @@ export default class ImagesDropzoneBlock extends Component {
 	
 	handleImageChange = (err, image, index) => {
 		if(!err) {
-			const images = this.state.images;
+			const { images, onChange } = this.props;
 			
 			const imagesNew = [...images.slice(0, index), image, ...images.slice(index + 1, images.length)];
-			
-			this.setState({
-				images: imagesNew
-			});
-			
-			const { onChange } = this.props;
 			
 			onChange(imagesNew);
 		}
@@ -41,15 +30,9 @@ export default class ImagesDropzoneBlock extends Component {
 	
 	
 	handleImageRemoval = index => {
-		const { images } = this.state;
+		const { images, onChange } = this.props;
 		
 		const imagesNew = [...images.slice(0, index), null, ...images.slice(index + 1, images.length)];
-		
-		this.setState({
-			images: imagesNew
-		});
-		
-		const { onChange } = this.props;
 		
 		onChange(imagesNew);
 	};
@@ -61,7 +44,7 @@ export default class ImagesDropzoneBlock extends Component {
 	
 	
 	render() {
-		const { images } = this.state;
+		const { images } = this.props;
 		
 		const firstNonExistingIndex = images.findIndex(elem => !elem);
 		
