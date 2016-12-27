@@ -78,16 +78,18 @@ export const getExamineeVersion = new ValidatedMethod({
 			fields: {
 				name: 1,
 				'questions.text': 1,
-				'questions.answers': 1
+				'questions.answers': 1,
+				'questions.images.imageBlob': 1
 			}
 		});
 		
 		if(rawExam && rawExam.questions) {
 			const { questions, ...exam } = rawExam;
 			
-			exam.questions = questions.map(({ text, answers }) => ({
+			exam.questions = questions.map(({ text, answers, images }) => ({
 				text,
 				answers: answers.map(({ text }) => (text)),
+				images,
 				multiple: hasMultipleCorrectAnswers(answers)
 			}));
 			
