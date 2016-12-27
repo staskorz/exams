@@ -273,14 +273,11 @@ const validate = rawValues => {
 };
 
 
-const CreateExamWithIntl = injectIntl(ExamEditForm);
-
-
-const CreateExamWithIntlAndRouter = withRouter(CreateExamWithIntl);
-
-
-export default reduxForm({
+const withReduxForm = reduxForm({
 	form: 'createExam',
 	validate,
 	enableReinitialize: true
-})(CreateExamWithIntlAndRouter);
+});
+
+
+export default injectIntl(withReduxForm(withRouter(ExamEditForm)));
