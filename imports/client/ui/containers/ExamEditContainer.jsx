@@ -2,45 +2,13 @@ import React, { Component } from 'react';
 
 import { findOne as findOneExam } from '/imports/api/exams/methods';
 import ExamEditForm from '/imports/client/ui/components/ExamEditForm';
+import transformExamServerToClient from './transform-exam-server-to-client';
 
 
 export default class EditExamContainer extends Component {
 	state = {
 		ready: false,
 		exam: {}
-	};
-	
-	
-	transformFormFieldsServerToClient = formFields => {
-		const { questions, ...restFormFields } = formFields;
-		
-		const transformedQuestions = questions.map(({ images, ...restQuestionFields }) => {
-			if(images) {
-				return {
-					...restQuestionFields,
-					images: images.map(imageData => {
-						if(imageData) {
-							const { imageBlob, ...restImageFields } = imageData;
-							
-							return {
-								...restImageFields,
-								image: imageBlob.blob
-							};
-						}
-					})
-				};
-			} else {
-				return {
-					...restQuestionFields,
-				};
-			}
-			
-		});
-		
-		return {
-			...restFormFields,
-			questions: transformedQuestions
-		};
 	};
 	
 	
@@ -53,7 +21,7 @@ export default class EditExamContainer extends Component {
 			} else {
 				this.setState({
 					ready: true,
-					exam: this.transformFormFieldsServerToClient(res)
+					exam: transformExamServerToClient(res)
 				});
 			}
 		});
