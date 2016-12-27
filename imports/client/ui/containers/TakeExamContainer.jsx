@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { getExamineeVersion } from '/imports/api/exams/methods';
 import TakeExam from '/imports/client/ui/pages/TakeExam';
+import transformExamServerToClient from './transform-exam-server-to-client';
 
 
 export default class TakeExamContainer extends Component {
@@ -18,7 +19,7 @@ export default class TakeExamContainer extends Component {
 			} else {
 				this.setState({
 					ready: true,
-					exam
+					exam: transformExamServerToClient(exam)
 				});
 			}
 		});

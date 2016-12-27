@@ -4,6 +4,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { cyan500 } from 'material-ui/styles/colors';
 
 import ConfirmedRaisedButton from './ConfirmedRaisedButton';
+import NumberedImagesBlock from './NumberedImagesBlock';
 
 
 class QuestionAsk extends Component {
@@ -61,6 +62,11 @@ class QuestionAsk extends Component {
 		
 		button: {
 			marginRight: '16px'
+		},
+		
+		imagesBlockContainer: {
+			paddingTop: '32px',
+			paddingBottom: '8px'
 		},
 		
 		answerContainer: {
@@ -156,7 +162,7 @@ class QuestionAsk extends Component {
 		const { exam, questionNumber, onNext, onPrev, intl: { formatMessage } } = this.props;
 		const { name, questions } = exam;
 		const numOfQuestions = questions.length;
-		const { text, multiple, answers } = questions[questionNumber];
+		const { text, multiple, answers, images } = questions[questionNumber];
 		
 		return (
 				<div className='main-container-padding'>
@@ -167,6 +173,8 @@ class QuestionAsk extends Component {
 						
 						<CardText style={ this.style.cardText }>
 							<span style={ this.style.primaryText }>{ text }</span><br />
+							
+							<NumberedImagesBlock images={ images } style={ this.style.imagesBlockContainer } />
 							
 							<span style={ this.style.secondaryText }>{ multiple ?
 									<FormattedMessage id='multipleCorrectAnswersAvailable' /> : ' ' }</span><br /><br />
