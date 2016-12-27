@@ -17,7 +17,8 @@ import ConfirmationDialog from '/imports/client/ui/components/ConfirmationDialog
 class ExamEditForm extends Component {
 	state = {
 		saveConfirmationDialogOpen: false,
-		formFields: null
+		formFields: null,
+		canLeave: false
 	};
 	
 	
@@ -58,6 +59,12 @@ class ExamEditForm extends Component {
 	
 	goBack = () => {
 		const { router } = this.props;
+		
+		this.setState({
+			canLeave: true
+		});
+		
+		this.state.canLeave = true;
 		
 		router.push('/list-exams');
 	};
@@ -148,6 +155,22 @@ class ExamEditForm extends Component {
 					this.goBack();
 				}
 			});
+		}
+	};
+	
+	
+	componentDidMount() {
+		const { router: { setRouteLeaveHook }, route } = this.props;
+		
+		setRouteLeaveHook(route, this.routerWillLeave);
+	};
+	
+	
+	routerWillLeave = () => {
+		const { canLeave } = this.state;
+		
+		if(!canLeave) {
+			return 'Are you sure you want to leave this page?';
 		}
 	};
 	

@@ -32,7 +32,7 @@ export default class EditExamContainer extends Component {
 		const { ready, exam } = this.state;
 		
 		return (
-				<ExamEditForm ready={ ready } initialValues={ exam } edit={ true } />
+				<ExamEditForm ready={ ready } initialValues={ exam } edit={ true } { ...this.props } />
 		);
 	};
 };
