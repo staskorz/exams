@@ -19,6 +19,7 @@ export default formFields => {
 		} else {
 			return {
 				...restQuestionFields,
+				images: [null, null, null, null]
 			};
 		}
 		
