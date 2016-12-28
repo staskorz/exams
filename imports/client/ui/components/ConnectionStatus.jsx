@@ -71,7 +71,7 @@ class ConnectionStatus extends Component {
 	};
 	
 	
-	componentDidMount() {
+	componentWillMount() {
 		this.respondToRetryingInUpdate(this.props.retryingIn);
 	};
 	
