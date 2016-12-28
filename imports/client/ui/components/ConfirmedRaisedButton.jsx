@@ -37,7 +37,13 @@ export default class ConfirmedRaisedButton extends Component {
 	
 	
 	handleFloatingButtonClick = () => {
-		this.openDialog();
+		const { skipConfirmation } = this.props;
+		
+		if(skipConfirmation) {
+			this.props.onConfirm();
+		} else {
+			this.openDialog();
+		}
 	};
 	
 	
@@ -54,7 +60,7 @@ export default class ConfirmedRaisedButton extends Component {
 	
 	
 	render() {
-		const { children, text, ...rest } = this.props;
+		const { children, skipConfirmation, text, ...rest } = this.props;
 		
 		delete rest['onConfirm'];
 		
