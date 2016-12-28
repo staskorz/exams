@@ -77,7 +77,7 @@ export default class ImageDropzone extends Component {
 	
 	normalizeDimension = (original, resized, sizeFactor) => {
 		if(original > resized + sizeFactor) {
-			return original;
+			return original + sizeFactor;
 		} else {
 			return resized + sizeFactor;
 		}
