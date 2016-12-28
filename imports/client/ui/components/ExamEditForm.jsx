@@ -159,11 +159,30 @@ class ExamEditForm extends Component {
 	};
 	
 	
+	updateCanLeaveState = props => {
+		const { dirty, anyTouched } = props;
+		
+		this.setState({
+			canLeave: !dirty || !anyTouched
+		});
+	};
+	
+	
+	componentWillMount() {
+		this.updateCanLeaveState(this.props);
+	}
+	
+	
 	componentDidMount() {
 		const { router: { setRouteLeaveHook }, route } = this.props;
 		
 		setRouteLeaveHook(route, this.routerWillLeave);
 	};
+	
+	
+	componentWillReceiveProps(nextProps) {
+		this.updateCanLeaveState(nextProps);
+	}
 	
 	
 	routerWillLeave = () => {
