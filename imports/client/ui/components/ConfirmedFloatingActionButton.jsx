@@ -48,11 +48,13 @@ export default class ConfirmedFloatingActionButton extends Component {
 	};
 	
 	
-	shouldComponentUpdate(nextProps) {
+	shouldComponentUpdate(nextProps, nextState) {
 		const { mini, style, disabled, onConfirm, onConfirmParam, text } = this.props;
 		
+		const { open } = this.state;
+		
 		return mini !== nextProps.mini || style !== nextProps.style || disabled !== nextProps.disabled || onConfirm !== nextProps.onConfirm ||
-				onConfirmParam !== nextProps.onConfirmParam || text !== nextProps.text;
+				onConfirmParam !== nextProps.onConfirmParam || text !== nextProps.text || open !== nextState.open;
 	};
 	
 	
