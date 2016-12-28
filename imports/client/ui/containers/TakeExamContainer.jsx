@@ -26,7 +26,7 @@ export default class TakeExamContainer extends Component {
 	};
 	
 	
-	componentDidMount() {
+	componentWillMount() {
 		this.updateState(this.props);
 	};
 	
