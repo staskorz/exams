@@ -79,7 +79,7 @@ export const getExamineeVersion = new ValidatedMethod({
 				name: 1,
 				'questions.text': 1,
 				'questions.answers': 1,
-				'questions.images.imageBlob': 1
+				'questions.images': 1
 			}
 		});
 		
