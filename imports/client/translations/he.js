@@ -3,6 +3,7 @@ export default {
 	home: 'ראשי',
 	createExam: 'צור מבחן חדש',
 	listExams: 'רשימת מבחנים',
+	listUsers: 'רשימת משתמשים',
 	chooseExam: 'בחר מבחן',
 	examName: 'שם המבחן',
 	published: 'פורסם',

@@ -5,6 +5,7 @@ import Layout from './layouts/Layout';
 import Home from './pages/Home';
 import ExamCreate from './pages/ExamCreate';
 import ExamEdit from './pages/ExamEdit';
+import UsersList from './pages/UsersList';
 import ExamsListContainer from './containers/ExamsListContainer';
 import ExamChoiceContainer from './containers/ExamChoiceContainer';
 import ExamResultsContainer from './containers/ExamResultsContainer';
@@ -20,6 +21,7 @@ export default () => (
 				<Route path='create-exam' component={ ExamCreate } />
 				<Route path='edit-exam/:examId' component={ ExamEdit } />
 				<Route path='list-exams' component={ ExamsListContainer } />
+				<Route path='list-users' component={ UsersList } />
 				<Route path='exam-choice' component={ ExamChoiceContainer } />
 				<Route path='exam-results/:examId' component={ ExamResultsContainer } />
 				<Route path='take-exam/:examId' component={ TakeExamContainer } />
