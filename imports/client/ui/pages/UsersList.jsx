@@ -1,6 +1,6 @@
 import React from 'react';
 
+import UsersListContainer from '/imports/client/ui/containers/UsersListContainer';
 
-export default () => <div>
-	<h1>Users List Placeholder</h1>
-</div>;
+
+export default () => <UsersListContainer />;

@@ -15,3 +15,25 @@ Meteor.publish('userData', function() {
 		this.ready();
 	}
 });
+
+
+Meteor.publish('users.all', function() {
+	if(this.userId) {
+		const currentUser = Meteor.users.findOne({ _id: this.userId }, { fields: { role: 1 } });
+		
+		if(currentUser && currentUser.role === 'operator') {
+			return Meteor.users.find({}, {
+				fields: {
+					role: 1,
+					username: 1,
+					hebrewName: 1,
+					employeeId: 1
+				}
+			});
+		} else {
+			throw new Meteor.Error('users.all.notOperator', 'Available only for operators.');
+		}
+	} else {
+		this.ready();
+	}
+});
