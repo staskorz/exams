@@ -4,6 +4,7 @@ import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import ListIcon from 'material-ui/svg-icons/action/view-headline';
 import { pink50 } from 'material-ui/styles/colors';
 import { FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router';
 
 import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
 
@@ -19,7 +20,7 @@ style = {
 };
 
 
-export default ({ ready, users }) => {
+const UsersTable = ({ ready, users, router }) => {
 	if(!ready) {
 		return <LoadingIndicator />;
 	}
@@ -34,13 +35,13 @@ export default ({ ready, users }) => {
 			</TableRow>
 		</TableHeader>
 		<TableBody displayRowCheckbox={ showCheckboxes }>
-			{ users.map(({ hebrewName, employeeId, username, role }, index) => (
+			{ users.map(({ _id, hebrewName, employeeId, username, role }, index) => (
 					<TableRow key={ index } style={ role === 'operator' ? style.operator : null }>
 						<TableRowColumn>{ hebrewName }</TableRowColumn>
 						<TableRowColumn>{ employeeId }</TableRowColumn>
 						<TableRowColumn>{ username }</TableRowColumn>
 						<TableRowColumn>
-							<IconButton><ListIcon /></IconButton>
+							<IconButton onClick={ () => router.push('/user-results/' + _id) }><ListIcon /></IconButton>
 							<IconButton><DeleteIcon /></IconButton>
 						</TableRowColumn>
 					</TableRow>
@@ -48,3 +49,6 @@ export default ({ ready, users }) => {
 		</TableBody>
 	</Table>;
 };
+
+
+export default withRouter(UsersTable);
