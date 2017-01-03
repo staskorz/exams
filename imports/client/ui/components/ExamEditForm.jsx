@@ -160,10 +160,10 @@ class ExamEditForm extends Component {
 	
 	
 	updateCanLeaveState = props => {
-		const { dirty, anyTouched } = props;
+		const { dirty, anyTouched, edit } = props;
 		
 		this.setState({
-			canLeave: !dirty || !anyTouched
+			canLeave: (edit && !dirty) || (!edit && !anyTouched)
 		});
 	};
 	
