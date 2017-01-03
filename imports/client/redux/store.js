@@ -10,4 +10,7 @@ const reducers = {
 const combinedReducers = combineReducers(reducers);
 
 
-export default createStore(combinedReducers);
+const shouldLoadDevtools = process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__;
+
+
+export default createStore(combinedReducers, shouldLoadDevtools && window.__REDUX_DEVTOOLS_EXTENSION__());
