@@ -12,7 +12,7 @@ import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
 const showCheckboxes = false;
 
 
-style = {
+const style = {
 	operator: {
 		background: pink50,
 		fontWeight: 'bold'
