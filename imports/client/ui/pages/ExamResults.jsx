@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardText, Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
-import { pinkA200 } from 'material-ui/styles/colors';
 import DownloadIcon from 'material-ui/svg-icons/file/file-download';
 import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl';
 import moment from 'moment';
 
 import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
+import ColoredExamMark from '/imports/client/ui/components/ColoredExamMark';
 import csvExport from '/imports/client/csv-export';
-
-
-const failedThreshold = 70;
-
-
-const ExamMark = ({ mark }) => <span style={{ color: mark < failedThreshold ? pinkA200 : null }}>{ mark }</span>;
 
 
 export default class ExamResults extends Component {
@@ -104,7 +98,7 @@ export default class ExamResults extends Component {
 														''
 												}
 											</TableRowColumn>
-											<TableRowColumn><ExamMark mark={ mark } /></TableRowColumn>
+											<TableRowColumn><ColoredExamMark mark={ mark } /></TableRowColumn>
 										</TableRow>
 								)) }
 							</TableBody>
