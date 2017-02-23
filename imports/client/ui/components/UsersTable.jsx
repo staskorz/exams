@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
-import ListIcon from 'material-ui/svg-icons/action/view-headline';
+import ListIcon from 'material-ui/svg-icons/editor/format-list-bulleted';
 import { pink50 } from 'material-ui/styles/colors';
 import { FormattedMessage } from 'react-intl';
 import { withRouter } from 'react-router';
