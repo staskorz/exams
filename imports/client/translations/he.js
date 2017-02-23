@@ -41,6 +41,7 @@ export default {
 	mark: 'ציון',
 	examResults: 'תוצאות המבחן',
 	noExamResultsYet: 'טרם התקבלו תוצאות במבחן זה',
+	noExamResultsForUserYet: 'טרם התקבלו תוצאות ממשתמש זה',
 	name: 'שם',
 	employeeId: 'מספר עובד',
 	formHasErrors: '* ישנן שגיאות בטופס'
