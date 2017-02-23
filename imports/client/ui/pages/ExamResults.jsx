@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Card, CardTitle, CardText, Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
 import DownloadIcon from 'material-ui/svg-icons/file/file-download';
 import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl';
-import moment from 'moment';
 
 import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
 import ColoredExamMark from '/imports/client/ui/components/ColoredExamMark';
 import csvExport from '/imports/client/csv-export';
+import dateJsToCsv from '/imports/client/date-js-to-csv';
 
 
 export default class ExamResults extends Component {
@@ -22,15 +22,12 @@ export default class ExamResults extends Component {
 	};
 	
 	
-	jsDateToCsvDate = date => moment(date).format('YYYY-MM-DD HH:mm:ss');
-	
-	
 	handleDownloadButtonClick = () => {
 		const { examResults } = this.props;
 		
 		const examResultsWithTransformedDate = examResults.map(({ examTimestamp, _id, ...rest }) => ({
 			...rest,
-			date: this.jsDateToCsvDate(examTimestamp)
+			date: dateJsToCsv(examTimestamp)
 		}));
 		
 		csvExport('exam-results.csv', examResultsWithTransformedDate);
