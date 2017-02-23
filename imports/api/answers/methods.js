@@ -5,6 +5,8 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 import answersCollection from './collection';
 import getUserRole from '/imports/api/utils/get-user-role';
 import getAllUsersObject from '/imports/api/utils/get-all-users-object';
+import getAllExamsObject from '/imports/api/utils/get-all-exams-object';
+import getUser from '/imports/api/utils/get-user';
 
 
 const questionSchema = new SimpleSchema({
@@ -48,7 +50,10 @@ export const insert = new ValidatedMethod({
 				
 				const mark = calculateExamMark(exam.questions, examAnswersCorrectness);
 				
-				const questionsWithCorrectness = questions.map((question, index) => ({ ...question, correct: examAnswersCorrectness[index] }));
+				const questionsWithCorrectness = questions.map((question, index) => ({
+					...question,
+					correct: examAnswersCorrectness[index]
+				}));
 				
 				const answersWithMarkAndCorrectness = {
 					examId,
@@ -144,9 +149,103 @@ export const getExamResults = new ValidatedMethod({
 		});
 		
 		const transformedExamResultsSorted = transformedExamResults.sort(({ hebrewName: a }, { hebrewName: b }) => {
-			if (a < b) {
+			if(a < b) {
 				return -1;
-			} else if (a > b) {
+			} else if(a > b) {
+				return 1;
+			} else {
+				return 0;
+			}
+		});
+		
+		return transformedExamResultsSorted;
+	}
+});
+
+
+const getExamResultsForUserSchema = new SimpleSchema({
+	userId: {
+		type: SimpleSchema.RegEx.Id
+	}
+});
+
+
+export const getExamResultsForUser = new ValidatedMethod({
+	name: 'answers.getExamResultsForUser',
+	validate: getExamResultsForUserSchema.validator(),
+	run({ userId }) {
+		if(Meteor.isClient) {
+			return [];
+		}
+		
+		if(getUserRole(this.userId) !== 'operator') {
+			throw new Meteor.Error('answers.getExamResultsForUser.notOperator', 'Available only for operators.');
+		}
+		
+		const allExamResults = answersCollection.find({ examineeUserId: userId }, {
+			fields: {
+				examId: 1,
+				examTimestamp: 1,
+				mark: 1
+			},
+			
+			sort: {
+				examId: 1,
+				examTimestamp: 1
+			}
+		}).fetch();
+		
+		if(!allExamResults) {
+			return [];
+		}
+		
+		const allExams = getAllExamsObject();
+		
+		const allExamResultsLength = allExamResults.length;
+		
+		const examResults = [];
+		
+		for(let i = 0; i < allExamResultsLength; i++) {
+			if(!allExamResults[i + 1] || allExamResults[i].examId !== allExamResults[i + 1].examId) {
+				examResults.push(allExamResults[i]);
+			}
+		}
+		
+		const user = getUser(userId);
+		
+		const { englishName, hebrewName, employeeId, username } = user;
+		
+		let additionalProps = {};
+		
+		if(user) {
+			additionalProps = {
+				username,
+				userId,
+				englishName,
+				hebrewName,
+				employeeId
+			};
+		} else {
+			additionalProps = {
+				username: '?',
+				userId: '?',
+				englishName: '?',
+				hebrewName: '?',
+				employeeId: '?'
+			};
+		}
+		
+		const transformedExamResults = examResults.map(({ examId, ...rest }) => ({
+			...additionalProps,
+			examId,
+			examName: allExams[examId],
+			...rest
+		}));
+		
+		const transformedExamResultsSorted = transformedExamResults.sort(({ examName: a }, { examName: b }) => {
+			if(a < b) {
+				return -1;
+			} else if(a > b) {
 				return 1;
 			} else {
 				return 0;
