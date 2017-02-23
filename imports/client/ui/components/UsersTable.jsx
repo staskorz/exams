@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
-import DeleteIcon from 'material-ui/svg-icons/action/delete';
 import ListIcon from 'material-ui/svg-icons/action/view-headline';
 import { pink50 } from 'material-ui/styles/colors';
 import { FormattedMessage } from 'react-intl';
@@ -42,7 +41,6 @@ const UsersTable = ({ ready, users, router }) => {
 						<TableRowColumn>{ username }</TableRowColumn>
 						<TableRowColumn>
 							<IconButton onClick={ () => router.push('/user-results/' + _id) }><ListIcon /></IconButton>
-							<IconButton><DeleteIcon /></IconButton>
 						</TableRowColumn>
 					</TableRow>
 			)) }
