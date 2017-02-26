@@ -10,7 +10,7 @@ export default (src, cb) => {
 	const imageObjectUrl = URL.createObjectURL(src);
 	srcImage.src = imageObjectUrl;
 	
-	runResultCallback = (err, result) => {
+	const runResultCallback = (err, result) => {
 		URL.revokeObjectURL(imageObjectUrl);
 		
 		cb(err, result);
