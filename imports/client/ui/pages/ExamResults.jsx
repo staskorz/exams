@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardText, Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
 import DownloadIcon from 'material-ui/svg-icons/file/file-download';
-import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
 import ColoredExamMark from '/imports/client/ui/components/ColoredExamMark';
 import csvExport from '/imports/client/csv-export';
 import dateJsToCsv from '/imports/client/date-js-to-csv';
+import dateFormat from '/imports/client/date-js-to-formatted';
 
 
 export default class ExamResults extends Component {
@@ -83,17 +84,7 @@ export default class ExamResults extends Component {
 											<TableRowColumn>{ employeeId }</TableRowColumn>
 											<TableRowColumn>{ username }</TableRowColumn>
 											<TableRowColumn>
-												{ examTimestamp ?
-														<span>
-													<FormattedTime value={ examTimestamp } />
-															&nbsp;
-															<FormattedDate value={ examTimestamp } />
-												</span>
-														
-														:
-														
-														''
-												}
+												{ examTimestamp ? dateFormat(examTimestamp) : '' }
 											</TableRowColumn>
 											<TableRowColumn><ColoredExamMark mark={ mark } /></TableRowColumn>
 										</TableRow>

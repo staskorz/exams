@@ -5,10 +5,10 @@ import AssignmentIcon from 'material-ui/svg-icons/action/assignment';
 import PeopleIcon from 'material-ui/svg-icons/social/people';
 import CheckIcon from 'material-ui/svg-icons/navigation/check';
 import { withRouter } from 'react-router';
-import { FormattedMessage, FormattedDate, FormattedTime } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
-
+import dateFormat from '/imports/client/date-js-to-formatted';
 
 const showCheckboxes = false;
 
@@ -32,30 +32,10 @@ const ListExams = ({ ready, exams, router }) => (
 									<TableRowColumn>{ exam.name }</TableRowColumn>
 									<TableRowColumn>{ exam.published ? <CheckIcon /> : '' }</TableRowColumn>
 									<TableRowColumn>
-										{ exam.createdAt ?
-												<span>
-													<FormattedTime value={ exam.createdAt } />
-													&nbsp;
-													<FormattedDate value={ exam.createdAt } />
-												</span>
-												
-												:
-												
-												''
-										}
+										{ exam.createdAt ? dateFormat(exam.createdAt) : '' }
 									</TableRowColumn>
 									<TableRowColumn>
-										{ exam.updatedAt ?
-												<span>
-													<FormattedTime value={ exam.updatedAt } />
-													&nbsp;
-													<FormattedDate value={ exam.updatedAt } />
-												</span>
-												
-												:
-												
-												''
-										}
+										{ exam.updatedAt ? dateFormat(exam.updatedAt) : '' }
 									</TableRowColumn>
 									<TableRowColumn>
 										<IconButton onClick={ () => router.push('/edit-exam/' + exam._id) }><EditIcon /></IconButton>

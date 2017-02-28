@@ -1,8 +1,9 @@
 import React from 'react';
 import { Table, TableHeader, TableRow, TableHeaderColumn, TableBody, TableRowColumn, IconButton } from 'material-ui';
-import { FormattedMessage, FormattedTime, FormattedDate } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import ColoredExamMark from '/imports/client/ui/components/ColoredExamMark';
+import dateFormat from '/imports/client/date-js-to-formatted';
 
 
 const showCheckboxes = false;
@@ -26,17 +27,7 @@ export default ({ examResults }) => <Table selectable={ false }>
 					<TableRowColumn>{ employeeId }</TableRowColumn>
 					<TableRowColumn>{ username }</TableRowColumn>
 					<TableRowColumn>
-						{ examTimestamp ?
-								<span>
-													<FormattedTime value={ examTimestamp } />
-									&nbsp;
-									<FormattedDate value={ examTimestamp } />
-												</span>
-								
-								:
-								
-								''
-						}
+						{ examTimestamp ? dateFormat(examTimestamp) : '' }
 					</TableRowColumn>
 					<TableRowColumn>{ examName }</TableRowColumn>
 					<TableRowColumn><ColoredExamMark mark={ mark } /></TableRowColumn>
