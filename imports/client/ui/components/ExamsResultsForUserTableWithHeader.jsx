@@ -4,7 +4,7 @@ import DownloadIcon from 'material-ui/svg-icons/file/file-download';
 import { FormattedMessage } from 'react-intl';
 
 import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
-import ExamsResultsForUserTable from './ExamsResultsForUserTable';
+import ExamsResultsTable from './ExamsResultsTable';
 import csvExport from '/imports/client/csv-export';
 import dateJsToCsv from '/imports/client/date-js-to-csv';
 
@@ -61,7 +61,7 @@ export default ({ loading, examResults }) => {
 			</span>
 		} />
 		<CardText style={ style.cardText }>
-			<ExamsResultsForUserTable examResults={ examResults } />
+			<ExamsResultsTable examResults={ examResults } />
 		</CardText>
 	</Card>
 };
