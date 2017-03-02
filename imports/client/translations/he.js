@@ -40,8 +40,7 @@ export default {
 	date: 'תאריך',
 	mark: 'ציון',
 	examResults: 'תוצאות מבחן',
-	noExamResultsYet: 'טרם התקבלו תוצאות במבחן זה',
-	noExamResultsForUserYet: 'טרם התקבלו תוצאות ממשתמש זה',
+	noExamResultsYet: 'טרם התקבלו תוצאות',
 	name: 'שם',
 	employeeId: 'מספר עובד',
 	formHasErrors: '* ישנן שגיאות בטופס'

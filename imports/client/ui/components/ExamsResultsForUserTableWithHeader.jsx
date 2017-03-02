@@ -41,7 +41,7 @@ export default ({ loading, examResults }) => {
 				<Card>
 					<CardTitle title={
 						<span>
-							<FormattedMessage id='noExamResultsForUserYet' />
+							<FormattedMessage id='noExamResultsYet' />
 						</span>
 					} />
 				</Card>
