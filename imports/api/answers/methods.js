@@ -4,6 +4,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 import answersCollection from './collection';
 import getUserRole from '/imports/api/utils/get-user-role';
+import getExamName from '/imports/api/utils/get-exam-name';
 import getAllUsersObject from '/imports/api/utils/get-all-users-object';
 import getAllExamsObject from '/imports/api/utils/get-all-exams-object';
 import getUser from '/imports/api/utils/get-user';
@@ -122,6 +123,8 @@ export const getExamResults = new ValidatedMethod({
 		
 		const allUsers = getAllUsersObject();
 		
+		const examName = getExamName(examId);
+		
 		const transformedExamResults = examResults.map(({ examineeUserId, ...rest }) => {
 			let additionalProps = {};
 			
@@ -142,9 +145,12 @@ export const getExamResults = new ValidatedMethod({
 			}
 			
 			return {
+				userId: examineeUserId,
 				username: allUsers[examineeUserId].username,
 				...rest,
-				...additionalProps
+				...additionalProps,
+				examId,
+				examName
 			};
 		});
 		
