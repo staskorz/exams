@@ -9,7 +9,7 @@ import UsersList from './pages/UsersList';
 import UserResults from './pages/UserResults';
 import ExamsListContainer from './containers/ExamsListContainer';
 import ExamChoiceContainer from './containers/ExamChoiceContainer';
-import ExamResultsContainer from './containers/ExamResultsContainer';
+import ExamResults from './pages/ExamResults';
 import TakeExamContainer from './containers/TakeExamContainer';
 import withCurrentUser from './containers/withCurrentUser';
 import NotFound from './pages/NotFound';
@@ -24,7 +24,7 @@ export default () => (
 				<Route path='list-exams' component={ ExamsListContainer } />
 				<Route path='list-users' component={ UsersList } />
 				<Route path='exam-choice' component={ ExamChoiceContainer } />
-				<Route path='exam-results/:examId' component={ ExamResultsContainer } />
+				<Route path='exam-results/:examId' component={ ExamResults } />
 				<Route path='user-results/:userId' component={ UserResults } />
 				<Route path='take-exam/:examId' component={ TakeExamContainer } />
 				<Route path='*' component={ NotFound } />
