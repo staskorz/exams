@@ -4,6 +4,7 @@ import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
 import answersCollection from './collection';
 import getUserRole from '/imports/api/utils/get-user-role';
+import getExam from '/imports/api/utils/get-exam';
 import getExamName from '/imports/api/utils/get-exam-name';
 import getAllUsersObject from '/imports/api/utils/get-all-users-object';
 import getAllExamsObject from '/imports/api/utils/get-all-exams-object';
@@ -261,3 +262,50 @@ export const getExamResultsForUser = new ValidatedMethod({
 		return transformedExamResultsSorted;
 	}
 });
+
+
+const getExamWithAnswersSchema = new SimpleSchema({
+	answersId: {
+		type: SimpleSchema.RegEx.Id
+	}
+});
+
+
+export const getExamWithAnswers = new ValidatedMethod({
+	name: 'answers.getExamWithAnswers',
+	validate: getExamWithAnswersSchema.validator(),
+	run({ answersId }) {
+		if(Meteor.isClient) {
+			return {};
+		}
+		
+		if(getUserRole(this.userId) !== 'operator') {
+			throw new Meteor.Error('answers.getExamWithAnswers.notOperator', 'Available only for operators.');
+		}
+		
+		const answers = answersCollection.findOne({ _id: answersId }, {
+			fields: {
+				mark: 1,
+				examTimestamp: 1,
+				examineeUserId: 1,
+				questions: 1,
+				examId: 1,
+			}
+		});
+		
+		if(!answers) {
+			return {};
+		}
+		
+		const exam = getExam(answers.examId);
+		
+		const user = getUser(answers.examineeUserId);
+		
+		return {
+			answers,
+			exam,
+			user,
+		};
+	}
+});
+
