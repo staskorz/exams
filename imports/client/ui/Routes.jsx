@@ -26,7 +26,7 @@ export default () => (
 				<Route path='list-users' component={ UsersList } />
 				<Route path='exam-choice' component={ ExamChoiceContainer } />
 				<Route path='exam-results/:examId' component={ ExamResults } />
-				<Route path='exam-answers/:answerId' component={ ExamAnswers } />
+				<Route path='exam-answers/:answersId' component={ ExamAnswers } />
 				<Route path='user-results/:userId' component={ UserResults } />
 				<Route path='take-exam/:examId' component={ TakeExamContainer } />
 				<Route path='*' component={ NotFound } />
