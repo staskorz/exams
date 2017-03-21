@@ -11,7 +11,7 @@ const style = {
 	
 	questionNumber: {
 		padding: 0,
-		paddingRight: '36px',
+		paddingRight: '24px',
 		top: '-18px',
 	},
 	
