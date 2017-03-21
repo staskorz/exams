@@ -5,6 +5,6 @@ import IconCheckboxUnchecked from 'material-ui/svg-icons/toggle/check-box-outlin
 import * as colors from '/imports/client/ui/colors'
 
 
-export default ({ checked, style,  }) => checked ?
+export default ({ checked, style }) => checked ?
 		<IconCheckboxChecked style={{ ...style, color: colors.neutral }} /> :
 		<IconCheckboxUnchecked style={{ ...style, color: colors.primary }} />
