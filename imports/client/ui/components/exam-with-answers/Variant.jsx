@@ -19,7 +19,7 @@ const style = {
 	
 	checkbox: {
 		marginBottom: '-6px',
-		marginRight: '8px,',
+		marginRight: '8px',
 		marginLeft: '8px',
 	},
 	
