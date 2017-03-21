@@ -42,6 +42,7 @@ export default {
 	examResults: 'תוצאות מבחן',
 	noExamResultsYet: 'טרם התקבלו תוצאות',
 	name: 'שם',
+	employeeName: 'שם עובד',
 	employeeId: 'מספר עובד',
 	formHasErrors: '* ישנן שגיאות בטופס'
 };
