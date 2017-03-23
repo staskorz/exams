@@ -1,6 +1,7 @@
 import React from 'react'
 
 import QuestionNumber from './QuestionNumber'
+import NumberedImagesBlock from '../NumberedImagesBlock'
 import Variant from './Variant'
 
 
@@ -29,14 +30,21 @@ const style = {
 		color: 'rgba(0, 0, 0, 0.870588)',
 		display: 'inline-block',
 	},
+	
+	numberedImagesBlock: {
+		paddingTop: '8px',
+		paddingRight: '32px',
+	},
 }
 
 
-export default ({ number, text, correct, weight, variants }) => <div style={ style.mainContainer }>
+export default ({ number, text, correct, weight, images, variants }) => <div style={ style.mainContainer }>
 	<QuestionNumber number={ number } correct={ correct } style={ style.questionNumber } />
 	<span style={ style.weight }>{ weight }</span>
 	<span style={ style.text }>{ text }</span>
 	<br />
+	
+	<NumberedImagesBlock images={ images } style={ style.numberedImagesBlock } />
 	
 	{ variants.map(({ text, userChecked, correctChecked }, index) => <Variant
 			key={ index }
