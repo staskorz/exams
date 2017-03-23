@@ -9,6 +9,7 @@ import { primary as primaryColor } from '/imports/client/ui/colors'
 const style = {
 	mainContainer: {
 		marginTop: '16px',
+		marginRight: '16px',
 	},
 	
 	badge: {
