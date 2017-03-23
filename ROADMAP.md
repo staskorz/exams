@@ -1,6 +1,5 @@
 #Exams Roadmap
 
-1. Show exam answers in exam edit form (read-only)
 1. Folders
 1. Copy exam
 1. Checkbox to display all exam results (rather than only the last ones)
@@ -17,6 +16,7 @@
 1. ~~All users table~~
 1. ~~List exams per user~~
 1. ~~Add a column to the exported .csv file with the exam name~~
+1. ~~Show exam answers in exam edit form (read-only)~~
 1. ...
 
 #Technical
