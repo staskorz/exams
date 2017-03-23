@@ -19,6 +19,7 @@ const style = {
 		color: '#b1b1b1',
 		marginRight: '8px',
 		marginLeft: '8px',
+		fontSize: 'small',
 	},
 	
 	text: {
