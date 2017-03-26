@@ -30,7 +30,7 @@ export default ({ examResults }) => <Table selectable={ false }>
 		</TableRow>
 	</TableHeader>
 	<TableBody displayRowCheckbox={ showCheckboxes }>
-		{ examResults.map(({ hebrewName, employeeId, username, examTimestamp, mark, examName, _id, userId }, index) => (
+		{ examResults.map(({ hebrewName, employeeId, username, examTimestamp, mark, examName, _id, userId, examId }, index) => (
 				<TableRow key={ index }>
 					<TableRowColumn>
 						<Link to={ '/user-results/' + userId } style={ style.link }>
@@ -42,7 +42,11 @@ export default ({ examResults }) => <Table selectable={ false }>
 					<TableRowColumn>
 						{ examTimestamp ? dateFormat(examTimestamp) : '' }
 					</TableRowColumn>
-					<TableRowColumn>{ examName }</TableRowColumn>
+					<TableRowColumn>
+						<Link to={ '/exam-results/' + examId } style={ style.link }>
+							{ examName }
+						</Link>
+					</TableRowColumn>
 					<TableRowColumn><ColoredExamMark mark={ mark } id={ _id } /></TableRowColumn>
 				</TableRow>
 		)) }
