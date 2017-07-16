@@ -1,6 +1,7 @@
 import React from 'react';
 
-import UsersListContainer from '/imports/client/ui/containers/UsersListContainer';
+import withUsers from '/imports/client/ui/containers/with-users';
+import UsersTable from '/imports/client/ui/components/UsersTable';
 
 
-export default () => <UsersListContainer />;
+export default withUsers(UsersTable);

@@ -19,8 +19,8 @@ const style = {
 };
 
 
-const UsersTable = ({ ready, users, router }) => {
-	if(!ready) {
+const UsersTable = ({ loading, users, router }) => {
+	if(loading) {
 		return <LoadingIndicator />;
 	}
 	
