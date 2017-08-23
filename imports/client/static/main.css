@@ -22,7 +22,7 @@ html {
 .ReactVirtualized__Table__headerRow {
 	font-weight: normal;
 	font-size: 12px;
-	padding-right: 24px;
+	padding-right: 0 !important;
 	/*padding-left: 24px;*/
 	height: 58px;
 	text-align: right;
@@ -90,6 +90,10 @@ h1 {
 
 .main-container-padding {
 	padding: 0;
+}
+
+input[type=text]::-ms-clear{
+	display: none;
 }
 
 @media only screen and (min-width: 600px) {

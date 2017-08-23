@@ -47,6 +47,7 @@ export default {
 	name: 'שם',
 	employeeName: 'שם עובד',
 	employeeId: 'מספר עובד',
+	filter: 'סינון',
 	formHasErrors: '* ישנן שגיאות בטופס'
 };
 
