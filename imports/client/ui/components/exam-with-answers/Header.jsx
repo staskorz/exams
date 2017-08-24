@@ -18,7 +18,8 @@ const style = {
 		fontSize: '24px',
 		fontWeight: 'normal',
 		lineHeight: '36px',
-		color: 'rgba(0, 0, 0, 0.870588)'
+		color: 'rgba(0, 0, 0, 0.870588)',
+		display: 'inline-block',
 	},
 }
 
