@@ -5,6 +5,7 @@ export default {
 	listExams: 'רשימת מבחנים',
 	listUsers: 'רשימת משתמשים',
 	chooseExam: 'בחר מבחן',
+	createQuestionnaire: 'צור שאלון',
 	examName: 'שם מבחן',
 	published: 'פורסם',
 	actions: 'פעולות',

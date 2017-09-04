@@ -95,6 +95,7 @@ export default ({ currentUser, children }) => {
 		menuItems = <span>
 			<IndexLink to='/' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='home' /></IndexLink>
 			<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='createExam' /></Link>
+			<Link to='/create-questionnaire' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='createQuestionnaire' /></Link>
 			<Link to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='listExams' /></Link>
 			<Link to='/list-users' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='listUsers' /></Link>
 			<Link to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='chooseExam' /></Link>

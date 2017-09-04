@@ -4,6 +4,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Layout from './layouts/Layout';
 import Home from './pages/Home';
 import ExamCreate from './pages/ExamCreate';
+import QuestionnaireCreate from './pages/QuestionnaireCreate';
 import ExamEdit from './pages/ExamEdit';
 import UsersList from './pages/UsersList';
 import UserResults from './pages/UserResults';
@@ -28,6 +29,7 @@ export default () => (
 				<Route path='exam-results/:examId' component={ ExamResults } />
 				<Route path='exam-answers/:answersId' component={ ExamAnswers } />
 				<Route path='user-results/:userId' component={ UserResults } />
+				<Route path='create-questionnaire' component={ QuestionnaireCreate } />
 				<Route path='take-exam/:examId' component={ TakeExamContainer } />
 				<Route path='*' component={ NotFound } />
 			</Route>
