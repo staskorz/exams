@@ -5,5 +5,5 @@ import TextField from './TextField'
 
 
 export default () => <form>
-	<TextField floatingLabelText={ <FormattedMessage id='name' /> } />
+	<TextField label={ <FormattedMessage id='name' /> } />
 </form>
