@@ -2,4 +2,9 @@ import React from 'react'
 import { Badge } from 'material-ui'
 
 
-export default ({ number, style }) => <Badge badgeContent={ number } secondary={ true } style={ style } />
+export default ({ number, style, primary, secondary }) => <Badge
+		badgeContent={ number }
+		primary={ primary }
+		secondary={ secondary }
+		style={ style }
+/>

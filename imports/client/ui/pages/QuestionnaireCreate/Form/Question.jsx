@@ -20,7 +20,7 @@ const style = {
 
 
 export default ({ number, value, onChange }) => <Paper>
-	<NumberBadge number={ number } style={ style.numberBadge } />
+	<NumberBadge number={ number } style={ style.numberBadge } secondary />
 	
 	<div style={ style.fieldsContainer }>
 		<TextField
