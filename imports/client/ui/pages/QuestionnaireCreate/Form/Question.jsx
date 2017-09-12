@@ -16,6 +16,7 @@ const style = {
 	
 	numberBadge: {
 		marginTop: '12px',
+		paddingTop: '0px',
 	},
 }
 
