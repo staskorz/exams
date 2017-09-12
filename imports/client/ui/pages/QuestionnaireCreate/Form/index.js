@@ -7,7 +7,7 @@ import Question from './Question'
 
 
 export default () => <form className='main-container-padding'>
-	<TextField label={ <FormattedMessage id='name' /> } />
+	<TextField label={ <FormattedMessage id='questionnaireName' /> } />
 	<Checkbox label={ <FormattedMessage id='published' /> } />
 	
 	<Question />

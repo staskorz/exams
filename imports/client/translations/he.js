@@ -7,6 +7,7 @@ export default {
 	chooseExam: 'בחר מבחן',
 	createQuestionnaire: 'צור שאלון',
 	examName: 'שם מבחן',
+	questionnaireName: 'שם שאלון',
 	published: 'פורסם',
 	actions: 'פעולות',
 	takeExam: 'גש למבחן',
