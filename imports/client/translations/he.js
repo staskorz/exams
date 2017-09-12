@@ -15,6 +15,7 @@ export default {
 	cancel: 'בטל',
 	questionNumberXofY: 'שאלה מספר { number } מתוך { of }',
 	multipleCorrectAnswersAvailable: '* ישנה יותר מתשובה נכונה אחת',
+	multipleChoice: 'בחירה מרובה',
 	previous: 'חזור',
 	next: 'הבא',
 	finish: 'סיים',
