@@ -21,12 +21,25 @@ const style = {
 	},
 	
 	spacer: {
-		width: '8px',
-		display: 'table-cell',
+		width: '16px',
+		display: 'inline-block',
 	},
 	
 	answerBody: {
 		display: 'table-cell',
+		marginLeft: '16px',
+	},
+	
+	freeTextCheckboxContainer: {
+		display: 'table-cell',
+		verticalAlign: 'bottom',
+	},
+	
+	freeTextCheckbox: {
+		whiteSpace: 'nowrap',
+		verticalAlign: 'bottom',
+		marginLeft: '16px',
+		marginBottom: '8px',
 	},
 }
 
@@ -46,4 +59,8 @@ export default ({ number, value, onChange }) => <div style={ style.mainContainer
 			fullWidth
 			style={ style.answerBody }
 	/>
+	
+	<div style={ style.freeTextCheckboxContainer }>
+		<Checkbox label={ <FormattedMessage id='freeText' /> } style={ style.freeTextCheckbox } />
+	</div>
 </div>

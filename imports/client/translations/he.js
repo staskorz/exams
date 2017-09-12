@@ -52,6 +52,7 @@ export default {
 	employeeId: 'מספר עובד',
 	filter: 'סינון',
 	formHasErrors: '* ישנן שגיאות בטופס',
+	freeText: 'טקסט חופשי',
 }
 
 
