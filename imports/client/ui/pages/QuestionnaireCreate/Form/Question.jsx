@@ -20,7 +20,7 @@ const style = {
 }
 
 
-export default ({ number, value, onChange }) => <Paper>
+export default ({ number, value, onChange, style: propStyle }) => <Paper style={ { ...style, ...propStyle } }>
 	<NumberBadge number={ number } style={ style.numberBadge } secondary />
 	
 	<div style={ style.fieldsContainer }>
