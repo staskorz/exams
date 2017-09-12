@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl'
 import NumberBadge from './NumberBadge'
 import TextField from './TextField'
 import Checkbox from './Checkbox'
+import Answer from './Answer'
 
 
 const style = {
@@ -32,5 +33,7 @@ export default ({ number, value, onChange }) => <Paper>
 		/>
 		
 		<Checkbox label={ <FormattedMessage id='multipleChoice' /> } />
+		<Answer number={ 1 } />
+		<Answer number={ 2 } />
 	</div>
 </Paper>
