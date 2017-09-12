@@ -10,5 +10,5 @@ export default () => <form className='main-container-padding'>
 	<TextField label={ <FormattedMessage id='questionnaireName' /> } />
 	<Checkbox label={ <FormattedMessage id='published' /> } />
 	
-	<Question />
+	<Question number={ 1 } />
 </form>
