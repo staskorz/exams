@@ -52,7 +52,7 @@ export default {
 	employeeId: 'מספר עובד',
 	filter: 'סינון',
 	formHasErrors: '* ישנן שגיאות בטופס',
-};
+}
 
 
 export const SimpleSchemaMessages = {
@@ -84,7 +84,7 @@ export const SimpleSchemaMessages = {
 		{ exp: SimpleSchema.RegEx.IPv4, msg: 'כתובת IP מגרסה 4 בלבד' },
 		{ exp: SimpleSchema.RegEx.IPv6, msg: 'כתובת IP מגרסה 6 בלבד' },
 		{ exp: SimpleSchema.RegEx.Url, msg: 'URL בלבד' },
-		{ exp: SimpleSchema.RegEx.Id, msg: 'ID אלפאנומרי בלבד' }
+		{ exp: SimpleSchema.RegEx.Id, msg: 'ID אלפאנומרי בלבד' },
 	],
-	keyNotInSchema: '[key] לא מאושר בסכמה'
-};
+	keyNotInSchema: '[key] לא מאושר בסכמה',
+}
