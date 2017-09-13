@@ -21,6 +21,15 @@ const style = {
 }
 
 
+const onQuestionBodyChange = (onChange, prev) => value => {
+	onChange({
+		...prev,
+		text: value,
+	})
+}
+
+
+
 export default ({ number, value, onChange, style: propStyle }) => <Paper style={ { ...style, ...propStyle } }>
 	<NumberBadge number={ number } style={ style.numberBadge } secondary />
 	
@@ -32,6 +41,7 @@ export default ({ number, value, onChange, style: propStyle }) => <Paper style={
 				rowsMax={ 7 }
 				fullWidth
 				value={ value.text }
+				onChange={ onQuestionBodyChange(onChange, value) }
 		/>
 		
 		<Checkbox label={ <FormattedMessage id='multipleChoice' /> } value={ value.multipleChoice } />

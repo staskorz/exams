@@ -1,6 +1,8 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
+import replaceArrayElement from '../../../../replace-array-element'
+
 import TextField from './TextField'
 import Checkbox from './Checkbox'
 import Question from './Question'
@@ -41,6 +43,14 @@ const onPublishedChange = setValue => value => {
 }
 
 
+const onQuestionChange = (setValue, questionIndex) => value => {
+	setValue(prev => ({
+		...prev,
+		questions: replaceArrayElement(prev.questions, questionIndex, value),
+	}))
+}
+
+
 export default ({ value, setValue }) => <div className='main-container-padding' style={ style.mainContainer }>
 	<form style={ style.form }>
 		<h1 style={ style.title }><FormattedMessage id='createQuestionnaire' /></h1>
@@ -62,6 +72,7 @@ export default ({ value, setValue }) => <div className='main-container-padding' 
 				number={ index + 1 }
 				style={ style.question }
 				value={ question }
+				onChange={ onQuestionChange(setValue, index) }
 		/>) }
 	</form>
 </div>
