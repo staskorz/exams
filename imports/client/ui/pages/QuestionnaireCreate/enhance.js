@@ -44,6 +44,46 @@ const initialValue = {
 				},
 			],
 		},
+		
+		{
+			text: 'Question 3 Text',
+			multipleChoice: true,
+			
+			answers: [
+				{
+					text: 'Question 3 Answer 1 Text',
+				},
+				
+				{
+					text: 'Question 3 Answer 2 Text',
+				},
+				
+				{
+					text: 'Question 3 Answer 3 Text',
+					freeText: true,
+				},
+			],
+		},
+		
+		{
+			text: 'Question 2 Text',
+			multipleChoice: true,
+			
+			answers: [
+				{
+					text: 'Question 4 Answer 1 Text',
+				},
+				
+				{
+					text: 'Question 4 Answer 2 Text',
+				},
+				
+				{
+					text: 'Question 4 Answer 3 Text',
+					freeText: true,
+				},
+			],
+		},
 	],
 }
 
