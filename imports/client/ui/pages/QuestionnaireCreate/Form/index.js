@@ -25,12 +25,37 @@ const style = {
 }
 
 
-export default ({ value }) => <div className='main-container-padding' style={ style.mainContainer }>
+const onTitleChange = setValue => value => {
+	setValue(prev => ({
+		...prev,
+		questionnaireName: value,
+	}))
+}
+
+
+const onPublishedChange = setValue => value => {
+	setValue(prev => ({
+		...prev,
+		published: value,
+	}))
+}
+
+
+export default ({ value, setValue }) => <div className='main-container-padding' style={ style.mainContainer }>
 	<form style={ style.form }>
 		<h1 style={ style.title }><FormattedMessage id='createQuestionnaire' /></h1>
 		
-		<TextField label={ <FormattedMessage id='questionnaireName' /> } value={ value.questionnaireName } />
-		<Checkbox label={ <FormattedMessage id='published' /> } value={ !!value.published } />
+		<TextField
+				label={ <FormattedMessage id='questionnaireName' /> }
+				value={ value.questionnaireName }
+				onChange={ onTitleChange(setValue) }
+		/>
+		
+		<Checkbox
+				label={ <FormattedMessage id='published' /> }
+				value={ !!value.published }
+				onChange={ onPublishedChange(setValue) }
+		/>
 		
 		{ value.questions.map((question, index) => <Question
 				key={ index }
