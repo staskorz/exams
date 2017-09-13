@@ -1,11 +1,15 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
+import { onlyUpdateForKeys } from 'recompose'
 
 import replaceArrayElement from '../../../../replace-array-element'
 
 import TextField from './TextField'
 import Checkbox from './Checkbox'
 import Question from './Question'
+
+
+const PureQuestion = onlyUpdateForKeys(['value'])(Question)
 
 
 const style = {
@@ -67,7 +71,7 @@ export default ({ value, setValue }) => <div className='main-container-padding' 
 				onChange={ onPublishedChange(setValue) }
 		/>
 		
-		{ value.questions.map((question, index) => <Question
+		{ value.questions.map((question, index) => <PureQuestion
 				key={ index }
 				number={ index + 1 }
 				style={ style.question }
