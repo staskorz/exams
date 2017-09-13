@@ -25,13 +25,18 @@ const style = {
 }
 
 
-export default () => <div className='main-container-padding' style={ style.mainContainer }>
+export default ({ value }) => <div className='main-container-padding' style={ style.mainContainer }>
 	<form style={ style.form }>
 		<h1 style={ style.title }><FormattedMessage id='createQuestionnaire' /></h1>
 		
-		<TextField label={ <FormattedMessage id='questionnaireName' /> } />
-		<Checkbox label={ <FormattedMessage id='published' /> } />
+		<TextField label={ <FormattedMessage id='questionnaireName' /> } value={ value.questionnaireName } />
+		<Checkbox label={ <FormattedMessage id='published' /> } value={ !!value.published } />
 		
-		<Question number={ 1 } style={ style.question } />
+		{ value.questions.map((question, index) => <Question
+				key={ index }
+				number={ index + 1 }
+				style={ style.question }
+				value={ question }
+		/>) }
 	</form>
 </div>

@@ -58,9 +58,14 @@ export default ({ number, value, onChange }) => <div style={ style.mainContainer
 			rowsMax={ 7 }
 			fullWidth
 			style={ style.answerBody }
+			value={ value.text }
 	/>
 	
 	<div style={ style.freeTextCheckboxContainer }>
-		<Checkbox label={ <FormattedMessage id='freeText' /> } style={ style.freeTextCheckbox } />
+		<Checkbox
+				label={ <FormattedMessage id='freeText' /> }
+				style={ style.freeTextCheckbox }
+				value={ value.freeText }
+		/>
 	</div>
 </div>

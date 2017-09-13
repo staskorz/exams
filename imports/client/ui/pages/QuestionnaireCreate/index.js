@@ -1,6 +1,10 @@
 import React from 'react'
 
+import enhance from './enhance'
 import Form from './Form'
 
 
-export default () => <Form />
+const EnhancedForm = enhance(Form)
+
+
+export default () => <EnhancedForm />

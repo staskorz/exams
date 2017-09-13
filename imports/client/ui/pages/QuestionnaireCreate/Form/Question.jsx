@@ -31,10 +31,11 @@ export default ({ number, value, onChange, style: propStyle }) => <Paper style={
 				rows={ 1 }
 				rowsMax={ 7 }
 				fullWidth
+				value={ value.text }
 		/>
 		
-		<Checkbox label={ <FormattedMessage id='multipleChoice' /> } />
-		<Answer number={ 1 } />
-		<Answer number={ 2 } />
+		<Checkbox label={ <FormattedMessage id='multipleChoice' /> } value={ value.multipleChoice } />
+		
+		{ value.answers.map((answer, index) => <Answer key={ index } number={ index + 1 } value={ answer } />) }
 	</div>
 </Paper>
