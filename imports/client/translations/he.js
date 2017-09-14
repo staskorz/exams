@@ -53,6 +53,8 @@ export default {
 	filter: 'סינון',
 	formHasErrors: '* ישנן שגיאות בטופס',
 	freeText: 'טקסט חופשי',
+	required: 'שדה חובה',
+	maxChars: 'יש להזין לא יותר מ- { number } תוים',
 }
 
 

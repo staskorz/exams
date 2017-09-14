@@ -1,4 +1,5 @@
-import { withStateHandlers } from 'recompose'
+import { compose, withStateHandlers } from 'recompose'
+import { injectIntl } from 'react-intl'
 
 import validate from './validate'
 
@@ -90,16 +91,19 @@ const initialFormValue = {
 }
 
 
-export default withStateHandlers(({ initialValue = initialFormValue }) => ({
-	value: initialValue,
-	errors: validate(initialValue),
-}), {
-	setValue: ({ value }) => fn => {
-		const newValue = fn(value)
-		
-		return {
-			value: newValue,
-			errors: validate(newValue),
-		}
-	},
-})
+export default compose(
+		injectIntl,
+		withStateHandlers(({ initialValue = initialFormValue, intl: { formatMessage } }) => ({
+			value: initialValue,
+			errors: validate(initialValue, formatMessage),
+		}), {
+			setValue: ({ value }, { intl: { formatMessage } }) => fn => {
+				const newValue = fn(value)
+				
+				return {
+					value: newValue,
+					errors: validate(newValue, formatMessage),
+				}
+			},
+		}),
+)
