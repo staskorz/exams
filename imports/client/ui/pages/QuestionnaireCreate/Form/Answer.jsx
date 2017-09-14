@@ -82,7 +82,7 @@ export default ({ number, value, onChange }) => <div style={ style.mainContainer
 		<Checkbox
 				label={ <FormattedMessage id='freeText' /> }
 				style={ style.freeTextCheckbox }
-				value={ value.freeText }
+				value={ !!value.freeText }
 				onChange={ onFreeTextChange(onChange, value) }
 		/>
 	</div>
