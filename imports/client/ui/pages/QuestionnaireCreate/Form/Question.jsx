@@ -53,7 +53,7 @@ export default ({ number, value, onChange, style: propStyle }) => <Paper style={
 		
 		<Checkbox
 				label={ <FormattedMessage id='multipleChoice' /> }
-				value={ value.multipleChoice }
+				value={ !!value.multipleChoice }
 				onChange={ onMultipleChoiceChange(onChange, value) }
 		/>
 		
