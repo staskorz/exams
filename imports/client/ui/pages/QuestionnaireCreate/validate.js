@@ -1,13 +1,16 @@
 const maxTitleChars = 50
 
 
-const validateTitle = (formatMessage, value) => {
+const validateTextCreator = maxChars => (formatMessage, value) => {
 	if(!value || !value.trim()) {
 		return formatMessage({ id: 'required' })
-	} else if(value.length > maxTitleChars) {
-		return formatMessage({ id: 'maxChars' }, { number: maxTitleChars })
+	} else if(value.length > maxChars) {
+		return formatMessage({ id: 'maxChars' }, { number: maxChars })
 	}
 }
+
+
+const validateTitle = validateTextCreator(maxTitleChars)
 
 
 export default (value, formatMessage) => {
