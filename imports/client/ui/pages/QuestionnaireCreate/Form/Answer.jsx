@@ -52,6 +52,14 @@ const onAnswerBodyChange = (onChange, prev) => value => {
 }
 
 
+const onFreeTextChange = (onChange, prev) => value => {
+	onChange({
+		...prev,
+		freeText: value,
+	})
+}
+
+
 export default ({ number, value, onChange }) => <div style={ style.mainContainer }>
 	<div style={ style.numberBadgeContainer }>
 		<NumberBadge number={ number } primary style={ style.numberBadge } />
@@ -75,6 +83,7 @@ export default ({ number, value, onChange }) => <div style={ style.mainContainer
 				label={ <FormattedMessage id='freeText' /> }
 				style={ style.freeTextCheckbox }
 				value={ value.freeText }
+				onChange={ onFreeTextChange(onChange, value) }
 		/>
 	</div>
 </div>
