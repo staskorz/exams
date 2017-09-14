@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
+import { FlatButton } from 'material-ui'
 
 import NumberBadge from './NumberBadge'
 import TextField from './TextField'
@@ -41,6 +42,16 @@ const style = {
 		marginLeft: '16px',
 		marginBottom: '8px',
 	},
+	
+	removeButtonContainer: {
+		display: 'table-cell',
+		verticalAlign: 'bottom',
+	},
+	
+	removeButton: {
+		verticalAlign: 'bottom',
+		marginBottom: '4px',
+	},
 }
 
 
@@ -60,7 +71,7 @@ const onFreeTextChange = (onChange, prev) => value => {
 }
 
 
-export default ({ number, value, onChange, errors }) => <div style={ style.mainContainer }>
+export default ({ number, value, onChange, onRemove, canRemove, errors }) => <div style={ style.mainContainer }>
 	<div style={ style.numberBadgeContainer }>
 		<NumberBadge number={ number } primary style={ style.numberBadge } />
 	</div>
@@ -85,6 +96,15 @@ export default ({ number, value, onChange, errors }) => <div style={ style.mainC
 				style={ style.freeTextCheckbox }
 				value={ !!value.freeText }
 				onChange={ onFreeTextChange(onChange, value) }
+		/>
+	</div>
+	
+	<div style={ style.removeButtonContainer }>
+		<FlatButton
+				label={ <FormattedMessage id='remove' /> }
+				style={ style.removeButton }
+				onClick={ onRemove }
+				disabled={ canRemove }
 		/>
 	</div>
 </div>

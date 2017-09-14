@@ -3,6 +3,7 @@ import { Paper, FlatButton } from 'material-ui'
 import { FormattedMessage } from 'react-intl'
 
 import replaceArrayElement from '../../../../replace-array-element'
+import removeArrayElement from '../../../../remove-array-element'
 
 import NumberBadge from './NumberBadge'
 import TextField from './TextField'
@@ -51,6 +52,14 @@ const onAnswerChange = (onChange, prev, answerIndex) => value => {
 }
 
 
+const onAnswerRemove = (onChange, prev, answerIndex) => () => {
+	onChange({
+		...prev,
+		answers: removeArrayElement(prev.answers, answerIndex),
+	})
+}
+
+
 const onAddButtonClick = (onChange, prev) => () => {
 	onChange({
 		...prev,
@@ -85,6 +94,8 @@ export default ({ number, value, onChange, errors, style: propStyle }) => <Paper
 				number={ index + 1 }
 				value={ answer }
 				onChange={ onAnswerChange(onChange, value, index) }
+				onRemove={ onAnswerRemove(onChange, value, index) }
+				canRemove={ value.answers.length <= 2 }
 				errors={ errors.answers[index] }
 		/>) }
 		
