@@ -60,7 +60,7 @@ const onFreeTextChange = (onChange, prev) => value => {
 }
 
 
-export default ({ number, value, onChange }) => <div style={ style.mainContainer }>
+export default ({ number, value, onChange, errors }) => <div style={ style.mainContainer }>
 	<div style={ style.numberBadgeContainer }>
 		<NumberBadge number={ number } primary style={ style.numberBadge } />
 	</div>
@@ -76,6 +76,7 @@ export default ({ number, value, onChange }) => <div style={ style.mainContainer
 			style={ style.answerBody }
 			value={ value.text }
 			onChange={ onAnswerBodyChange(onChange, value) }
+			errorText={ errors.text }
 	/>
 	
 	<div style={ style.freeTextCheckboxContainer }>

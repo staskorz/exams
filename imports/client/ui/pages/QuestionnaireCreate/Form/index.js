@@ -55,7 +55,7 @@ const onQuestionChange = (setValue, questionIndex) => value => {
 }
 
 
-export default ({ value, setValue }) => <div className='main-container-padding' style={ style.mainContainer }>
+export default ({ value, setValue, errors }) => <div className='main-container-padding' style={ style.mainContainer }>
 	<form style={ style.form }>
 		<h1 style={ style.title }><FormattedMessage id='createQuestionnaire' /></h1>
 		
@@ -63,6 +63,7 @@ export default ({ value, setValue }) => <div className='main-container-padding' 
 				label={ <FormattedMessage id='questionnaireName' /> }
 				value={ value.questionnaireName }
 				onChange={ onTitleChange(setValue) }
+				errorText={ errors.questionnaireName }
 		/>
 		
 		<Checkbox
@@ -77,6 +78,7 @@ export default ({ value, setValue }) => <div className='main-container-padding' 
 				style={ style.question }
 				value={ question }
 				onChange={ onQuestionChange(setValue, index) }
+				errors={ errors.questions[index] }
 		/>) }
 	</form>
 </div>

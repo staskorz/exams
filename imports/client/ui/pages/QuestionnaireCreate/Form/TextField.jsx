@@ -5,4 +5,5 @@ export default ({ onChange, label, ...props }) => <TextField
 		{ ...props }
 		floatingLabelText={ label }
 		onChange={ (e, value) => onChange(value) }
+		className={ 'textFieldBottomMargin' }
 />

@@ -1,5 +1,7 @@
 import { withStateHandlers } from 'recompose'
 
+import validate from './validate'
+
 
 const initialFormValue = {
 	questionnaireName: 'TestQuestionnaire',
@@ -90,8 +92,14 @@ const initialFormValue = {
 
 export default withStateHandlers(({ initialValue = initialFormValue }) => ({
 	value: initialValue,
+	errors: validate(initialValue),
 }), {
-	setValue: ({ value }) => fn => ({
-		value: fn(value),
-	}),
+	setValue: ({ value }) => fn => {
+		const newValue = fn(value)
+		
+		return {
+			value: newValue,
+			errors: validate(newValue),
+		}
+	},
 })

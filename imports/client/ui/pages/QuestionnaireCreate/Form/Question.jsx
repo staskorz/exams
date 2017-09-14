@@ -47,7 +47,7 @@ const onAnswerChange = (onChange, prev, answerIndex) => value => {
 }
 
 
-export default ({ number, value, onChange, style: propStyle }) => <Paper style={ { ...style, ...propStyle } }>
+export default ({ number, value, onChange, errors, style: propStyle }) => <Paper style={ { ...style, ...propStyle } }>
 	<NumberBadge number={ number } style={ style.numberBadge } secondary />
 	
 	<div style={ style.fieldsContainer }>
@@ -59,6 +59,7 @@ export default ({ number, value, onChange, style: propStyle }) => <Paper style={
 				fullWidth
 				value={ value.text }
 				onChange={ onQuestionBodyChange(onChange, value) }
+				errorText={ errors.text }
 		/>
 		
 		<Checkbox
@@ -72,6 +73,7 @@ export default ({ number, value, onChange, style: propStyle }) => <Paper style={
 				number={ index + 1 }
 				value={ answer }
 				onChange={ onAnswerChange(onChange, value, index) }
+				errors={ errors.answers[index] }
 		/>) }
 	</div>
 </Paper>
