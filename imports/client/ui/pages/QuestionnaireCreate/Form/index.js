@@ -1,17 +1,21 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { onlyUpdateForKeys } from 'recompose'
+import { injectIntl, FormattedMessage } from 'react-intl'
+import { compose, onlyUpdateForKeys } from 'recompose'
 import { FloatingActionButton } from 'material-ui'
 import IconAdd from 'material-ui/svg-icons/content/add'
 
 import replaceArrayElement from '../../../../replace-array-element'
+import removeArrayElement from '../../../../remove-array-element'
 
 import TextField from './TextField'
 import Checkbox from './Checkbox'
 import Question from './Question'
 
 
-const PureQuestion = onlyUpdateForKeys(['value'])(Question)
+const EnhancedQuestion = compose(
+		onlyUpdateForKeys(['value', 'canRemove']),
+		injectIntl,
+)(Question)
 
 
 const style = {
@@ -81,6 +85,14 @@ const onQuestionAdd = setValue => () => {
 }
 
 
+const onQuestionRemove = (setValue, questionIndex) => () => {
+	setValue(prev => ({
+		...prev,
+		questions: removeArrayElement(prev.questions, questionIndex),
+	}))
+}
+
+
 export default ({ value, setValue, errors }) => <div className='main-container-padding' style={ style.mainContainer }>
 	<form style={ style.form }>
 		<h1 style={ style.title }><FormattedMessage id='createQuestionnaire' /></h1>
@@ -98,12 +110,14 @@ export default ({ value, setValue, errors }) => <div className='main-container-p
 				onChange={ onPublishedChange(setValue) }
 		/>
 		
-		{ value.questions.map((question, index) => <PureQuestion
+		{ value.questions.map((question, index) => <EnhancedQuestion
 				key={ index }
 				number={ index + 1 }
 				style={ style.question }
 				value={ question }
 				onChange={ onQuestionChange(setValue, index) }
+				onRemove={ onQuestionRemove(setValue, index) }
+				canRemove={ value.questions.length > 1 }
 				errors={ errors.questions[index] }
 		/>) }
 		
