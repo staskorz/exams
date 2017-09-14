@@ -95,14 +95,14 @@ export default compose(
 		injectIntl,
 		withStateHandlers(({ initialValue = initialFormValue, intl: { formatMessage } }) => ({
 			value: initialValue,
-			errors: validate(initialValue, formatMessage),
+			...validate(initialValue, formatMessage),
 		}), {
 			setValue: ({ value }, { intl: { formatMessage } }) => fn => {
 				const newValue = fn(value)
 				
 				return {
 					value: newValue,
-					errors: validate(newValue, formatMessage),
+					...validate(newValue, formatMessage),
 				}
 			},
 		}),
