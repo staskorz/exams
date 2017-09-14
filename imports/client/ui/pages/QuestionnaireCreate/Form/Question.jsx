@@ -63,7 +63,9 @@ const onAnswerRemove = (onChange, prev, answerIndex) => () => {
 const onAddButtonClick = (onChange, prev) => () => {
 	onChange({
 		...prev,
-		answers: [...prev.answers, {}],
+		answers: [...prev.answers, {
+			text: '',
+		}],
 	})
 }
 
