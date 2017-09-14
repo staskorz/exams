@@ -2,6 +2,8 @@ import React from 'react'
 import { Paper } from 'material-ui'
 import { FormattedMessage } from 'react-intl'
 
+import replaceArrayElement from '../../../../replace-array-element'
+
 import NumberBadge from './NumberBadge'
 import TextField from './TextField'
 import Checkbox from './Checkbox'
@@ -37,6 +39,14 @@ const onMultipleChoiceChange = (onChange, prev) => value => {
 }
 
 
+const onAnswerChange = (onChange, prev, answerIndex) => value => {
+	onChange({
+		...prev,
+		answers: replaceArrayElement(prev.answers, answerIndex, value),
+	})
+}
+
+
 export default ({ number, value, onChange, style: propStyle }) => <Paper style={ { ...style, ...propStyle } }>
 	<NumberBadge number={ number } style={ style.numberBadge } secondary />
 	
@@ -57,6 +67,11 @@ export default ({ number, value, onChange, style: propStyle }) => <Paper style={
 				onChange={ onMultipleChoiceChange(onChange, value) }
 		/>
 		
-		{ value.answers.map((answer, index) => <Answer key={ index } number={ index + 1 } value={ answer } />) }
+		{ value.answers.map((answer, index) => <Answer
+				key={ index }
+				number={ index + 1 }
+				value={ answer }
+				onChange={ onAnswerChange(onChange, value, index) }
+		/>) }
 	</div>
 </Paper>
