@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper } from 'material-ui'
+import { Paper, FlatButton } from 'material-ui'
 import { FormattedMessage } from 'react-intl'
 
 import replaceArrayElement from '../../../../replace-array-element'
@@ -19,6 +19,10 @@ const style = {
 	numberBadge: {
 		marginTop: '12px',
 		paddingTop: '0px',
+	},
+	
+	addButton: {
+		marginTop: '16px',
 	},
 }
 
@@ -43,6 +47,14 @@ const onAnswerChange = (onChange, prev, answerIndex) => value => {
 	onChange({
 		...prev,
 		answers: replaceArrayElement(prev.answers, answerIndex, value),
+	})
+}
+
+
+const onAddButtonClick = (onChange, prev) => () => {
+	onChange({
+		...prev,
+		answers: [...prev.answers, {}],
 	})
 }
 
@@ -75,5 +87,13 @@ export default ({ number, value, onChange, errors, style: propStyle }) => <Paper
 				onChange={ onAnswerChange(onChange, value, index) }
 				errors={ errors.answers[index] }
 		/>) }
+		
+		<FlatButton
+				label={ <FormattedMessage id='add' /> }
+				secondary
+				onClick={ onAddButtonClick(onChange, value) }
+				style={ style.addButton }
+				disabled={ value.answers.length >= 4 }
+		/>
 	</div>
 </Paper>
