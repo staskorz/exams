@@ -1,7 +1,7 @@
-import { withState } from 'recompose'
+import { withStateHandlers } from 'recompose'
 
 
-const initialValue = {
+const initialFormValue = {
 	questionnaireName: 'TestQuestionnaire',
 	published: true,
 	
@@ -88,4 +88,10 @@ const initialValue = {
 }
 
 
-export default withState('value', 'setValue', initialValue)
+export default withStateHandlers(({ initialValue = initialFormValue }) => ({
+	value: initialValue,
+}), {
+	setValue: ({ value }) => fn => ({
+		value: fn(value),
+	}),
+})
