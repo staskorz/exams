@@ -1,6 +1,8 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import { onlyUpdateForKeys } from 'recompose'
+import { FloatingActionButton } from 'material-ui'
+import IconAdd from 'material-ui/svg-icons/content/add'
 
 import replaceArrayElement from '../../../../replace-array-element'
 
@@ -28,6 +30,11 @@ const style = {
 	question: {
 		marginTop: '32px',
 	},
+	
+	addQuestionButton: {
+		marginLeft: '10px',
+		marginTop: '10px',
+	},
 }
 
 
@@ -51,6 +58,25 @@ const onQuestionChange = (setValue, questionIndex) => value => {
 	setValue(prev => ({
 		...prev,
 		questions: replaceArrayElement(prev.questions, questionIndex, value),
+	}))
+}
+
+
+const onQuestionAdd = setValue => () => {
+	setValue(prev => ({
+		...prev,
+		
+		questions: [...prev.questions, {
+			text: '',
+			answers: [
+				{
+					text: '',
+				},
+				{
+					text: '',
+				},
+			],
+		}],
 	}))
 }
 
@@ -80,5 +106,9 @@ export default ({ value, setValue, errors }) => <div className='main-container-p
 				onChange={ onQuestionChange(setValue, index) }
 				errors={ errors.questions[index] }
 		/>) }
+		
+		<FloatingActionButton mini={ true } style={ style.addQuestionButton } onClick={ onQuestionAdd(setValue) }>
+			<IconAdd />
+		</FloatingActionButton>
 	</form>
 </div>
