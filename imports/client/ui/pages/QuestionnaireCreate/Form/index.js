@@ -1,11 +1,12 @@
 import React from 'react'
 import { injectIntl, FormattedMessage } from 'react-intl'
 import { compose, onlyUpdateForKeys } from 'recompose'
-import { FloatingActionButton } from 'material-ui'
+import { FloatingActionButton, RaisedButton } from 'material-ui'
 import IconAdd from 'material-ui/svg-icons/content/add'
 
 import replaceArrayElement from '../../../../replace-array-element'
 import removeArrayElement from '../../../../remove-array-element'
+import ConfirmedRaisedButton from '../../../components/ConfirmedRaisedButton'
 
 import TextField from './TextField'
 import Checkbox from './Checkbox'
@@ -38,6 +39,11 @@ const style = {
 	addQuestionButton: {
 		marginLeft: '10px',
 		marginTop: '10px',
+	},
+	
+	button: {
+		marginTop: '48px',
+		marginRight: '16px',
 	},
 }
 
@@ -93,7 +99,7 @@ const onQuestionRemove = (setValue, questionIndex) => () => {
 }
 
 
-export default ({ value, setValue, errors }) => <div className='main-container-padding' style={ style.mainContainer }>
+export default ({ value, setValue, errors, intl: { formatMessage } }) => <div className='main-container-padding' style={ style.mainContainer }>
 	<form style={ style.form }>
 		<h1 style={ style.title }><FormattedMessage id='createQuestionnaire' /></h1>
 		
@@ -124,5 +130,25 @@ export default ({ value, setValue, errors }) => <div className='main-container-p
 		<FloatingActionButton mini={ true } style={ style.addQuestionButton } onClick={ onQuestionAdd(setValue) }>
 			<IconAdd />
 		</FloatingActionButton>
+		
+		<br />
+		
+		<div>
+			<RaisedButton
+					style={ style.button }
+					label={ <FormattedMessage id='save' /> }
+					primary={ true }
+					onClick={ f => f } disabled={ false }
+			/>
+			
+			<ConfirmedRaisedButton
+					style={ style.button }
+					skipConfirmation={ false }
+					text={ formatMessage({ id: 'areYouSure' }) }
+					label={ <FormattedMessage id='cancel' /> }
+					onConfirm={ f => f }
+					disabled={ false }
+			/>
+		</div>
 	</form>
 </div>
