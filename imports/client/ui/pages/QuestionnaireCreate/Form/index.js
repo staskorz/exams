@@ -131,8 +131,6 @@ export default ({ value, setValue, errors, intl: { formatMessage } }) => <div cl
 			<IconAdd />
 		</FloatingActionButton>
 		
-		<br />
-		
 		<div>
 			<RaisedButton
 					style={ style.button }
