@@ -99,7 +99,12 @@ const onQuestionRemove = (setValue, questionIndex) => () => {
 }
 
 
-export default ({ value, setValue, errors, intl: { formatMessage } }) => <div
+const createOnSaveHandler = (value, saveMethod) => () => {
+	saveMethod(value)
+}
+
+
+export default ({ value, setValue, errors, onSave, intl: { formatMessage } }) => <div
 		className='main-container-padding'
 		style={ style.mainContainer }
 >
@@ -139,7 +144,8 @@ export default ({ value, setValue, errors, intl: { formatMessage } }) => <div
 					style={ style.button }
 					label={ <FormattedMessage id='save' /> }
 					primary={ true }
-					onClick={ f => f } disabled={ false }
+					onClick={ createOnSaveHandler(value, onSave) }
+					disabled={ false }
 			/>
 			
 			<ConfirmedRaisedButton
