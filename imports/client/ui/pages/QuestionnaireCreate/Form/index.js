@@ -42,8 +42,18 @@ const style = {
 	},
 	
 	button: {
-		marginTop: '48px',
+		marginTop: '8px',
 		marginRight: '16px',
+	},
+	
+	formHasErrorsMessage: {
+		height: '24px',
+		marginTop: '36px',
+		marginRight: '2px',
+		fontFamily: 'Roboto, sans-serif',
+		fontSize: '12px',
+		lineHeight: '12px',
+		color: 'rgb(244, 67, 54)',
 	},
 }
 
@@ -138,6 +148,10 @@ export default ({ value, setValue, errors, errorsDetected, onSave, intl: { forma
 		<FloatingActionButton mini={ true } style={ style.addQuestionButton } onClick={ onQuestionAdd(setValue) }>
 			<IconAdd />
 		</FloatingActionButton>
+		
+		<div style={ style.formHasErrorsMessage }>
+			{ errorsDetected ? <FormattedMessage id='formHasErrors' /> : ' ' }
+		</div>
 		
 		<div>
 			<RaisedButton
