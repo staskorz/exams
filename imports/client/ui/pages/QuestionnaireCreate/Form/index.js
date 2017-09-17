@@ -104,7 +104,7 @@ const createOnSaveHandler = (value, saveMethod) => () => {
 }
 
 
-export default ({ value, setValue, errors, onSave, intl: { formatMessage } }) => <div
+export default ({ value, setValue, errors, errorsDetected, onSave, intl: { formatMessage } }) => <div
 		className='main-container-padding'
 		style={ style.mainContainer }
 >
@@ -145,7 +145,7 @@ export default ({ value, setValue, errors, onSave, intl: { formatMessage } }) =>
 					label={ <FormattedMessage id='save' /> }
 					primary={ true }
 					onClick={ createOnSaveHandler(value, onSave) }
-					disabled={ false }
+					disabled={ errorsDetected }
 			/>
 			
 			<ConfirmedRaisedButton
