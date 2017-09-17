@@ -99,7 +99,10 @@ const onQuestionRemove = (setValue, questionIndex) => () => {
 }
 
 
-export default ({ value, setValue, errors, intl: { formatMessage } }) => <div className='main-container-padding' style={ style.mainContainer }>
+export default ({ value, setValue, errors, intl: { formatMessage } }) => <div
+		className='main-container-padding'
+		style={ style.mainContainer }
+>
 	<form style={ style.form }>
 		<h1 style={ style.title }><FormattedMessage id='createQuestionnaire' /></h1>
 		
