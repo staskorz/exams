@@ -114,7 +114,7 @@ const createOnSaveHandler = (value, saveMethod) => () => {
 }
 
 
-export default ({ value, setValue, errors, errorsDetected, onSave, intl: { formatMessage } }) => <div
+export default ({ value, setValue, errors, errorsDetected, onSave, onCancel, intl: { formatMessage } }) => <div
 		className='main-container-padding'
 		style={ style.mainContainer }
 >
@@ -167,7 +167,7 @@ export default ({ value, setValue, errors, errorsDetected, onSave, intl: { forma
 					skipConfirmation={ false }
 					text={ formatMessage({ id: 'areYouSure' }) }
 					label={ <FormattedMessage id='cancel' /> }
-					onConfirm={ f => f }
+					onConfirm={ onCancel }
 					disabled={ false }
 			/>
 		</div>
