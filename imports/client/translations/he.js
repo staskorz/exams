@@ -3,6 +3,7 @@ export default {
 	home: 'ראשי',
 	createExam: 'צור מבחן',
 	listExams: 'רשימת מבחנים',
+	listQuestionnaires: 'רשימת שאלונים',
 	listUsers: 'רשימת משתמשים',
 	chooseExam: 'בחר מבחן',
 	createQuestionnaire: 'צור שאלון',
