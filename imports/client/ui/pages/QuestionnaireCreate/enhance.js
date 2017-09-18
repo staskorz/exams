@@ -2,6 +2,7 @@ import { compose, withStateHandlers } from 'recompose'
 import { injectIntl } from 'react-intl'
 
 import validate from './validate'
+import withCancel from './with-cancel'
 
 
 const initialFormValue = {
@@ -92,6 +93,7 @@ const initialFormValue = {
 
 
 export default compose(
+		withCancel,
 		injectIntl,
 		withStateHandlers(({ initialValue = initialFormValue, intl: { formatMessage } }) => ({
 			value: initialValue,
