@@ -3,6 +3,7 @@ import { injectIntl } from 'react-intl'
 
 import validate from './validate'
 import withCancel from './with-cancel'
+import withCreate from './with-create'
 
 
 const initialFormValue = {
@@ -108,4 +109,5 @@ export default compose(
 				}
 			},
 		}),
+		withCreate,
 )

@@ -1,10 +1,11 @@
-import { Mongo } from 'meteor/mongo';
+import { Mongo } from 'meteor/mongo'
 
-import schema from './schema';
+import schema from './schema'
 
 
-const collection = new Mongo.Collection('Exams');
+const collection = new Mongo.Collection('Questionnaires')
 
-collection.attachSchema(schema);
+collection.attachSchema(schema)
 
-export default collection;
+
+export default collection

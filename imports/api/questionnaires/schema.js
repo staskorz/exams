@@ -22,6 +22,11 @@ const question = new SimpleSchema({
 		max: 500,
 	},
 	
+	multipleChoice: {
+		type: Boolean,
+		optional: true,
+	},
+	
 	answers: {
 		type: [answer],
 		minCount: 2,

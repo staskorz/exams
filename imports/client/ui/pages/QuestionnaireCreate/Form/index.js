@@ -109,11 +109,6 @@ const onQuestionRemove = (setValue, questionIndex) => () => {
 }
 
 
-const createOnSaveHandler = (value, saveMethod) => () => {
-	saveMethod(value)
-}
-
-
 const ignoreSubmit = event => {
 	event.preventDefault()
 }
@@ -163,7 +158,7 @@ export default ({ value, setValue, errors, errorsDetected, onSave, onCancel, int
 					style={ style.button }
 					label={ <FormattedMessage id='save' /> }
 					primary={ true }
-					onClick={ createOnSaveHandler(value, onSave) }
+					onClick={ onSave }
 					disabled={ errorsDetected }
 			/>
 			
