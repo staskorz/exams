@@ -114,11 +114,16 @@ const createOnSaveHandler = (value, saveMethod) => () => {
 }
 
 
+const ignoreSubmit = event => {
+	event.preventDefault()
+}
+
+
 export default ({ value, setValue, errors, errorsDetected, onSave, onCancel, intl: { formatMessage } }) => <div
 		className='main-container-padding'
 		style={ style.mainContainer }
 >
-	<form style={ style.form }>
+	<form style={ style.form } onSubmit={ ignoreSubmit }>
 		<h1 style={ style.title }><FormattedMessage id='createQuestionnaire' /></h1>
 		
 		<TextField
