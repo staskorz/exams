@@ -1,13 +1,8 @@
-import { compose, withHandlers } from 'recompose'
-import { withRouter } from 'react-router'
+import { withHandlers } from 'recompose'
 
 
-export default compose(
-		withRouter,
-		
-		withHandlers({
-			onCancel: ({ router }) => () => {
-				router.push('/list-questionnaires')
-			},
-		}),
-)
+export default withHandlers({
+	onCancel: ({ router }) => () => {
+		router.push('/list-questionnaires')
+	},
+})

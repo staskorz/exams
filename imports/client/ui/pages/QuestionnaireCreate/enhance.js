@@ -1,5 +1,6 @@
 import { compose, withStateHandlers } from 'recompose'
 import { injectIntl } from 'react-intl'
+import { withRouter } from 'react-router'
 
 import validate from './validate'
 import withCancel from './with-cancel'
@@ -94,6 +95,7 @@ const initialFormValue = {
 
 
 export default compose(
+		withRouter,
 		withCancel,
 		injectIntl,
 		withStateHandlers(({ initialValue = initialFormValue, intl: { formatMessage } }) => ({
