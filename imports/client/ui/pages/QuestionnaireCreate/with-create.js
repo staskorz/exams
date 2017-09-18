@@ -4,14 +4,14 @@ import { insert } from '/imports/api/questionnaires/methods'
 
 
 export default withHandlers({
-	onSave: ({ value }) => () => {
+	onSave: ({ value, router }) => () => {
 		console.log('Saving...')
 		
 		insert.call(value, (error, result) => {
 			if(error) {
 				console.log('insertQuestionnaire error:', error)
 			} else {
-				console.log('questionnaire saved successfully')
+				router.push('/list-questionnaires')
 			}
 		})
 	},
