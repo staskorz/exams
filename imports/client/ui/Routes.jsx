@@ -5,6 +5,7 @@ import Layout from './layouts/Layout';
 import Home from './pages/Home';
 import ExamCreate from './pages/ExamCreate';
 import QuestionnaireCreate from './pages/QuestionnaireCreate';
+import QuestionnaireEdit from './pages/QuestionnaireEdit';
 import QuestionnairesList from './pages/QuestionnairesList';
 import ExamEdit from './pages/ExamEdit';
 import UsersList from './pages/UsersList';
@@ -31,6 +32,7 @@ export default () => (
 				<Route path='exam-answers/:answersId' component={ ExamAnswers } />
 				<Route path='user-results/:userId' component={ UserResults } />
 				<Route path='create-questionnaire' component={ QuestionnaireCreate } />
+				<Route path='edit-questionnaire/:questionnaireId' component={ QuestionnaireEdit } />
 				<Route path='list-questionnaires' component={ QuestionnairesList } />
 				<Route path='take-exam/:examId' component={ TakeExamContainer } />
 				<Route path='*' component={ NotFound } />
