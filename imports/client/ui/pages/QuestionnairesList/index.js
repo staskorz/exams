@@ -1,4 +1,10 @@
 import React from 'react'
 
+import enhance from './enhance'
+import Table from './Table'
 
-export default () => <h1>Questionnaires List</h1>
+
+const EnhancedTable = enhance(Table)
+
+
+export default () => <EnhancedTable />
