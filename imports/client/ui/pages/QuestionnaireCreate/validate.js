@@ -27,9 +27,9 @@ export default (value, formatMessage) => {
 		errorsDetected = true
 	}
 	
-	const { questionnaireName, questions } = value
+	const { name, questions } = value
 	
-	errors.questionnaireName = validateTitle(formatMessage, questionnaireName, setErrorsDetected)
+	errors.name = validateTitle(formatMessage, name, setErrorsDetected)
 	
 	errors.questions = questions.map(({ text, answers }) => ({
 		text: validateBody(formatMessage, text, setErrorsDetected),

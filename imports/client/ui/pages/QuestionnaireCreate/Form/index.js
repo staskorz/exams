@@ -61,7 +61,7 @@ const style = {
 const onTitleChange = setValue => value => {
 	setValue(prev => ({
 		...prev,
-		questionnaireName: value,
+		name: value,
 	}))
 }
 
@@ -123,9 +123,9 @@ export default ({ value, setValue, errors, errorsDetected, onSave, onCancel, int
 		
 		<TextField
 				label={ <FormattedMessage id='questionnaireName' /> }
-				value={ value.questionnaireName }
+				value={ value.name }
 				onChange={ onTitleChange(setValue) }
-				errorText={ errors.questionnaireName }
+				errorText={ errors.name }
 		/>
 		
 		<Checkbox
