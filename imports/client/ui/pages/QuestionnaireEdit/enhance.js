@@ -7,6 +7,7 @@ import withStateAndStateHandlers from '../../components/QuestionnaireEditForm/wi
 import withLoadingIndicator from '../../hocs/with-loading-indicator'
 
 import withQuestionnaire from './with-questionnaire'
+import withUpdate from './with-update'
 
 
 export default compose(
@@ -16,4 +17,5 @@ export default compose(
 		withCancel,
 		injectIntl,
 		withStateAndStateHandlers,
+		withUpdate,
 )
