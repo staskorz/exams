@@ -1,7 +1,7 @@
 import React from 'react'
 
 import enhance from './enhance'
-import Form from './Form'
+import Form from '../../components/QuestionnaireEditForm'
 
 
 const EnhancedForm = enhance(Form)

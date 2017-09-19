@@ -3,9 +3,9 @@ import { Paper, FlatButton } from 'material-ui'
 import IconRemove from 'material-ui/svg-icons/content/remove'
 import { FormattedMessage } from 'react-intl'
 
-import replaceArrayElement from '../../../../replace-array-element'
-import removeArrayElement from '../../../../remove-array-element'
-import ConfirmedFloatingActionButton from '../../../components/ConfirmedFloatingActionButton'
+import replaceArrayElement from '../../../replace-array-element'
+import removeArrayElement from '../../../remove-array-element'
+import ConfirmedFloatingActionButton from '../ConfirmedFloatingActionButton'
 
 import NumberBadge from './NumberBadge'
 import TextField from './TextField'
