@@ -25,6 +25,7 @@ export default {
 	yes: 'כן',
 	no: 'לא',
 	editExam: 'ערוך מבחן',
+	editQuestionnaire: 'ערוך שאלון',
 	save: 'שמור',
 	weight: 'משקל',
 	questionBody: 'גוף השאלה',

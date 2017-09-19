@@ -114,12 +114,17 @@ const ignoreSubmit = event => {
 }
 
 
-export default ({ value, setValue, errors, errorsDetected, onSave, onCancel, intl: { formatMessage } }) => <div
+export default ({
+					value, setValue, errors, errorsDetected, onSave,
+					onCancel, intl: { formatMessage }, router: { params: { questionnaireId } },
+				}) => <div
 		className='main-container-padding'
 		style={ style.mainContainer }
 >
 	<form style={ style.form } onSubmit={ ignoreSubmit }>
-		<h1 style={ style.title }><FormattedMessage id='createQuestionnaire' /></h1>
+		<h1 style={ style.title }>{
+			<FormattedMessage id={ questionnaireId ? 'editQuestionnaire' : 'createQuestionnaire' } />
+		}</h1>
 		
 		<TextField
 				label={ <FormattedMessage id='questionnaireName' /> }
