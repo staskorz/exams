@@ -12,6 +12,7 @@ export default {
 	published: 'פורסם',
 	actions: 'פעולות',
 	takeExam: 'גש למבחן',
+	takeQuestionnaire: 'גש לשאלון',
 	numberOfQuestions: 'מספר שאלות',
 	start: 'התחל',
 	cancel: 'בטל',
