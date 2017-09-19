@@ -6,7 +6,7 @@ import withCancel from '../../components/QuestionnaireEditForm/with-cancel'
 import withStateAndStateHandlers from '../../components/QuestionnaireEditForm/with-state-and-state-handlers'
 import withLoadingIndicator from '../../hocs/with-loading-indicator'
 
-import withQuestionnaire from './with-questionnaire'
+import withQuestionnaire from '../../hocs/with-questionnaire'
 import withUpdate from './with-update'
 
 

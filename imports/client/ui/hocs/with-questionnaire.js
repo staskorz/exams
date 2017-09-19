@@ -1,6 +1,6 @@
 import { lifecycle } from 'recompose'
 
-import { findOne } from '../../../../api/questionnaires/methods'
+import { findOne } from '../../../api/questionnaires/methods'
 
 
 export default withQuestionnaire = lifecycle({
