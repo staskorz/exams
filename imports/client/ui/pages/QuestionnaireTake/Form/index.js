@@ -1,8 +1,17 @@
 import React from 'react'
 
 
-export default props => {
-	console.log('props:', props)
+const style = {
+	form: {
+		backgroundColor: 'white',
+	},
 	
-	return <h1>Take Questionnaire Form</h1>
+	title: {
+		margin: '0',
+	},
 }
+
+
+export default ({ questionnaire: { name, questions } }) => <form style={ style.form }>
+	<h1 style={ style.title }>{ name }</h1>
+</form>
