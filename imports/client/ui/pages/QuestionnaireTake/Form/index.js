@@ -1,4 +1,8 @@
 import React from 'react'
 
 
-export default () => <h1>Take Questionnaire Form</h1>
+export default props => {
+	console.log('props:', props)
+	
+	return <h1>Take Questionnaire Form</h1>
+}
