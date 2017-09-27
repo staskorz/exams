@@ -1,6 +1,8 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
+import Answer from './Answer'
+
 
 const style = {
 	hr: {
@@ -13,6 +15,7 @@ const style = {
 	
 	contentContainer: {
 		paddingRight: '17px',
+		paddingLeft: '16px',
 	},
 	
 	questionNumber: {
@@ -26,7 +29,7 @@ const style = {
 }
 
 
-export default ({ question: { text, multipleChoice }, number, total }) => <div>
+export default ({ question: { text, multipleChoice, answers }, number, total }) => <div>
 	<hr style={ style.hr } />
 	
 	<div style={ style.contentContainer }>
@@ -37,5 +40,10 @@ export default ({ question: { text, multipleChoice }, number, total }) => <div>
 		<div style={ style.questionBody }>
 			{ text }
 		</div>
+		
+		{ answers.map((answer, index) => <Answer
+				key={ index }
+				answer={ answer }
+		/>) }
 	</div>
 </div> 
