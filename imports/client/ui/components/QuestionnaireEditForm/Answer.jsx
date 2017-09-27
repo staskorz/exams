@@ -4,7 +4,7 @@ import { FlatButton } from 'material-ui'
 
 import NumberBadge from './NumberBadge'
 import TextField from './TextField'
-import Checkbox from './Checkbox'
+import Checkbox from '../Checkbox'
 
 
 const style = {

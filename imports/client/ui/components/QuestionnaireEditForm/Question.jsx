@@ -9,7 +9,7 @@ import ConfirmedFloatingActionButton from '../ConfirmedFloatingActionButton'
 
 import NumberBadge from './NumberBadge'
 import TextField from './TextField'
-import Checkbox from './Checkbox'
+import Checkbox from '../Checkbox'
 import Answer from './Answer'
 
 

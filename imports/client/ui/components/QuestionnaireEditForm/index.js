@@ -9,7 +9,7 @@ import removeArrayElement from '../../../remove-array-element'
 import ConfirmedRaisedButton from '../ConfirmedRaisedButton'
 
 import TextField from './TextField'
-import Checkbox from './Checkbox'
+import Checkbox from '../Checkbox'
 import Question from './Question'
 
 
