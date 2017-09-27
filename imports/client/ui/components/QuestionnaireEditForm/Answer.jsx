@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl'
 import { FlatButton } from 'material-ui'
 
 import NumberBadge from './NumberBadge'
-import TextField from './TextField'
+import TextField from '../TextField'
 import Checkbox from '../Checkbox'
 
 

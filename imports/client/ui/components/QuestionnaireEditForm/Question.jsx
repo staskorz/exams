@@ -8,7 +8,7 @@ import removeArrayElement from '../../../remove-array-element'
 import ConfirmedFloatingActionButton from '../ConfirmedFloatingActionButton'
 
 import NumberBadge from './NumberBadge'
-import TextField from './TextField'
+import TextField from '../TextField'
 import Checkbox from '../Checkbox'
 import Answer from './Answer'
 
