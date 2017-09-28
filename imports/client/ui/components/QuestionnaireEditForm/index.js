@@ -66,6 +66,14 @@ const onTitleChange = setValue => value => {
 }
 
 
+const onDescriptionChange = setValue => value => {
+	setValue(prev => ({
+		...prev,
+		description: value,
+	}))
+}
+
+
 const onPublishedChange = setValue => value => {
 	setValue(prev => ({
 		...prev,
@@ -131,6 +139,17 @@ export default ({
 				value={ value.name }
 				onChange={ onTitleChange(setValue) }
 				errorText={ errors.name }
+		/>
+		
+		<TextField
+				label={ <FormattedMessage id='description' /> }
+				multiLine={ true }
+				rows={ 1 }
+				rowsMax={ 7 }
+				fullWidth
+				value={ value.description }
+				onChange={ onDescriptionChange(setValue) }
+				errorText={ errors.description }
 		/>
 		
 		<Checkbox

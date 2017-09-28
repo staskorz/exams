@@ -14,6 +14,7 @@ export default {
 	takeExam: 'גש למבחן',
 	takeQuestionnaire: 'גש לשאלון',
 	numberOfQuestions: 'מספר שאלות',
+	description: 'תיאור',
 	start: 'התחל',
 	cancel: 'בטל',
 	questionNumberXofY: 'שאלה מספר { number } מתוך { of }',

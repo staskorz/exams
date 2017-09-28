@@ -2,12 +2,12 @@ const maxTitleChars = 50
 const maxBodyChars = 500
 
 
-const validateTextCreator = maxChars => (formatMessage, value, setErrorsDetected) => {
-	if(!value || !value.trim()) {
+const validateTextCreator = (maxChars, required = true) => (formatMessage, value, setErrorsDetected) => {
+	if(required && (!value || !value.trim())) {
 		setErrorsDetected()
 		
 		return formatMessage({ id: 'required' })
-	} else if(value.length > maxChars) {
+	} else if(value && value.length > maxChars) {
 		setErrorsDetected()
 		
 		return formatMessage({ id: 'maxChars' }, { number: maxChars })
@@ -16,6 +16,7 @@ const validateTextCreator = maxChars => (formatMessage, value, setErrorsDetected
 
 
 const validateTitle = validateTextCreator(maxTitleChars)
+const validateDescription = validateTextCreator(maxBodyChars, false)
 const validateBody = validateTextCreator(maxBodyChars)
 
 
@@ -27,9 +28,11 @@ export default (value, formatMessage) => {
 		errorsDetected = true
 	}
 	
-	const { name, questions } = value
+	const { name, description, questions } = value
 	
 	errors.name = validateTitle(formatMessage, name, setErrorsDetected)
+	
+	errors.description = validateDescription(formatMessage, description, setErrorsDetected)
 	
 	errors.questions = questions.map(({ text, answers }) => ({
 		text: validateBody(formatMessage, text, setErrorsDetected),

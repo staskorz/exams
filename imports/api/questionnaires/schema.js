@@ -52,6 +52,12 @@ export default new SimpleSchema({
 		max: 50,
 	},
 	
+	description: {
+		type: String,
+		max: 500,
+		optional: true,
+	},
+	
 	published: {
 		type: Boolean,
 		optional: true,

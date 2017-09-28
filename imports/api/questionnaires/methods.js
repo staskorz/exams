@@ -50,6 +50,7 @@ export const findOne = new ValidatedMethod({
 			fields: {
 				_id: 1,
 				name: 1,
+				description: 1,
 				published: 1,
 				questions: 1,
 			},
