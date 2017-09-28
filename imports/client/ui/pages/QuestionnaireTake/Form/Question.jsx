@@ -26,6 +26,13 @@ const style = {
 	questionBody: {
 		paddingTop: '8px',
 	},
+	
+	multipleChoiceNotice: {
+		marginTop: '8px',
+		marginBottom: '24px',
+		fontSize: 'small',
+		color: '#b1b1b1',
+	},
 }
 
 
@@ -39,6 +46,10 @@ export default ({ question: { text, multipleChoice, answers }, number, total }) 
 		
 		<div style={ style.questionBody }>
 			{ text }
+		</div>
+		
+		<div style={ style.multipleChoiceNotice }>
+			{ multipleChoice ? <FormattedMessage id='multipleChoiceNotice' /> : null }
 		</div>
 		
 		{ answers.map((answer, index) => <Answer

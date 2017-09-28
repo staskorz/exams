@@ -19,6 +19,7 @@ export default {
 	questionNumberXofY: 'שאלה מספר { number } מתוך { of }',
 	multipleCorrectAnswersAvailable: '* ישנה יותר מתשובה נכונה אחת',
 	multipleChoice: 'בחירה מרובה',
+	multipleChoiceNotice: '* ניתן לסמן יותר מתשובה אחת',
 	previous: 'חזור',
 	next: 'הבא',
 	finish: 'סיים',
