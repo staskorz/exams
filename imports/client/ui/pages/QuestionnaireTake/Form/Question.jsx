@@ -29,7 +29,7 @@ const style = {
 	
 	multipleChoiceNotice: {
 		marginTop: '8px',
-		marginBottom: '24px',
+		marginBottom: '12px',
 		fontSize: 'small',
 		color: '#b1b1b1',
 	},
