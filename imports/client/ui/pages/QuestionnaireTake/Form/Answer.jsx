@@ -8,6 +8,7 @@ import TextField from '../../../components/TextField'
 const style = {
 	mainContainer: {
 		display: 'table',
+		minHeight: '48px',
 	},
 	
 	checkboxContainer: {
