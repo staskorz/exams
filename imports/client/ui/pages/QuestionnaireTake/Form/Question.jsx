@@ -23,6 +23,7 @@ const style = {
 	},
 	
 	questionNumber: {
+		marginTop: '4px',
 		color: '#b1b1b1',
 		fontSize: 'small',
 	},
