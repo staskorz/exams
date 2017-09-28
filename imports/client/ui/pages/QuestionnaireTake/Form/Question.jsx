@@ -5,6 +5,10 @@ import Answer from './Answer'
 
 
 const style = {
+	mainContainer: {
+		paddingBottom: '16px',
+	},
+	
 	hr: {
 		height: '1px',
 		backgroundColor: '#cecece',
@@ -36,7 +40,7 @@ const style = {
 }
 
 
-export default ({ question: { text, multipleChoice, answers }, number, total }) => <div>
+export default ({ question: { text, multipleChoice, answers }, number, total }) => <div style={ style.mainContainer }>
 	<hr style={ style.hr } />
 	
 	<div style={ style.contentContainer }>
