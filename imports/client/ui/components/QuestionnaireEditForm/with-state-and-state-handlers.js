@@ -5,7 +5,6 @@ import validate from './validate'
 
 const initialFormValue = {
 	name: '',
-	published: true,
 	
 	questions: [
 		{
