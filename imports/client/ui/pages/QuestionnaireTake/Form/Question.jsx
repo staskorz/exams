@@ -51,8 +51,30 @@ const style = {
 }
 
 
-const onAnswerChange = (onChange, prev, answerIndex) => value => {
-	onChange(replaceArrayElement(prev, answerIndex, value))
+const uncheckAllOther = (answers, answerIndex, multipleChoice, value) => {
+	if(multipleChoice || !value) {
+		return answers
+	} else {
+		return answers.map((answer, index) => {
+			if(answerIndex === index) {
+				return answer
+			} else {
+				if(answer.checked) {
+					return {
+						...answer,
+						checked: false,
+					}
+				} else {
+					return answer
+				}
+			}
+		})
+	}
+}
+
+
+const onAnswerChange = (onChange, prev, answerIndex, multipleChoice) => value => {
+	onChange(replaceArrayElement(uncheckAllOther(prev, answerIndex, multipleChoice, value), answerIndex, value))
 }
 
 
@@ -77,7 +99,7 @@ export default ({ question: { text, multipleChoice, answers }, number, total, va
 				key={ index }
 				answer={ answer }
 				value={ value[index] }
-				onChange={ onAnswerChange(onChange, value, index) }
+				onChange={ onAnswerChange(onChange, value, index, multipleChoice) }
 				errors={ errors.answers[index] }
 		/>) }
 		
