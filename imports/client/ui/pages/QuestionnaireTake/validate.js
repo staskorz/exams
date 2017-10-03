@@ -17,20 +17,22 @@ const validateTextCreator = (maxChars, required = true) => (formatMessage, value
 const validateFreeText = validateTextCreator(maxChars)
 
 
-export default (questions, formatMessage) => {
+export default (questions, questionnaire, formatMessage) => {
 	let errorsDetected = false
 	
 	const setErrorsDetected = () => {
 		errorsDetected = true
 	}
 	
-	const errors = questions.map(answers => {
+	const errors = questions.map((answers, index) => {
 		const questionErrors = {}
 		
 		const countChecked = answers.reduce((acc, { checked }) => (checked ? acc + 1 : acc), 0)
 		
 		if(countChecked === 0) {
-			questionErrors.noneChecked = formatMessage({ id: 'mustCheckAtLeastOneAnswer' })
+			questionErrors.noneChecked = formatMessage({
+				id: questionnaire.questions[index].multipleChoice ? 'mustCheckAtLeastOneAnswer' : 'mustCheckOneAnswer',
+			})
 			
 			setErrorsDetected()
 		}

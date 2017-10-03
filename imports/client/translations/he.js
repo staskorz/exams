@@ -61,6 +61,7 @@ export default {
 	required: 'שדה חובה',
 	maxChars: 'יש להזין לא יותר מ- { number } תוים',
 	mustCheckAtLeastOneAnswer: 'יש לסמן תשובה אחת לפחות',
+	mustCheckOneAnswer: 'יש לסמן תשובה אחת',
 	edit: 'ערוך',
 }
 
