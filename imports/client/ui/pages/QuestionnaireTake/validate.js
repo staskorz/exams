@@ -30,7 +30,7 @@ export default (value, formatMessage) => {
 		const countChecked = question.reduce((acc, { checked }) => (checked ? acc + 1 : acc), 0)
 		
 		if(countChecked === 0) {
-			questionErrors.noneChecked = formatMessage({ id: 'mustCheckAtLeastOneAnswers' })
+			questionErrors.noneChecked = formatMessage({ id: 'mustCheckAtLeastOneAnswer' })
 			
 			setErrorsDetected()
 		}

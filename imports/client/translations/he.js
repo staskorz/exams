@@ -60,7 +60,7 @@ export default {
 	freeText: 'טקסט חופשי',
 	required: 'שדה חובה',
 	maxChars: 'יש להזין לא יותר מ- { number } תוים',
-	mustCheckAtLeastOneAnswers: 'יש לסמן תשובה אחת לפחות',
+	mustCheckAtLeastOneAnswer: 'יש לסמן תשובה אחת לפחות',
 	edit: 'ערוך',
 }
 
