@@ -17,17 +17,17 @@ const validateTextCreator = (maxChars, required = true) => (formatMessage, value
 const validateFreeText = validateTextCreator(maxChars)
 
 
-export default (value, formatMessage) => {
+export default (questions, formatMessage) => {
 	let errorsDetected = false
 	
 	const setErrorsDetected = () => {
 		errorsDetected = true
 	}
 	
-	const errors = value.map(question => {
+	const errors = questions.map(answers => {
 		const questionErrors = {}
 		
-		const countChecked = question.reduce((acc, { checked }) => (checked ? acc + 1 : acc), 0)
+		const countChecked = answers.reduce((acc, { checked }) => (checked ? acc + 1 : acc), 0)
 		
 		if(countChecked === 0) {
 			questionErrors.noneChecked = formatMessage({ id: 'mustCheckAtLeastOneAnswer' })
@@ -35,7 +35,7 @@ export default (value, formatMessage) => {
 			setErrorsDetected()
 		}
 		
-		questionErrors.answers = question.map(({ checked, freeText }) => ({
+		questionErrors.answers = answers.map(({ checked, freeText }) => ({
 			freeText: checked ? validateFreeText(formatMessage, freeText, setErrorsDetected) : undefined,
 		}))
 		
