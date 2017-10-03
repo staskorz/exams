@@ -1,5 +1,7 @@
 import React from 'react'
 
+import replaceArrayElement from '../../../../replace-array-element'
+
 import Question from './Question'
 
 
@@ -20,7 +22,14 @@ const style = {
 }
 
 
-export default ({ questionnaire: { name, description, questions } }) => <form style={ style.form }>
+const onQuestionChange = (setValue, questionIndex) => value => {
+	setValue(prev => replaceArrayElement(prev, questionIndex, value))
+}
+
+
+export default ({ questionnaire: { name, description, questions }, value, setValue, errors }) => <form
+		style={ style.form }
+>
 	<h1 style={ style.title }>{ name }</h1>
 	
 	<pre style={ style.description }>{ description }</pre>
@@ -30,5 +39,8 @@ export default ({ questionnaire: { name, description, questions } }) => <form st
 			question={ question }
 			number={ index + 1 }
 			total={ questions.length }
+			value={ value[index] }
+			onChange={ onQuestionChange(setValue, index) }
+			errors={ errors[index] }
 	/>) }
 </form>

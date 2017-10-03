@@ -36,8 +36,26 @@ const style = {
 }
 
 
-export default ({ answer: { text, freeText } }) => <div style={ style.mainContainer }>
-	<span style={ style.checkboxContainer }><Checkbox /></span>
+const onCheckedChange = (onChange, prev) => value => {
+	onChange({
+		...prev,
+		checked: value,
+	})
+}
+
+
+const onFreeTextChange = (onChange, prev) => value => {
+	onChange({
+		...prev,
+		freeText: value,
+	})
+}
+
+
+export default ({ answer: { text, freeText }, value, onChange, errors }) => <div style={ style.mainContainer }>
+	<span style={ style.checkboxContainer }>
+		<Checkbox value={ value.checked } onChange={ onCheckedChange(onChange, value) } />
+	</span>
 	
 	<span style={ style.textContainer }>{ text }</span>
 	
@@ -48,6 +66,10 @@ export default ({ answer: { text, freeText } }) => <div style={ style.mainContai
 			rowsMax={ 7 }
 			fullWidth
 			style={ style.freeTextField }
-			textareaStyle={ style.freeTextFieldTextArea }
+			textareaStyle={ value.checked ? style.freeTextFieldTextArea : null }
+			value={ value.freeText }
+			onChange={ onFreeTextChange(onChange, value) }
+			disabled={ !value.checked }
+			errorText={ errors.freeText }
 	/> : null }
 </div>

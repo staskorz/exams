@@ -1,6 +1,8 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
+import replaceArrayElement from '../../../../replace-array-element'
+
 import Answer from './Answer'
 
 
@@ -38,10 +40,24 @@ const style = {
 		fontSize: 'small',
 		color: '#b1b1b1',
 	},
+	
+	errorMessage: {
+		height: '12px',
+		fontSize: '12px',
+		color: 'rgb(244, 67, 54)',
+		marginRight: '4px',
+		marginTop: '16px',
+	},
 }
 
 
-export default ({ question: { text, multipleChoice, answers }, number, total }) => <div style={ style.mainContainer }>
+const onAnswerChange = (onChange, prev, answerIndex) => value => {
+	onChange(replaceArrayElement(prev, answerIndex, value))
+}
+
+
+export default ({ question: { text, multipleChoice, answers }, number, total, value, onChange, errors }) => <div
+		style={ style.mainContainer }>
 	<hr style={ style.hr } />
 	
 	<div style={ style.contentContainer }>
@@ -60,6 +76,11 @@ export default ({ question: { text, multipleChoice, answers }, number, total }) 
 		{ answers.map((answer, index) => <Answer
 				key={ index }
 				answer={ answer }
+				value={ value[index] }
+				onChange={ onAnswerChange(onChange, value, index) }
+				errors={ errors.answers[index] }
 		/>) }
+		
+		<div style={ style.errorMessage }>{ errors.noneChecked ? errors.noneChecked : null }</div>
 	</div>
 </div> 
