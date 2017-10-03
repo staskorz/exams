@@ -1,8 +1,11 @@
 import React from 'react'
+import { onlyUpdateForKeys } from 'recompose'
 
 import replaceArrayElement from '../../../../replace-array-element'
 
 import Question from './Question'
+
+const PureQuestion = onlyUpdateForKeys(['value'])(Question)
 
 
 const style = {
@@ -34,7 +37,7 @@ export default ({ questionnaire: { name, description, questions }, value, setVal
 	
 	<pre style={ style.description }>{ description }</pre>
 	
-	{ questions.map((question, index) => <Question
+	{ questions.map((question, index) => <PureQuestion
 			key={ index }
 			question={ question }
 			number={ index + 1 }
