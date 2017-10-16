@@ -24,21 +24,23 @@ export default (questions, questionnaire, formatMessage) => {
 		errorsDetected = true
 	}
 	
-	const errors = questions.map((answers, index) => {
+	const errors = questions.map((answers, questionIndex) => {
 		const questionErrors = {}
 		
 		const countChecked = answers.reduce((acc, { checked }) => (checked ? acc + 1 : acc), 0)
 		
 		if(countChecked === 0) {
 			questionErrors.noneChecked = formatMessage({
-				id: questionnaire.questions[index].multipleChoice ? 'mustCheckAtLeastOneAnswer' : 'mustCheckOneAnswer',
+				id: questionnaire.questions[questionIndex].multipleChoice
+						? 'mustCheckAtLeastOneAnswer' : 'mustCheckOneAnswer',
 			})
 			
 			setErrorsDetected()
 		}
 		
-		questionErrors.answers = answers.map(({ checked, freeText }) => ({
-			freeText: checked ? validateFreeText(formatMessage, freeText, setErrorsDetected) : undefined,
+		questionErrors.answers = answers.map(({ checked, freeText }, answerIndex) => ({
+			freeText: checked && questionnaire.questions[questionIndex].answers[answerIndex].freeText
+					? validateFreeText(formatMessage, freeText, setErrorsDetected) : undefined,
 		}))
 		
 		return questionErrors
