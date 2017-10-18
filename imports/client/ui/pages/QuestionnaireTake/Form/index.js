@@ -1,7 +1,10 @@
 import React from 'react'
 import { onlyUpdateForKeys } from 'recompose'
+import { FormattedMessage } from 'react-intl'
+import { RaisedButton } from 'material-ui'
 
 import replaceArrayElement from '../../../../replace-array-element'
+import ConfirmedRaisedButton from '../../../components/ConfirmedRaisedButton'
 
 import Question from './Question'
 
@@ -22,6 +25,24 @@ const style = {
 		marginBottom: '32px',
 		fontFamily: 'Roboto, sans-serif',
 	},
+	
+	buttonsContainer: {
+		marginRight: '20px',
+	},
+	
+	button: {
+		marginTop: '32px',
+	},
+	
+	formHasErrorsMessage: {
+		height: '24px',
+		marginTop: '6px',
+		marginRight: '20px',
+		fontFamily: 'Roboto, sans-serif',
+		fontSize: '12px',
+		lineHeight: '12px',
+		color: 'rgb(244, 67, 54)',
+	},
 }
 
 
@@ -30,7 +51,11 @@ const onQuestionChange = (setValue, questionIndex) => value => {
 }
 
 
-export default ({ questionnaire: { name, description, questions }, value, setValue, errors }) => <form
+export default ({
+					questionnaire: { name, description, questions },
+					value, setValue, errors, errorsDetected, onSave,
+					intl: { formatMessage },
+				}) => <form
 		style={ style.form }
 >
 	<h1 style={ style.title }>{ name }</h1>
@@ -46,4 +71,19 @@ export default ({ questionnaire: { name, description, questions }, value, setVal
 			onChange={ onQuestionChange(setValue, index) }
 			errors={ errors[index] }
 	/>) }
+	
+	<div style={ style.buttonsContainer }>
+		<ConfirmedRaisedButton
+				style={ style.button }
+				primary={ true }
+				text={ formatMessage({ id: 'areYouSure' }) }
+				label={ <FormattedMessage id='submit' /> }
+				onConfirm={ onSave }
+				disabled={ errorsDetected }
+		/>
+	</div>
+	
+	<div style={ style.formHasErrorsMessage }>
+		{ errorsDetected ? <FormattedMessage id='formHasErrors' /> : ' ' }
+	</div>
 </form>

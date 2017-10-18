@@ -7,3 +7,5 @@ import '/imports/api/answers/methods';
 
 import '/imports/api/questionnaires/publications';
 import '/imports/api/questionnaires/methods';
+
+import '/imports/api/questionnaire-answers/methods';

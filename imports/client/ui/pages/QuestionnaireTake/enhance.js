@@ -8,6 +8,7 @@ import withQuestionnaire from '../../hocs/with-questionnaire'
 import withRenameQuestionnaireProp from './with-rename-questionnaire-prop'
 import withInitialValue from './with-initial-value'
 import withStateAndStateHandlers from './with-state-and-state-handlers'
+import withSubmit from './with-submit'
 
 export default compose(
 		withRouter,
@@ -17,4 +18,5 @@ export default compose(
 		withInitialValue,
 		injectIntl,
 		withStateAndStateHandlers,
+		withSubmit,
 )

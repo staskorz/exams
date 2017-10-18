@@ -74,7 +74,11 @@ const uncheckAllOther = (answers, answerIndex, multipleChoice, value) => {
 
 
 const onAnswerChange = (onChange, prev, answerIndex, multipleChoice) => value => {
-	onChange(replaceArrayElement(uncheckAllOther(prev, answerIndex, multipleChoice, value), answerIndex, value))
+	onChange({
+		answers: replaceArrayElement(uncheckAllOther(
+				prev.answers, answerIndex, multipleChoice, value,
+		), answerIndex, value),
+	})
 }
 
 
@@ -98,11 +102,11 @@ export default ({ question: { text, multipleChoice, answers }, number, total, va
 		{ answers.map((answer, index) => <Answer
 				key={ index }
 				answer={ answer }
-				value={ value[index] }
+				value={ value.answers[index] }
 				onChange={ onAnswerChange(onChange, value, index, multipleChoice) }
 				errors={ errors.answers[index] }
 		/>) }
 		
 		<div style={ style.errorMessage }>{ errors.noneChecked ? errors.noneChecked : null }</div>
 	</div>
-</div> 
+</div>

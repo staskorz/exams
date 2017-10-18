@@ -24,7 +24,7 @@ export default (questions, questionnaire, formatMessage) => {
 		errorsDetected = true
 	}
 	
-	const errors = questions.map((answers, questionIndex) => {
+	const errors = questions.map(({ answers }, questionIndex) => {
 		const questionErrors = {}
 		
 		const countChecked = answers.reduce((acc, { checked }) => (checked ? acc + 1 : acc), 0)
