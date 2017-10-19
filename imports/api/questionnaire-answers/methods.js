@@ -70,11 +70,11 @@ export const getQuestionnaireResults = new ValidatedMethod({
 		
 		const questionnaireName = getQuestionnaireName(questionnaireId)
 		
-		const transformedQuestionnaireResults = questionnaireResults.map(({ examineeUserId, ...rest }) => {
+		const transformedQuestionnaireResults = questionnaireResults.map(({ userId, ...rest }) => {
 			let additionalProps = {}
 			
-			if(examineeUserId && allUsers[examineeUserId]) {
-				const { englishName, hebrewName, employeeId } = allUsers[examineeUserId]
+			if(userId && allUsers[userId]) {
+				const { englishName, hebrewName, employeeId } = allUsers[userId]
 				
 				additionalProps = {
 					englishName,
@@ -90,8 +90,8 @@ export const getQuestionnaireResults = new ValidatedMethod({
 			}
 			
 			return {
-				userId: examineeUserId,
-				username: allUsers[examineeUserId].username,
+				userId: userId,
+				username: allUsers[userId].username,
 				...rest,
 				...additionalProps,
 				questionnaireId,
