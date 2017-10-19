@@ -5,6 +5,7 @@ import { injectIntl } from 'react-intl'
 import withLoadingIndicator from '../../hocs/with-loading-indicator'
 
 import withQuestionnaireAnswers from './with-questionnaire-answers'
+import withFilter from './with-filter'
 
 
 export default compose(
@@ -12,4 +13,5 @@ export default compose(
 		withQuestionnaireAnswers,
 		withLoadingIndicator,
 		injectIntl,
+		withFilter,
 )
