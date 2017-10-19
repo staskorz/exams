@@ -1,4 +1,4 @@
-import questionnairesCollection from '../exams/collection';
+import questionnairesCollection from '../questionnaires/collection';
 
 
 export default questionnaireId => {
