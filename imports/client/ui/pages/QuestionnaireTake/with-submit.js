@@ -4,7 +4,7 @@ import { insert } from '/imports/api/questionnaire-answers/methods'
 
 
 export default withHandlers({
-	onSave: ({ value, questionnaire, router }) => () => {
+	onSave: ({ value, questionnaire, router, setSubmitted }) => () => {
 		const questionnaireAnswer = {
 			questionnaireId: questionnaire._id,
 			questions: value,
@@ -14,7 +14,7 @@ export default withHandlers({
 			if(error) {
 				console.log('insertQuestionnaireAnswers error:', error)
 			} else {
-				router.push('/list-questionnaires')
+				setSubmitted()
 			}
 		})
 	},

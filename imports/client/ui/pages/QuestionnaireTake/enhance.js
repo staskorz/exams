@@ -9,6 +9,7 @@ import withRenameQuestionnaireProp from './with-rename-questionnaire-prop'
 import withInitialValue from './with-initial-value'
 import withStateAndStateHandlers from './with-state-and-state-handlers'
 import withSubmit from './with-submit'
+import withSubmittedSuccessfullyIndicator from './with-submitted-successfully-indicator'
 
 export default compose(
 		withRouter,
@@ -19,4 +20,5 @@ export default compose(
 		injectIntl,
 		withStateAndStateHandlers,
 		withSubmit,
+		withSubmittedSuccessfullyIndicator,
 )

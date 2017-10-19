@@ -6,6 +6,7 @@ import validate from './validate'
 export default withStateHandlers(({ initialValue, questionnaire, intl: { formatMessage } }) => ({
 	value: initialValue,
 	...validate(initialValue, questionnaire, formatMessage),
+	submitted: false,
 }), {
 	setValue: ({ value }, { questionnaire, intl: { formatMessage } }) => fn => {
 		const newValue = fn(value)
@@ -15,4 +16,8 @@ export default withStateHandlers(({ initialValue, questionnaire, intl: { formatM
 			...validate(newValue, questionnaire, formatMessage),
 		}
 	},
+	
+	setSubmitted: () => () => ({
+		submitted: true,
+	}),
 })

@@ -65,6 +65,7 @@ export default {
 	edit: 'ערוך',
 	answers: 'תשובות',
 	submit: 'שלח',
+	questionnaireSubmittedSuccessfully: 'שאלון נשלח בהצלחה',
 }
 
 
