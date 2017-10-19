@@ -8,6 +8,7 @@ import QuestionnaireCreate from './pages/QuestionnaireCreate';
 import QuestionnaireEdit from './pages/QuestionnaireEdit';
 import QuestionnaireTake from './pages/QuestionnaireTake';
 import QuestionnairesList from './pages/QuestionnairesList';
+import QuestionnaireAnswers from './pages/QuestionnaireAnswers';
 import ExamEdit from './pages/ExamEdit';
 import UsersList from './pages/UsersList';
 import UserResults from './pages/UserResults';
@@ -35,6 +36,7 @@ export default () => (
 				<Route path='create-questionnaire' component={ QuestionnaireCreate } />
 				<Route path='edit-questionnaire/:questionnaireId' component={ QuestionnaireEdit } />
 				<Route path='list-questionnaires' component={ QuestionnairesList } />
+				<Route path='questionnaire-answers/:questionnaireId' component={ QuestionnaireAnswers } />
 				<Route path='take-exam/:examId' component={ TakeExamContainer } />
 				<Route path='take-questionnaire/:questionnaireId' component={ QuestionnaireTake } />
 				<Route path='*' component={ NotFound } />

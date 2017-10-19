@@ -25,12 +25,19 @@ export default ({ loading, questionnaires, intl: { formatMessage } }) => {
 	const translatedModificationTime = formatMessage({ id: 'modificationTime' })
 	const translatedActions = formatMessage({ id: 'actions' })
 	const translatedEdit = formatMessage({ id: 'edit' })
+	const translatedAnswers = formatMessage({ id: 'answers' })
 	const translatedTakeQuestionnaire = formatMessage({ id: 'takeQuestionnaire' })
 	const translatedYes = formatMessage({ id: 'yes' })
 	
 	const actionsCellRenderer = ({ rowData }) => <span>
 		<Link style={ style.actionLink } to={ '/edit-questionnaire/' + rowData._id }>{ translatedEdit }</Link>
+		
 		&nbsp;
+		
+		<Link style={ style.actionLink } to={ '/questionnaire-answers/' + rowData._id }>{ translatedAnswers }</Link>
+		
+		&nbsp;
+		
 		{ rowData.published ?
 				<Link style={ style.actionLink }
 						to={ '/take-questionnaire/' + rowData._id }>{ translatedTakeQuestionnaire }</Link> : null
