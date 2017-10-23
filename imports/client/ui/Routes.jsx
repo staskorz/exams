@@ -12,7 +12,7 @@ import QuestionnaireAnswers from './pages/QuestionnaireAnswers';
 import ExamEdit from './pages/ExamEdit';
 import UsersList from './pages/UsersList';
 import UserResults from './pages/UserResults';
-import ExamsListContainer from './containers/ExamsListContainer';
+import ExamsList from './pages/ExamsList';
 import ExamChoiceContainer from './containers/ExamChoiceContainer';
 import ExamResults from './pages/ExamResults';
 import ExamAnswers from './pages/ExamAnswers';
@@ -27,7 +27,7 @@ export default () => (
 				<IndexRoute component={ withCurrentUser(Home) } />
 				<Route path='create-exam' component={ ExamCreate } />
 				<Route path='edit-exam/:examId' component={ ExamEdit } />
-				<Route path='list-exams' component={ ExamsListContainer } />
+				<Route path='list-exams' component={ ExamsList } />
 				<Route path='list-users' component={ UsersList } />
 				<Route path='exam-choice' component={ ExamChoiceContainer } />
 				<Route path='exam-results/:examId' component={ ExamResults } />

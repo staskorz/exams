@@ -64,6 +64,7 @@ export default {
 	mustCheckOneAnswer: 'יש לסמן תשובה אחת',
 	edit: 'ערוך',
 	answers: 'תשובות',
+	results: 'תוצאות',
 	submit: 'שלח',
 	questionnaireSubmittedSuccessfully: 'שאלון נשלח בהצלחה',
 	questionnaireNotExistOrNotPublished: 'שאלון לא קיים או לא פורסם',
