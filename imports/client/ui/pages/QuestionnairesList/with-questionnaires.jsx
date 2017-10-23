@@ -2,7 +2,7 @@ import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 
-import Exams from '../../../../api/questionnaires/collection'
+import Questionnaires from '../../../../api/questionnaires/collection'
 
 
 export default component => createContainer(() => {
@@ -10,7 +10,7 @@ export default component => createContainer(() => {
 	
 	if(questionnairesHandle.ready()) {
 		return {
-			questionnaires: Exams.find({}, { sort: { name: 1 } }).fetch(),
+			questionnaires: Questionnaires.find({}, { sort: { name: 1 } }).fetch(),
 		}
 	} else {
 		return {
