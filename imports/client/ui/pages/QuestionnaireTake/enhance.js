@@ -10,12 +10,14 @@ import withInitialValue from './with-initial-value'
 import withStateAndStateHandlers from './with-state-and-state-handlers'
 import withSubmit from './with-submit'
 import withSubmittedSuccessfullyIndicator from './with-submitted-successfully-indicator'
+import withNotFoundNotification from './with-not-found-notification'
 
 export default compose(
 		withRouter,
 		withQuestionnaire,
 		withLoadingIndicator,
 		withRenameQuestionnaireProp,
+		withNotFoundNotification,
 		withInitialValue,
 		injectIntl,
 		withStateAndStateHandlers,

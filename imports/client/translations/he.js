@@ -66,6 +66,7 @@ export default {
 	answers: 'תשובות',
 	submit: 'שלח',
 	questionnaireSubmittedSuccessfully: 'שאלון נשלח בהצלחה',
+	questionnaireNotExistOrNotPublished: 'שאלון לא קיים או לא פורסם',
 	questionnaireAnswers: 'תשובות לשאלון',
 }
 

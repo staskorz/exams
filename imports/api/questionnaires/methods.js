@@ -46,7 +46,15 @@ export const findOne = new ValidatedMethod({
 			throw new Meteor.Error('questionnaires.findOne.notLoggedIn', 'Must be logged in.')
 		}
 		
-		return collection.findOne(questionnaireId, {
+		const query = {
+			_id: questionnaireId,
+		}
+		
+		if(getUserRole(this.userId) !== 'operator') {
+			query.published = true
+		}
+		
+		return collection.findOne(query, {
 			fields: {
 				_id: 1,
 				name: 1,
