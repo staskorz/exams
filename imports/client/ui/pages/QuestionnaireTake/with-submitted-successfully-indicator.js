@@ -1,6 +1,6 @@
 import { branch, renderComponent } from 'recompose'
 
-import LoadingIndicator from './SubmittedSuccessfully'
+import SubmittedSuccessfully from './SubmittedSuccessfully'
 
 
-export default branch(({ submitted }) => !!submitted, renderComponent(LoadingIndicator))
+export default branch(({ submitted }) => !!submitted, renderComponent(SubmittedSuccessfully))
