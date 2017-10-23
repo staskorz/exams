@@ -66,6 +66,7 @@ export default {
 	answers: 'תשובות',
 	submit: 'שלח',
 	questionnaireSubmittedSuccessfully: 'שאלון נשלח בהצלחה',
+	questionnaireAnswers: 'תשובות לשאלון',
 }
 
 
