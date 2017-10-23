@@ -3,6 +3,14 @@ import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router'
 
 import formatDate from '../../../date-js-to-formatted'
+import { primary } from '../../colors'
+
+
+const style = {
+	questionnaireName: {
+		color: primary,
+	},
+}
 
 
 export default ({ questionnaireAnswers, intl: { formatMessage } }) => {
@@ -15,6 +23,7 @@ export default ({ questionnaireAnswers, intl: { formatMessage } }) => {
 	const dateCellRenderer = ({ cellData }) => formatDate(cellData)
 	
 	const questionnaireNameCellRenderer = ({ rowData: { questionnaireName, questionnaireId } }) => <Link
+			style={ style.questionnaireName }
 			to={ '/edit-questionnaire/' + questionnaireId }>{ questionnaireName }
 	</Link>
 	
