@@ -11,6 +11,12 @@ router.get('/', (req, res) => {
 	
 	examsCollection.count().then(count => {
 		res.send('Exams Count: ' + count)
+	}).catch(err => {
+		const errorMessage = 'Error fetching exams from DB.'
+
+		res.status(500).send(errorMessage)
+
+		throw new Error(errorMessage + ' ' + err.name + ': ', err.message)
 	})
 })
 
