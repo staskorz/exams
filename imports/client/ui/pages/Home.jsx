@@ -1,72 +1,70 @@
-import React, { Component } from 'react';
-import { Card, CardTitle, CardText } from 'material-ui';
+import React, { Component } from 'react'
+import { Card, CardTitle, CardText } from 'material-ui'
 
-import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
+import LoadingIndicator from '../components/LoadingIndicator'
 
 
 export default class Home extends Component {
 	style = {
 		card: {
-			padding: '16px'
+			padding: '16px',
 		},
 		
 		cardText: {
-			minHeight: '250px'
-		}
-	};
+			minHeight: '250px',
+		},
+	}
 	
 	
 	prepareAnswersState = props => {
 		
-	};
+	}
 	
 	
 	componentWillMount() {
-		this.prepareAnswersState(this.props);
-	};
+		this.prepareAnswersState(this.props)
+	}
 	
 	
 	componentWillReceiveProps(nextProps) {
-		this.prepareAnswersState(nextProps);
-	};
+		this.prepareAnswersState(nextProps)
+	}
 	
 	
 	render() {
-		const { currentUser } = this.props;
+		const { currentUser } = this.props
 		
 		if(!currentUser || !currentUser.username) {
-			return <LoadingIndicator />;
+			return <LoadingIndicator />
 		}
 		
-		const { username, englishName, hebrewName, employeeId } = currentUser;
+		const { username, englishName, hebrewName, employeeId } = currentUser
 		
-		let titleText;
+		let titleText
 		
 		if(hebrewName) {
-			titleText = hebrewName;
+			titleText = hebrewName
 		} else if(englishName) {
-			titleText = englishName;
+			titleText = englishName
 		} else {
-			titleText = username;
+			titleText = username
 		}
 		
-		let subTitleText;
+		let subTitleText
 		
 		if(employeeId) {
-			subTitleText = employeeId;
+			subTitleText = employeeId
 		} else {
-			subTitleText = '';
+			subTitleText = ''
 		}
 		
-		return (
-				<div className='main-container-padding'>
-					<Card style={ this.style.card }>
-						<CardTitle title={ titleText } subtitle={ subTitleText } />
-						
-						<CardText style={ this.style.cardText }>
-						</CardText>
-					</Card>
-				</div>
-		);
-	};
+		return <div className='main-container-padding'>
+			<Card style={ this.style.card }>
+				<CardTitle title={ titleText } subtitle={ subTitleText } />
+				
+				<CardText style={ this.style.cardText }>
+				</CardText>
+			</Card>
+		</div>
+	}
 }

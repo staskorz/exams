@@ -1,16 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-import withCurrentUser from '/imports/client/ui/containers/withCurrentUser';
-import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
+import withCurrentUser from './hocs/with-current-user'
+import LoadingIndicator from './components/LoadingIndicator'
 
 
 const EnsureLoginWrapper = ({ currentUser, children }) => {
+	console.log('currentUser:', currentUser)
+	
 	if(!currentUser || !currentUser.username || !currentUser.role) {
-		return <LoadingIndicator />;
+		return <LoadingIndicator />
 	}
 	
-	return <div>{ children }</div>;
-};
+	return <div>{ children }</div>
+}
 
 
-export default withCurrentUser(EnsureLoginWrapper);
+export default withCurrentUser(EnsureLoginWrapper)

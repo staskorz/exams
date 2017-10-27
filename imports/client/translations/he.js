@@ -91,17 +91,5 @@ export const SimpleSchemaMessages = {
 	expectedArray: 'מערך בלבד',
 	expectedObject: 'אובייקט בלבד',
 	expectedConstructor: 'מסוג [type] בלבד',
-	regEx: [
-		{ msg: 'ערך לא חוקי' },
-		{ exp: SimpleSchema.RegEx.Email, msg: 'כתובת דואר אלקטרוני בלבד' },
-		{ exp: SimpleSchema.RegEx.WeakEmail, msg: 'כתובת דואר אלקטרוני בלבד' },
-		{ exp: SimpleSchema.RegEx.Domain, msg: 'דומיין בלבד' },
-		{ exp: SimpleSchema.RegEx.WeakDomain, msg: 'דומיין בלבד' },
-		{ exp: SimpleSchema.RegEx.IP, msg: 'כתובת IP מגרסה 4 או 6 בלבד' },
-		{ exp: SimpleSchema.RegEx.IPv4, msg: 'כתובת IP מגרסה 4 בלבד' },
-		{ exp: SimpleSchema.RegEx.IPv6, msg: 'כתובת IP מגרסה 6 בלבד' },
-		{ exp: SimpleSchema.RegEx.Url, msg: 'URL בלבד' },
-		{ exp: SimpleSchema.RegEx.Id, msg: 'ID אלפאנומרי בלבד' },
-	],
 	keyNotInSchema: '[key] לא מאושר בסכמה',
 }

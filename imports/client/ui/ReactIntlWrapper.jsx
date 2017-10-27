@@ -1,11 +1,9 @@
-import React from 'react';
-import { IntlProvider } from 'react-intl';
+import React from 'react'
+import { IntlProvider } from 'react-intl'
 
-import he from '/imports/client/translations/he';
+import he from '../translations/he'
 
 
-export default ({ children }) => (
-		<IntlProvider locale='he' messages={ he }>
-			{ children }
-		</IntlProvider>
-);
+export default ({ children }) => <IntlProvider locale='he' messages={ he }>
+	{ children }
+</IntlProvider>

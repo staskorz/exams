@@ -4,7 +4,7 @@ import React from 'react'
 import { AppContainer } from 'react-hot-loader'
 
 import renderReactRoot from './ui/render-react-root'
-import ReactRoot from './ui/ReactRoot'
+import ReactRoot from '../imports/client/ui/ReactRoot'
 
 
 const render = Component => renderReactRoot(<AppContainer><Component /></AppContainer>)
@@ -14,7 +14,7 @@ render(ReactRoot)
 
 
 if(module.hot) {
-	module.hot.accept('./ui/ReactRoot', () => {
+	module.hot.accept('../imports/client/ui/ReactRoot', () => {
 		render(ReactRoot)
 	})
 }
