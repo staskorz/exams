@@ -20,9 +20,9 @@ router.get('/', (req, res) => {
 		res.json(exams)
 	}).catch(err => {
 		const errorMessage = 'Error fetching exams from DB.'
-
+		
 		res.status(500).send(errorMessage)
-
+		
 		throw new Error(errorMessage + ' ' + err.name + ': ', err.message)
 	})
 })
