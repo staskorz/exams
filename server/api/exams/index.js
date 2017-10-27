@@ -9,8 +9,15 @@ router.get('/', (req, res) => {
 	
 	const examsCollection = db.collection('Exams')
 	
-	examsCollection.count().then(count => {
-		res.send('Exams Count: ' + count)
+	const fields = {
+		name: 1,
+		published: 1,
+		createdAt: 1,
+		updatedAt: 1,
+	}
+	
+	examsCollection.find({}, fields).toArray().then(exams => {
+		res.json(exams)
 	}).catch(err => {
 		const errorMessage = 'Error fetching exams from DB.'
 
