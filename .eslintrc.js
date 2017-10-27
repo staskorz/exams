@@ -75,6 +75,7 @@ module.exports = {
 				'return': { 'after': true },
 				'const': { 'after': true },
 				'let': { 'after': true },
+				'else': { 'after': true },
 			},
 		} ],
 		'import/no-extraneous-dependencies': [ 'error', { 'devDependencies': [ '**/*.test.js?(x)' ] } ],
