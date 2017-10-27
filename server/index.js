@@ -2,6 +2,7 @@ import express from 'express'
 
 import dbConnection from './mongodb/connection'
 import injectDbConnectionMiddleware from './mongodb/inject-connection-middleware'
+import api from './api'
 
 
 const HTTP_SERVER_PORT = 3000
@@ -16,17 +17,7 @@ dbConnection.then(db => {
 	
 	app.use(injectDbConnectionMiddleware(db))
 	
-	app.get('/', (req, res) => {
-		//res.send('Hello world!')
-		
-		const { db } = req
-		
-		const examsCollection = db.collection('Exams')
-		
-		examsCollection.count().then(count => {
-			res.send('Exams Count: ' + count)
-		})
-	})
+	app.use('/api', api)
 	
 	app.listen(HTTP_SERVER_PORT, () => {
 		// eslint-disable-next-line no-console
