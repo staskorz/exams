@@ -17,7 +17,6 @@ Meteor.publish('questionnaires', function() {
 			published: 1,
 			createdAt: 1,
 			updatedAt: 1,
-			questions: 1,
 		},
 		
 		sort: { name: 1 },
