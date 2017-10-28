@@ -1,5 +1,8 @@
 import React from 'react'
 
+import 'react-virtualized/styles.css'
+import '../imports/client/static/main.css'
+
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { AppContainer } from 'react-hot-loader'
 
