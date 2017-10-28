@@ -5,8 +5,6 @@ import LoadingIndicator from './components/LoadingIndicator'
 
 
 const EnsureLoginWrapper = ({ currentUser, children }) => {
-	console.log('currentUser:', currentUser)
-	
 	if(!currentUser || !currentUser.username || !currentUser.role) {
 		return <LoadingIndicator />
 	}
