@@ -1,9 +1,13 @@
 import React from 'react'
-import { IntlProvider } from 'react-intl'
+import { IntlProvider, addLocaleData } from 'react-intl'
+import heLocale from 'react-intl/locale-data/he'
 
-import he from '../translations/he'
+import heMessages from '../translations/he'
 
 
-export default ({ children }) => <IntlProvider locale='he' messages={ he }>
+addLocaleData([...heLocale])
+
+
+export default ({ children }) => <IntlProvider locale='he' messages={ heMessages }>
 	{ children }
 </IntlProvider>
