@@ -3,5 +3,5 @@
 /node_modules/
 /npm-debug.log
 /settings-production.json
-/public/company-logo*
+/client/company-logo*
 /yarn-error.log
