@@ -29,7 +29,7 @@ const common = {
 						loader: 'babel-loader',
 						query: {
 							presets: [
-								[ 'es2015', { modules: false } ],
+								['es2015', { modules: false }],
 								'stage-2',
 								'react',
 							],
@@ -57,7 +57,7 @@ const dev = {
 		new webpack.NamedModulesPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
 	],
-		
+	
 	devtool: 'cheap-module-eval-source-map',
 	
 	entry: {
@@ -72,7 +72,7 @@ const dev = {
 		hot: true,
 		historyApiFallback: true,
 		proxy: {
-			'/api': SERVER_URL
+			'/api': SERVER_URL,
 		},
 	},
 }
