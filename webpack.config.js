@@ -76,6 +76,7 @@ const dev = {
 	
 	entry: {
 		client: [
+			'babel-polyfill',
 			'react-hot-loader/patch',
 			'./index-dev.js',
 		],
@@ -94,7 +95,10 @@ const dev = {
 
 const prod = {
 	entry: {
-		client: './index-prod.js',
+		client: [
+			'babel-polyfill',
+			'./index-prod.js',
+		],
 	},
 }
 
