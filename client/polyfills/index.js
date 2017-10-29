@@ -1,2 +1,1 @@
-import './promise'
 import './fetch'

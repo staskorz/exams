@@ -21,7 +21,6 @@
     "node-sspi": "^0.1.13",
     "papaparse": "^4.1.2",
     "pica": "file:./../pica",
-    "promise-polyfill": "^6.0.2",
     "prop-types": "^15.5.10",
     "react": "^15.2.1",
     "react-addons-pure-render-mixin": "^15.2.1",
