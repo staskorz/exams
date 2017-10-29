@@ -21,6 +21,7 @@
     "node-sspi": "^0.1.13",
     "papaparse": "^4.1.2",
     "pica": "file:./../pica",
+    "promise-polyfill": "^6.0.2",
     "prop-types": "^15.5.10",
     "react": "^15.2.1",
     "react-addons-pure-render-mixin": "^15.2.1",
@@ -34,7 +35,8 @@
     "recompose": "^0.25.0",
     "redux": "^3.5.2",
     "redux-form": "^6.0.0-rc.4",
-    "redux-form-material-ui": "^4.0.1"
+    "redux-form-material-ui": "^4.0.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
