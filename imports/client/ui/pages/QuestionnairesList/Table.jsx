@@ -3,7 +3,6 @@ import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router'
 
 import { neutral } from '../../colors'
-import LoadingIndicator from '../../components/LoadingIndicator'
 import formatDate from '../../../date-js-to-formatted'
 
 
@@ -14,11 +13,7 @@ const style = {
 }
 
 
-export default ({ loading, questionnaires, intl: { formatMessage } }) => {
-	if(loading) {
-		return <LoadingIndicator />
-	}
-	
+export default ({ questionnaires, intl: { formatMessage } }) => {
 	const translatedQuestionnaireName = formatMessage({ id: 'questionnaireName' })
 	const translatedPublished = formatMessage({ id: 'published' })
 	const translatedCreationTime = formatMessage({ id: 'creationTime' })
