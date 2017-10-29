@@ -3,8 +3,6 @@ import React from 'react'
 import 'react-virtualized/styles.css'
 import '../imports/client/static/main.css'
 
-import './polyfills'
-
 import '../imports/startup/client/material-ui-touch-workaround'
 
 // eslint-disable-next-line import/no-extraneous-dependencies

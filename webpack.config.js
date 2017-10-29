@@ -77,6 +77,7 @@ const dev = {
 	entry: {
 		client: [
 			'babel-polyfill',
+			'whatwg-fetch',
 			'react-hot-loader/patch',
 			'./index-dev.js',
 		],
@@ -97,6 +98,7 @@ const prod = {
 	entry: {
 		client: [
 			'babel-polyfill',
+			'whatwg-fetch',
 			'./index-prod.js',
 		],
 	},
