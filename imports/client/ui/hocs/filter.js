@@ -43,7 +43,7 @@ export default ({ prop, func }) => WrappedComponent => class Filtered extends Co
 		const trimmedFilterValue = value.trim()
 		
 		if(trimmedFilterValue) {
-				return func(unfiltered, trimmedFilterValue)
+			return func(unfiltered, trimmedFilterValue)
 		} else {
 			return unfiltered
 		}
@@ -53,8 +53,8 @@ export default ({ prop, func }) => WrappedComponent => class Filtered extends Co
 	componentWillMount() {
 		this.updateState(this.props, '')
 	}
-
-
+	
+	
 	componentWillReceiveProps(nextProps) {
 		this.updateState(nextProps, this.state.filterValue)
 	}
