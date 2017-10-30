@@ -1,20 +1,17 @@
-import React from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Meteor } from 'meteor/meteor';
-
-import Questionnaires from '../../../../api/questionnaires/collection'
+import { lifecycle } from 'recompose'
 
 
-export default component => createContainer(() => {
-	const questionnairesHandle = Meteor.subscribe('questionnaires');
+export default lifecycle({
+	state: {
+		loading: true,
+	},
 	
-	if(questionnairesHandle.ready()) {
-		return {
-			questionnaires: Questionnaires.find({}, { sort: { name: 1 } }).fetch(),
-		}
-	} else {
-		return {
-			loading: true,
-		}
-	}
-}, component);
+	componentDidMount() {
+		fetch('/api/questionnaires').then(response => response.json()).then(questionnaires => {
+			this.setState({
+				loading: false,
+				questionnaires,
+			})
+		})
+	},
+})

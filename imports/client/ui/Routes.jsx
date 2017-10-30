@@ -7,7 +7,7 @@ import Home from './pages/Home'
 //import QuestionnaireCreate from './pages/QuestionnaireCreate'
 //import QuestionnaireEdit from './pages/QuestionnaireEdit'
 //import QuestionnaireTake from './pages/QuestionnaireTake'
-//import QuestionnairesList from './pages/QuestionnairesList'
+import QuestionnairesList from './pages/QuestionnairesList'
 //import QuestionnaireAnswers from './pages/QuestionnaireAnswers'
 //import ExamEdit from './pages/ExamEdit'
 //import UsersList from './pages/UsersList'
@@ -34,7 +34,7 @@ export default () => <Router history={ browserHistory }>
 		{ /*<Route path='user-results/:userId' component={ UserResults } />*/ }
 		{ /*<Route path='create-questionnaire' component={ QuestionnaireCreate } />*/ }
 		{ /*<Route path='edit-questionnaire/:questionnaireId' component={ QuestionnaireEdit } />*/ }
-		{ /*<Route path='list-questionnaires' component={ QuestionnairesList } />*/ }
+		<Route path='list-questionnaires' component={ QuestionnairesList } />
 		{ /*<Route path='questionnaire-answers/:questionnaireId' component={ QuestionnaireAnswers } />*/ }
 		{ /*<Route path='take-exam/:examId' component={ TakeExamContainer } />*/ }
 		{ /*<Route path='take-questionnaire/:questionnaireId' component={ QuestionnaireTake } />*/ }
