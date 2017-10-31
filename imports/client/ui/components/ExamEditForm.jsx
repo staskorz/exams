@@ -98,7 +98,7 @@ class ExamEditForm extends Component {
 	
 	
 	transformFormFieldsClientToServer = formFields => {
-		const { questions, ...restFormFields } = formFields;
+		const { questions, published, ...restFormFields } = formFields;
 		
 		const transformedQuestions = questions.map(({ images, ...restQuestionFields }) => {
 			if(images) {
@@ -120,6 +120,7 @@ class ExamEditForm extends Component {
 			} else {
 				return {
 					...restQuestionFields,
+					published: !!published,
 				};
 			}
 			
@@ -127,6 +128,7 @@ class ExamEditForm extends Component {
 		
 		return {
 			...restFormFields,
+			published: !!published,
 			questions: transformedQuestions
 		};
 	};
