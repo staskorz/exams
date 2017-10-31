@@ -19,6 +19,7 @@ export default ({ examResults, intl: { formatMessage } }) => {
 	const translatedEmployeeId = formatMessage({ id: 'employeeId' })
 	const translatedUsername = formatMessage({ id: 'username' })
 	const translatedDate = formatMessage({ id: 'date' })
+	const translatedMark = formatMessage({ id: 'mark' })
 	
 	const dateCellRenderer = ({ cellData }) => formatDate(cellData)
 	
@@ -27,7 +28,12 @@ export default ({ examResults, intl: { formatMessage } }) => {
 			to={ '/edit-exam/' + examId }>{ examName }
 	</Link>
 	
-	const numColumns = 5
+	const examMarkCellRenderer = ({ rowData: { _id, mark } }) => <Link
+			style={ style.examName }
+			to={ '/exam-answers/' + _id }>{ mark }
+	</Link>
+	
+	const numColumns = 6
 	
 	return <WindowScroller>
 		{ ({ height, isScrolling, scrollTop }) => <AutoSizer disableHeight>
@@ -59,6 +65,13 @@ export default ({ examResults, intl: { formatMessage } }) => {
 						label={ translatedExamName }
 						width={ width / numColumns }
 						cellRenderer={ examNameCellRenderer }
+				/>
+				
+				<Column
+						dataKey='mark'
+						label={ translatedMark }
+						width={ width / numColumns }
+						cellRenderer={ examMarkCellRenderer }
 				/>
 			</Table> }
 		</AutoSizer> }
