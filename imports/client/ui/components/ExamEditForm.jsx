@@ -123,7 +123,6 @@ class ExamEditForm extends Component {
 					published: !!published,
 				};
 			}
-			
 		});
 		
 		return {
