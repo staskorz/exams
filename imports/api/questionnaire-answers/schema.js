@@ -8,7 +8,6 @@ const answer = new SimpleSchema({
 	
 	freeText: {
 		type: String,
-		min: 1,
 		max: 500,
 		optional: true,
 	},
