@@ -14,7 +14,7 @@ import QuestionnairesList from './pages/QuestionnairesList'
 //import UserResults from './pages/UserResults'
 import ExamsList from './pages/ExamsList'
 //import ExamChoiceContainer from './containers/ExamChoiceContainer'
-//import ExamResults from './pages/ExamResults'
+import ExamResults from './pages/ExamResults'
 //import ExamAnswers from './pages/ExamAnswers'
 //import TakeExamContainer from './containers/TakeExamContainer'
 import withCurrentUser from './hocs/with-current-user'
@@ -29,7 +29,7 @@ export default () => <Router history={ browserHistory }>
 		<Route path='list-exams' component={ ExamsList } />
 		{ /*<Route path='list-users' component={ UsersList } />*/ }
 		{ /*<Route path='exam-choice' component={ ExamChoiceContainer } />*/ }
-		{ /*<Route path='exam-results/:examId' component={ ExamResults } />*/ }
+		<Route path='exam-results/:examId' component={ ExamResults } />
 		{ /*<Route path='exam-answers/:answersId' component={ ExamAnswers } />*/ }
 		{ /*<Route path='user-results/:userId' component={ UserResults } />*/ }
 		{ /*<Route path='create-questionnaire' component={ QuestionnaireCreate } />*/ }
