@@ -24,6 +24,8 @@ const style = {
 		marginRight: '17px',
 		marginBottom: '32px',
 		fontFamily: 'Roboto, sans-serif',
+		wordWrap: 'break-word',
+		whiteSpace: 'pre-wrap',
 	},
 	
 	buttonsContainer: {
