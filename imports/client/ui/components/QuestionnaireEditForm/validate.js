@@ -1,5 +1,6 @@
 const maxTitleChars = 50
-const maxBodyChars = 500
+const maxDescriptionChars = 5000
+const maxQuestionBodyChars = 500
 
 
 const validateTextCreator = (maxChars, required = true) => (formatMessage, value, setErrorsDetected) => {
@@ -16,8 +17,8 @@ const validateTextCreator = (maxChars, required = true) => (formatMessage, value
 
 
 const validateTitle = validateTextCreator(maxTitleChars)
-const validateDescription = validateTextCreator(maxBodyChars, false)
-const validateBody = validateTextCreator(maxBodyChars)
+const validateDescription = validateTextCreator(maxDescriptionChars, false)
+const validateQuestionBody = validateTextCreator(maxQuestionBodyChars)
 
 
 export default (value, formatMessage) => {
@@ -35,10 +36,10 @@ export default (value, formatMessage) => {
 	errors.description = validateDescription(formatMessage, description, setErrorsDetected)
 	
 	errors.questions = questions.map(({ text, answers }) => ({
-		text: validateBody(formatMessage, text, setErrorsDetected),
+		text: validateQuestionBody(formatMessage, text, setErrorsDetected),
 		
 		answers: answers.map(({ text }) => ({
-			text: validateBody(formatMessage, text, setErrorsDetected),
+			text: validateQuestionBody(formatMessage, text, setErrorsDetected),
 		})),
 	}))
 	
