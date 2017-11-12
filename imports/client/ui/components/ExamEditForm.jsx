@@ -110,6 +110,7 @@ class ExamEditForm extends Component {
 							
 							return {
 								...restImageFields,
+								published: !!published,
 								imageBlob: {
 									blob: image
 								}
