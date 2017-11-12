@@ -98,7 +98,7 @@ class ExamEditForm extends Component {
 	
 	
 	transformFormFieldsClientToServer = formFields => {
-		const { questions, published, ...restFormFields } = formFields;
+		const { questions, ...restFormFields } = formFields;
 		
 		const transformedQuestions = questions.map(({ images, ...restQuestionFields }) => {
 			if(images) {
@@ -110,7 +110,6 @@ class ExamEditForm extends Component {
 							
 							return {
 								...restImageFields,
-								published: !!published,
 								imageBlob: {
 									blob: image
 								}
@@ -119,16 +118,12 @@ class ExamEditForm extends Component {
 					})
 				};
 			} else {
-				return {
-					...restQuestionFields,
-					published: !!published,
-				};
+				return restQuestionFields;
 			}
 		});
 		
 		return {
 			...restFormFields,
-			published: !!published,
 			questions: transformedQuestions
 		};
 	};
@@ -196,6 +191,9 @@ class ExamEditForm extends Component {
 	};
 	
 	
+	normalizeBoolean = b => !!b
+	
+	
 	render() {
 		const { canLeave } = this.state;
 		
@@ -224,7 +222,7 @@ class ExamEditForm extends Component {
 							<Field component={ TextField } name='name'
 									floatingLabelText={ <FormattedMessage id='examName' /> }
 									style={ this.style.examName } /><br />
-							<Field component={ Checkbox } name='published'
+							<Field component={ Checkbox } normalize={ this.normalizeBoolean } name='published'
 									label={ <FormattedMessage id='published' /> } />
 							
 							<FieldArray name='questions' component={ QuestionsEdit } props={{ submitFailed }} />
