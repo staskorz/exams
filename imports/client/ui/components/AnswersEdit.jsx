@@ -71,6 +71,9 @@ export default class AnswersEdit extends Component {
 	};
 	
 	
+	normalizeBoolean = b => !!b
+	
+	
 	componentWillMount() {
 		const { fields } = this.props;
 		
@@ -101,7 +104,7 @@ export default class AnswersEdit extends Component {
 								</div>
 								<div style={ this.style.checkboxContainer }>
 									<Field component={ Checkbox } name={ `${ answer }.correct` } style={ this.style.checkbox }
-											iconStyle={ iconStyle } />
+											normalize={ this.normalizeBoolean } iconStyle={ iconStyle } />
 								</div>
 								<Field component={ TextField } name={ `${ answer }.text` }
 										floatingLabelText={ <FormattedMessage id='answer' values={{ number: index + 1 }} /> }

@@ -54,7 +54,7 @@ export default new SimpleSchema({
 	
 	description: {
 		type: String,
-		max: 500,
+		max: 5000,
 		optional: true,
 	},
 	
