@@ -1,6 +1,6 @@
 import { reduxForm } from 'redux-form'
 
-import validate from './validate'
+import validate from '../../../../../common/validations/exam'
 
 
 export default reduxForm({
