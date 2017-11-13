@@ -1,5 +1,5 @@
 export default formFields => {
-	const { questions, ...restFormFields } = formFields;
+	const { questions, ...restFormFields } = formFields
 	
 	const transformedQuestions = questions.map(({ images, ...restQuestionFields }) => {
 		if(images) {
@@ -7,26 +7,26 @@ export default formFields => {
 				...restQuestionFields,
 				images: images.map(imageData => {
 					if(imageData) {
-						const { imageBlob, ...restImageFields } = imageData;
+						const { imageBlob, ...restImageFields } = imageData
 						
 						return {
 							...restImageFields,
-							image: imageBlob.blob
-						};
+							image: imageBlob.blob,
+						}
 					}
-				})
-			};
+				}),
+			}
 		} else {
 			return {
 				...restQuestionFields,
-				images: [null, null, null, null]
-			};
+				images: [null, null, null, null],
+			}
 		}
 		
-	});
+	})
 	
 	return {
 		...restFormFields,
-		questions: transformedQuestions
-	};
-};
+		questions: transformedQuestions,
+	}
+}

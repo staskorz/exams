@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import { Field, FieldArray } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
-import { Paper, FloatingActionButton } from 'material-ui';
-import IconRemove from 'material-ui/svg-icons/content/remove';
-import IconAdd from 'material-ui/svg-icons/content/add';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import React, { Component } from 'react'
+import { Field, FieldArray } from 'redux-form'
+import { TextField } from 'redux-form-material-ui'
+import { Paper, FloatingActionButton } from 'material-ui'
+import IconRemove from 'material-ui/svg-icons/content/remove'
+import IconAdd from 'material-ui/svg-icons/content/add'
+import { FormattedMessage, injectIntl } from 'react-intl'
 
-import AnswersEdit from './AnswersEdit';
-import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton';
-import NumberBadge from './NumberBadge';
-import ImagesDropzoneBlockRF from './ImagesDropzoneBlockRF';
+import AnswersEdit from './AnswersEdit'
+import ConfirmedFloatingActionButton from './ConfirmedFloatingActionButton'
+import NumberBadge from './NumberBadge'
+import ImagesDropzoneBlockRF from './ImagesDropzoneBlockRF'
 
 
 class QuestionsEdit extends Component {
@@ -17,87 +17,87 @@ class QuestionsEdit extends Component {
 		paper: {
 			marginTop: '40px',
 			paddingTop: '10px',
-			position: 'relative'
+			position: 'relative',
 		},
 		
 		weightContainer: {
 			position: 'absolute',
 			top: '10px',
-			left: '40px'
+			left: '40px',
 		},
 		
 		weightLabel: {
 			display: 'inline-block',
 			marginTop: '15px',
 			marginLeft: '8px',
-			verticalAlign: 'top'
+			verticalAlign: 'top',
 		},
 		
 		weight: {
-			width: '65px'
+			width: '65px',
 		},
 		
 		questionText: {
-			marginBottom: '14px'
+			marginBottom: '14px',
 		},
 		
 		fieldsContainer: {
 			padding: '40px',
-			paddingTop: '0px'
+			paddingTop: '0px',
 		},
 		
 		removeQuestionButton: {
 			position: 'absolute',
 			bottom: '10px',
-			right: '10px'
+			right: '10px',
 		},
 		
 		addQuestionButton: {
 			marginLeft: '10px',
-			marginTop: '10px'
-		}
-	};
+			marginTop: '10px',
+		},
+	}
 	
 	
 	parseNumber = numberStr => {
 		if(/^\d+$/.test(numberStr)) {
-			return Number(numberStr);
+			return Number(numberStr)
 		} else {
-			return numberStr;
+			return numberStr
 		}
-	};
+	}
 	
 	
 	addQuestion = () => {
-		const { fields } = this.props;
+		const { fields } = this.props
 		
 		fields.push({
 			weight: 10,
-			images: (new Array(4)).fill(null)
-		});
-	};
+			images: (new Array(4)).fill(null),
+		})
+	}
 	
 	
 	removeQuestion = index => {
-		const { fields: { remove } } = this.props;
+		const { fields: { remove } } = this.props
 		
-		remove(index);
-	};
+		remove(index)
+	}
 	
 	
 	componentWillMount() {
-		const { fields } = this.props;
+		const { fields } = this.props
 		
 		if(fields.length === 0) {
-			this.addQuestion();
+			this.addQuestion()
 		}
 	}
 	
 	
 	render() {
-		const { fields, submitFailed, intl: { formatMessage } } = this.props;
+		const { fields, submitFailed, intl: { formatMessage } } = this.props
 		
-		const questionRemovalConfirmationMessage = formatMessage({ id: 'areYouSure' });
+		const questionRemovalConfirmationMessage = formatMessage({ id: 'areYouSure' })
 		
 		return (
 				<div>
@@ -120,7 +120,7 @@ class QuestionsEdit extends Component {
 									<Field component={ ImagesDropzoneBlockRF } name={ `${ question }.images` } />
 									
 									<FieldArray name={ `${ question }.answers` } component={ AnswersEdit }
-											props={{ submitFailed }} />
+											props={ { submitFailed } } />
 								</div>
 								<ConfirmedFloatingActionButton
 										mini={ true }
@@ -135,14 +135,14 @@ class QuestionsEdit extends Component {
 							</Paper>
 					)) }
 					
-					<FloatingActionButton mini={true} style={ this.style.addQuestionButton }
+					<FloatingActionButton mini={ true } style={ this.style.addQuestionButton }
 							onClick={ this.addQuestion }>
 						<IconAdd />
 					</FloatingActionButton>
 				</div>
-		);
+		)
 	}
 }
 
 
-export default injectIntl(QuestionsEdit);
+export default injectIntl(QuestionsEdit)

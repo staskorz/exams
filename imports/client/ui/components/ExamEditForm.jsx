@@ -1,43 +1,38 @@
-import React, { Component } from 'react';
-import { RaisedButton } from 'material-ui';
-import { Field, FieldArray, reduxForm } from 'redux-form';
-import { TextField, Checkbox } from 'redux-form-material-ui';
-import { withRouter } from 'react-router';
-import { FormattedMessage, injectIntl } from 'react-intl';
+import React, { Component } from 'react'
+import { RaisedButton } from 'material-ui'
+import { Field, FieldArray } from 'redux-form'
+import { TextField, Checkbox } from 'redux-form-material-ui'
+import { FormattedMessage } from 'react-intl'
 
-import ExamsCollection from '/imports/api/exams/collection';
-import { insert as insertExam, update as updateExam } from '/imports/api/exams/methods';
-import simpleSchemaValidator from '/imports/client/validators/simple-schema-validator';
-import QuestionsEdit from '/imports/client/ui/components/QuestionsEdit';
-import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
-import ConfirmedRaisedButton from '/imports/client/ui/components/ConfirmedRaisedButton';
-import ConfirmationDialog from '/imports/client/ui/components/ConfirmationDialog';
+import QuestionsEdit from './QuestionsEdit'
+import ConfirmedRaisedButton from './ConfirmedRaisedButton'
+import ConfirmationDialog from './ConfirmationDialog'
 
 
-class ExamEditForm extends Component {
+export default class ExamEditForm extends Component {
 	state = {
 		saveConfirmationDialogOpen: false,
 		formFields: null,
-		canLeave: false
-	};
+		canLeave: false,
+	}
 	
 	
 	style = {
 		mainContainer: {
 			paddingBottom: '120px',
-			paddingTop: '20px'
+			paddingTop: '20px',
 		},
 		
 		h1: {
-			marginBottom: '0px'
+			marginBottom: '0px',
 		},
 		
 		formContainer: {
-			paddingTop: '0px'
+			paddingTop: '0px',
 		},
 		
 		examName: {
-			marginBottom: '28px'
+			marginBottom: '28px',
 		},
 		
 		submissionError: {
@@ -47,58 +42,58 @@ class ExamEditForm extends Component {
 			fontFamily: 'Roboto, sans-serif',
 			fontSize: '12px',
 			lineHeight: '12px',
-			color: 'rgb(244, 67, 54)'
+			color: 'rgb(244, 67, 54)',
 		},
 		
 		button: {
 			marginLeft: '8px',
-			marginRight: '8px'
-		}
-	};
+			marginRight: '8px',
+		},
+	}
 	
 	
 	goBack = () => {
-		const { router } = this.props;
+		const { router } = this.props
 		
 		this.setState({
-			canLeave: true
-		});
+			canLeave: true,
+		})
 		
-		this.state.canLeave = true;
+		this.state.canLeave = true
 		
-		router.push('/list-exams');
-	};
+		router.push('/list-exams')
+	}
 	
 	
 	handleSubmit = formFields => {
 		this.setState({
 			saveConfirmationDialogOpen: true,
-			formFields
-		});
-	};
+			formFields,
+		})
+	}
 	
 	
 	closeSaveConfirmationDialog = () => {
 		this.setState({
-			saveConfirmationDialogOpen: false
-		});
-	};
+			saveConfirmationDialogOpen: false,
+		})
+	}
 	
 	
 	handleSaveConfirmationDialogYesButtonClick = () => {
-		this.closeSaveConfirmationDialog();
+		this.closeSaveConfirmationDialog()
 		
-		this.save();
-	};
+		this.save()
+	}
 	
 	
 	handleSaveConfirmationDialogNoButtonClick = () => {
-		this.closeSaveConfirmationDialog();
-	};
+		this.closeSaveConfirmationDialog()
+	}
 	
 	
 	transformFormFieldsClientToServer = formFields => {
-		const { questions, ...restFormFields } = formFields;
+		const { questions, ...restFormFields } = formFields
 		
 		const transformedQuestions = questions.map(({ images, ...restQuestionFields }) => {
 			if(images) {
@@ -106,111 +101,105 @@ class ExamEditForm extends Component {
 					...restQuestionFields,
 					images: images.map(imageData => {
 						if(imageData) {
-							const { image, ...restImageFields } = imageData;
+							const { image, ...restImageFields } = imageData
 							
 							return {
 								...restImageFields,
 								imageBlob: {
-									blob: image
-								}
-							};
+									blob: image,
+								},
+							}
 						}
-					})
-				};
+					}),
+				}
 			} else {
-				return restQuestionFields;
+				return restQuestionFields
 			}
-		});
+		})
 		
 		return {
 			...restFormFields,
-			questions: transformedQuestions
-		};
-	};
+			questions: transformedQuestions,
+		}
+	}
 	
 	
 	save = () => {
-		const { formFields: rawFormFields } = this.state;
+		const { formFields: rawFormFields } = this.state
 		
-		const formFields = this.transformFormFieldsClientToServer(rawFormFields);
+		const formFields = this.transformFormFieldsClientToServer(rawFormFields)
 		
-		const { edit } = this.props;
+		const { edit } = this.props
 		
 		if(edit) {
-			updateExam.call(formFields, (error, result) => {
-				if(error) {
-					console.log('updateExam error:', error);
-				} else {
-					this.goBack();
-				}
-			});
+			//updateExam.call(formFields, (error, result) => {
+			//	if(error) {
+			//		console.log('updateExam error:', error)
+			//	} else {
+			//		this.goBack()
+			//	}
+			//})
 		} else {
-			insertExam.call(formFields, (error, result) => {
-				if(error) {
-					console.log('insertExam error:', error);
-				} else {
-					this.goBack();
-				}
-			});
+			//insertExam.call(formFields, (error, result) => {
+			//	if(error) {
+			//		console.log('insertExam error:', error)
+			//	} else {
+			//		this.goBack()
+			//	}
+			//})
 		}
-	};
+	}
 	
 	
 	updateCanLeaveState = props => {
-		const { dirty, anyTouched, edit } = props;
+		const { dirty, anyTouched, edit } = props
 		
 		this.setState({
-			canLeave: (edit && !dirty) || (!edit && !anyTouched)
-		});
-	};
+			canLeave: (edit && !dirty) || (!edit && !anyTouched),
+		})
+	}
 	
 	
 	componentWillMount() {
-		this.updateCanLeaveState(this.props);
+		this.updateCanLeaveState(this.props)
 	}
 	
 	
 	componentDidMount() {
-		const { router: { setRouteLeaveHook }, route } = this.props;
+		const { router: { setRouteLeaveHook }, route } = this.props
 		
-		setRouteLeaveHook(route, this.routerWillLeave);
+		setRouteLeaveHook(route, this.routerWillLeave)
 	};
 	
 	
 	componentWillReceiveProps(nextProps) {
-		this.updateCanLeaveState(nextProps);
+		this.updateCanLeaveState(nextProps)
 	}
 	
 	
 	routerWillLeave = () => {
-		const { canLeave } = this.state;
+		const { canLeave } = this.state
 		
 		if(!canLeave) {
-			return 'Are you sure you want to leave this page?';
+			return 'Are you sure you want to leave this page?'
 		}
-	};
+	}
 	
 	
 	normalizeBoolean = b => !!b
 	
 	
 	render() {
-		const { canLeave } = this.state;
+		const { canLeave } = this.state
 		
-		const { handleSubmit, submitFailed, invalid, edit, ready, submitting, intl: { formatMessage } } = this.props;
+		const { handleSubmit, submitFailed, invalid, edit, submitting, intl: { formatMessage } } = this.props
 		
-		if(edit && !ready) {
-			return (
-					<LoadingIndicator />
-			);
-		}
-		
-		let title;
+		let title
 		
 		if(edit) {
-			title = <FormattedMessage id='editExam' />;
+			title = <FormattedMessage id='editExam' />
 		} else {
-			title = <FormattedMessage id='createExam' />;
+			title = <FormattedMessage id='createExam' />
 		}
 		
 		return (
@@ -225,7 +214,7 @@ class ExamEditForm extends Component {
 							<Field component={ Checkbox } normalize={ this.normalizeBoolean } name='published'
 									label={ <FormattedMessage id='published' /> } />
 							
-							<FieldArray name='questions' component={ QuestionsEdit } props={{ submitFailed }} />
+							<FieldArray name='questions' component={ QuestionsEdit } props={ { submitFailed } } />
 						</div>
 						
 						<div style={ this.style.submissionError }>{ submitFailed && invalid ?
@@ -249,79 +238,6 @@ class ExamEditForm extends Component {
 							onNoButtonClick={ this.handleSaveConfirmationDialogNoButtonClick }
 					/>
 				</div>
-		);
+		)
 	}
 }
-
-
-const validate = rawValues => {
-	const values = rawValues || {};
-	
-	const errors = {
-		questions: []
-	};
-	
-	if(values.questions) {
-		let totalWeight = 0;
-		let weightHasErrors = false;
-		
-		values.questions.forEach((elem, index) => {
-			const weightError = simpleSchemaValidator(ExamsCollection, 'questions.$.weight', elem.weight);
-			
-			if(weightError) {
-				errors.questions[index] = { weight: weightError };
-				weightHasErrors = true;
-			} else {
-				totalWeight += elem.weight;
-			}
-			
-			errors.questions[index] = Object.assign({}, errors.questions[index], {
-				text: simpleSchemaValidator(ExamsCollection, 'questions.$.text', elem.text)
-			});
-			
-			if(elem.answers) {
-				errors.questions[index].answers = [];
-				
-				if(!elem.answers.some(elem2 => elem2 && elem2.correct)) {
-					errors.questions[index].answers._error = 'At least one correct answer required';
-				}
-				
-				elem.answers.forEach((elem2, index2) => {
-					errors.questions[index].answers[index2] = {
-						text: simpleSchemaValidator(ExamsCollection, 'questions.$.answers.$.text', elem2.text)
-					};
-				});
-			}
-		});
-		
-		if(!weightHasErrors) {
-			let weightError;
-			
-			if(totalWeight > 100) {
-				weightError = totalWeight + " > 100";
-			} else if(totalWeight < 100) {
-				weightError = totalWeight + " < 100";
-			}
-			
-			if(weightError) {
-				values.questions.forEach((elem, index) => {
-					errors.questions[index] = Object.assign({}, errors.questions[index], { weight: weightError });
-				});
-			}
-		}
-	}
-	
-	errors.name = simpleSchemaValidator(ExamsCollection, 'name', values.name);
-	
-	return errors;
-};
-
-
-const withReduxForm = reduxForm({
-	form: 'createExam',
-	validate,
-	enableReinitialize: true
-});
-
-
-export default injectIntl(withReduxForm(withRouter(ExamEditForm)));

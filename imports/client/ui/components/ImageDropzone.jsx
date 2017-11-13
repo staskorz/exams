@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
-import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo';
+import React, { Component } from 'react'
+import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo'
 
-import Dropzone from './Dropzone';
-import resizeImage from '/imports/client/resize-image';
-import blobToUint8array from '/imports/client/blob-to-uint8array';
-import uint8arrayToBlob from '/imports/client/uint8array-to-blob';
+import Dropzone from './Dropzone'
+import resizeImage from '../../resize-image'
+import blobToUint8array from '../../blob-to-uint8array'
+import uint8arrayToBlob from '../../uint8array-to-blob'
 
 
 const DEFAULT_SIZE = {
 	width: 70,
-	height: 80
-};
+	height: 80,
+}
 
 
-const SIZE_FACTOR = 8;
+const SIZE_FACTOR = 8
 
 
 export default class ImageDropzone extends Component {
 	state = {
 		image: null,
-		...DEFAULT_SIZE
-	};
+		...DEFAULT_SIZE,
+	}
 	
 	
 	style = {
@@ -29,119 +29,119 @@ export default class ImageDropzone extends Component {
 			width: '32px',
 			color: 'inherit',
 			transition: 'all 0s',
-		}
-	};
+		},
+	}
 	
 	
 	cleanupImageState = () => {
-		const { image } = this.state;
+		const { image } = this.state
 		
 		if(image) {
-			URL.revokeObjectURL(image);
+			URL.revokeObjectURL(image)
 		}
-	};
+	}
 	
 	
 	setImageState = ({ image, width, height }) => {
-		this.cleanupImageState();
+		this.cleanupImageState()
 		
 		if(image) {
 			this.setState({
 				image: URL.createObjectURL(uint8arrayToBlob(image)),
 				width,
-				height
-			});
+				height,
+			})
 		} else {
 			this.setState({
 				image: null,
-				...DEFAULT_SIZE
-			});
+				...DEFAULT_SIZE,
+			})
 		}
-	};
+	}
 	
 	
 	componentWillMount() {
-		this.setImageState(this.props);
+		this.setImageState(this.props)
 	};
 	
 	
 	componentWillReceiveProps(nextProps) {
-		this.setImageState(nextProps);
+		this.setImageState(nextProps)
 	};
 	
 	
 	componentWillUnmount() {
-		this.cleanupImageState();
+		this.cleanupImageState()
 	};
 	
 	
 	normalizeDimension = (original, resized, sizeFactor) => {
 		if(original > resized + sizeFactor) {
-			return original + sizeFactor;
+			return original + sizeFactor
 		} else {
-			return resized + sizeFactor;
+			return resized + sizeFactor
 		}
-	};
+	}
 	
 	
 	processImage = (src, cb) => {
-		resizeImage(src, cb);
-	};
+		resizeImage(src, cb)
+	}
 	
 	
 	handleFileDrop = (acceptedFiles, rejectedFiles) => {
 		if(acceptedFiles && acceptedFiles.length) {
-			const { onChange } = this.props;
+			const { onChange } = this.props
 			
 			this.processImage(acceptedFiles[0], (err, imageObj) => {
 				if(err) {
-					onChange(err);
+					onChange(err)
 				} else {
-					const { image, ...rest } = imageObj;
+					const { image, ...rest } = imageObj
 					
 					blobToUint8array(image, (err, uint8arr) => {
 						if(err) {
-							onChange(err);
+							onChange(err)
 						} else {
 							onChange(null, {
 								...rest,
-								image: uint8arr
-							});
+								image: uint8arr,
+							})
 						}
 					})
 				}
-			});
+			})
 		}
-	};
+	}
 	
 	
 	sizeToPx = () => {
-		const { width, height } = this.state;
+		const { width, height } = this.state
 		
 		return {
 			width: this.normalizeDimension(DEFAULT_SIZE.width, width, SIZE_FACTOR) + 'px',
-			height: this.normalizeDimension(DEFAULT_SIZE.height, height, SIZE_FACTOR) + 'px'
-		};
-	};
+			height: this.normalizeDimension(DEFAULT_SIZE.height, height, SIZE_FACTOR) + 'px',
+		}
+	}
 	
 	
 	render() {
-		const pxSize = this.sizeToPx();
+		const pxSize = this.sizeToPx()
 		
-		const { image } = this.state;
+		const { image } = this.state
 		
-		const { disabled } = this.props;
+		const { disabled } = this.props
 		
-		let internalElement;
+		let internalElement
 		
 		if(image) {
-			internalElement = <img src={ image } alt='image' />;
+			internalElement = <img src={ image } alt='image' />
 		} else {
-			internalElement = <AddPhotoIcon style={ this.style.dropzoneIcon } />;
+			internalElement = <AddPhotoIcon style={ this.style.dropzoneIcon } />
 		}
 		
 		return <Dropzone onDrop={ this.handleFileDrop } style={ pxSize } disabled={ disabled }>
 			{ internalElement }
-		</Dropzone>;
+		</Dropzone>
 	}
-};
+}
