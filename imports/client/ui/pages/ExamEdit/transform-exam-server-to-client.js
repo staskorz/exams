@@ -1,3 +1,6 @@
+import base64ToUint8Array from 'base64-to-uint8array'
+
+
 export default formFields => {
 	const { questions, ...restFormFields } = formFields
 	
@@ -11,7 +14,7 @@ export default formFields => {
 						
 						return {
 							...restImageFields,
-							image: imageBlob.blob,
+							image: base64ToUint8Array(imageBlob.blob),
 						}
 					}
 				}),
