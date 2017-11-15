@@ -1,5 +1,4 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
 
 import dateJsToCsv from '../../../date-js-to-csv'
 import Download from '../../components/Download'
@@ -14,7 +13,7 @@ const flattenQuestions = questions => questions.reduce((accQuestion, { answers }
 		...accAnswer,
 		['q' + (questionIndex + 1) + 'a' + (answerIndex + 1) + 'c']: checked,
 		['q' + (questionIndex + 1) + 'a' + (answerIndex + 1) + 't']: freeText,
-	}), {})
+	}), {}),
 }), {})
 
 

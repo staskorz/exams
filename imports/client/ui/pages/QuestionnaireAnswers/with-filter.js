@@ -1,4 +1,4 @@
-import filter from '/imports/client/ui/hocs/filter'
+import filter from '../../hocs/filter'
 
 export default filter({
 	prop: 'questionnaireAnswers',

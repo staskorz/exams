@@ -1,9 +1,7 @@
 import { compose, withProps, lifecycle } from 'recompose'
 
-import { getQuestionnaireResults } from '../../../../api/questionnaire-answers/methods'
 
-
-export default withQuestionnaireAnswers = compose(
+export default compose(
 		withProps({
 			loading: true,
 		}),
@@ -12,16 +10,14 @@ export default withQuestionnaireAnswers = compose(
 			componentDidMount() {
 				const { questionnaireId } = this.props.router.params
 				
-				getQuestionnaireResults.call({ questionnaireId }, (err, questionnaireAnswers) => {
-					if(err) {
-						console.log('questionnaireAnswers.getQuestionnaireResults error:', err)
-					} else {
-						this.setState({
-							loading: false,
-							questionnaireAnswers,
+				fetch('/api/questionnaire-answers/' + questionnaireId)
+						.then(response => response.json())
+						.then(questionnaireAnswers => {
+							this.setState({
+								loading: false,
+								questionnaireAnswers,
+							})
 						})
-					}
-				})
 			},
 		}),
 )
