@@ -1,9 +1,7 @@
 import { compose, withProps, lifecycle } from 'recompose'
 
-import { findOne } from '../../../api/questionnaires/methods'
 
-
-export default withQuestionnaire = compose(
+export default compose(
 		withProps({
 			loading: true,
 		}),
@@ -12,15 +10,11 @@ export default withQuestionnaire = compose(
 			componentDidMount() {
 				const { questionnaireId } = this.props.router.params
 				
-				findOne.call({ questionnaireId }, (err, questionnaire) => {
-					if(err) {
-						console.log('questionnaires.findOne error:', err)
-					} else {
-						this.setState({
-							loading: false,
-							initialValue: questionnaire,
-						})
-					}
+				fetch('/api/questionnaires/' + questionnaireId).then(response => response.json()).then(questionnaire => {
+					this.setState({
+						loading: false,
+						questionnaire,
+					})
 				})
 			},
 		}),

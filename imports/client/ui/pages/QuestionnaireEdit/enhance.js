@@ -1,4 +1,4 @@
-import { compose } from 'recompose'
+import { compose, renameProp } from 'recompose'
 import { injectIntl } from 'react-intl'
 import { withRouter } from 'react-router'
 
@@ -14,6 +14,7 @@ export default compose(
 		withRouter,
 		withQuestionnaire,
 		withLoadingIndicator,
+		renameProp('questionnaire', 'initialValue'),
 		withCancel,
 		injectIntl,
 		withStateAndStateHandlers,
