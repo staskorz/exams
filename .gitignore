@@ -5,3 +5,4 @@
 /settings-production.json
 /client/company-logo*
 /yarn-error.log
+/dist/

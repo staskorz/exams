@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 
 import dbConnection from './mongodb/connection'
 import injectDbConnectionMiddleware from './mongodb/inject-connection-middleware'
@@ -18,6 +19,12 @@ dbConnection.then(db => {
 	app.use(injectDbConnectionMiddleware(db))
 	
 	app.use('/api', api)
+	
+	const staticResourcesPath = path.join(__dirname, '..', 'client')
+	
+	app.use(express.static(staticResourcesPath))
+	
+	app.get('*', (req, res) => res.sendFile(path.join(staticResourcesPath, 'index.html')))
 	
 	app.listen(HTTP_SERVER_PORT, () => {
 		// eslint-disable-next-line no-console

@@ -4,6 +4,10 @@
   "scripts": {
     "dev-server": "nodemon server/index.js --exec babel-node",
     "dev-client": "webpack-dev-server",
+    "build-server": "babel server -d dist/server",
+    "build-client": "webpack -p",
+    "prod": "node dist/server/index.js",
+    "build-and-run-prod": "yarn run build-server && yarn run build-client && yarn run prod",
     "lint": "eslint ./client/ ./server/ ./common/ || true",
     "test": "jest",
     "test-watch": "jest --watch"
