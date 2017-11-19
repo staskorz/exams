@@ -11,7 +11,12 @@ const SERVER_URL = 'http://localhost:3000'
 module.exports = webpackMerge(webpackCommonConfig, {
 	plugins: [
 		new webpack.NamedModulesPlugin(),
+		
 		new webpack.HotModuleReplacementPlugin(),
+		
+		new webpack.DefinePlugin({
+			'process.env.NODE_ENV': JSON.stringify('development'),
+		}),
 	],
 	
 	devtool: 'cheap-module-eval-source-map',
