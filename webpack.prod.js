@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
 
 const webpackCommonConfig = require('./webpack.common')
 
@@ -10,7 +10,7 @@ module.exports = webpackMerge(webpackCommonConfig, {
 		rules: [
 			{
 				test: /\.css$/,
-				use: ExtractTextPlugin.extract({
+				use: ExtractTextWebpackPlugin.extract({
 					fallback: 'style-loader',
 					use: ['css-loader'],
 				}),
@@ -23,7 +23,7 @@ module.exports = webpackMerge(webpackCommonConfig, {
 			'process.env.NODE_ENV': JSON.stringify('production'),
 		}),
 		
-		new ExtractTextPlugin({
+		new ExtractTextWebpackPlugin({
 			filename: 'styles.css',
 		}),
 	],
