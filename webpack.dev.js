@@ -9,6 +9,24 @@ const SERVER_URL = 'http://localhost:3000'
 
 
 module.exports = webpackMerge(webpackCommonConfig, {
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				
+				use: [
+					{
+						loader: 'style-loader',
+					},
+					
+					{
+						loader: 'css-loader',
+					},
+				],
+			},
+		],
+	},
+	
 	plugins: [
 		new webpack.NamedModulesPlugin(),
 		
