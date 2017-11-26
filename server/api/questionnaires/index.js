@@ -60,4 +60,19 @@ router.get('/:questionnaireId', (req, res) => {
 })
 
 
+router.put('/:questionnaireId', (req, res) => {
+	const { db } = req
+	
+	const questionnaireId = req.params['questionnaireId']
+	
+	const questionnairesCollection = db.collection('Questionnaires')
+	
+	const body = req.body
+	
+	console.log('Not yet implemented')
+	
+	res.status(500).send('Not yet implemented')
+})
+
+
 export default router

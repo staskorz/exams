@@ -1,16 +1,20 @@
 import { withHandlers } from 'recompose'
 
-//import { update } from '/imports/api/questionnaires/methods'
-
 
 export default withHandlers({
 	onSave: ({ value, router, router: { params: { questionnaireId } } }) => () => {
-		//update.call({ ...value, _id: questionnaireId }, (error, result) => {
-		//	if(error) {
-		//		console.log('updateQuestionnaire error:', error)
-		//	} else {
-		//		router.push('/list-questionnaires')
-		//	}
-		//})
+		fetch('/api/questionnaires/' + questionnaireId, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(value),
+		}).then(({ ok }) => {
+			if(ok) {
+				router.push('/list-questionnaires')
+			} else {
+				throw new Error('Cannot update questionnaire')
+			}
+		})
 	},
 })
