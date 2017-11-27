@@ -1,5 +1,8 @@
 import { Router } from 'express'
 
+import validate from '../../../common/validations/questionnaire'
+import sanitize from '../../../common/sanitizations/questionnaire'
+
 
 const router = Router()
 
@@ -67,7 +70,20 @@ router.put('/:questionnaireId', (req, res) => {
 	
 	const questionnairesCollection = db.collection('Questionnaires')
 	
-	const body = req.body
+	const questionnaire = req.body
+	
+	const { errorsDetected } = validate(questionnaire, f => f)
+	
+	if(errorsDetected) {
+		res.status(500).send('Invalid data')
+		
+		throw new Error('Invalid data')
+	}
+	
+	const sanitizedQuestionnaire = sanitize(questionnaire)
+	
+	console.log('questionnaire:', questionnaire)
+	console.log('sanitizedQuestionnaire:', sanitizedQuestionnaire)
 	
 	console.log('Not yet implemented')
 	
