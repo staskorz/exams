@@ -1,8 +1,6 @@
 import { generate } from 'randomstring'
 
-
-const charset = '23456789ABCDEFGHJKLMNPQRSTWXYZabcdefghijkmnopqrstuvwxyz'
-const length = 17
+import { charset, length } from '../../../common/constants/id'
 
 
 export default () => generate({
