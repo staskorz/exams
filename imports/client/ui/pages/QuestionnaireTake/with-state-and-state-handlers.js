@@ -1,6 +1,6 @@
 import { withStateHandlers } from 'recompose'
 
-import validate from './validate'
+import validate from '../../../../../common/validations/questionnaire-answers'
 
 
 export default withStateHandlers(({ initialValue, questionnaire, intl: { formatMessage } }) => ({
