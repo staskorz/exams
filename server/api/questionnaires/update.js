@@ -28,7 +28,12 @@ export default (req, res) => {
 	
 	const sanitizedQuestionnaire = sanitize(questionnaire)
 	
-	questionnairesCollection.update({ _id: questionnaireId }, { $set: sanitizedQuestionnaire }).then(() => {
+	questionnairesCollection.update({ _id: questionnaireId }, {
+		$set: {
+			updatedAt: new Date(),
+			...sanitizedQuestionnaire,
+		},
+	}).then(() => {
 		res.status(200).send()
 	}).catch(err => {
 		const errorMessage = 'Error updating questionnaire DB record.'

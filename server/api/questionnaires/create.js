@@ -20,7 +20,14 @@ export default (req, res) => {
 	
 	const sanitizedQuestionnaire = sanitize(questionnaire)
 	
-	questionnairesCollection.insertOne({ _id: generateId(), ...sanitizedQuestionnaire }).then(() => {
+	const timestamp = new Date()
+	
+	questionnairesCollection.insertOne({
+		_id: generateId(),
+		createdAt: timestamp,
+		updatedAt: timestamp,
+		...sanitizedQuestionnaire,
+	}).then(() => {
 		res.status(200).send()
 	}).catch(err => {
 		const errorMessage = 'Error inserting questionnaire DB record.'
