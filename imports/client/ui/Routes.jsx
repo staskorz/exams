@@ -6,7 +6,7 @@ import Home from './pages/Home'
 //import ExamCreate from './pages/ExamCreate'
 import QuestionnaireCreate from './pages/QuestionnaireCreate'
 import QuestionnaireEdit from './pages/QuestionnaireEdit'
-//import QuestionnaireTake from './pages/QuestionnaireTake'
+import QuestionnaireTake from './pages/QuestionnaireTake'
 import QuestionnairesList from './pages/QuestionnairesList'
 import QuestionnaireAnswers from './pages/QuestionnaireAnswers'
 import ExamEdit from './pages/ExamEdit'
@@ -37,7 +37,7 @@ export default () => <Router history={ browserHistory }>
 		<Route path='list-questionnaires' component={ QuestionnairesList } />
 		<Route path='questionnaire-answers/:questionnaireId' component={ QuestionnaireAnswers } />
 		{ /*<Route path='take-exam/:examId' component={ TakeExamContainer } />*/ }
-		{ /*<Route path='take-questionnaire/:questionnaireId' component={ QuestionnaireTake } />*/ }
+		<Route path='take-questionnaire/:questionnaireId' component={ QuestionnaireTake } />
 		<Route path='*' component={ NotFound } />
 	</Route>
 </Router>
