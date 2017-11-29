@@ -9,7 +9,9 @@ import questionnaireAnswers from './questionnaire-answers'
 const router = Router()
 
 
-router.use(json())
+router.use(json({
+	limit: '50mb',
+}))
 
 
 router.use('/exams', exams)
