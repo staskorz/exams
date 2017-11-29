@@ -129,25 +129,11 @@ export default class ExamEditForm extends Component {
 		
 		const formFields = this.transformFormFieldsClientToServer(rawFormFields)
 		
-		const { edit } = this.props
+		const { onSave } = this.props
 		
-		if(edit) {
-			//updateExam.call(formFields, (error, result) => {
-			//	if(error) {
-			//		console.log('updateExam error:', error)
-			//	} else {
-			//		this.goBack()
-			//	}
-			//})
-		} else {
-			//insertExam.call(formFields, (error, result) => {
-			//	if(error) {
-			//		console.log('insertExam error:', error)
-			//	} else {
-			//		this.goBack()
-			//	}
-			//})
-		}
+		this.setState({
+			canLeave: true,
+		}, () => onSave(formFields))
 	}
 	
 	

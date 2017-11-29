@@ -7,6 +7,7 @@ import withLoadingIndicator from '../../hocs/with-loading-indicator'
 
 import withReduxForm from './with-redux-form'
 import transformExamServerToClient from './transform-exam-server-to-client'
+import withUpdate from './with-update'
 
 export default compose(
 		withRouter,
@@ -18,5 +19,6 @@ export default compose(
 			edit: true,
 			initialValues: transformExamServerToClient(initialValues),
 		})),
+		withUpdate,
 		withReduxForm,
 )

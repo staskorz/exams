@@ -10,7 +10,7 @@ const router = Router()
 
 router.get('/', getAll)
 router.get('/:examId', getById)
-router.post('/:examId', update)
+router.put('/:examId', update)
 
 
 export default router
