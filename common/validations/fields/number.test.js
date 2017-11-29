@@ -17,4 +17,8 @@ describe('validates number', () => {
 	it('tells a string with letters is invalid', () => {
 		expect(validate('123a')).toBeFalsy()
 	})
+	
+	it('tells a boolean is invalid', () => {
+		expect(validate(true)).toBeFalsy()
+	})
 })

@@ -6,9 +6,9 @@ export default number => {
 		return true
 	}
 	
-	if(typeof number === 'string' && number.match(regExp)) {
-		return false
+	if(typeof number === 'string') {
+		return !number.match(regExp)
 	}
 	
-	return true
+	return false
 }
