@@ -3,7 +3,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
 import Layout from './layouts/Layout'
 import Home from './pages/Home'
-//import ExamCreate from './pages/ExamCreate'
+import ExamCreate from './pages/ExamCreate'
 import QuestionnaireCreate from './pages/QuestionnaireCreate'
 import QuestionnaireEdit from './pages/QuestionnaireEdit'
 import QuestionnaireTake from './pages/QuestionnaireTake'
@@ -24,7 +24,7 @@ import NotFound from './pages/NotFound'
 export default () => <Router history={ browserHistory }>
 	<Route path='/' component={ withCurrentUser(Layout) }>
 		<IndexRoute component={ withCurrentUser(Home) } />
-		{ /*<Route path='create-exam' component={ ExamCreate } />*/ }
+		<Route path='create-exam' component={ ExamCreate } />
 		<Route path='edit-exam/:examId' component={ ExamEdit } />
 		<Route path='list-exams' component={ ExamsList } />
 		{ /*<Route path='list-users' component={ UsersList } />*/ }
