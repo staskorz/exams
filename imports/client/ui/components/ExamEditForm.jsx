@@ -155,7 +155,7 @@ export default class ExamEditForm extends Component {
 		const { router: { setRouteLeaveHook }, route } = this.props
 		
 		setRouteLeaveHook(route, this.routerWillLeave)
-	};
+	}
 	
 	
 	componentWillReceiveProps(nextProps) {
