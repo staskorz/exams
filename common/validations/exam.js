@@ -47,7 +47,7 @@ const validateQuestionBody = validateTextCreator(maxQuestionBodyChars)
 const validateAnswerBody = validateTextCreator(maxAnswerBodyChars)
 const validateWeight = validateNumberIsInRange(minWeight, maxWeight)
 
-export default values => {
+export default (value, formatMessage) => {
 	let errorsDetected = false
 	
 	const setErrorsDetected = () => {
@@ -61,34 +61,31 @@ export default values => {
 	let totalWeight = 0
 	let weightHasErrors = false
 	
-	values.questions.forEach((elem, index) => {
-		const weightError = validateWeight()
-		//const weightError = simpleSchemaValidator(ExamsCollection, 'questions.$.weight', elem.weight)
-		//
-		//if(weightError) {
-		//	errors.questions[index] = { weight: weightError }
-		//	weightHasErrors = true
-		//} else {
-		//	totalWeight += elem.weight
-		//}
-		//
-		//errors.questions[index] = Object.assign({}, errors.questions[index], {
-		//	text: simpleSchemaValidator(ExamsCollection, 'questions.$.text', elem.text),
-		//})
-		//
-		//if(elem.answers) {
-		//	errors.questions[index].answers = []
-		//	
-		//	if(!elem.answers.some(elem2 => elem2 && elem2.correct)) {
-		//		errors.questions[index].answers._error = 'At least one correct answer required'
-		//	}
-		//	
-		//	elem.answers.forEach((elem2, index2) => {
-		//		errors.questions[index].answers[index2] = {
-		//			text: simpleSchemaValidator(ExamsCollection, 'questions.$.answers.$.text', elem2.text),
-		//		}
-		//	})
-		//}
+	value.questions.forEach(({ weight, text, answers }, questionIndex) => {
+		const weightError = validateWeight(formatMessage, weight, setErrorsDetected)
+		
+		if(weightError) {
+			errors.questions[questionIndex] = { weight: weightError }
+			weightHasErrors = true
+		} else {
+			totalWeight += weight
+		}
+		
+		errors.questions[questionIndex] = Object.assign({}, errors.questions[questionIndex], {
+			text: validateQuestionBody(formatMessage, text, setErrorsDetected),
+		})
+		
+		errors.questions[questionIndex].answers = []
+		
+		if(!answers.some(answer => answer && answer.correct)) {
+			errors.questions[questionIndex].answers._error = 'At least one correct answer required'
+		}
+		
+		answers.forEach(({ text }, answerIndex) => {
+			errors.questions[questionIndex].answers[answerIndex] = {
+				text: validateAnswerBody(formatMessage, text, setErrorsDetected),
+			}
+		})
 	})
 	
 	if(!weightHasErrors) {
@@ -101,13 +98,16 @@ export default values => {
 		}
 		
 		if(weightError) {
-			values.questions.forEach((elem, index) => {
+			value.questions.forEach((elem, index) => {
 				errors.questions[index] = Object.assign({}, errors.questions[index], { weight: weightError })
 			})
 		}
 	}
 	
-	//errors.name = simpleSchemaValidator(ExamsCollection, 'name', values.name)
+	errors.name = validateTitle(formatMessage, value.name, setErrorsDetected)
 	
-	return errors
+	return {
+		errors,
+		errorsDetected,
+	}
 }
