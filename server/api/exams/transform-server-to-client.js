@@ -1,3 +1,12 @@
+const compatImage = blob => {
+	if(blob.data) {
+		return blob.data
+	} else {
+		return Array.from(blob.buffer)
+	}
+}
+
+
 const transformImage = imageObj => {
 	if(!imageObj) {
 		return
@@ -6,7 +15,7 @@ const transformImage = imageObj => {
 	const { imageBlob, image, ...rest } = imageObj
 	
 	return {
-		image: image || imageBlob.blob.data,
+		image: image || compatImage(imageBlob.blob),
 		
 		...rest,
 	}
