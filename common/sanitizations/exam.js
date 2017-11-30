@@ -1,16 +1,14 @@
-const sanitizeImage = image => {
-	if(!image) {
+const sanitizeImage = imageObj => {
+	if(!imageObj) {
 		return
 	}
 	
-	const { height, width, imageBlob } = image
+	const { height, width, image } = imageObj
 	
 	return {
 		height,
 		width,
-		imageBlob: {
-			blob: imageBlob.blob,
-		},
+		image,
 	}
 }
 

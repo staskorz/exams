@@ -105,9 +105,7 @@ export default class ExamEditForm extends Component {
 							
 							return {
 								...restImageFields,
-								imageBlob: {
-									blob: image,
-								},
+								image: Array.from(image),
 							}
 						}
 					}),

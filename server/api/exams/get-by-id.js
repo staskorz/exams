@@ -1,3 +1,6 @@
+import transformServerToClient from './transform-server-to-client'
+
+
 export default (req, res) => {
 	const { db } = req
 	
@@ -18,7 +21,9 @@ export default (req, res) => {
 			return
 		}
 		
-		res.json(exam)
+		const transformedExam = transformServerToClient(exam)
+		
+		res.json(transformedExam)
 	}).catch(err => {
 		const errorMessage = 'Error fetching exam from DB.'
 		

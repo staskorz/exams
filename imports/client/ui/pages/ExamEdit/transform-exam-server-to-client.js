@@ -7,11 +7,11 @@ export default formFields => {
 				...restQuestionFields,
 				images: images.map(imageData => {
 					if(imageData) {
-						const { imageBlob, ...restImageFields } = imageData
+						const { image, ...restImageFields } = imageData
 						
 						return {
 							...restImageFields,
-							image: Buffer.from(imageBlob.blob, 'base64'),
+							image: Uint8Array.from(image),
 						}
 					}
 				}),
