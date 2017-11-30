@@ -4,7 +4,7 @@
   "scripts": {
     "dev-server": "nodemon server/index.js --exec babel-node",
     "dev-client": "webpack-dev-server --config webpack.dev.js",
-    "build-server": "babel server -d dist/server",
+    "build-server": "babel server -d dist/server && babel common -d dist/common",
     "build-client": "webpack --config webpack.prod.js -p",
     "prod": "node dist/server/index.js",
     "build-and-run-prod": "yarn run build-server && yarn run build-client && yarn run prod",
