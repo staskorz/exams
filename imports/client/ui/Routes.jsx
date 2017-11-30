@@ -13,7 +13,7 @@ import ExamEdit from './pages/ExamEdit'
 //import UsersList from './pages/UsersList'
 //import UserResults from './pages/UserResults'
 import ExamsList from './pages/ExamsList'
-//import ExamChoiceContainer from './containers/ExamChoiceContainer'
+import ExamChoice from './pages/ExamChoice'
 import ExamResults from './pages/ExamResults'
 //import ExamAnswers from './pages/ExamAnswers'
 //import TakeExamContainer from './containers/TakeExamContainer'
@@ -28,7 +28,7 @@ export default () => <Router history={ browserHistory }>
 		<Route path='edit-exam/:examId' component={ ExamEdit } />
 		<Route path='list-exams' component={ ExamsList } />
 		{ /*<Route path='list-users' component={ UsersList } />*/ }
-		{ /*<Route path='exam-choice' component={ ExamChoiceContainer } />*/ }
+		<Route path='exam-choice' component={ ExamChoice } />
 		<Route path='exam-results/:examId' component={ ExamResults } />
 		{ /*<Route path='exam-answers/:answersId' component={ ExamAnswers } />*/ }
 		{ /*<Route path='user-results/:userId' component={ UserResults } />*/ }
