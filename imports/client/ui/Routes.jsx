@@ -16,7 +16,7 @@ import ExamsList from './pages/ExamsList'
 import ExamChoice from './pages/ExamChoice'
 import ExamResults from './pages/ExamResults'
 //import ExamAnswers from './pages/ExamAnswers'
-//import TakeExamContainer from './containers/TakeExamContainer'
+import ExamTake from './pages/ExamTake'
 import withCurrentUser from './hocs/with-current-user'
 import NotFound from './pages/NotFound'
 
@@ -36,7 +36,7 @@ export default () => <Router history={ browserHistory }>
 		<Route path='edit-questionnaire/:questionnaireId' component={ QuestionnaireEdit } />
 		<Route path='list-questionnaires' component={ QuestionnairesList } />
 		<Route path='questionnaire-answers/:questionnaireId' component={ QuestionnaireAnswers } />
-		{ /*<Route path='take-exam/:examId' component={ TakeExamContainer } />*/ }
+		<Route path='take-exam/:examId' component={ ExamTake } />
 		<Route path='take-questionnaire/:questionnaireId' component={ QuestionnaireTake } />
 		<Route path='*' component={ NotFound } />
 	</Route>
