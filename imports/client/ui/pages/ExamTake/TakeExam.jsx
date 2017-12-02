@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-import ExamInfo from './ExamInfo'
 import QuestionAsk from './QuestionAsk'
 import ExamMark from './ExamMark'
 import ExamMarkError from './ExamMarkError'
@@ -111,10 +110,6 @@ export default class TakeExam extends Component {
 		
 		if(examMarkCalculating) {
 			return <LoadingIndicator />
-		}
-		
-		if(questionNumber === -1) {
-			return <ExamInfo exam={ shuffledExam } onStart={ this.handleNextButtonClick } />
 		}
 		
 		if(examMarkError) {
