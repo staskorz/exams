@@ -54,19 +54,17 @@ export default class TakeExam extends Component {
 	}
 	
 	
-	updateShuffledExamInState = ({ ready, exam }) => {
-		if(ready && exam) {
-			const { name, questions } = exam
-			
-			const { shuffledArray, unShuffle } = shuffleArray(questions)
-			
-			const shuffledExam = Object.assign({}, { name, questions: shuffledArray })
-			
-			this.setState({
-				shuffledExam,
-				unShuffleAnswers: unShuffle,
-			})
-		}
+	updateShuffledExamInState = ({ exam }) => {
+		const { name, questions } = exam
+		
+		const { shuffledArray, unShuffle } = shuffleArray(questions)
+		
+		const shuffledExam = Object.assign({}, { name, questions: shuffledArray })
+		
+		this.setState({
+			shuffledExam,
+			unShuffleAnswers: unShuffle,
+		})
 	}
 	
 	
