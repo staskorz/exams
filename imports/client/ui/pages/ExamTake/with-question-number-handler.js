@@ -3,15 +3,15 @@ import { withStateHandlers } from 'recompose'
 
 export default withStateHandlers(
 		{
-			questionNumber: 1,
+			questionNumber: 0,
 		},
 		
 		{
-			goToNextQuestion: ({ questionNumber }) => ({
+			goToNextQuestion: ({ questionNumber }) => () => ({
 				questionNumber: questionNumber + 1,
 			}),
 			
-			goToPrevQuestion: ({ questionNumber }) => ({
+			goToPrevQuestion: ({ questionNumber }) => () => ({
 				questionNumber: questionNumber - 1,
 			}),
 		},
