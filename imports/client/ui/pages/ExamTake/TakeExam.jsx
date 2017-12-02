@@ -99,12 +99,12 @@ export default class TakeExam extends Component {
 	
 	componentWillMount() {
 		this.updateShuffledExamInState(this.props)
-	};
+	}
 	
 	
 	componentWillReceiveProps(nextProps) {
 		this.updateShuffledExamInState(nextProps)
-	};
+	}
 	
 	
 	render() {
