@@ -5,7 +5,7 @@ import ExamMissing from './ExamMissing'
 import QuestionAsk from './QuestionAsk'
 import ExamMark from './ExamMark'
 import ExamMarkError from './ExamMarkError'
-import shuffleArray from '../../../shuffle-array'
+import shuffleArray from './shuffle-array'
 
 
 export default class TakeExam extends Component {
