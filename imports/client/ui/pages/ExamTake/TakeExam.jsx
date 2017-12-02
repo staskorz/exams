@@ -8,37 +8,12 @@ import shuffleArray from './shuffle-array'
 
 export default class TakeExam extends Component {
 	state = {
-		questionNumber: -1,
 		shuffledExam: null,
 		unShuffleAnswers: null,
 		examMark: -1,
 		examMarkCalculating: false,
 		examMarkError: false,
 	}
-	
-	
-	handleNextButtonClick = () => {
-		const { questionNumber } = this.state
-		const { exam: { questions } } = this.props
-		
-		if(questionNumber + 1 < questions.length) {
-			this.setState({
-				questionNumber: questionNumber + 1,
-			})
-		}
-	}
-	
-	
-	handlePrevButtonClick = () => {
-		const { questionNumber } = this.state
-		
-		if(questionNumber > 0) {
-			this.setState({
-				questionNumber: questionNumber - 1,
-			})
-		}
-	}
-	
 	
 	handleFinishButtonClick = shuffledAnswers => {
 		const { exam: { _id: examId } } = this.props
@@ -106,7 +81,9 @@ export default class TakeExam extends Component {
 	
 	
 	render() {
-		const { shuffledExam, questionNumber, examMark, examMarkCalculating, examMarkError } = this.state
+		const { questionNumber, goToNextQuestion, goToPrevQuestion } = this.props
+		
+		const { shuffledExam, examMark, examMarkCalculating, examMarkError } = this.state
 		
 		if(examMarkCalculating) {
 			return <LoadingIndicator />
@@ -123,8 +100,9 @@ export default class TakeExam extends Component {
 		return <QuestionAsk
 				exam={ shuffledExam }
 				questionNumber={ questionNumber }
-				onNext={ this.handleNextButtonClick }
-				onPrev={ this.handlePrevButtonClick } onFinish={ this.handleFinishButtonClick }
+				onNext={ goToNextQuestion }
+				onPrev={ goToPrevQuestion }
+				onFinish={ this.handleFinishButtonClick }
 		/>
 	}
 }
