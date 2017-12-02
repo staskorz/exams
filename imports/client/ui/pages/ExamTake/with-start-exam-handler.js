@@ -7,7 +7,7 @@ export default withStateHandlers(
 		},
 		
 		{
-			start: () => ({
+			start: () => () => ({
 				started: true,
 			}),
 		},

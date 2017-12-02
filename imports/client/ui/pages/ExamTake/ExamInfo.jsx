@@ -42,7 +42,7 @@ class ExamInfo extends Component {
 	
 	
 	render() {
-		const { exam, router, onStart } = this.props
+		const { exam, router, start } = this.props
 		const { name, questions } = exam || {}
 		
 		return <div className='main-container-padding'>
@@ -59,7 +59,7 @@ class ExamInfo extends Component {
 				
 				<div style={ this.style.actions }>
 					<RaisedButton label={ <FormattedMessage id='start' /> } primary={ true } style={ this.style.button }
-							onClick={ onStart } />
+							onClick={ start } />
 					{ canGoBack() ?
 							<RaisedButton label={ <FormattedMessage id='cancel' /> } onClick={ () => router.goBack() } />
 							
