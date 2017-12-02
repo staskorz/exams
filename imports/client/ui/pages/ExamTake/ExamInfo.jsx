@@ -3,6 +3,8 @@ import { Paper, RaisedButton } from 'material-ui'
 import { withRouter } from 'react-router'
 import { FormattedMessage } from 'react-intl'
 
+import { canGoBack } from '../../browserHistoryCounter'
+
 
 class ExamInfo extends Component {
 	style = {
@@ -58,7 +60,13 @@ class ExamInfo extends Component {
 				<div style={ this.style.actions }>
 					<RaisedButton label={ <FormattedMessage id='start' /> } primary={ true } style={ this.style.button }
 							onClick={ onStart } />
-					<RaisedButton label={ <FormattedMessage id='cancel' /> } onClick={ () => router.goBack() } />
+					{ canGoBack() ?
+							<RaisedButton label={ <FormattedMessage id='cancel' /> } onClick={ () => router.goBack() } />
+							
+							:
+							
+							null
+					}
 				</div>
 			</Paper>
 		</div>
