@@ -1,7 +1,4 @@
-import { Meteor } from 'meteor/meteor';
-import { initialize } from '/imports/client/ui/browserHistoryCounter';
+import { initialize } from '../../client/ui/browserHistoryCounter'
 
 
-Meteor.startup(() => {
-	initialize();	
-});
+initialize()
