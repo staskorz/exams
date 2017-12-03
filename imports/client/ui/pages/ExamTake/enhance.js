@@ -10,6 +10,7 @@ import transformExamServerToClient from './transform-exam-server-to-client'
 import withStartExamHandler from './with-start-exam-handler'
 import withExamInfo from './with-exam-info'
 import withQuestionNumberHandlers from './with-question-number-handler'
+import withAnswersSelection from './with-answers-selection'
 import withUpdate from './with-update'
 
 export default compose(
@@ -24,5 +25,6 @@ export default compose(
 		withStartExamHandler,
 		withExamInfo,
 		withQuestionNumberHandlers,
+		withAnswersSelection,
 		withUpdate,
 )

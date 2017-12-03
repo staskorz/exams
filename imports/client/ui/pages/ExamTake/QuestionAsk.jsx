@@ -1,220 +1,165 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Card, CardTitle, CardText, CardActions, RaisedButton, Checkbox, Badge } from 'material-ui'
-import { FormattedMessage, injectIntl } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
 import { cyan500 } from 'material-ui/styles/colors'
 
 import ConfirmedRaisedButton from '../../components/ConfirmedRaisedButton'
 import NumberedImagesBlock from '../../components/NumberedImagesBlock'
 
 
-class QuestionAsk extends Component {
-	state = {
-		answers: [],
-	}
+const style = {
+	card: {
+		padding: '16px',
+	},
 	
+	cardText: {
+		minHeight: '250px',
+	},
 	
-	style = {
-		card: {
-			padding: '16px',
-		},
-		
-		cardText: {
-			minHeight: '250px',
-		},
-		
-		primaryLabel: {
-			fontSize: '16px',
-			fontWeight: 'normal',
-			lineHeight: '36px',
-			fontFamily: 'Roboto, sans-serif',
-			color: 'rgba(0, 0, 0, 0.870588)',
-		},
-		
-		primaryText: {
-			fontSize: '24px',
-			fontWeight: 'normal',
-			lineHeight: '36px',
-			fontFamily: 'Roboto, sans-serif',
-			color: 'rgba(0, 0, 0, 0.870588)',
-		},
-		
-		secondaryLabel: {
-			fontSize: '14px',
-			fontWeight: 'normal',
-			lineHeight: '36px',
-			fontFamily: 'Roboto, sans-serif',
-			color: 'rgba(0, 0, 0, 0.870588)',
-			marginRight: '16px',
-		},
-		
-		secondaryText: {
-			fontSize: '16px',
-			fontWeight: 'normal',
-			lineHeight: '36px',
-			fontFamily: 'Roboto, sans-serif',
-			color: cyan500,
-			marginRight: '16px',
-		},
-		
-		actions: {
-			paddingTop: '32px',
-		},
-		
-		button: {
-			marginRight: '16px',
-		},
-		
-		imagesBlockContainer: {
-			paddingTop: '32px',
-			paddingBottom: '8px',
-		},
-		
-		answerContainer: {
-			display: 'table',
-		},
-		
-		answerNumberContainer: {
-			display: 'table-cell',
-			verticalAlign: 'bottom',
-			position: 'relative',
-			paddingLeft: '16px',
-		},
-		
-		answerCheckboxContainer: {
-			display: 'table-cell',
-		},
-		
-		answerTextContainer: {
-			display: 'table-cell',
-			verticalAlign: 'bottom',
-		},
-		
-		answerText: {
-			fontSize: '16px',
-			fontWeight: 'normal',
-			fontFamily: 'Roboto, sans-serif',
-			color: 'rgba(0, 0, 0, 0.870588)',
-			display: 'block',
-			marginBottom: '16px',
-		},
-	}
+	primaryLabel: {
+		fontSize: '16px',
+		fontWeight: 'normal',
+		lineHeight: '36px',
+		fontFamily: 'Roboto, sans-serif',
+		color: 'rgba(0, 0, 0, 0.870588)',
+	},
 	
+	primaryText: {
+		fontSize: '24px',
+		fontWeight: 'normal',
+		lineHeight: '36px',
+		fontFamily: 'Roboto, sans-serif',
+		color: 'rgba(0, 0, 0, 0.870588)',
+	},
 	
-	prepareAnswersState = props => {
-		const { questionNumber, exam: { questions } } = props
-		
-		let answers
-		
-		if(this.state.answers.length === 0) {
-			answers = new Array(questions.length)
-		} else {
-			answers = Array.from(this.state.answers)
-		}
-		
-		if((!answers[questionNumber]) || (answers[questionNumber].length === 0)) {
-			answers[questionNumber] = new Array(questions[questionNumber].answers.length).fill(false)
-		}
-		
-		this.setState({
-			answers,
-		})
-	}
+	secondaryLabel: {
+		fontSize: '14px',
+		fontWeight: 'normal',
+		lineHeight: '36px',
+		fontFamily: 'Roboto, sans-serif',
+		color: 'rgba(0, 0, 0, 0.870588)',
+		marginRight: '16px',
+	},
 	
+	secondaryText: {
+		fontSize: '16px',
+		fontWeight: 'normal',
+		lineHeight: '36px',
+		fontFamily: 'Roboto, sans-serif',
+		color: cyan500,
+		marginRight: '16px',
+	},
 	
-	componentWillMount() {
-		this.prepareAnswersState(this.props)
-	}
+	actions: {
+		paddingTop: '32px',
+	},
 	
+	button: {
+		marginRight: '16px',
+	},
 	
-	componentWillReceiveProps(nextProps) {
-		this.prepareAnswersState(nextProps)
-	}
+	imagesBlockContainer: {
+		paddingTop: '32px',
+		paddingBottom: '8px',
+	},
 	
+	answerContainer: {
+		display: 'table',
+	},
 	
-	createCheckboxClickHandler = (questionNumber, answerNumber) => (e, isChecked) => {
-		const answers = Array.from(this.state.answers)
-		
-		const { exam: { questions } } = this.props
-		
-		const { multiple } = questions[questionNumber]
-		
-		if(multiple || !isChecked) {
-			answers[questionNumber][answerNumber] = !!isChecked
-		} else {
-			answers[questionNumber] = answers[questionNumber].map((answer, index) => index === answerNumber)
-		}
-		
-		this.setState({
-			answers,
-		})
-	}
+	answerNumberContainer: {
+		display: 'table-cell',
+		verticalAlign: 'bottom',
+		position: 'relative',
+		paddingLeft: '16px',
+	},
 	
+	answerCheckboxContainer: {
+		display: 'table-cell',
+	},
 	
-	submit = () => {
-		const { onFinish } = this.props
-		const { answers } = this.state
-		
-		onFinish(answers)
-	}
+	answerTextContainer: {
+		display: 'table-cell',
+		verticalAlign: 'bottom',
+	},
 	
-	
-	render() {
-		const { exam, questionNumber, onNext, onPrev, intl: { formatMessage } } = this.props
-		const { name, questions } = exam
-		const numOfQuestions = questions.length
-		const { text, multiple, answers, images } = questions[questionNumber]
-		
-		return <div className='main-container-padding'>
-			<Card style={ this.style.card }>
-				<CardTitle title={ name }
-						subtitle={ <FormattedMessage id='questionNumberXofY'
-								values={ { number: questionNumber + 1, of: numOfQuestions } } /> } />
-				
-				<CardText style={ this.style.cardText }>
-					<span style={ this.style.primaryText }>{ text }</span><br />
-					
-					<NumberedImagesBlock images={ images } style={ this.style.imagesBlockContainer } />
-					
-					<span style={ this.style.secondaryText }>{ multiple ?
-							<FormattedMessage id='multipleCorrectAnswersAvailable' /> : ' ' }</span><br /><br />
-					
-					{ answers.map((answer, index) => (
-							<div style={ this.style.answerContainer } key={ index }>
-								<div style={ this.style.answerNumberContainer }>
-									<Badge badgeContent={ index + 1 } primary={ true } />
-								</div>
-								<div style={ this.style.answerCheckboxContainer }>
-									<Checkbox onCheck={ this.createCheckboxClickHandler(questionNumber, index) }
-											checked={ this.state.answers[questionNumber][index] } />
-								</div>
-								<div style={ this.style.answerTextContainer }>
-									<span style={ this.style.answerText }>{ answer }</span>
-								</div>
-							</div>
-					)) }
-				</CardText>
-				
-				<CardActions>
-					<RaisedButton label={ <FormattedMessage id='previous' /> } onClick={ onPrev }
-							disabled={ questionNumber === 0 }
-							style={ this.style.button } />
-					
-					{ questionNumber + 1 < numOfQuestions ?
-							<RaisedButton label={ <FormattedMessage id='next' /> } onClick={ onNext }
-									primary={ true }
-									style={ this.style.button } />
-							
-							:
-							
-							<ConfirmedRaisedButton label={ <FormattedMessage id='finish' /> }
-									onConfirm={ this.submit } primary={ true }
-									style={ this.style.button } text={ formatMessage({ id: 'areYouSure' }) } />
-					}
-				</CardActions>
-			</Card>
-		</div>
-	}
+	answerText: {
+		fontSize: '16px',
+		fontWeight: 'normal',
+		fontFamily: 'Roboto, sans-serif',
+		color: 'rgba(0, 0, 0, 0.870588)',
+		display: 'block',
+		marginBottom: '16px',
+	},
 }
 
 
-export default injectIntl(QuestionAsk)
+const submit = () => {
+	//const { onFinish } = this.props
+	//const { answers } = this.state
+	//
+	//onFinish(answers)
+	
+	console.log('submit button clicked')
+}
+
+
+export default ({
+					exam: { name, questions },
+					questionNumber,
+					goToNextQuestion,
+					goToPrevQuestion,
+					answers,
+					answerSelectionHandler,
+					intl: { formatMessage },
+				}) => <div className='main-container-padding'>
+	<Card style={ style.card }>
+		<CardTitle title={ name }
+				subtitle={ <FormattedMessage id='questionNumberXofY'
+						values={ { number: questionNumber + 1, of: questions.length } } /> } />
+		
+		<CardText style={ style.cardText }>
+			<span style={ style.primaryText }>{ questions[questionNumber].text }</span><br />
+			
+			<NumberedImagesBlock images={ questions[questionNumber].images }
+					style={ style.imagesBlockContainer } />
+			
+			<span style={ style.secondaryText }>{ questions[questionNumber].multiple ?
+					<FormattedMessage id='multipleCorrectAnswersAvailable' /> : ' ' }</span><br /><br />
+			
+			{ questions[questionNumber].answers.map((answer, index) => (
+					<div style={ style.answerContainer } key={ index }>
+						<div style={ style.answerNumberContainer }>
+							<Badge badgeContent={ index + 1 } primary={ true } />
+						</div>
+						<div style={ style.answerCheckboxContainer }>
+							<Checkbox onCheck={ answerSelectionHandler }
+									checked={ answers[questionNumber][index] }
+									name={ '' + index } />
+						</div>
+						<div style={ style.answerTextContainer }>
+							<span style={ style.answerText }>{ answer }</span>
+						</div>
+					</div>
+			)) }
+		</CardText>
+		
+		<CardActions>
+			<RaisedButton label={ <FormattedMessage id='previous' /> } onClick={ goToPrevQuestion }
+					disabled={ questionNumber === 0 }
+					style={ style.button } />
+			
+			{ questionNumber + 1 < questions.length ?
+					<RaisedButton label={ <FormattedMessage id='next' /> } onClick={ goToNextQuestion }
+							primary={ true }
+							style={ style.button } />
+					
+					:
+					
+					<ConfirmedRaisedButton label={ <FormattedMessage id='finish' /> }
+							onConfirm={ submit } primary={ true }
+							style={ style.button } text={ formatMessage({ id: 'areYouSure' }) } />
+			}
+		</CardActions>
+	</Card>
+</div>

@@ -1,6 +1,6 @@
-import TakeExam from './TakeExam'
+import QuestionAsk from './QuestionAsk'
 
 import enhance from './enhance'
 
 
-export default enhance(TakeExam)
+export default enhance(QuestionAsk)
