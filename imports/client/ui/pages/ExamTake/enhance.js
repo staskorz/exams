@@ -11,7 +11,11 @@ import withStartExamHandler from './with-start-exam-handler'
 import withExamInfo from './with-exam-info'
 import withQuestionNumberHandlers from './with-question-number-handler'
 import withAnswersSelection from './with-answers-selection'
-import withUpdate from './with-update'
+import withSubmit from './with-submit'
+import withSubmittingIndicator from './with-submitting-indicator'
+import withExamMarkError from './with-exam-mark-error'
+import withExamMark from './with-exam-mark'
+
 
 export default compose(
 		withRouter,
@@ -26,5 +30,8 @@ export default compose(
 		withExamInfo,
 		withQuestionNumberHandlers,
 		withAnswersSelection,
-		withUpdate,
+		withSubmit,
+		withSubmittingIndicator,
+		withExamMarkError,
+		withExamMark,
 )

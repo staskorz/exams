@@ -94,16 +94,6 @@ const style = {
 }
 
 
-const submit = () => {
-	//const { onFinish } = this.props
-	//const { answers } = this.state
-	//
-	//onFinish(answers)
-	
-	console.log('submit button clicked')
-}
-
-
 export default ({
 					exam: { name, questions },
 					questionNumber,
@@ -112,6 +102,7 @@ export default ({
 					answers,
 					answerSelectionHandler,
 					intl: { formatMessage },
+					onSave,
 				}) => <div className='main-container-padding'>
 	<Card style={ style.card }>
 		<CardTitle title={ name }
@@ -157,7 +148,7 @@ export default ({
 					:
 					
 					<ConfirmedRaisedButton label={ <FormattedMessage id='finish' /> }
-							onConfirm={ submit } primary={ true }
+							onConfirm={ answers => onSave(answers) } primary={ true }
 							style={ style.button } text={ formatMessage({ id: 'areYouSure' }) } />
 			}
 		</CardActions>
