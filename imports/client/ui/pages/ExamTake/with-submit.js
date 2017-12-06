@@ -9,7 +9,7 @@ export default compose(
 		withState('mark', 'setMark', null),
 		
 		withHandlers({
-			onSave: ({ router: { params: { examId } }, setSubmitting, setSubmitError, setMark }) => value => {
+			onSave: ({ answers, router: { params: { examId } }, setSubmitting, setSubmitError, setMark }) => () => {
 				setSubmitting(true)
 				
 				fetch('/api/exam-answers/' + examId, {
@@ -17,7 +17,7 @@ export default compose(
 					headers: {
 						'Content-Type': 'application/json',
 					},
-					body: JSON.stringify(value),
+					body: JSON.stringify(answers),
 				}).then(response => {
 					if(!response.ok) {
 						throw new Error('Could save exam answers')

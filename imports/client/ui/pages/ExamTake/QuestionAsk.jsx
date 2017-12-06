@@ -148,7 +148,7 @@ export default ({
 					:
 					
 					<ConfirmedRaisedButton label={ <FormattedMessage id='finish' /> }
-							onConfirm={ answers => onSave(answers) } primary={ true }
+							onConfirm={ onSave } primary={ true }
 							style={ style.button } text={ formatMessage({ id: 'areYouSure' }) } />
 			}
 		</CardActions>
