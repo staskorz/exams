@@ -18,7 +18,7 @@ const expected = [
 ]
 
 
-describe('validates exam answers', () => {
+describe('sanitizes exam answers', () => {
 	it('returns two-dimensional array with boolean values only', () => {
 		expect(sanitize(src1)).toEqual(expected)
 	})
