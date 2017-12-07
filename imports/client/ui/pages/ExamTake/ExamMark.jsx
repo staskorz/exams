@@ -39,7 +39,7 @@ const style = {
 }
 
 
-export default ({ exam: { name }, examMark, router }) => <div className='main-container-padding'>
+export default ({ exam: { name }, mark, router }) => <div className='main-container-padding'>
 	<Paper style={ style.mainPaper }>
 		<div>
 			<span style={ style.descriptionText }><FormattedMessage id='examName' />:</span>
@@ -48,7 +48,7 @@ export default ({ exam: { name }, examMark, router }) => <div className='main-co
 		
 		<div>
 			<span style={ style.descriptionText }><FormattedMessage id='yourMark' />:</span>
-			<span style={ style.mainText }>{ examMark }</span>
+			<span style={ style.mainText }>{ mark }</span>
 		</div>
 		
 		{ canGoBack() ?
