@@ -55,7 +55,7 @@ export default (req, res) => {
 			mark,
 			questions,
 			examTimestamp: new Date(),
-			examineeUserId: 'v3baYiqaLDYA2SodD', // TODO: must be populated with real user ID
+			examineeUserId: '*************', // TODO: must be populated with real user ID
 		}).then(() => {
 			res.json({
 				mark,
