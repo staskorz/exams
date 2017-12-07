@@ -21,11 +21,15 @@ class ExamInfo extends Component {
 		actions: {
 			paddingTop: '32px',
 		},
+		
+		button: {
+			marginRight: '16px',
+		},
 	}
 	
 	
 	render() {
-		const { router } = this.props
+		const { router, onSave } = this.props
 		
 		return <div className='main-container-padding'>
 			<Paper style={ this.style.mainPaper }>
@@ -34,7 +38,9 @@ class ExamInfo extends Component {
 				</div>
 				
 				<div style={ this.style.actions }>
-					<RaisedButton label={ <FormattedMessage id='exit' /> } primary={ true } onClick={ () => router.goBack() } />
+					<RaisedButton label={ <FormattedMessage id='exit' /> } style={ this.style.button } onClick={ () => router.goBack() } />
+					
+					<RaisedButton label={ <FormattedMessage id='tryAgain' /> } style={ this.style.button } primary={ true } onClick={ onSave } />
 				</div>
 			</Paper>
 		</div>

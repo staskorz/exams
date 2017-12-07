@@ -42,6 +42,7 @@ export default {
 	creationTime: 'זמן הקמה',
 	modificationTime: 'זמן עדכון',
 	exit: 'יציאה',
+	tryAgain: 'נסה שוב',
 	yourMark: 'ציונך',
 	examMarkError: 'אירעה שגיאה בעת שמירת התשובות או חישוב הציון',
 	username: 'שם משתמש',
