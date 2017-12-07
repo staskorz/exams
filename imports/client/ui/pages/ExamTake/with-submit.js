@@ -26,6 +26,7 @@ export default compose(
 					return response
 				}).then(response => response.json()).then(({ mark }) => {
 					setSubmitting(false)
+					setSubmitError(false)
 					setMark(mark)
 				}).catch(() => {
 					setSubmitting(false)
