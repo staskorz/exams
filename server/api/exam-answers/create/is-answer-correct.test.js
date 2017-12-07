@@ -5,29 +5,29 @@ import isAnswerCorrect from './is-answer-correct'
 describe('tell correct answer from an incorrect one', () => {
 	const correctAnswer = [
 		{
-			correct: true
+			correct: true,
 		},
 		
 		{
-			correct: false
-		}
-	];
+			correct: false,
+		},
+	]
 	
 	const examineeAnswerCorrect = [
 		true,
-		false
-	];
+		false,
+	]
 	
 	const examineeAnswerIncorrect = [
 		true,
-		true
-	];
+		true,
+	]
 	
 	it('tells correct answer', () => {
-		expect(isAnswerCorrect(correctAnswer, examineeAnswerCorrect)).toBeTruthy();
-	});
+		expect(isAnswerCorrect(correctAnswer, examineeAnswerCorrect)).toBeTruthy()
+	})
 	
 	it('tells incorrect answer', () => {
-		expect(isAnswerCorrect(correctAnswer, examineeAnswerIncorrect)).toBeFalsy();
-	});
-});
+		expect(isAnswerCorrect(correctAnswer, examineeAnswerIncorrect)).toBeFalsy()
+	})
+})
