@@ -7,7 +7,7 @@ import create from './create'
 const router = Router()
 
 
-router.get('/:examId', getByExamId)
+router.get('/exam/:examId', getByExamId)
 router.post('/:examId', create)
 
 

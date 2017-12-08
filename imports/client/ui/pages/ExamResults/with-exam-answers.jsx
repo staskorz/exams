@@ -10,7 +10,7 @@ export default compose(
 			componentDidMount() {
 				const { examId } = this.props.router.params
 				
-				fetch('/api/exam-answers/' + examId).then(response => response.json()).then(examResults => {
+				fetch('/api/exam-answers/exam/' + examId).then(response => response.json()).then(examResults => {
 					this.setState({
 						loading: false,
 						examResults,
