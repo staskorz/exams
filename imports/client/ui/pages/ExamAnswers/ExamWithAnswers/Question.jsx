@@ -1,7 +1,8 @@
 import React from 'react'
 
+import NumberedImagesBlock from '../../../components/NumberedImagesBlock'
+
 import QuestionNumber from './QuestionNumber'
-import NumberedImagesBlock from '../NumberedImagesBlock'
 import Variant from './Variant'
 
 

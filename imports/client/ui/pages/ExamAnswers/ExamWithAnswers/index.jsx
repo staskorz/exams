@@ -1,10 +1,10 @@
 import React from 'react'
 
-import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator';
+import transformExamServerToClient from '../../../../transform-exam-server-to-client'
+
 import Header from './Header'
 import Question from './Question'
 import transform from './transform'
-import transformExamServerToClient from '../../containers/transform-exam-server-to-client'
 
 
 const style = {
@@ -15,11 +15,7 @@ const style = {
 }
 
 
-export default ({ loading, answers, exam, user }) => {
-	if(loading) {
-		return <LoadingIndicator />
-	}
-	
+export default ({ answers, exam, user }) => {
 	const headerProps = { answers, exam, user }
 	
 	const transformedExam = transformExamServerToClient(exam)

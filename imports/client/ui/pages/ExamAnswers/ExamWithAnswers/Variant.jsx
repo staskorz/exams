@@ -1,9 +1,10 @@
 import React from 'react'
 import { Badge } from 'material-ui'
 
+import * as colors from '../../../colors'
+
 import Checkbox from './Checkbox'
 import CorrectAnswerMark from './CorrectAnswerMark'
-import { primary as primaryColor } from '/imports/client/ui/colors'
 
 
 const style = {
@@ -25,7 +26,7 @@ const style = {
 	},
 	
 	text: {
-		color: primaryColor,
+		color: colors.primary,
 		display: 'inline-block',
 	},
 }

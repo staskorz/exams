@@ -1,7 +1,7 @@
 import React from 'react'
 import LeftArrow from 'material-ui/svg-icons/navigation/chevron-left'
 
-import { attention as attentionColor } from '/imports/client/ui/colors'
+import * as colors from '../../../colors'
 
 
 const style = {
@@ -11,12 +11,12 @@ const style = {
 	},
 	
 	leftArrow: {
-		color: attentionColor,
+		color: colors.attention,
 		marginBottom: '-6px',
 	},
 }
 
 
 export default ({ show, style: propStyle }) => <span style={ style.mainContainer }>
-	{ show ? <LeftArrow style={{ ...propStyle, ...style.leftArrow }} /> : null }
+	{ show ? <LeftArrow style={ { ...propStyle, ...style.leftArrow } } /> : null }
 </span>
