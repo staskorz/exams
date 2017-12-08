@@ -1,4 +1,4 @@
-import transformServerToClient from './transform-server-to-client'
+import transformServerToClient from '../utils/transform-exam-server-to-client'
 
 
 export default (req, res) => {

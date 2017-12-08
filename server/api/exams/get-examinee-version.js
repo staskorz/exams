@@ -1,6 +1,5 @@
 import validateId from '../../../common/validations/fields/id'
-
-import transformServerToClient from './transform-server-to-client'
+import transformServerToClient from '../utils/transform-exam-server-to-client'
 
 
 const hasMultipleCorrectAnswers = answers => answers.reduce((acc, { correct }) => correct ? acc + 1 : acc, 0) > 1
