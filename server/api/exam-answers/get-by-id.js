@@ -24,7 +24,7 @@ export default (req, res) => {
 		},
 	} //TODO: make sure to transform the result
 	
-	const examAnswersCollection = db.collection('ExamAnswers')
+	const examAnswersCollection = db.collection('Answers')
 	
 	const examAnswersProjection = {
 		fields: {
