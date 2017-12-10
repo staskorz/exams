@@ -11,7 +11,7 @@ import QuestionnairesList from './pages/QuestionnairesList'
 import QuestionnaireAnswers from './pages/QuestionnaireAnswers'
 import ExamEdit from './pages/ExamEdit'
 import UsersList from './pages/UsersList'
-//import UserResults from './pages/UserResults'
+import UserResults from './pages/UserResults'
 import ExamsList from './pages/ExamsList'
 import ExamChoice from './pages/ExamChoice'
 import ExamResults from './pages/ExamResults'
@@ -31,7 +31,7 @@ export default () => <Router history={ browserHistory }>
 		<Route path='exam-choice' component={ ExamChoice } />
 		<Route path='exam-results/:examId' component={ ExamResults } />
 		<Route path='exam-answers/:answersId' component={ ExamAnswers } />
-		{ /*<Route path='user-results/:userId' component={ UserResults } />*/ }
+		<Route path='user-results/:userId' component={ UserResults } />
 		<Route path='create-questionnaire' component={ QuestionnaireCreate } />
 		<Route path='edit-questionnaire/:questionnaireId' component={ QuestionnaireEdit } />
 		<Route path='list-questionnaires' component={ QuestionnairesList } />
