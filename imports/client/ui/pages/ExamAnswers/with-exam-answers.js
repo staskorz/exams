@@ -15,11 +15,12 @@ export default lifecycle({
 			}
 			
 			return response
-		}).then(response => response.json()).then(({ exam, answers }) => {
+		}).then(response => response.json()).then(({ exam, answers, user }) => {
 			this.setState({
 				loading: false,
 				exam,
 				answers,
+				user,
 			})
 		})
 	},

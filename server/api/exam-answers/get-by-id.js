@@ -24,6 +24,17 @@ export default (req, res) => {
 		},
 	} //TODO: make sure to transform the result
 	
+	const usersColleciton = db.collection('users')
+	
+	const usersProjection = {
+		fields: {
+			username: 1,
+			englishName: 1,
+			hebrewName: 1,
+			employeeId: 1,
+		},
+	}
+	
 	const examAnswersCollection = db.collection('Answers')
 	
 	const examAnswersProjection = {
@@ -45,19 +56,28 @@ export default (req, res) => {
 		
 		const examPromise = examsCollection.findOne({ _id: answers.examId }, examsProjection)
 		
-		return Promise.all([answers, examPromise])
-	}).then(([answers, exam]) => {
+		const userPromise = usersColleciton.findOne({ _id: answers.examineeUserId }, usersProjection)
+		
+		return Promise.all([answers, examPromise, userPromise])
+	}).then(([answers, exam, user]) => {
 		if(!exam) {
 			res.status(404).send('Exam not found')
 			
 			return
 		}
 		
-		return [answers, exam]
-	}).then(([answers, exam]) => {
+		if(!user) {
+			res.status(404).send('Examinee not found')
+			
+			return
+		}
+		
+		return [answers, exam, user]
+	}).then(([answers, exam, user]) => {
 		res.json({
 			answers,
 			exam: transformExamServerToClient(exam),
+			user,
 		})
 	}).catch(err => {
 		const errorMessage = 'Error fetching exam answers from DB.'
