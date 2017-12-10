@@ -7,9 +7,9 @@ export default lifecycle({
 	},
 	
 	componentDidMount() {
-		const { examId } = this.props.router.params
+		const { answersId } = this.props.router.params
 		
-		fetch('/api/exams-answers/' + examId).then(response => {
+		fetch('/api/exam-answers/' + answersId).then(response => {
 			if(!response.ok) {
 				throw new Error('Could not load exam answers')
 			}
