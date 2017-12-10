@@ -10,7 +10,7 @@ import QuestionnaireTake from './pages/QuestionnaireTake'
 import QuestionnairesList from './pages/QuestionnairesList'
 import QuestionnaireAnswers from './pages/QuestionnaireAnswers'
 import ExamEdit from './pages/ExamEdit'
-//import UsersList from './pages/UsersList'
+import UsersList from './pages/UsersList'
 //import UserResults from './pages/UserResults'
 import ExamsList from './pages/ExamsList'
 import ExamChoice from './pages/ExamChoice'
@@ -27,7 +27,7 @@ export default () => <Router history={ browserHistory }>
 		<Route path='create-exam' component={ ExamCreate } />
 		<Route path='edit-exam/:examId' component={ ExamEdit } />
 		<Route path='list-exams' component={ ExamsList } />
-		{ /*<Route path='list-users' component={ UsersList } />*/ }
+		<Route path='list-users' component={ UsersList } />
 		<Route path='exam-choice' component={ ExamChoice } />
 		<Route path='exam-results/:examId' component={ ExamResults } />
 		<Route path='exam-answers/:answersId' component={ ExamAnswers } />

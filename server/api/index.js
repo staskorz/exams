@@ -1,5 +1,6 @@
 import { Router, json } from 'express'
 
+import users from './users'
 import exams from './exams'
 import examAnswers from './exam-answers'
 import questionnaires from './questionnaires'
@@ -14,6 +15,7 @@ router.use(json({
 }))
 
 
+router.use('/users', users)
 router.use('/exams', exams)
 router.use('/exam-answers', examAnswers)
 router.use('/questionnaires', questionnaires)

@@ -1,24 +1,18 @@
 import React from 'react'
 import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
-import { neutral } from '/imports/client/ui/colors'
-import { injectIntl } from 'react-intl'
-import { withRouter, Link } from 'react-router'
+import { Link } from 'react-router'
 
-import LoadingIndicator from '/imports/client/ui/components/LoadingIndicator'
+import { neutral } from '../../colors'
 
 
 const style = {
 	actionLink: {
 		color: neutral,
-	}
+	},
 }
 
 
-const UsersTable = ({ loading, users, router, intl: { formatMessage } }) => {
-	if(loading) {
-		return <LoadingIndicator />
-	}
-	
+export default ({ users, intl: { formatMessage } }) => {
 	const translatedName = formatMessage({ id: 'name' })
 	const translatedEmployeeId = formatMessage({ id: 'employeeId' })
 	const translatedUsername = formatMessage({ id: 'username' })
@@ -36,7 +30,7 @@ const UsersTable = ({ loading, users, router, intl: { formatMessage } }) => {
 	const numColumns = 5
 	
 	return <WindowScroller>
-		{({ height, isScrolling, scrollTop }) => <AutoSizer disableHeight>
+		{ ({ height, isScrolling, scrollTop }) => <AutoSizer disableHeight>
 			{ ({ width }) => <Table
 					rowCount={ users.length }
 					rowGetter={ ({ index }) => users[index] }
@@ -68,6 +62,3 @@ const UsersTable = ({ loading, users, router, intl: { formatMessage } }) => {
 		</AutoSizer> }
 	</WindowScroller>
 }
-
-
-export default injectIntl(withRouter(UsersTable))
