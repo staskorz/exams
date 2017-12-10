@@ -22,7 +22,7 @@ export default (req, res) => {
 			updatedAt: 1,
 			questions: 1,
 		},
-	} //TODO: make sure to transform the result
+	}
 	
 	const usersColleciton = db.collection('users')
 	
