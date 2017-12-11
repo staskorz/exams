@@ -22,9 +22,18 @@ const transformImage = imageObj => {
 }
 
 
+const transformImages = images => {
+	if(!images) {
+		return
+	}
+	
+	return images.map(transformImage)
+}
+
+
 export default ({ questions, ...rest }) => ({
 	questions: questions.map(({ images, ...rest }) => ({
-		images: images.map(transformImage),
+		images: transformImages(images),
 		...rest,
 	})),
 	
