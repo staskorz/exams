@@ -38,23 +38,21 @@ describe('retrieves from REST API using GET method', () => {
 	})
 	
 	
-	it('throws on unsuccessful response', () => {
-		const errorObj = {
+	it('throws Error with status and statusText on unsuccessful response', () => {
+		const obj = {
+			ok: false,
 			status: 404,
 			statusText: 'Not found',
 		}
 		
-		const obj = {
-			ok: false,
-			...errorObj,
-		}
+		const fakeFetch = () => Promise.resolve(obj)
 		
-		const mockFetch = jest.fn(() => Promise.resolve(obj))
+		const get = createGet(fakeFetch)
 		
-		const get = createGet(mockFetch)
-		
-		expect.assertions(1)
-		
-		return expect(get('/ignored')).rejects.toEqual(errorObj)
+		return get('/ignored').catch(e => {
+			expect(e).toEqual(new Error('Fetch failed'))
+			expect(e.status).toBe(obj.status)
+			expect(e.statusText).toBe(obj.statusText)
+		})
 	})
 })

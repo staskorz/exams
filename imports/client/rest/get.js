@@ -1,9 +1,10 @@
 export default fetch => path => fetch(path).then(response => {
 	if(!response.ok) {
-		throw {
-			status: response.status,
-			statusText: response.statusText,
-		}
+		const error = new Error('Fetch failed')
+		error.status = response.status
+		error.statusText = response.statusText
+		
+		throw error
 	}
 	
 	return response
