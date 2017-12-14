@@ -28,11 +28,9 @@ describe('retrieves from REST API using GET method', () => {
 			statusText: 'OK',
 		}
 		
-		const mockFetch = jest.fn(() => Promise.resolve(obj))
+		const fakeFetch = () => Promise.resolve(obj)
 		
-		const get = createGet(mockFetch)
-		
-		expect.assertions(1)
+		const get = createGet(fakeFetch)
 		
 		return expect(get('/ignored')).resolves.toEqual(body)
 	})
