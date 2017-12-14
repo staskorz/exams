@@ -1,17 +1,18 @@
-import createGet from './get'
+import createWrappedFetch from './wrapped-fetch'
 
 
-describe('retrieves from REST API using GET method', () => {
-	it('calls fetch with correct path', () => {
+describe('Interacts with REST API using provided method', () => {
+	it('calls fetch with correct arguments', () => {
 		const mockFetch = jest.fn(() => Promise.resolve('ignored'))
 		
-		const get = createGet(mockFetch)
+		const wrappedFetch = createWrappedFetch(mockFetch)
 		
 		const testPath = '/test-path'
+		const method = 'WrappedFetch'
 		
-		get(testPath)
+		wrappedFetch(testPath, method)
 		
-		expect(mockFetch).toBeCalledWith(testPath)
+		expect(mockFetch).toBeCalledWith(testPath, { method })
 	})
 	
 	
@@ -30,9 +31,9 @@ describe('retrieves from REST API using GET method', () => {
 		
 		const fakeFetch = () => Promise.resolve(obj)
 		
-		const get = createGet(fakeFetch)
+		const wrappedFetch = createWrappedFetch(fakeFetch)
 		
-		return expect(get('/ignored')).resolves.toEqual(body)
+		return expect(wrappedFetch('/ignored')).resolves.toEqual(body)
 	})
 	
 	
@@ -45,9 +46,9 @@ describe('retrieves from REST API using GET method', () => {
 		
 		const fakeFetch = () => Promise.resolve(obj)
 		
-		const get = createGet(fakeFetch)
+		const wrappedFetch = createWrappedFetch(fakeFetch)
 		
-		return get('/ignored').catch(e => {
+		return wrappedFetch('/ignored').catch(e => {
 			expect(e).toEqual(new Error('Fetch failed'))
 			expect(e.status).toBe(obj.status)
 			expect(e.statusText).toBe(obj.statusText)
