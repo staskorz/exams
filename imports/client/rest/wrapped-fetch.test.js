@@ -9,10 +9,11 @@ describe('Interacts with REST API using provided method', () => {
 		
 		const testPath = '/test-path'
 		const method = 'POST'
+		const json = { a: 1 }
 		
-		wrappedFetch(testPath, method)
+		wrappedFetch(testPath, method, json)
 		
-		expect(mockFetch).toBeCalledWith(testPath, { method })
+		expect(mockFetch).toBeCalledWith(testPath, { method, body: JSON.stringify(json) })
 	})
 	
 	

@@ -1,4 +1,7 @@
-export default fetch => (path, method) => fetch(path, { method }).then(response => {
+export default fetch => (path, method, json) => fetch(path, {
+	method,
+	body: JSON.stringify(json),
+}).then(response => {
 	if(!response.ok) {
 		const error = new Error('Fetch failed')
 		error.status = response.status
