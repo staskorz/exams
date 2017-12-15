@@ -8,7 +8,7 @@ describe('Interacts with REST API using provided method', () => {
 		const wrappedFetch = createWrappedFetch(mockFetch)
 		
 		const testPath = '/test-path'
-		const method = 'WrappedFetch'
+		const method = 'POST'
 		
 		wrappedFetch(testPath, method)
 		
