@@ -1,17 +1,5 @@
-const getAuthenticatedUserCreator = env => {
-	if(env === 'development') {
-		return req => req.headers['webpack-dev-server-ntlm-user']
-	} else {
-		return req => req.connection.user
-	}
-}
-
-
-const getAuthenticatedUser = getAuthenticatedUserCreator(process.env.NODE_ENV)
-
-
 export default usersCollection => (req, res, next) => {
-	const rawUsername = getAuthenticatedUser(req)
+	const rawUsername = req.connection.user
 	
 	if(!rawUsername) {
 		next()

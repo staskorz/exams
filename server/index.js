@@ -2,6 +2,7 @@ import express from 'express'
 import path from 'path'
 
 import ntlmAuthenticationMiddleware from './express-middleware/ntlm-authentication'
+import setUserFromHeaderMiddleware from './express-middleware/set-user-from-header'
 import noCacheMiddleware from './express-middleware/no-cache'
 import dbConnection from './mongodb/connection'
 import injectUserMiddleware from './express-middleware/inject-user'
@@ -21,24 +22,24 @@ const HTTP_SERVER_PORT = 3000
 const app = express()
 
 
-// the NTLM authentication is done in webpack-dev-server and passed as a header
-if(NODE_ENV !== 'development') {
-	app.use(ntlmAuthenticationMiddleware)
-}
-
-
-app.use(noCacheMiddleware)
-
-
 dbConnection.then(db => {
 	// eslint-disable-next-line no-console
 	console.log('Connected to MongoDB')
+	
+	if(NODE_ENV === 'development') {
+		// the NTLM authentication is done in webpack-dev-server and passed as a header
+		app.use(setUserFromHeaderMiddleware)
+	} else {
+		app.use(ntlmAuthenticationMiddleware)
+	}
 	
 	const usersCollection = db.collection('users')
 	
 	app.use(injectUserMiddleware(usersCollection))
 	
 	app.use(injectDbConnectionMiddleware(db))
+	
+	app.use(noCacheMiddleware)
 	
 	app.use('/api', api)
 	
