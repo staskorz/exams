@@ -13,7 +13,11 @@ describe('Interacts with REST API using provided method', () => {
 		
 		wrappedFetch(testPath, method, json)
 		
-		expect(mockFetch).toBeCalledWith(testPath, { method, body: JSON.stringify(json) })
+		expect(mockFetch).toBeCalledWith(testPath, {
+			method,
+			body: JSON.stringify(json),
+			credentials: 'same-origin',
+		})
 	})
 	
 	

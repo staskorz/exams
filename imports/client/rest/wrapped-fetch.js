@@ -1,6 +1,7 @@
 export default fetch => (path, method, json) => fetch(path, {
 	method,
 	body: JSON.stringify(json),
+	credentials: 'same-origin',
 }).then(response => {
 	if(!response.ok) {
 		const error = new Error('Fetch failed')
