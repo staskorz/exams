@@ -1,6 +1,7 @@
 import express from 'express'
 import path from 'path'
 
+import noCacheMiddleware from './express-middleware/no-cache'
 import dbConnection from './mongodb/connection'
 import injectDbConnectionMiddleware from './mongodb/inject-connection-middleware'
 import api from './api'
@@ -10,6 +11,9 @@ const HTTP_SERVER_PORT = 3000
 
 
 const app = express()
+
+
+app.use(noCacheMiddleware)
 
 
 dbConnection.then(db => {
