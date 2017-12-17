@@ -1,5 +1,7 @@
 import { Router, json } from 'express'
 
+import ensureAuthenticationMiddleware from '../express-middleware/ensure-authentication'
+
 import users from './users'
 import exams from './exams'
 import examAnswers from './exam-answers'
@@ -8,6 +10,9 @@ import questionnaireAnswers from './questionnaire-answers'
 
 
 const router = Router()
+
+
+router.use(ensureAuthenticationMiddleware)
 
 
 router.use(json({
