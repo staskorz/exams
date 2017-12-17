@@ -1,4 +1,5 @@
 import { Router } from 'express'
+import ensureRoleOperatorMiddleware from '../../express-middleware/ensure-role-operator'
 
 import getAll from './get-all'
 import getById from './get-by-id'
@@ -9,10 +10,10 @@ import update from './update'
 const router = Router()
 
 
-router.get('/', getAll)
+router.get('/', ensureRoleOperatorMiddleware, getAll)
 router.get('/:questionnaireId', getById)
-router.post('/', create)
-router.put('/:questionnaireId', update)
+router.post('/', ensureRoleOperatorMiddleware, create)
+router.put('/:questionnaireId', ensureRoleOperatorMiddleware, update)
 
 
 export default router

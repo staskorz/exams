@@ -1,5 +1,7 @@
 import { Router } from 'express'
 
+import ensureRoleOperatorMiddleware from '../../express-middleware/ensure-role-operator'
+
 import getAll from './get-all'
 import getAllPublished from './get-all-published'
 import getById from './get-by-id'
@@ -11,12 +13,12 @@ import update from './update'
 const router = Router()
 
 
-router.get('/', getAll)
+router.get('/', ensureRoleOperatorMiddleware, getAll)
 router.get('/published', getAllPublished)
-router.get('/:examId', getById)
+router.get('/:examId', ensureRoleOperatorMiddleware, getById)
 router.get('/examinee-version/:examId', getExamineeVersion)
-router.post('/', create)
-router.put('/:examId', update)
+router.post('/', ensureRoleOperatorMiddleware, create)
+router.put('/:examId', ensureRoleOperatorMiddleware, update)
 
 
 export default router

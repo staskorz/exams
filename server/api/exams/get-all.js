@@ -1,17 +1,5 @@
 export default (req, res) => {
-	const { db, user } = req
-	
-	if(!user) {
-		req.status('401').send('Unauthorized')
-		
-		return
-	}
-	
-	if(user.role !== 'operator') {
-		req.status('403').send('Access Denied')
-		
-		return
-	}
+	const { db } = req
 	
 	const examsCollection = db.collection('Exams')
 	
