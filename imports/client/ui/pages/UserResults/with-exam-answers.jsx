@@ -1,5 +1,7 @@
 import { compose, withProps, lifecycle } from 'recompose'
 
+import * as rest from '../../../rest'
+
 
 export default compose(
 		withProps({
@@ -10,7 +12,7 @@ export default compose(
 			componentDidMount() {
 				const { userId } = this.props.router.params
 				
-				fetch('/api/exam-answers/user/' + userId).then(response => response.json()).then(examResults => {
+				rest.get('/api/exam-answers/user/' + userId).then(examResults => {
 					this.setState({
 						loading: false,
 						examResults,

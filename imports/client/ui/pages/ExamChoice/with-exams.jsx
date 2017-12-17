@@ -1,5 +1,7 @@
 import { lifecycle } from 'recompose'
 
+import * as rest from '../../../rest'
+
 
 export default lifecycle({
 	state: {
@@ -7,7 +9,7 @@ export default lifecycle({
 	},
 	
 	componentDidMount() {
-		fetch('/api/exams/published').then(response => response.json()).then(exams => {
+		rest.get('/api/exams/published').then(exams => {
 			this.setState({
 				loading: false,
 				exams,
