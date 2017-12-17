@@ -1,11 +1,22 @@
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const path = require('path')
+const ntlmAuthenticationMiddleware = require('./server/express-middleware/ntlm-authentication')
+
 
 const webpackCommonConfig = require('./webpack.common')
 
 
 const SERVER_URL = 'http://localhost:3000'
+
+
+const setUserInHeaderMiddleware = (req, res, next) => {
+	if(req.connection && req.connection.user) {
+		req.headers['webpack-dev-server-ntlm-user'] = req.connection.user
+	}
+	
+	next()
+}
 
 
 module.exports = webpackMerge(webpackCommonConfig, {
@@ -54,6 +65,11 @@ module.exports = webpackMerge(webpackCommonConfig, {
 		historyApiFallback: true,
 		proxy: {
 			'/api': SERVER_URL,
+		},
+		before: app => {
+			app.use(ntlmAuthenticationMiddleware)
+			
+			app.use(setUserInHeaderMiddleware)
 		},
 	},
 })

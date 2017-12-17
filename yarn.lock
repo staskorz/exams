@@ -4521,9 +4521,9 @@ node-pre-gyp@^0.6.36:
     tar "^2.2.1"
     tar-pack "^3.4.0"
 
-node-sspi@^0.1.13:
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/node-sspi/-/node-sspi-0.1.15.tgz#f61c95c6ced99461058895abde397895da0d6c0d"
+node-sspi@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/node-sspi/-/node-sspi-0.2.2.tgz#f2e7dd07016f746f22b37c6e27c0a2c83ce1eee8"
   dependencies:
     bindings "^1.1.1"
     nan "^2.0.9"
