@@ -2,7 +2,7 @@
   "name": "exams",
   "private": true,
   "scripts": {
-    "dev-server": "nodemon server/index.js --exec babel-node",
+    "dev-server": "cross-env NODE_ENV=development nodemon server/index.js --exec babel-node",
     "dev-client": "webpack-dev-server --config webpack.dev.js",
     "build-server": "babel server -d dist/server && babel common -d dist/common",
     "build-client": "webpack --config webpack.prod.js -p",
@@ -53,6 +53,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "copy-webpack-plugin": "^4.2.1",
+    "cross-env": "^5.1.1",
     "css-loader": "^0.28.7",
     "eslint": "^4.9.0",
     "eslint-plugin-import": "^2.8.0",
