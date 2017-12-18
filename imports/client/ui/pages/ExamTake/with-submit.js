@@ -1,5 +1,7 @@
 import { compose, withState, withHandlers } from 'recompose'
 
+import * as rest from '../../../rest'
+
 
 export default compose(
 		withState('submitting', 'setSubmitting', false),
@@ -12,19 +14,7 @@ export default compose(
 			onSave: ({ answers, router: { params: { examId } }, setSubmitting, setSubmitError, setMark }) => () => {
 				setSubmitting(true)
 				
-				fetch('/api/exam-answers/' + examId, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify(answers),
-				}).then(response => {
-					if(!response.ok) {
-						throw new Error('Could save exam answers')
-					}
-					
-					return response
-				}).then(response => response.json()).then(({ mark }) => {
+				rest.post('/api/exam-answers/' + examId, answers).then(({ mark }) => {
 					setSubmitting(false)
 					setSubmitError(false)
 					setMark(mark)
