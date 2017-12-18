@@ -9,6 +9,7 @@ import noCacheMiddleware from './express-middleware/no-cache'
 import dbConnection from './mongodb/connection'
 import injectUserMiddleware from './express-middleware/inject-user'
 import injectDbConnectionMiddleware from './mongodb/inject-connection-middleware'
+import refreshUserMiddleware from './express-middleware/refresh-user'
 import api from './api'
 
 
@@ -38,6 +39,8 @@ dbConnection.then(db => {
 	const usersCollection = db.collection('users')
 	
 	app.use(injectUserMiddleware(usersCollection))
+	
+	app.use(refreshUserMiddleware(usersCollection))
 	
 	app.use(injectDbConnectionMiddleware(db))
 	
