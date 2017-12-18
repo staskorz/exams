@@ -2,6 +2,7 @@ import { Router, json } from 'express'
 
 import ensureAuthenticationMiddleware from '../express-middleware/ensure-authentication'
 
+import me from './me'
 import users from './users'
 import exams from './exams'
 import examAnswers from './exam-answers'
@@ -20,6 +21,7 @@ router.use(json({
 }))
 
 
+router.use('/me', me)
 router.use('/users', users)
 router.use('/exams', exams)
 router.use('/exam-answers', examAnswers)
