@@ -15,4 +15,8 @@ export default fetch => (path, method, json) => fetch(path, {
 	}
 	
 	return response
-}).then(response => response.json())
+}).then(response => {
+	if(response.headers.get('content-length') > 0) {
+		return response.json()
+	}
+})

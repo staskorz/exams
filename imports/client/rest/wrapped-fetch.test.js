@@ -24,7 +24,7 @@ describe('Interacts with REST API using provided method', () => {
 	})
 	
 	
-	it('returns correct object', () => {
+	it('returns correct object if content-length is greater than 0', () => {
 		const body = {
 			a: 1,
 			b: 2,
@@ -35,6 +35,9 @@ describe('Interacts with REST API using provided method', () => {
 			ok: true,
 			status: 200,
 			statusText: 'OK',
+			headers: {
+				get: () => 5,
+			},
 		}
 		
 		const fakeFetch = () => Promise.resolve(obj)
@@ -42,6 +45,24 @@ describe('Interacts with REST API using provided method', () => {
 		const wrappedFetch = createWrappedFetch(fakeFetch)
 		
 		return expect(wrappedFetch('/ignored')).resolves.toEqual(body)
+	})
+	
+	
+	it('returns undefined if content-length is 0', () => {
+		const obj = {
+			ok: true,
+			status: 200,
+			statusText: 'OK',
+			headers: {
+				get: () => 0,
+			},
+		}
+		
+		const fakeFetch = () => Promise.resolve(obj)
+		
+		const wrappedFetch = createWrappedFetch(fakeFetch)
+		
+		return expect(wrappedFetch('/ignored')).resolves.toBeUndefined()
 	})
 	
 	
