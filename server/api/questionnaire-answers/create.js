@@ -5,7 +5,7 @@ import validateId from '../../../common/validations/fields/id'
 
 
 export default (req, res) => {
-	const { db } = req
+	const { db, user } = req
 	
 	const questionnairesCollection = db.collection('Questionnaires')
 	const questionnaireAnswersCollection = db.collection('QuestionnaireAnswers')
@@ -40,7 +40,7 @@ export default (req, res) => {
 		return questionnaireAnswersCollection.insertOne({
 			_id: generateId(),
 			timestamp: new Date(),
-			userId: '************', // TODO: must be populated with real user ID
+			userId: user._id,
 			...sanitizedQuestionnaireAnswers,
 		}).then(() => {
 			res.status(200).send()

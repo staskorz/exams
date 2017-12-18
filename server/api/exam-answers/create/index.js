@@ -16,7 +16,7 @@ export default (req, res) => {
 		throw new Error('Invalid exam ID')
 	}
 	
-	const { db } = req
+	const { db, user } = req
 	
 	const examsCollection = db.collection('Exams')
 	const examAnswersCollection = db.collection('Answers')
@@ -55,7 +55,7 @@ export default (req, res) => {
 			mark,
 			questions,
 			examTimestamp: new Date(),
-			examineeUserId: '*************', // TODO: must be populated with real user ID
+			examineeUserId: user._id,
 		}).then(() => {
 			res.json({
 				mark,
