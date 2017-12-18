@@ -31,6 +31,7 @@ export default usersCollection => (req, res, next) => {
 		
 		req.user = {
 			_id,
+			username,
 			role,
 			englishName,
 			hebrewName,
