@@ -6,12 +6,11 @@ describe('Calls GET method to API', () => {
 		const mockWrappedFetch = jest.fn(() => Promise.resolve('ignored'))
 		
 		const testPath = '/test-path'
-		const json = { a: 1 }
 		
 		const getMethod = createGetMethod(mockWrappedFetch)
 		
-		getMethod(testPath, json)
+		getMethod(testPath)
 		
-		expect(mockWrappedFetch).toBeCalledWith(testPath, 'GET', json)
+		expect(mockWrappedFetch).toBeCalledWith(testPath, 'GET')
 	})
 })

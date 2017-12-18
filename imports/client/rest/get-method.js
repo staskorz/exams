@@ -1,1 +1,1 @@
-export default wrappedFetch => (path, json) => wrappedFetch(path, 'GET', json)
+export default wrappedFetch => path => wrappedFetch(path, 'GET')
