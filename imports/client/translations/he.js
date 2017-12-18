@@ -70,9 +70,11 @@ export default {
 	answers: 'תשובות',
 	results: 'תוצאות',
 	submit: 'שלח',
+	back: 'חזור',
 	questionnaireSubmittedSuccessfully: 'שאלון נשלח בהצלחה',
 	questionnaireNotExistOrNotPublished: 'שאלון לא קיים או לא פורסם',
 	questionnaireAnswers: 'תשובות לשאלון',
+	userUnknown: 'חשבון המשתמש אינו מוכר',
 }
 
 

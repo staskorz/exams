@@ -1,12 +1,12 @@
 import React from 'react'
 
 import withCurrentUser from './hocs/with-current-user'
-import LoadingIndicator from './components/LoadingIndicator'
+import UnknownUserNotification from './components/UnknownUserNotification'
 
 
 const EnsureLoginWrapper = ({ currentUser, children }) => {
 	if(!currentUser || !currentUser.username || !currentUser.role) {
-		return <LoadingIndicator />
+		return <UnknownUserNotification />
 	}
 	
 	return <div>{ children }</div>
