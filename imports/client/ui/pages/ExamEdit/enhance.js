@@ -2,10 +2,10 @@ import { compose, renameProp, withProps } from 'recompose'
 import { injectIntl } from 'react-intl'
 import { withRouter } from 'react-router'
 
-import withExam from '../../hocs/with-exam'
 import withLoadingIndicator from '../../hocs/with-loading-indicator'
 import transformExamServerToClient from '../../../transform-exam-server-to-client'
 
+import withExam from './with-exam'
 import withReduxForm from './with-redux-form'
 import withUpdate from './with-update'
 
