@@ -1,12 +1,42 @@
-import { withProps } from 'recompose'
+import { compose, withProps, lifecycle } from 'recompose'
+
+import * as rest from '../../rest'
+
+import withLoadingIndicator from './with-loading-indicator'
 
 
-export default withProps({
-	currentUser: {
-		username: 'DUMMY_USERNAME',
-		englishName: 'DUMMY English Name',
-		hebrewName: 'סתם שם בעברית',
-		employeeId: '1234',
-		role: 'operator',
-	},
-})
+let currentUser
+
+
+export default compose(
+		withProps({
+			loading: true,
+		}),
+		
+		lifecycle({
+			componentDidMount() {
+				const update = () => {
+					this.setState({
+						loading: false,
+						currentUser,
+					})
+				}
+				
+				if(currentUser) {
+					update()
+				} else {
+					rest.get('/api/me').then(me => {
+						currentUser = me
+						
+						update()
+					}).catch(() => {
+						this.setState({
+							loading: false,
+						})
+					})
+				}
+			},
+		}),
+		
+		withLoadingIndicator,
+)
