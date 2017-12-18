@@ -17,6 +17,9 @@ describe('Interacts with REST API using provided method', () => {
 			method,
 			body: JSON.stringify(json),
 			credentials: 'same-origin',
+			headers: {
+				'Content-Type': 'application/json',
+			},
 		})
 	})
 	
