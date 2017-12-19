@@ -3,12 +3,19 @@ import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router'
 
 import formatDate from '../../date-js-to-formatted'
-import { primary } from '../colors'
+import { primary, attention } from '../colors'
+
+
+const MINIMAL_PASSING_MARK = 70
 
 
 const style = {
 	link: {
 		color: primary,
+	},
+	
+	failedMark: {
+		color: attention,
 	},
 }
 
@@ -29,7 +36,7 @@ export default ({ examResults, intl: { formatMessage } }) => {
 	</Link>
 	
 	const examMarkCellRenderer = ({ rowData: { _id, mark } }) => <Link
-			style={ style.link }
+			style={ mark < MINIMAL_PASSING_MARK ? style.failedMark : style.link }
 			to={ '/exam-answers/' + _id }>{ mark }
 	</Link>
 	
