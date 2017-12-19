@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Dialog, FlatButton } from 'material-ui';
-import { FormattedMessage } from 'react-intl';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Dialog, FlatButton } from 'material-ui'
+import { FormattedMessage } from 'react-intl'
 
 
 export default class ConfirmationDialog extends Component {
@@ -9,39 +9,39 @@ export default class ConfirmationDialog extends Component {
 		text: PropTypes.string.isRequired,
 		open: PropTypes.bool,
 		onYesButtonClick: PropTypes.func.isRequired,
-		onNoButtonClick: PropTypes.func.isRequired
-	};
+		onNoButtonClick: PropTypes.func.isRequired,
+	}
 	
 	
 	handleRequestClose = () => {
-		this.props.onNoButtonClick();
-	};
+		this.props.onNoButtonClick()
+	}
 	
 	
 	render() {
-		const { text, open, onYesButtonClick, onNoButtonClick } = this.props;
+		const { text, open, onYesButtonClick, onNoButtonClick } = this.props
 		
 		const actions = [
 			<FlatButton
+					key={ 0 }
 					label={ <FormattedMessage id='yes' /> }
 					secondary={ true }
-					onTouchTap={ onYesButtonClick }
+					onClick={ onYesButtonClick }
 			/>,
 			<FlatButton
+					key={ 1 }
 					label={ <FormattedMessage id='no' /> }
 					primary={ true }
-					onTouchTap={ onNoButtonClick }
+					onClick={ onNoButtonClick }
 			/>,
-		];
+		]
 		
-		return (
-				<Dialog
-						open={ open }
-						modal={ false }
-						title={ text }
-						actions={ actions }
-						onRequestClose={ this.handleRequestClose }
-				/>
-		);
-	};
+		return <Dialog
+				open={ open }
+				modal={ false }
+				title={ text }
+				actions={ actions }
+				onRequestClose={ this.handleRequestClose }
+		/>
+	}
 }
