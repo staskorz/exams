@@ -2,8 +2,8 @@ import React from 'react'
 import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router'
 
-import formatDate from '../../../date-js-to-formatted'
-import { primary } from '../../colors'
+import formatDate from '../../date-js-to-formatted'
+import { primary } from '../colors'
 
 
 const style = {

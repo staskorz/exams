@@ -2,9 +2,9 @@ import React from 'react'
 
 import dateJsToCsv from '../../../date-js-to-csv'
 import Download from '../../components/Download'
+import Table from '../../components/ExamResultsTable'
 
 import enhance from './enhance'
-import Table from './Table'
 
 
 const generate = examResults => () => examResults.map(({ examTimestamp, _id, examId, userId, ...rest }) => ({
