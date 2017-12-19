@@ -1,7 +1,7 @@
 import React from 'react'
 
 import 'react-virtualized/styles.css'
-import '../imports/client/static/main.css'
+import './main.css'
 
 import '../imports/startup/client/material-ui-touch-workaround'
 import '../imports/startup/client/browser-history-counter'
