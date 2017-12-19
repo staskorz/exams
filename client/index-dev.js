@@ -9,7 +9,7 @@ import './startup/browser-history-counter'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { AppContainer } from 'react-hot-loader'
 
-import renderReactRoot from './ui/render-react-root'
+import renderReactRoot from './react-init/render-react-root'
 import ReactRoot from '../imports/client/ui/ReactRoot'
 
 
