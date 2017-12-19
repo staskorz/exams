@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import replaceArrayElement from '../../../../replace-array-element'
+import replaceArrayElement from '../../../../../../client/util/replace-array-element'
 
 import Answer from './Answer'
 

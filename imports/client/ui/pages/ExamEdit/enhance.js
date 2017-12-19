@@ -3,7 +3,7 @@ import { injectIntl } from 'react-intl'
 import { withRouter } from 'react-router'
 
 import withLoadingIndicator from '../../hocs/with-loading-indicator'
-import transformExamServerToClient from '../../../transform-exam-server-to-client'
+import transformExamServerToClient from '../../../../../client/util/transform-exam-server-to-client'
 
 import withExam from './with-exam'
 import withReduxForm from './with-redux-form'

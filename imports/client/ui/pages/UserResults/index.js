@@ -1,6 +1,6 @@
 import React from 'react'
 
-import dateJsToCsv from '../../../date-js-to-csv'
+import dateJsToCsv from '../../../../../client/util/date-js-to-csv'
 import Download from '../../components/Download'
 import Table from '../../components/ExamResultsTable'
 

@@ -1,6 +1,6 @@
 import { withStateHandlers } from 'recompose'
 
-import replaceArrayElement from '../../../replace-array-element'
+import replaceArrayElement from '../../../../../client/util/replace-array-element'
 
 
 const handleMultiSelection = replaceArrayElement

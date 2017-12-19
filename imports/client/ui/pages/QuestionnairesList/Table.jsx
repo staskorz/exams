@@ -3,7 +3,7 @@ import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router'
 
 import { neutral } from '../../../../../client/util/colors'
-import formatDate from '../../../date-js-to-formatted'
+import formatDate from '../../../../../client/util/date-js-to-formatted'
 
 
 const style = {

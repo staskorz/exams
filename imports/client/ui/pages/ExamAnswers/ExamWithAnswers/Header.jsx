@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import formatDate from '../../../../date-js-to-formatted'
+import formatDate from '../../../../../../client/util/date-js-to-formatted'
 
 
 const style = {

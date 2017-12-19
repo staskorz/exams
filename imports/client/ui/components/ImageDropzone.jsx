@@ -3,8 +3,8 @@ import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo'
 
 import Dropzone from './Dropzone'
 import resizeImage from '../../resize-image'
-import blobToUint8array from '../../blob-to-uint8array'
-import uint8arrayToBlob from '../../uint8array-to-blob'
+import blobToUint8array from '../../../../client/util/blob-to-uint8array'
+import uint8arrayToBlob from '../../../../client/util/uint8array-to-blob'
 
 
 const DEFAULT_SIZE = {

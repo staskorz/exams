@@ -6,7 +6,7 @@ import withLoadingIndicator from '../../hocs/with-loading-indicator'
 
 import withExam from './with-exam'
 import withMissingIndicator from './with-missing-indicator'
-import transformExamServerToClient from '../../../transform-exam-server-to-client'
+import transformExamServerToClient from '../../../../../client/util/transform-exam-server-to-client'
 import withStartExamHandler from './with-start-exam-handler'
 import withExamInfo from './with-exam-info'
 import withQuestionNumberHandlers from './with-question-number-handler'

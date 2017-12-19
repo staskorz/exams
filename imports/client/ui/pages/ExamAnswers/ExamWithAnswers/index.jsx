@@ -1,6 +1,6 @@
 import React from 'react'
 
-import transformExamServerToClient from '../../../../transform-exam-server-to-client'
+import transformExamServerToClient from '../../../../../../client/util/transform-exam-server-to-client'
 
 import Header from './Header'
 import Question from './Question'
