@@ -4,8 +4,6 @@ import SchoolIcon from 'material-ui/svg-icons/social/school'
 import { Link, IndexLink } from 'react-router'
 import { FormattedMessage } from 'react-intl'
 
-//import ConnectionStatusContainer from '../containers/ConnectionStatusContainer';
-
 
 const styles = {
 	appBar: {
@@ -93,18 +91,24 @@ export default ({ currentUser, children }) => {
 		</Link>
 		
 		menuItems = <span>
-			<IndexLink to='/' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='home' /></IndexLink>
-			<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='createExam' /></Link>
+			<IndexLink to='/' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='home' /></IndexLink>
+			<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='createExam' /></Link>
 			<Link to='/create-questionnaire' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
 					id='createQuestionnaire' /></Link>
-			<Link to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='listExams' /></Link>
+			<Link to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='listExams' /></Link>
 			<Link to='/list-questionnaires' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
 					id='listQuestionnaires' /></Link>
-			<Link to='/list-users' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='listUsers' /></Link>
-			<Link to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage id='chooseExam' /></Link>
+			<Link to='/list-users' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='listUsers' /></Link>
+			<Link to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='chooseExam' /></Link>
 		</span>
 	} else {
-		title = <span style={ styles.title }><SchoolIcon color='white' style={ styles.titleIcon } /><FormattedMessage id='exams' /></span>
+		title = <span style={ styles.title }><SchoolIcon color='white' style={ styles.titleIcon } /><FormattedMessage
+				id='exams' /></span>
 		
 		menuItems = ''
 	}
@@ -122,7 +126,8 @@ export default ({ currentUser, children }) => {
 						
 						<span style={ styles.loggedInUser }>{ username }</span>
 								
-								<img style={ styles.logo } src='/company-logo.png' alt='logo' width='159px' height='54px' />
+								<img style={ styles.logo } src='/company-logo.png' alt='logo' width='159px'
+										height='54px' />
 								
 								<div style={ styles.logoSpacer }></div>
 							</span>

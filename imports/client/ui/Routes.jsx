@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 
-import Layout from './layouts/Layout'
+import Layout from '../../../client/layouts/Layout'
 import Home from './pages/Home'
 import ExamCreate from './pages/ExamCreate'
 import QuestionnaireCreate from './pages/QuestionnaireCreate'
