@@ -26,14 +26,14 @@ const style = {
 }
 
 
-export default ({ router, onSave }) => <div className='main-container-padding'>
+export default ({ history, onSave }) => <div className='main-container-padding'>
 	<Paper style={ style.mainPaper }>
 		<div>
 			<span style={ style.mainText }><FormattedMessage id='examMarkError' /></span>
 		</div>
 		
 		<div style={ style.actions }>
-			<RaisedButton label={ <FormattedMessage id='exit' /> } style={ style.button } onClick={ () => router.goBack() } />
+			<RaisedButton label={ <FormattedMessage id='exit' /> } style={ style.button } onClick={ () => history.goBack() } />
 			
 			<RaisedButton label={ <FormattedMessage id='tryAgain' /> } style={ style.button } primary={ true } onClick={ onSave } />
 		</div>

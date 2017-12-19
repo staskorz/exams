@@ -9,7 +9,7 @@ export default compose(
 		
 		lifecycle({
 			componentDidMount() {
-				const { questionnaireId } = this.props.router.params
+				const { questionnaireId } = this.props.match.params
 				
 				rest.get('/api/questionnaires/' + questionnaireId).then(questionnaire => {
 					this.setState({

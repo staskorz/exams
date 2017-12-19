@@ -9,7 +9,7 @@ export default lifecycle({
 	},
 	
 	componentDidMount() {
-		const { answersId } = this.props.router.params
+		const { answersId } = this.props.match.params
 		
 		rest.get('/api/exam-answers/' + answersId).then(({ exam, answers, user }) => {
 			this.setState({

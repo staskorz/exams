@@ -1,6 +1,6 @@
 import { compose } from 'recompose'
 import { injectIntl } from 'react-intl'
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom'
 
 import withLoadingIndicator from '../../hocs/with-loading-indicator'
 import withQuestionnaire from '../../hocs/with-questionnaire'

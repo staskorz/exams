@@ -2,7 +2,7 @@ import { withHandlers } from 'recompose'
 
 
 export default withHandlers({
-	onCancel: ({ router }) => () => {
-		router.push('/list-questionnaires')
+	onCancel: ({ history }) => () => {
+		history.push('/list-questionnaires')
 	},
 })

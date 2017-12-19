@@ -11,7 +11,7 @@ export default compose(
 		withState('mark', 'setMark', null),
 		
 		withHandlers({
-			onSave: ({ answers, router: { params: { examId } }, setSubmitting, setSubmitError, setMark }) => () => {
+			onSave: ({ answers, match: { params: { examId } }, setSubmitting, setSubmitError, setMark }) => () => {
 				setSubmitting(true)
 				
 				rest.post('/api/exam-answers/' + examId, answers).then(({ mark }) => {

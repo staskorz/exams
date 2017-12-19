@@ -124,7 +124,7 @@ const ignoreSubmit = event => {
 
 export default ({
 					value, setValue, errors, errorsDetected, onSave,
-					onCancel, intl: { formatMessage }, router: { params: { questionnaireId } },
+					onCancel, intl: { formatMessage }, match: { params: { questionnaireId } },
 				}) => <div
 		className='main-container-padding'
 		style={ style.mainContainer }

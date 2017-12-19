@@ -53,7 +53,7 @@ export default class ExamEditForm extends Component {
 	
 	
 	goBack = () => {
-		const { router } = this.props
+		const { history } = this.props
 		
 		this.setState({
 			canLeave: true,
@@ -61,7 +61,7 @@ export default class ExamEditForm extends Component {
 		
 		this.state.canLeave = true
 		
-		router.push('/list-exams')
+		history.push('/list-exams')
 	}
 	
 	
@@ -150,9 +150,10 @@ export default class ExamEditForm extends Component {
 	
 	
 	componentDidMount() {
-		const { router: { setRouteLeaveHook }, route } = this.props
+		//TODO: fix warning when trying to leave
+		//const { router: { setRouteLeaveHook }, route } = this.props
 		
-		setRouteLeaveHook(route, this.routerWillLeave)
+		//setRouteLeaveHook(route, this.routerWillLeave)
 	}
 	
 	

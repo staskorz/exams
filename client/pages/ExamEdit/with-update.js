@@ -4,9 +4,9 @@ import * as rest from '../../rest/index'
 
 
 export default withHandlers({
-	onSave: ({ router, router: { params: { examId } } }) => value => {
+	onSave: ({ history, match: { params: { examId } } }) => value => {
 		rest.put('/api/exams/' + examId, value).then(() => {
-			router.push('/list-exams')
+			history.push('/list-exams')
 		})
 	},
 })

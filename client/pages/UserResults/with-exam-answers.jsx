@@ -10,7 +10,7 @@ export default compose(
 		
 		lifecycle({
 			componentDidMount() {
-				const { userId } = this.props.router.params
+				const { userId } = this.props.match.params
 				
 				rest.get('/api/exam-answers/user/' + userId).then(examResults => {
 					this.setState({

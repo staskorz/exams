@@ -1,6 +1,6 @@
 import { compose } from 'recompose'
 import { injectIntl } from 'react-intl'
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom'
 
 import withReduxForm from './with-redux-form'
 import withCreate from './with-create'

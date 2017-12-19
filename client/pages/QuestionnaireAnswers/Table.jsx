@@ -1,6 +1,6 @@
 import React from 'react'
 import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import formatDate from '../../util/date-js-to-formatted'
 import { primary } from '../../util/colors'

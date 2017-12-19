@@ -1,7 +1,7 @@
 import React from 'react'
 import { AppBar } from 'material-ui'
 import SchoolIcon from 'material-ui/svg-icons/social/school'
-import { Link, IndexLink } from 'react-router'
+import { Link, NavLink } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 
 
@@ -91,20 +91,20 @@ export default ({ currentUser, children }) => {
 		</Link>
 		
 		menuItems = <span>
-			<IndexLink to='/' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='home' /></IndexLink>
-			<Link to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='createExam' /></Link>
-			<Link to='/create-questionnaire' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='createQuestionnaire' /></Link>
-			<Link to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='listExams' /></Link>
-			<Link to='/list-questionnaires' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='listQuestionnaires' /></Link>
-			<Link to='/list-users' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='listUsers' /></Link>
-			<Link to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='chooseExam' /></Link>
+			<NavLink exact to='/' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='home' /></NavLink>
+			<NavLink to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='createExam' /></NavLink>
+			<NavLink to='/create-questionnaire' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='createQuestionnaire' /></NavLink>
+			<NavLink to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='listExams' /></NavLink>
+			<NavLink to='/list-questionnaires' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='listQuestionnaires' /></NavLink>
+			<NavLink to='/list-users' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='listUsers' /></NavLink>
+			<NavLink to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='chooseExam' /></NavLink>
 		</span>
 	} else {
 		title = <span style={ styles.title }><SchoolIcon color='white' style={ styles.titleIcon } /><FormattedMessage

@@ -39,7 +39,7 @@ const style = {
 }
 
 
-export default ({ exam: { name, questions }, router, start }) => <div className='main-container-padding'>
+export default ({ exam: { name, questions }, history, start }) => <div className='main-container-padding'>
 	<Paper style={ style.mainPaper }>
 		<div>
 			<span style={ style.descriptionText }><FormattedMessage id='examName' />:</span>
@@ -55,7 +55,7 @@ export default ({ exam: { name, questions }, router, start }) => <div className=
 			<RaisedButton label={ <FormattedMessage id='start' /> } primary={ true } style={ style.button }
 					onClick={ start } />
 			{ canGoBack() ?
-					<RaisedButton label={ <FormattedMessage id='cancel' /> } onClick={ () => router.goBack() } />
+					<RaisedButton label={ <FormattedMessage id='cancel' /> } onClick={ () => history.goBack() } />
 					
 					:
 					

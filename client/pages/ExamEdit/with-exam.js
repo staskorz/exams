@@ -10,7 +10,7 @@ export default compose(
 		
 		lifecycle({
 			componentDidMount() {
-				const { examId } = this.props.router.params
+				const { examId } = this.props.match.params
 				
 				rest.get('/api/exams/' + examId).then(exam => {
 					this.setState({
