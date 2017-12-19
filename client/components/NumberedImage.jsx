@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { cyan500 } from 'material-ui/styles/colors'
 
-import uint8arrayToBlob from '../../../../client/util/uint8array-to-blob'
+import uint8arrayToBlob from '../util/uint8array-to-blob'
 import NumberBadge from './NumberBadge'
 
 

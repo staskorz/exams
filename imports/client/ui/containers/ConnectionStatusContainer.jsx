@@ -2,7 +2,7 @@ import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 
-import ConnectionStatus from '/imports/client/ui/components/ConnectionStatus';
+import ConnectionStatus from '/client/components/ConnectionStatus';
 
 
 let firstConnection = true;

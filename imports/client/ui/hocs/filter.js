@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import debounce from 'lodash.debounce'
 
-import Filter from '../components/Filter'
+import Filter from '../../../../client/components/Filter'
 
 
 const emptyArray = []

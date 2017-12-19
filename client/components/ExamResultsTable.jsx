@@ -2,8 +2,8 @@ import React from 'react'
 import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router'
 
-import formatDate from '../../../../client/util/date-js-to-formatted'
-import { primary, attention } from '../../../../client/util/colors'
+import formatDate from '../util/date-js-to-formatted'
+import { primary, attention } from '../util/colors'
 
 
 const MINIMAL_PASSING_MARK = 70

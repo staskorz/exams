@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, CardTitle, CardText } from 'material-ui'
 
-import LoadingIndicator from '../components/LoadingIndicator'
+import LoadingIndicator from '../../../../client/components/LoadingIndicator'
 
 
 export default class Home extends Component {

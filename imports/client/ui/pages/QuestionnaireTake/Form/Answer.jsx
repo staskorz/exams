@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { neutral } from '../../../../../../client/util/colors'
-import Checkbox from '../../../components/Checkbox'
-import TextField from '../../../components/TextField'
+import Checkbox from '../../../../../../client/components/Checkbox'
+import TextField from '../../../../../../client/components/TextField'
 
 
 const style = {

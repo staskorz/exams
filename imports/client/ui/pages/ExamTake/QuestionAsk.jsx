@@ -3,8 +3,8 @@ import { Card, CardTitle, CardText, CardActions, RaisedButton, Checkbox, Badge }
 import { FormattedMessage } from 'react-intl'
 import { cyan500 } from 'material-ui/styles/colors'
 
-import ConfirmedRaisedButton from '../../components/ConfirmedRaisedButton'
-import NumberedImagesBlock from '../../components/NumberedImagesBlock'
+import ConfirmedRaisedButton from '../../../../../client/components/ConfirmedRaisedButton'
+import NumberedImagesBlock from '../../../../../client/components/NumberedImagesBlock'
 
 
 const style = {

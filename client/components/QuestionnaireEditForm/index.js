@@ -4,8 +4,8 @@ import { compose, onlyUpdateForKeys } from 'recompose'
 import { FloatingActionButton, RaisedButton } from 'material-ui'
 import IconAdd from 'material-ui/svg-icons/content/add'
 
-import replaceArrayElement from '../../../../../client/util/replace-array-element'
-import removeArrayElement from '../../../../../client/util/remove-array-element'
+import replaceArrayElement from '../../util/replace-array-element'
+import removeArrayElement from '../../util/remove-array-element'
 import ConfirmedRaisedButton from '../ConfirmedRaisedButton'
 
 import TextField from '../TextField'

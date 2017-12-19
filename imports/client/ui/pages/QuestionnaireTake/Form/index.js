@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import { RaisedButton } from 'material-ui'
 
 import replaceArrayElement from '../../../../../../client/util/replace-array-element'
-import ConfirmedRaisedButton from '../../../components/ConfirmedRaisedButton'
+import ConfirmedRaisedButton from '../../../../../../client/components/ConfirmedRaisedButton'
 
 import Question from './Question'
 

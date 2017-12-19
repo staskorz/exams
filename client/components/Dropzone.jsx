@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDropzone from 'react-dropzone';
-import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo';
-import { cyan500 } from 'material-ui/styles/colors';
+import React from 'react'
+import ReactDropzone from 'react-dropzone'
+import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo'
+import { cyan500 } from 'material-ui/styles/colors'
 
 
 const style = {
@@ -15,18 +15,18 @@ const style = {
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
-		overflow: 'hidden'
+		overflow: 'hidden',
 	},
 	
 	dropzoneActive: {
 		borderColor: cyan500,
 		borderStyle: 'solid',
-		color: cyan500
+		color: cyan500,
 	},
 	
 	dropzoneDisabled: {
 		color: '#eeeeee',
-		borderColor: '#dddddd'
+		borderColor: '#dddddd',
 	},
 	
 	disabledDropzoneIcon: {
@@ -34,19 +34,19 @@ const style = {
 		width: '32px',
 		color: 'inherit',
 		transition: 'all 0s',
-	}
-};
+	},
+}
 
 
 export default ({ onDrop, style: propStyle, children, disabled }) => {
 	if(disabled) {
-		return <div style={{ ...style.dropzone, ...style.dropzoneDisabled, ...propStyle }}>
+		return <div style={ { ...style.dropzone, ...style.dropzoneDisabled, ...propStyle } }>
 			<AddPhotoIcon style={ style.disabledDropzoneIcon } />
-		</div>;
+		</div>
 	}
 	
 	return <ReactDropzone onDrop={ onDrop }
-			style={{ ...style.dropzone, ...propStyle }} activeStyle={ style.dropzoneActive }>
+			style={ { ...style.dropzone, ...propStyle } } activeStyle={ style.dropzoneActive }>
 		{ children }
 	</ReactDropzone>
-};
+}

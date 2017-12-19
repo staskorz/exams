@@ -1,6 +1,6 @@
 import { withStateHandlers } from 'recompose'
 
-import validate from '../../../../../common/validations/questionnaire'
+import validate from '../../../common/validations/questionnaire'
 
 
 const initialFormValue = {
