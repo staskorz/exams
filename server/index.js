@@ -13,10 +13,12 @@ import refreshUserMiddleware from './express-middleware/refresh-user'
 import api from './api'
 
 
-const { NODE_ENV } = process.env
+const { NODE_ENV, NTLM_USER_OVERRIDE } = process.env
 
 
 console.log('NODE_ENV:', NODE_ENV)
+
+NTLM_USER_OVERRIDE && console.log('NTLM_USER_OVERRIDE:', NTLM_USER_OVERRIDE)
 
 
 const HTTP_SERVER_PORT = 3000
@@ -33,14 +35,16 @@ dbConnection.then(db => {
 		// the NTLM authentication is done in webpack-dev-server and passed as a header
 		app.use(setUserFromHeaderMiddleware)
 	} else {
-		app.use(ntlmAuthenticationMiddleware)
+		app.use(ntlmAuthenticationMiddleware())
 	}
 	
 	const usersCollection = db.collection('users')
 	
 	app.use(injectUserMiddleware(usersCollection))
 	
-	app.use(refreshUserMiddleware(usersCollection))
+	if(!NTLM_USER_OVERRIDE) {
+		app.use(refreshUserMiddleware(usersCollection))
+	}
 	
 	app.use(injectDbConnectionMiddleware(db))
 	

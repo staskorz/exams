@@ -1,3 +1,6 @@
+const dotenv = require('dotenv')
+dotenv.config()
+
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const path = require('path')
@@ -67,7 +70,7 @@ module.exports = webpackMerge(webpackCommonConfig, {
 			'/api': SERVER_URL,
 		},
 		before: app => {
-			app.use(ntlmAuthenticationMiddleware)
+			app.use(ntlmAuthenticationMiddleware())
 			
 			app.use(setUserInHeaderMiddleware)
 		},

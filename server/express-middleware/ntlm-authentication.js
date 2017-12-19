@@ -1,10 +1,10 @@
 const NodeSSPI = require('node-sspi')
 
 
-const nodeSSPI = new NodeSSPI()
+const { NTLM_USER_OVERRIDE } = process.env
 
 
-module.exports = (req, res, next) => {
+const realNtlmAuthentication = nodeSSPI => (req, res, next) => {
 	nodeSSPI.authenticate(req, res, err => {
 		if(err) {
 			console.log('Authentication Error:', err)
@@ -12,4 +12,22 @@ module.exports = (req, res, next) => {
 		
 		res.finished || next()
 	})
+}
+
+
+const fakeNtlmAuthentication = (req, res, next) => {
+	req.connection.user = NTLM_USER_OVERRIDE
+	
+	next()
+}
+
+
+module.exports = () => {
+	if(NTLM_USER_OVERRIDE) {
+		return fakeNtlmAuthentication
+	} else {
+		const nodeSSPI = new NodeSSPI()
+		
+		return realNtlmAuthentication(nodeSSPI)
+	}
 }
