@@ -1,6 +1,6 @@
 import { withHandlers } from 'recompose'
 
-import * as rest from '../../../rest'
+import * as rest from '../../../../../client/rest'
 
 
 export default withHandlers({

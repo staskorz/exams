@@ -1,6 +1,6 @@
 import { compose, withState, withHandlers } from 'recompose'
 
-import * as rest from '../../../rest'
+import * as rest from '../../../../../client/rest'
 
 
 export default compose(
