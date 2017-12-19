@@ -2,7 +2,7 @@ import React from 'react'
 import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router'
 
-import { neutral } from '../../colors'
+import { neutral } from '../../../../../client/util/colors'
 
 
 const style = {

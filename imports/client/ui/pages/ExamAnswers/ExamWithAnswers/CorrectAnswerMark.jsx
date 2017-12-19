@@ -1,7 +1,7 @@
 import React from 'react'
 import LeftArrow from 'material-ui/svg-icons/navigation/chevron-left'
 
-import * as colors from '../../../colors'
+import * as colors from '../../../../../../client/util/colors'
 
 
 const style = {

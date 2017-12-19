@@ -3,7 +3,7 @@ import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router'
 
 import formatDate from '../../date-js-to-formatted'
-import { primary, attention } from '../colors'
+import { primary, attention } from '../../../../client/util/colors'
 
 
 const MINIMAL_PASSING_MARK = 70

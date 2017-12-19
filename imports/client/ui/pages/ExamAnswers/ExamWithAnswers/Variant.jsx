@@ -1,7 +1,7 @@
 import React from 'react'
 import { Badge } from 'material-ui'
 
-import * as colors from '../../../colors'
+import * as colors from '../../../../../../client/util/colors'
 
 import Checkbox from './Checkbox'
 import CorrectAnswerMark from './CorrectAnswerMark'

@@ -2,7 +2,7 @@ import React from 'react'
 import IconCheckboxChecked from 'material-ui/svg-icons/toggle/check-box'
 import IconCheckboxUnchecked from 'material-ui/svg-icons/toggle/check-box-outline-blank'
 
-import * as colors from '../../../colors'
+import * as colors from '../../../../../../client/util/colors'
 
 
 export default ({ checked, style }) => checked ?

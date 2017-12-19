@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { neutral } from '../../../colors'
+import { neutral } from '../../../../../../client/util/colors'
 import Checkbox from '../../../components/Checkbox'
 import TextField from '../../../components/TextField'
 
