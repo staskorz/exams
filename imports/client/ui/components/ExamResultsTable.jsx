@@ -7,7 +7,7 @@ import { primary } from '../colors'
 
 
 const style = {
-	examName: {
+	link: {
 		color: primary,
 	},
 }
@@ -24,12 +24,12 @@ export default ({ examResults, intl: { formatMessage } }) => {
 	const dateCellRenderer = ({ cellData }) => formatDate(cellData)
 	
 	const examNameCellRenderer = ({ rowData: { examName, examId } }) => <Link
-			style={ style.examName }
+			style={ style.link }
 			to={ '/edit-exam/' + examId }>{ examName }
 	</Link>
 	
 	const examMarkCellRenderer = ({ rowData: { _id, mark } }) => <Link
-			style={ style.examName }
+			style={ style.link }
 			to={ '/exam-answers/' + _id }>{ mark }
 	</Link>
 	
