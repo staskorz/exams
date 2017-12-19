@@ -2,7 +2,7 @@ import React from 'react'
 import { Paper, RaisedButton } from 'material-ui'
 import { FormattedMessage } from 'react-intl'
 
-import { canGoBack } from '../../browserHistoryCounter'
+import { canGoBack } from '../../../../../client/util/browser-history-counter'
 
 
 const style = {
