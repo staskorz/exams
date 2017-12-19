@@ -74,8 +74,7 @@
     "roots": [
       "client/",
       "server/",
-      "common/",
-      "imports/"
+      "common/"
     ]
   }
 }
