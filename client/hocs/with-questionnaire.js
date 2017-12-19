@@ -1,5 +1,5 @@
 import { compose, withProps, lifecycle } from 'recompose'
-import * as rest from '../../rest'
+import * as rest from '../../imports/client/rest/index'
 
 
 export default compose(

@@ -1,4 +1,4 @@
-import filter from '../../hocs/filter'
+import filter from '../../../../../client/hocs/filter'
 
 export default filter({
 	prop: 'users',

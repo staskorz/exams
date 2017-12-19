@@ -2,7 +2,7 @@ import { compose, renameProp, withProps } from 'recompose'
 import { injectIntl } from 'react-intl'
 import { withRouter } from 'react-router'
 
-import withLoadingIndicator from '../../hocs/with-loading-indicator'
+import withLoadingIndicator from '../../../../../client/hocs/with-loading-indicator'
 import transformExamServerToClient from '../../../../../client/util/transform-exam-server-to-client'
 
 import withExam from './with-exam'

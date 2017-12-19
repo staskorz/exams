@@ -1,6 +1,6 @@
 import React from 'react'
 
-import withCurrentUser from './hocs/with-current-user'
+import withCurrentUser from '../../../client/hocs/with-current-user'
 import UnknownUserNotification from '../../../client/components/UnknownUserNotification'
 
 

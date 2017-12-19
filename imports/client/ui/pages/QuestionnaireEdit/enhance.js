@@ -4,9 +4,9 @@ import { withRouter } from 'react-router'
 
 import withCancel from '../../../../../client/components/QuestionnaireEditForm/with-cancel'
 import withStateAndStateHandlers from '../../../../../client/components/QuestionnaireEditForm/with-state-and-state-handlers'
-import withLoadingIndicator from '../../hocs/with-loading-indicator'
+import withLoadingIndicator from '../../../../../client/hocs/with-loading-indicator'
 
-import withQuestionnaire from '../../hocs/with-questionnaire'
+import withQuestionnaire from '../../../../../client/hocs/with-questionnaire'
 import withUpdate from './with-update'
 
 

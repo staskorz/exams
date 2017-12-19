@@ -2,8 +2,8 @@ import { compose } from 'recompose'
 import { injectIntl } from 'react-intl'
 import { withRouter } from 'react-router'
 
-import withLoadingIndicator from '../../hocs/with-loading-indicator'
-import withQuestionnaire from '../../hocs/with-questionnaire'
+import withLoadingIndicator from '../../../../../client/hocs/with-loading-indicator'
+import withQuestionnaire from '../../../../../client/hocs/with-questionnaire'
 
 import withInitialValue from './with-initial-value'
 import withStateAndStateHandlers from './with-state-and-state-handlers'

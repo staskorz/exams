@@ -17,7 +17,7 @@ import ExamChoice from './pages/ExamChoice'
 import ExamResults from './pages/ExamResults'
 import ExamAnswers from './pages/ExamAnswers'
 import ExamTake from './pages/ExamTake'
-import withCurrentUser from './hocs/with-current-user'
+import withCurrentUser from '../../../client/hocs/with-current-user'
 import NotFound from './pages/NotFound'
 
 
