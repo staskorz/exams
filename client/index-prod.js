@@ -7,7 +7,7 @@ import './startup/material-ui-touch-workaround'
 import './startup/browser-history-counter'
 
 import renderReactRoot from './react-init/render-react-root'
-import ReactRoot from '../imports/client/ui/ReactRoot'
+import ReactRoot from './react-init/ReactRoot'
 
 
 renderReactRoot(<ReactRoot />)

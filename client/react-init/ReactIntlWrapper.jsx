@@ -2,7 +2,7 @@ import React from 'react'
 import { IntlProvider, addLocaleData } from 'react-intl'
 import heLocale from 'react-intl/locale-data/he'
 
-import heMessages from '../../../client/translations/he'
+import heMessages from '../translations/he'
 
 
 addLocaleData([...heLocale])

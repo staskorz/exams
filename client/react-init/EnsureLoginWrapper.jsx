@@ -1,7 +1,7 @@
 import React from 'react'
 
-import withCurrentUser from '../../../client/hocs/with-current-user'
-import UnknownUserNotification from '../../../client/components/UnknownUserNotification'
+import withCurrentUser from '../hocs/with-current-user'
+import UnknownUserNotification from '../components/UnknownUserNotification'
 
 
 const EnsureLoginWrapper = ({ currentUser, children }) => {

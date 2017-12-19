@@ -10,7 +10,7 @@ import './startup/browser-history-counter'
 import { AppContainer } from 'react-hot-loader'
 
 import renderReactRoot from './react-init/render-react-root'
-import ReactRoot from '../imports/client/ui/ReactRoot'
+import ReactRoot from './react-init/ReactRoot'
 
 
 const render = Component => renderReactRoot(<AppContainer><Component /></AppContainer>)
@@ -20,7 +20,7 @@ render(ReactRoot)
 
 
 if(module.hot) {
-	module.hot.accept('../imports/client/ui/ReactRoot', () => {
+	module.hot.accept('./react-init/ReactRoot', () => {
 		render(ReactRoot)
 	})
 }
