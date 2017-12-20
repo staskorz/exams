@@ -19,7 +19,7 @@ render(ReactRoot)
 
 
 if(module.hot) {
-	module.hot.accept('./react-init/ReactRoot', () => {
+	module.hot.accept('./init/ReactRoot', () => {
 		render(ReactRoot)
 	})
 }
