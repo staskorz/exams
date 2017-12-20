@@ -30,6 +30,15 @@ module.exports = webpackMerge(webpackCommonConfig, {
 				
 				use: [
 					{
+						loader: 'babel-loader',
+						query: {
+							plugins: [
+								'transform-react-jsx-source',
+							],
+						},
+					},
+					
+					{
 						loader: 'style-loader',
 					},
 					
