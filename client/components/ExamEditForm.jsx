@@ -3,6 +3,7 @@ import { RaisedButton } from 'material-ui'
 import { Field, FieldArray } from 'redux-form'
 import { TextField, Checkbox } from 'redux-form-material-ui'
 import { FormattedMessage } from 'react-intl'
+import { Prompt } from 'react-router-dom'
 
 import QuestionsEdit from './QuestionsEdit'
 import ConfirmedRaisedButton from './ConfirmedRaisedButton'
@@ -149,25 +150,8 @@ export default class ExamEditForm extends Component {
 	}
 	
 	
-	componentDidMount() {
-		//TODO: fix warning when trying to leave
-		//const { router: { setRouteLeaveHook }, route } = this.props
-		
-		//setRouteLeaveHook(route, this.routerWillLeave)
-	}
-	
-	
 	componentWillReceiveProps(nextProps) {
 		this.updateCanLeaveState(nextProps)
-	}
-	
-	
-	routerWillLeave = () => {
-		const { canLeave } = this.state
-		
-		if(!canLeave) {
-			return 'Are you sure you want to leave this page?'
-		}
 	}
 	
 	
@@ -188,6 +172,8 @@ export default class ExamEditForm extends Component {
 		}
 		
 		return <div style={ this.style.mainContainer } className='main-container-padding'>
+			<Prompt message='Are you sure you want to leave this page?' when={ !canLeave } />
+			
 			<h1 style={ this.style.h1 }>{ title }</h1>
 			
 			<form>
