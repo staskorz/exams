@@ -3,10 +3,10 @@ import React from 'react'
 import 'react-virtualized/styles.css'
 import './main.css'
 
-import './startup/browser-history-counter'
+import './init/browser-history-counter'
 
-import renderReactRoot from './react-init/render-react-root'
-import ReactRoot from './react-init/ReactRoot'
+import renderReactRoot from './init/render-react-root'
+import ReactRoot from './init/ReactRoot'
 
 
 renderReactRoot(<ReactRoot />)
