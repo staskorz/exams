@@ -20,7 +20,15 @@ module.exports = {
 						loader: 'babel-loader',
 						query: {
 							presets: [
-								['es2015', { modules: false }],
+								['env', {
+									targets: {
+										ie: '11',
+										edge: '16',
+										chrome: '60',
+									},
+									modules: false,
+								}],
+								
 								'stage-2',
 								'react',
 							],
