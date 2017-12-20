@@ -187,42 +187,40 @@ export default class ExamEditForm extends Component {
 			title = <FormattedMessage id='createExam' />
 		}
 		
-		return (
-				<div style={ this.style.mainContainer } className='main-container-padding'>
-					<h1 style={ this.style.h1 }>{ title }</h1>
+		return <div style={ this.style.mainContainer } className='main-container-padding'>
+			<h1 style={ this.style.h1 }>{ title }</h1>
+			
+			<form>
+				<div className='formContainer' style={ this.style.formContainer }>
+					<Field component={ TextField } name='name'
+							floatingLabelText={ <FormattedMessage id='examName' /> }
+							style={ this.style.examName } /><br />
+					<Field component={ Checkbox } normalize={ this.normalizeBoolean } name='published'
+							label={ <FormattedMessage id='published' /> } />
 					
-					<form>
-						<div className='formContainer' style={ this.style.formContainer }>
-							<Field component={ TextField } name='name'
-									floatingLabelText={ <FormattedMessage id='examName' /> }
-									style={ this.style.examName } /><br />
-							<Field component={ Checkbox } normalize={ this.normalizeBoolean } name='published'
-									label={ <FormattedMessage id='published' /> } />
-							
-							<FieldArray name='questions' component={ QuestionsEdit } props={ { submitFailed } } />
-						</div>
-						
-						<div style={ this.style.submissionError }>{ submitFailed && invalid ?
-								<FormattedMessage id='formHasErrors' /> : ' ' }</div>
-						
-						<div className='buttonsContainer'>
-							<RaisedButton style={ this.style.button } label={ <FormattedMessage id='save' /> }
-									primary={ true }
-									onClick={ handleSubmit(this.handleSubmit) } disabled={ submitting } />
-							<ConfirmedRaisedButton style={ this.style.button } skipConfirmation={ canLeave }
-									text={ formatMessage({ id: 'areYouSure' }) }
-									label={ <FormattedMessage id='cancel' /> } onConfirm={ this.goBack }
-									disabled={ submitting } />
-						</div>
-					</form>
-					
-					<ConfirmationDialog
-							open={ this.state.saveConfirmationDialogOpen }
-							text={ formatMessage({ id: 'areYouSure' }) }
-							onYesButtonClick={ this.handleSaveConfirmationDialogYesButtonClick }
-							onNoButtonClick={ this.handleSaveConfirmationDialogNoButtonClick }
-					/>
+					<FieldArray name='questions' component={ QuestionsEdit } props={ { submitFailed } } />
 				</div>
-		)
+				
+				<div style={ this.style.submissionError }>{ submitFailed && invalid ?
+						<FormattedMessage id='formHasErrors' /> : ' ' }</div>
+				
+				<div className='buttonsContainer'>
+					<RaisedButton style={ this.style.button } label={ <FormattedMessage id='save' /> }
+							primary={ true }
+							onClick={ handleSubmit(this.handleSubmit) } disabled={ submitting } />
+					<ConfirmedRaisedButton style={ this.style.button } skipConfirmation={ canLeave }
+							text={ formatMessage({ id: 'areYouSure' }) }
+							label={ <FormattedMessage id='cancel' /> } onConfirm={ this.goBack }
+							disabled={ submitting } />
+				</div>
+			</form>
+			
+			<ConfirmationDialog
+					open={ this.state.saveConfirmationDialogOpen }
+					text={ formatMessage({ id: 'areYouSure' }) }
+					onYesButtonClick={ this.handleSaveConfirmationDialogYesButtonClick }
+					onNoButtonClick={ this.handleSaveConfirmationDialogNoButtonClick }
+			/>
+		</div>
 	}
 }
