@@ -71,6 +71,7 @@ module.exports = {
 			'after': false,
 			'overrides': {
 				'import': { 'after': true },
+				'export': { 'after': true },
 				'from': { 'after': true },
 				'return': { 'after': true },
 				'const': { 'after': true },
