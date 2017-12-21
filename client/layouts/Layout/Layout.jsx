@@ -4,6 +4,8 @@ import SchoolIcon from 'material-ui/svg-icons/social/school'
 import { Link, NavLink } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 
+import Notification from '../../components/Notification'
+
 
 const styles = {
 	appBar: {
@@ -139,5 +141,7 @@ export default ({ currentUser, children }) => {
 		{ children }
 		
 		<div style={ styles.by }>Stas Korzovsky, 2016</div>
+		
+		<Notification />
 	</div>
 }

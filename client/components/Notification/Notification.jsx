@@ -2,9 +2,9 @@ import React from 'react'
 import { Snackbar } from 'material-ui'
 
 
-export default ({ open, message, handleCloseRequest }) => <Snackbar
+export default ({ open, message, onRequestClose }) => <Snackbar
 		autoHideDuration={ 4000 }
 		open={ open }
-		onRequestClose={ handleCloseRequest }
+		onRequestClose={ onRequestClose }
 		message={ message }
 />
