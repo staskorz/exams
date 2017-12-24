@@ -13,7 +13,12 @@ const style = {
 }
 
 
-export default ({ exams, intl: { formatMessage } }) => {
+const onSetPublishedCreator = (onSetPublished, examId) => ({ target: { checked } }) => {
+	onSetPublished(examId, !!checked)
+}
+
+
+export default ({ exams, onSetPublished, intl: { formatMessage } }) => {
 	const translatedExamName = formatMessage({ id: 'examName' })
 	const translatedPublished = formatMessage({ id: 'published' })
 	const translatedCreationTime = formatMessage({ id: 'creationTime' })
@@ -22,7 +27,6 @@ export default ({ exams, intl: { formatMessage } }) => {
 	const translatedEdit = formatMessage({ id: 'edit' })
 	const translatedResults = formatMessage({ id: 'results' })
 	const translatedTakeExam = formatMessage({ id: 'takeExam' })
-	const translatedYes = formatMessage({ id: 'yes' })
 	
 	const actionsCellRenderer = ({ rowData }) => <span>
 		<Link style={ style.actionLink } to={ '/edit-exam/' + rowData._id }>{ translatedEdit }</Link>
@@ -39,7 +43,11 @@ export default ({ exams, intl: { formatMessage } }) => {
 		}
 	</span>
 	
-	const publishedCellRenderer = ({ cellData }) => cellData ? translatedYes : null
+	const publishedCellRenderer = ({ rowData: { published, _id } }) => <input
+			type='checkbox'
+			checked={ published }
+			onChange={ onSetPublishedCreator(onSetPublished, _id) }
+	/>
 	
 	const dateCellRenderer = ({ cellData }) => formatDate(cellData)
 	
