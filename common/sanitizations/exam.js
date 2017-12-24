@@ -13,9 +13,8 @@ const sanitizeImage = imageObj => {
 }
 
 
-export default ({ name, published, questions }) => ({
+export default ({ name, questions }) => ({
 	name,
-	published: !!published,
 	questions: questions.map(({ answers, images, text, weight }) => ({
 		text,
 		weight,

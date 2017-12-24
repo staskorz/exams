@@ -155,9 +155,6 @@ export default class ExamEditForm extends Component {
 	}
 	
 	
-	normalizeBoolean = b => !!b
-	
-	
 	render() {
 		const { canLeave } = this.state
 		
@@ -181,8 +178,6 @@ export default class ExamEditForm extends Component {
 					<Field component={ TextField } name='name'
 							floatingLabelText={ <FormattedMessage id='examName' /> }
 							style={ this.style.examName } /><br />
-					<Field component={ Checkbox } normalize={ this.normalizeBoolean } name='published'
-							label={ <FormattedMessage id='published' /> } />
 					
 					<FieldArray name='questions' component={ QuestionsEdit } props={ { submitFailed } } />
 				</div>

@@ -45,7 +45,7 @@ export default ({ exams, onSetPublished, intl: { formatMessage } }) => {
 	
 	const publishedCellRenderer = ({ rowData: { published, _id } }) => <input
 			type='checkbox'
-			checked={ published }
+			checked={ !!published }
 			onChange={ onSetPublishedCreator(onSetPublished, _id) }
 	/>
 	
