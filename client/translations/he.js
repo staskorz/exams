@@ -78,6 +78,7 @@ export default {
 	questionnaireNotExistOrNotPublished: 'שאלון לא קיים או לא פורסם',
 	questionnaireAnswers: 'תשובות לשאלון',
 	userUnknown: 'חשבון המשתמש אינו מוכר',
+	tags: 'תגיות',
 }
 
 

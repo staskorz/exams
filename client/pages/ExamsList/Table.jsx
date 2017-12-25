@@ -1,6 +1,7 @@
 import React from 'react'
 import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router-dom'
+import { AutoComplete } from 'material-ui'
 
 import { neutral } from '../../util/colors'
 import formatDate from '../../util/date-js-to-formatted'
@@ -10,12 +11,19 @@ const style = {
 	actionLink: {
 		color: neutral,
 	},
+	
+	tagsAutoComplete: {
+		width: '30px',
+	},
 }
 
 
 const onSetPublishedCreator = (onSetPublished, examId) => ({ target: { checked } }) => {
 	onSetPublished(examId, !!checked)
 }
+
+
+const autoCompleteDataSource = ['test1', 'test2']
 
 
 export default ({ exams, onSetPublished, intl: { formatMessage } }) => {
@@ -27,6 +35,11 @@ export default ({ exams, onSetPublished, intl: { formatMessage } }) => {
 	const translatedEdit = formatMessage({ id: 'edit' })
 	const translatedResults = formatMessage({ id: 'results' })
 	const translatedTakeExam = formatMessage({ id: 'takeExam' })
+	const translatedTags = formatMessage({ id: 'tags' })
+	
+	const tagsCellRenderer = ({ cellData }) => <span>
+		<AutoComplete name='tags' textFieldStyle={ style.tagsAutoComplete } dataSource={ autoCompleteDataSource } />
+	</span>
 	
 	const actionsCellRenderer = ({ rowData }) => <span>
 		<Link style={ style.actionLink } to={ '/edit-exam/' + rowData._id }>{ translatedEdit }</Link>
@@ -51,7 +64,7 @@ export default ({ exams, onSetPublished, intl: { formatMessage } }) => {
 	
 	const dateCellRenderer = ({ cellData }) => formatDate(cellData)
 	
-	const numColumns = 5
+	const numColumns = 6
 	
 	return <WindowScroller>
 		{ ({ height, isScrolling, scrollTop }) => <AutoSizer disableHeight>
@@ -66,6 +79,13 @@ export default ({ exams, onSetPublished, intl: { formatMessage } }) => {
 					autoHeight
 			>
 				<Column dataKey='name' label={ translatedExamName } width={ width / numColumns } />
+				
+				<Column
+						dataKey='tags'
+						label={ translatedTags }
+						width={ width / numColumns }
+						cellRenderer={ tagsCellRenderer }
+				/>
 				
 				<Column
 						dataKey='published'
