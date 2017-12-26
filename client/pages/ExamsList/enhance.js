@@ -1,4 +1,4 @@
-import { compose } from 'recompose'
+import { compose, withProps } from 'recompose'
 import { injectIntl } from 'react-intl'
 
 import withLoadingIndicator from '../../hocs/with-loading-indicator'
@@ -14,6 +14,9 @@ export default compose(
 		withLoadingIndicator,
 		injectIntl,
 		withUpdateExamsInState,
+		withProps({
+			availableTags: ['tag1', 'tag2'],
+		}),
 		withSetPublished,
 		withFilter,
 )

@@ -1,10 +1,10 @@
 import React from 'react'
 import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router-dom'
-import { AutoComplete } from 'material-ui'
 
 import { neutral } from '../../util/colors'
 import formatDate from '../../util/date-js-to-formatted'
+import Tags from './Tags'
 
 
 const style = {
@@ -23,10 +23,7 @@ const onSetPublishedCreator = (onSetPublished, examId) => ({ target: { checked }
 }
 
 
-const autoCompleteDataSource = ['test1', 'test2']
-
-
-export default ({ exams, onSetPublished, intl: { formatMessage } }) => {
+export default ({ exams, onSetPublished, availableTags, intl: { formatMessage } }) => {
 	const translatedExamName = formatMessage({ id: 'examName' })
 	const translatedPublished = formatMessage({ id: 'published' })
 	const translatedCreationTime = formatMessage({ id: 'creationTime' })
@@ -37,9 +34,7 @@ export default ({ exams, onSetPublished, intl: { formatMessage } }) => {
 	const translatedTakeExam = formatMessage({ id: 'takeExam' })
 	const translatedTags = formatMessage({ id: 'tags' })
 	
-	const tagsCellRenderer = ({ cellData }) => <span>
-		<AutoComplete name='tags' textFieldStyle={ style.tagsAutoComplete } dataSource={ autoCompleteDataSource } />
-	</span>
+	const tagsCellRenderer = ({ cellData }) => <Tags availableTags={ availableTags } />
 	
 	const actionsCellRenderer = ({ rowData }) => <span>
 		<Link style={ style.actionLink } to={ '/edit-exam/' + rowData._id }>{ translatedEdit }</Link>
