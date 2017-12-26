@@ -9,11 +9,13 @@ export default lifecycle({
 	},
 	
 	componentDidMount() {
-		rest.get('/api/exams').then(exams => {
-			this.setState({
-				loading: false,
-				exams,
-			})
-		})
+		rest.get('/api/exams')
+				.then(exams => exams.map(({ tags, ...rest }) => ({ tags: tags || [], ...rest })))
+				.then(exams => {
+					this.setState({
+						loading: false,
+						exams,
+					})
+				})
 	},
 })

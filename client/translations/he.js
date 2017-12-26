@@ -79,6 +79,7 @@ export default {
 	questionnaireAnswers: 'תשובות לשאלון',
 	userUnknown: 'חשבון המשתמש אינו מוכר',
 	tags: 'תגיות',
+	tagsUpdateError: 'שגיאת עדכון תגיות',
 }
 
 

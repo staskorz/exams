@@ -11,8 +11,12 @@ export default compose(
 				setAddTagOpen(true)
 			},
 			
-			onAddTag: ({ setAddTagOpen }) => tag => {
-				console.log('tag:', tag)
+			onAddTag: ({ setAddTagOpen, tags, onChange, examId }) => tag => {
+				const trimmedTag = tag.trim()
+				
+				if(!tags.includes(trimmedTag)) {
+					onChange(examId, [...tags, trimmedTag].sort())
+				}
 				
 				setAddTagOpen(false)
 			},

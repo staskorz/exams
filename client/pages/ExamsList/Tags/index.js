@@ -1,5 +1,5 @@
-import AddButton from './AddButton'
 import enhance from './enhance'
+import TagsView from './TagsView'
 
 
-export default enhance(AddButton)
+export default enhance(TagsView)

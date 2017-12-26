@@ -11,5 +11,13 @@ export default withStateHandlers(
 					...rest,
 				})),
 			}),
+			
+			updateExamTagsInState: ({ exams }) => (examId, updatedTags) => ({
+				exams: exams.map(({ _id, tags, ...rest }) => ({
+					_id,
+					tags: examId === _id ? updatedTags : tags,
+					...rest,
+				})),
+			}),
 		},
 )

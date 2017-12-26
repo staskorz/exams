@@ -8,6 +8,7 @@ export default (req, res) => {
 		published: 1,
 		createdAt: 1,
 		updatedAt: 1,
+		tags: 1,
 	}
 	
 	examsCollection.find({}, fields).toArray().then(exams => {

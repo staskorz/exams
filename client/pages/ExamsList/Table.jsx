@@ -23,7 +23,7 @@ const onSetPublishedCreator = (onSetPublished, examId) => ({ target: { checked }
 }
 
 
-export default ({ exams, onSetPublished, availableTags, intl: { formatMessage } }) => {
+export default ({ exams, onSetPublished, availableTags, onTagsChange, intl: { formatMessage } }) => {
 	const translatedExamName = formatMessage({ id: 'examName' })
 	const translatedPublished = formatMessage({ id: 'published' })
 	const translatedCreationTime = formatMessage({ id: 'creationTime' })
@@ -34,7 +34,12 @@ export default ({ exams, onSetPublished, availableTags, intl: { formatMessage } 
 	const translatedTakeExam = formatMessage({ id: 'takeExam' })
 	const translatedTags = formatMessage({ id: 'tags' })
 	
-	const tagsCellRenderer = ({ cellData }) => <Tags availableTags={ availableTags } />
+	const tagsCellRenderer = ({ rowData: { _id, tags } }) => <Tags
+			availableTags={ availableTags }
+			examId={ _id }
+			tags={ tags }
+			onChange={ onTagsChange }
+	/>
 	
 	const actionsCellRenderer = ({ rowData }) => <span>
 		<Link style={ style.actionLink } to={ '/edit-exam/' + rowData._id }>{ translatedEdit }</Link>

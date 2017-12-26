@@ -1,11 +1,13 @@
-import { compose, withProps } from 'recompose'
+import { compose } from 'recompose'
 import { injectIntl } from 'react-intl'
 
 import withLoadingIndicator from '../../hocs/with-loading-indicator'
 
 import withExams from './with-exams'
 import withUpdateExamsInState from './with-update-exams-in-state'
+import withAvailableTags from './with-available-tags'
 import withSetPublished from './with-set-published'
+import withSetTags from './with-set-tags'
 import withFilter from './with-filter'
 
 
@@ -14,9 +16,8 @@ export default compose(
 		withLoadingIndicator,
 		injectIntl,
 		withUpdateExamsInState,
-		withProps({
-			availableTags: ['tag1', 'tag2'],
-		}),
+		withAvailableTags,
 		withSetPublished,
+		withSetTags,
 		withFilter,
 )

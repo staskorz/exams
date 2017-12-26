@@ -9,6 +9,7 @@ import getExamineeVersion from './get-examinee-version'
 import create from './create'
 import update from './update'
 import setPublished from './set-published'
+import setTags from './set-tags'
 
 
 const router = Router()
@@ -21,6 +22,7 @@ router.get('/examinee-version/:examId', getExamineeVersion)
 router.post('/', ensureRoleOperatorMiddleware, create)
 router.put('/:examId', ensureRoleOperatorMiddleware, update)
 router.put('/publish/:examId', ensureRoleOperatorMiddleware, setPublished)
+router.put('/tags/:examId', ensureRoleOperatorMiddleware, setTags)
 
 
 export default router
