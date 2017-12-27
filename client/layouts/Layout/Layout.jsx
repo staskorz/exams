@@ -97,7 +97,8 @@ export default ({ currentUser, children }) => {
 					id='home' /></NavLink>
 			<NavLink to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
 					id='createExam' /></NavLink>
-			<NavLink to='/create-questionnaire' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+			<NavLink to='/create-questionnaire' style={ styles.link }
+					activeStyle={ styles.linkActive }><FormattedMessage
 					id='createQuestionnaire' /></NavLink>
 			<NavLink to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
 					id='listExams' /></NavLink>
