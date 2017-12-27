@@ -16,4 +16,4 @@ const style = {
 }
 
 
-export default ({ onClick }) => <button style={ style.buttonLink } onClick={ onClick }>+</button>
+export default ({ onClick, label }) => <button style={ style.buttonLink } onClick={ onClick }>{ label }</button>
