@@ -1,6 +1,8 @@
 import React from 'react'
 import { Chip } from 'material-ui'
 
+import LinkButton from './LinkButton'
+
 
 const style = {
 	wrapper: {
@@ -19,7 +21,7 @@ const style = {
 }
 
 
-export default ({ tags, onRemoveTag }) => <span style={ style.wrapper }>{
+export default ({ tags, onRemoveTag, onRemoveTagClose }) => <span style={ style.wrapper }>{
 	tags.map(tag => <Chip
 			key={ tag }
 			style={ style.tag }
@@ -28,4 +30,4 @@ export default ({ tags, onRemoveTag }) => <span style={ style.wrapper }>{
 	>
 		{ tag }
 	</Chip>)
-}</span>
+}<LinkButton label='&times;' onClick={ onRemoveTagClose } /></span>

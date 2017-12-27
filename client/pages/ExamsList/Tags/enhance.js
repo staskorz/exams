@@ -36,6 +36,10 @@ export default compose(
 				
 				setRemoveTagOpen(false)
 			},
+			
+			onRemoveTagClose: ({ setRemoveTagOpen }) => () => {
+				setRemoveTagOpen(false)
+			},
 		}),
 		
 		branch(({ addTagOpen }) => addTagOpen, renderComponent(AddTag)),
