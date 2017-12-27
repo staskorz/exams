@@ -11,9 +11,21 @@ const style = {
 	tag: {
 		marginRight: '4px',
 	},
+	
+	tagDeleteIcon: {
+		marginLeft: '-8px',
+		marginRight: '4px',
+	},
 }
 
 
-export default ({ tags }) => <span style={ style.wrapper }>{
-	tags.map((tag, index) => <Chip key={ index } style={ style.tag }>{ tag }</Chip>)
+export default ({ tags, onRemoveTag }) => <span style={ style.wrapper }>{
+	tags.map(tag => <Chip
+			key={ tag }
+			style={ style.tag }
+			deleteIconStyle={ style.tagDeleteIcon }
+			onRequestDelete={ () => onRemoveTag(tag) }
+	>
+		{ tag }
+	</Chip>)
 }</span>

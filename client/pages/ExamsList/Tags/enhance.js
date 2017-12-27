@@ -30,6 +30,12 @@ export default compose(
 			onAddTagClose: ({ setAddTagOpen }) => () => {
 				setAddTagOpen(false)
 			},
+			
+			onRemoveTag: ({ setRemoveTagOpen, tags, onChange, examId }) => removedTag => {
+				onChange(examId, tags.filter(tag => tag !== removedTag))
+				
+				setRemoveTagOpen(false)
+			},
 		}),
 		
 		branch(({ addTagOpen }) => addTagOpen, renderComponent(AddTag)),
