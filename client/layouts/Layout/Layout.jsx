@@ -122,8 +122,6 @@ export default ({ currentUser, children }) => {
 				
 				iconElementRight={
 					<span>
-								{ /*<ConnectionStatusContainer />*/ }
-						
 						{ menuItems }
 						
 						<span style={ styles.loggedInUser }>{ username }</span>
