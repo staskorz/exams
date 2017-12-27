@@ -140,7 +140,7 @@ export default ({ currentUser, children }) => {
 		
 		{ children }
 		
-		<div style={ styles.by }>Stas Korzovsky, 2016</div>
+		<div style={ styles.by }>Stas Korzovsky, 2016 - 2017</div>
 		
 		<Notification />
 	</div>
