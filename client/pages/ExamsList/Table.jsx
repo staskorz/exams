@@ -78,40 +78,40 @@ export default ({ exams, onSetPublished, availableTags, onTagsChange, intl: { fo
 					scrollTop={ scrollTop }
 					autoHeight
 			>
-				<Column dataKey='name' label={ translatedExamName } width={ width / numColumns } />
+				<Column dataKey='name' label={ translatedExamName } width={ width / 100 * 17 } />
 				
 				<Column
 						dataKey='tags'
 						label={ translatedTags }
-						width={ width / numColumns }
+						width={ width / 100 * 42 }
 						cellRenderer={ tagsCellRenderer }
 				/>
 				
 				<Column
 						dataKey='published'
 						label={ translatedPublished }
-						width={ width / numColumns }
+						width={ width / 100 * 5 }
 						cellRenderer={ publishedCellRenderer }
 				/>
 				
 				<Column
 						dataKey='createdAt'
 						label={ translatedCreationTime }
-						width={ width / numColumns }
+						width={ width / 100 * 11 }
 						cellRenderer={ dateCellRenderer }
 				/>
 				
 				<Column
 						dataKey='updatedAt'
 						label={ translatedModificationTime }
-						width={ width / numColumns }
+						width={ width / 100 * 11 }
 						cellRenderer={ dateCellRenderer }
 				/>
 				
 				<Column
 						dataKey='actions'
 						label={ translatedActions }
-						width={ width / numColumns }
+						width={ width / 100 * 14 }
 						cellRenderer={ actionsCellRenderer }
 				/>
 			</Table> }
