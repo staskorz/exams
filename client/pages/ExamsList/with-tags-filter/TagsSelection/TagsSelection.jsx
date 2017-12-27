@@ -2,6 +2,8 @@ import React from 'react'
 import { Chip, IconButton } from 'material-ui'
 import ClearIcon from 'material-ui/svg-icons/content/clear'
 
+import { neutral } from '../../../../util/colors'
+
 
 const style = {
 	mainContainer: {
@@ -18,6 +20,12 @@ const style = {
 	tag: {
 		marginRight: '4px',
 		height: '32px',
+	},
+	
+	tagSelected: {
+		marginRight: '4px',
+		height: '32px',
+		backgroundColor: neutral,
 	},
 	
 	tagDeleteIcon: {
@@ -38,7 +46,7 @@ export default ({ availableTags, selectedTags, onSelect, onDeselect, setSelected
 	<div style={ style.wrapper }>{
 		availableTags.map(tag => <Chip
 				key={ tag }
-				style={ style.tag }
+				style={ selectedTags.includes(tag) ? style.tagSelected : style.tag }
 				deleteIconStyle={ style.tagDeleteIcon }
 				onClick={ () => onSelect(tag) }
 				onRequestDelete={ selectedTags.includes(tag) ? () => onDeselect(tag) : null }
