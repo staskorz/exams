@@ -81,26 +81,3 @@ export default {
 	tags: 'תגיות',
 	tagsUpdateError: 'שגיאת עדכון תגיות',
 }
-
-
-export const SimpleSchemaMessages = {
-	required: 'שדה חובה',
-	minString: 'יש להזין לפחות [min] תוים',
-	maxString: 'יש להזין לא יותר מ- [max] תוים',
-	minNumber: 'מינימום [min]',
-	maxNumber: 'לא יותר מ- [max]',
-	minDate: 'לא לפני [min]',
-	maxDate: 'לא אחרי [max]',
-	badDate: 'תאריך לא תקין',
-	minCount: 'יש להזין [minCount] ערכים לפחות',
-	maxCount: 'יש להזין לא יותר מ- [maxCount] ערכים',
-	noDecimal: 'מספר שלם בלבד',
-	notAllowed: 'ערך לא מאושר',
-	expectedString: 'מחרוזת תוים בלבד',
-	expectedNumber: 'מספר בלבד',
-	expectedBoolean: 'ערך בוליאני בלבד',
-	expectedArray: 'מערך בלבד',
-	expectedObject: 'אובייקט בלבד',
-	expectedConstructor: 'מסוג [type] בלבד',
-	keyNotInSchema: '[key] לא מאושר בסכמה',
-}
