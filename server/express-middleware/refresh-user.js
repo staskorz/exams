@@ -27,8 +27,12 @@ export default usersCollection => (req, res, next) => {
 	
 	if(user) {
 		username = user.username
+	} else if(req.connection.user) {
+		username = req.connection.user.toLowerCase()
 	} else {
-		username = req.connection.user
+		console.log('Authenticated username is unknown')
+		
+		res.status(500).send('Authenticated username is unknown')
 	}
 	
 	const samAccountName = extractSamAccountName(username)
