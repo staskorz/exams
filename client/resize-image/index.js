@@ -1,8 +1,10 @@
-import { resizeCanvas } from 'pica'
+import picaCreator from 'pica/dist/pica'
 
 import shouldResize from './should-resize'
 import calculateResizedImageSize from './calculate-resized-image-size'
-import canvasToBlob from './canvas-to-blob'
+
+
+const pica = picaCreator()
 
 
 export default (src, cb) => {
@@ -27,19 +29,15 @@ export default (src, cb) => {
 			dst.height = newSize.height
 			dst.width = newSize.width
 			
-			resizeCanvas(srcImage, dst, {
+			pica.resize(srcImage, dst, {
 				alpha: true,
 				unsharpAmount: 80,
 				unsharpRadius: 0.6,
 				unsharpThreshold: 2,
-			}, err => {
-				if(err) {
-					runResultCallback(err)
-				}
-				
-				canvasToBlob(dst, image => {
-					runResultCallback(null, { image, ...newSize })
-				})
+			}).then(result => pica.toBlob(result, 'image/png')).then(image => {
+				runResultCallback(null, { image, ...newSize })
+			}).catch(err => {
+				runResultCallback(err)
 			})
 		} else {
 			runResultCallback(null, { image: src, height, width })

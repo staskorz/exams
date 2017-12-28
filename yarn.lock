@@ -4675,6 +4675,13 @@ multicast-dns@^6.0.1:
     dns-packet "^1.0.1"
     thunky "^0.1.0"
 
+multimath@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/multimath/-/multimath-1.0.2.tgz#89e80ad6a1f9eddc9a913af7e69550c386d62282"
+  dependencies:
+    glur "^1.1.2"
+    object-assign "^4.1.1"
+
 mute-stream@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
@@ -5148,12 +5155,13 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
 
-"pica@https://github.com/staskorz/pica.git#browser-meteor-windows":
-  version "2.0.8"
-  resolved "https://github.com/staskorz/pica.git#3e6be58c05550f0a75b3e87df94b2c028224115e"
+pica@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/pica/-/pica-4.0.1.tgz#cedcb2a5f65c9c0c2d809d58ab410cb2273b05a5"
   dependencies:
-    glur "^1.1.2"
-    object-assign "^4.1.0"
+    inherits "^2.0.3"
+    multimath "^1.0.2"
+    object-assign "^4.1.1"
     webworkify "^1.3.0"
 
 pify@^2.0.0:

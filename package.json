@@ -26,7 +26,7 @@
     "mongodb": "^3.0.1",
     "node-sspi": "^0.2.2",
     "papaparse": "^4.1.2",
-    "pica": "https://github.com/staskorz/pica.git#browser-meteor-windows",
+    "pica": "^4.0.1",
     "prop-types": "^15.6.0",
     "randomstring": "^1.1.5",
     "react": "^16.2.0",
