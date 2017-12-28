@@ -1,5 +1,6 @@
 {
   "name": "exams",
+  "version": "2.0.1",
   "private": true,
   "scripts": {
     "dev-server": "cross-env NODE_ENV=development nodemon --exec babel-node --watch server --watch common server/index.js",
@@ -25,7 +26,7 @@
     "mongodb": "^2.2.33",
     "node-sspi": "^0.2.2",
     "papaparse": "^4.1.2",
-    "pica": "file:./../pica",
+    "pica": "https://github.com/staskorz/pica.git#browser-meteor-windows",
     "prop-types": "^15.6.0",
     "randomstring": "^1.1.5",
     "react": "^16.2.0",
