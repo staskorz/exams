@@ -10,7 +10,12 @@ const ntlmAuthenticationMiddleware = require('./server/express-middleware/ntlm-a
 const webpackCommonConfig = require('./webpack.common')
 
 
-const SERVER_URL = 'http://localhost:3000'
+const { HTTP_PORT } = process.env
+
+const HTTP_SERVER_PORT = HTTP_PORT || 3000
+
+
+const SERVER_URL = 'http://localhost:' + HTTP_SERVER_PORT
 
 
 const setUserInHeaderMiddleware = (req, res, next) => {
