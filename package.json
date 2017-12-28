@@ -23,7 +23,7 @@
     "lodash.shuffle": "^4.2.0",
     "material-ui": "^0.20.0",
     "moment": "^2.15.1",
-    "mongodb": "^2.2.33",
+    "mongodb": "^3.0.1",
     "node-sspi": "^0.2.2",
     "papaparse": "^4.1.2",
     "pica": "https://github.com/staskorz/pica.git#browser-meteor-windows",

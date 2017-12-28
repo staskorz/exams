@@ -30,14 +30,16 @@ export default (req, res) => {
 	
 	const examsCollection = db.collection('Exams')
 	
-	const fields = {
-		name: 1,
-		'questions.text': 1,
-		'questions.answers': 1,
-		'questions.images': 1,
+	const projection = {
+		fields: {
+			name: 1,
+			'questions.text': 1,
+			'questions.answers': 1,
+			'questions.images': 1,
+		},
 	}
 	
-	examsCollection.findOne({ _id: examId, published: true }, fields).then(exam => {
+	examsCollection.findOne({ _id: examId, published: true }, projection).then(exam => {
 		if(!exam) {
 			res.status(404).send('Exam not found')
 			

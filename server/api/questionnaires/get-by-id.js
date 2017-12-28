@@ -5,14 +5,16 @@ export default (req, res) => {
 	
 	const questionnairesCollection = db.collection('Questionnaires')
 	
-	const fields = {
-		name: 1,
-		description: 1,
-		published: 1,
-		questions: 1,
+	const projection = {
+		fields: {
+			name: 1,
+			description: 1,
+			published: 1,
+			questions: 1,
+		},
 	}
 	
-	questionnairesCollection.findOne({ _id: questionnaireId }, fields).then(questionnaire => {
+	questionnairesCollection.findOne({ _id: questionnaireId }, projection).then(questionnaire => {
 		if(!questionnaire) {
 			res.status(404).send('Questionnaire not found')
 			

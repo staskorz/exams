@@ -3,14 +3,16 @@ export default (req, res) => {
 	
 	const questionnairesCollection = db.collection('Questionnaires')
 	
-	const fields = {
-		name: 1,
-		published: 1,
-		createdAt: 1,
-		updatedAt: 1,
+	const projection = {
+		fields: {
+			name: 1,
+			published: 1,
+			createdAt: 1,
+			updatedAt: 1,
+		},
 	}
 	
-	questionnairesCollection.find({}, fields).toArray().then(questionnaires => {
+	questionnairesCollection.find({}, projection).toArray().then(questionnaires => {
 		res.json(questionnaires)
 	}).catch(err => {
 		const errorMessage = 'Error fetching questionnaires from DB.'

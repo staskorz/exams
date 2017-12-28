@@ -3,11 +3,13 @@ export default (req, res) => {
 	
 	const examsCollection = db.collection('Exams')
 	
-	const fields = {
-		name: 1,
+	const projection = {
+		fields: {
+			name: 1,
+		},
 	}
 	
-	examsCollection.find({ published: true }, fields).toArray().then(exams => {
+	examsCollection.find({ published: true }, projection).toArray().then(exams => {
 		res.json(exams)
 	}).catch(err => {
 		const errorMessage = 'Error fetching published exams from DB.'

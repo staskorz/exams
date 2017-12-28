@@ -1,7 +1,8 @@
-import { connect } from 'mongodb'
+import { MongoClient } from 'mongodb'
 
 
-const URL = 'mongodb://localhost:27017/exams'
+const MONGODB_URL = 'mongodb://localhost:27017'
+const DB_NAME = 'exams'
 
 
-export default connect(URL)
+export default MongoClient.connect(MONGODB_URL).then(client => client.db(DB_NAME))
