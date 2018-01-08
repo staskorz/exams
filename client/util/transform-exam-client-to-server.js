@@ -1,7 +1,8 @@
 export default ({ questions, ...rest }) => ({
 	...rest,
-	questions: questions.map(({ images, ...rest }) => ({
+	questions: questions.map(({ images, weight, ...rest }) => ({
 		...rest,
+		weight: parseInt(weight),
 		images: images.map(imageObj => {
 			if(!imageObj || !imageObj.image) {
 				return null
