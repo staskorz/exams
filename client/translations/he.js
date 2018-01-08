@@ -80,4 +80,5 @@ export default {
 	userUnknown: 'חשבון המשתמש אינו מוכר',
 	tags: 'תגיות',
 	tagsUpdateError: 'שגיאת עדכון תגיות',
+	autoWeight: 'משקל אוטומטי',
 }

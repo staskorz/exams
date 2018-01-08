@@ -8,7 +8,7 @@ import removeArrayElement from '../../../util/remove-array-element'
 export default compose(
 		injectIntl,
 		
-		onlyUpdateForKeys(['value']),
+		onlyUpdateForKeys(['value', 'autoWeight']),
 		
 		withHandlers({
 			onTextChange: ({ value, onChange, questionIndex }) => newText => {

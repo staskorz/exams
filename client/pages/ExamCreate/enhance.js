@@ -27,6 +27,8 @@ export default compose(
 					},
 				],
 			},
+			
+			initialAutoWeight: true,
 		}),
 		
 		withState,

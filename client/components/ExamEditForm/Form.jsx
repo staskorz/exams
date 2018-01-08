@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl'
 import { Prompt } from 'react-router-dom'
 
 import TextField from '../TextField'
+import Toggle from '../Toggle'
 import ConfirmedRaisedButton from '../ConfirmedRaisedButton'
 
 import Question from './Question'
@@ -26,6 +27,11 @@ const style = {
 	
 	examName: {
 		marginBottom: '28px',
+	},
+	
+	autoWeightContainer: {
+		marginTop: '4px',
+		width: '140px',
 	},
 	
 	formError: {
@@ -60,7 +66,8 @@ const confirmedLeave = history => {
 
 export default ({
 					value, onNameChange, onQuestionChange, onQuestionAdd, onQuestionRemove, errors, errorsDetected,
-					modified, onSave, submitting, history, intl: { formatMessage }, match: { params: { examId } },
+					autoWeight, onAutoWeightChange, modified, onSave, submitting,
+					history, intl: { formatMessage }, match: { params: { examId } },
 				}) => <div style={ style.mainContainer } className='main-container-padding'>
 	<Prompt message='Are you sure you want to leave this page?' when={ modified && !leaveConfirmed } />
 	
@@ -77,9 +84,18 @@ export default ({
 					style={ style.examName }
 			/>
 			
+			<div style={ style.autoWeightContainer }>
+				<Toggle
+						value={ autoWeight }
+						label={ <FormattedMessage id='autoWeight' /> }
+						onChange={ onAutoWeightChange }
+				/>
+			</div>
+			
 			{ value.questions.map((question, index) => <Question
 					value={ question }
 					errors={ errors.questions[index] }
+					autoWeight={ autoWeight }
 					onChange={ onQuestionChange }
 					onRemove={ onQuestionRemove }
 					removable={ value.questions.length > 1 }

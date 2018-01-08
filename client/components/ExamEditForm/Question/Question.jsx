@@ -54,11 +54,11 @@ const style = {
 
 export default ({
 					value, errors, onTextChange, onWeightChange, onImagesChange, onAnswerChange, onAnswerAdd,
-					onAnswerRemove, onRemove, removable, intl: { formatMessage }, questionIndex,
+					onAnswerRemove, onRemove, removable, intl: { formatMessage }, questionIndex, autoWeight,
 				}) => <Paper style={ style.paper }>
 	<NumberBadge content={ questionIndex + 1 } secondary={ true } />
 	
-	<div style={ style.weightContainer }>
+	{ autoWeight ? null : <div style={ style.weightContainer }>
 		<span style={ style.weightLabel }><FormattedMessage id='weight' /></span>
 		
 		<TextField
@@ -69,7 +69,7 @@ export default ({
 				type='number'
 				style={ style.weight }
 		/>
-	</div>
+	</div> }
 	
 	<div style={ style.fieldsContainer }>
 		<TextField

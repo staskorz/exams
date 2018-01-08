@@ -47,7 +47,7 @@ const validateQuestionBody = validateTextCreator(maxQuestionBodyChars)
 const validateAnswerBody = validateTextCreator(maxAnswerBodyChars)
 const validateWeight = validateNumberIsInRange(minWeight, maxWeight)
 
-export default (value, formatMessage) => {
+export default (value, formatMessage, autoWeight = false) => {
 	let errorsDetected = false
 	
 	const setErrorsDetected = () => {
@@ -62,13 +62,15 @@ export default (value, formatMessage) => {
 	let weightHasErrors = false
 	
 	value.questions.forEach(({ weight, text, answers }, questionIndex) => {
-		const weightError = validateWeight(formatMessage, weight, setErrorsDetected)
-		
-		if(weightError) {
-			errors.questions[questionIndex] = { weight: weightError }
-			weightHasErrors = true
-		} else {
-			totalWeight += parseInt(weight)
+		if(!autoWeight) {
+			const weightError = validateWeight(formatMessage, weight, setErrorsDetected)
+			
+			if(weightError) {
+				errors.questions[questionIndex] = { weight: weightError }
+				weightHasErrors = true
+			} else {
+				totalWeight += parseInt(weight)
+			}
 		}
 		
 		errors.questions[questionIndex] = Object.assign({}, errors.questions[questionIndex], {
@@ -89,23 +91,25 @@ export default (value, formatMessage) => {
 		}))
 	})
 	
-	if(weightHasErrors) {
-		setErrorsDetected()
-	} else {
-		let weightError
-		
-		if(totalWeight > 100) {
-			weightError = totalWeight + ' > 100'
-		} else if(totalWeight < 100) {
-			weightError = totalWeight + ' < 100'
-		}
-		
-		if(weightError) {
+	if(!autoWeight) {
+		if(weightHasErrors) {
 			setErrorsDetected()
+		} else {
+			let weightError
 			
-			value.questions.forEach((elem, index) => {
-				errors.questions[index] = Object.assign({}, errors.questions[index], { weight: weightError })
-			})
+			if(totalWeight > 100) {
+				weightError = totalWeight + ' > 100'
+			} else if(totalWeight < 100) {
+				weightError = totalWeight + ' < 100'
+			}
+			
+			if(weightError) {
+				setErrorsDetected()
+				
+				value.questions.forEach((elem, index) => {
+					errors.questions[index] = Object.assign({}, errors.questions[index], { weight: weightError })
+				})
+			}
 		}
 	}
 	
