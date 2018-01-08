@@ -68,7 +68,7 @@ export default (value, formatMessage) => {
 			errors.questions[questionIndex] = { weight: weightError }
 			weightHasErrors = true
 		} else {
-			totalWeight += weight
+			totalWeight += parseInt(weight)
 		}
 		
 		errors.questions[questionIndex] = Object.assign({}, errors.questions[questionIndex], {
@@ -77,18 +77,21 @@ export default (value, formatMessage) => {
 		
 		errors.questions[questionIndex].answers = []
 		
-		if(!answers.some(answer => answer && answer.correct)) {
-			errors.questions[questionIndex].answers._error = 'At least one correct answer required'
+		const noCorrectAnswers = !answers.some(answer => answer.correct)
+		
+		if(noCorrectAnswers) {
+			setErrorsDetected()
 		}
 		
-		answers.forEach(({ text }, answerIndex) => {
-			errors.questions[questionIndex].answers[answerIndex] = {
-				text: validateAnswerBody(formatMessage, text, setErrorsDetected),
-			}
-		})
+		errors.questions[questionIndex].answers = answers.map(({ text }) => ({
+			correct: noCorrectAnswers,
+			text: validateAnswerBody(formatMessage, text, setErrorsDetected),
+		}))
 	})
 	
-	if(!weightHasErrors) {
+	if(weightHasErrors) {
+		setErrorsDetected()
+	} else {
 		let weightError
 		
 		if(totalWeight > 100) {
@@ -98,6 +101,8 @@ export default (value, formatMessage) => {
 		}
 		
 		if(weightError) {
+			setErrorsDetected()
+			
 			value.questions.forEach((elem, index) => {
 				errors.questions[index] = Object.assign({}, errors.questions[index], { weight: weightError })
 			})

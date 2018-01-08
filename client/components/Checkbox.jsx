@@ -3,8 +3,15 @@ import { Checkbox } from 'material-ui'
 
 
 const style = {
-	iconStyle: {
-		marginRight: '6px',
+	checkbox: {
+		marginLeft: '12px',
+		//marginRight: '8px',
+		marginBottom: '12px',
+		whiteSpace: 'nowrap',
+	},
+	
+	labelStyle: {
+		marginLeft: '-8px',
 	},
 }
 
@@ -13,5 +20,6 @@ export default ({ onChange, value, ...props }) => <Checkbox
 		{ ...props }
 		checked={ value }
 		onCheck={ (e, value) => onChange(value) }
-		iconStyle={ style.iconStyle }
+		style={ style.checkbox }
+		labelStyle={ style.labelStyle }
 />

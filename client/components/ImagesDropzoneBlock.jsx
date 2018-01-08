@@ -15,11 +15,11 @@ export default class ImagesDropzoneBlock extends Component {
 	
 	handleImageChange = (err, image, index) => {
 		if(!err) {
-			const { images, onChange } = this.props
+			const { value, onChange } = this.props
 			
-			const imagesNew = [...images.slice(0, index), image, ...images.slice(index + 1, images.length)]
+			const newValue = [...value.slice(0, index), image, ...value.slice(index + 1, value.length)]
 			
-			onChange(imagesNew)
+			onChange(newValue)
 		}
 	}
 	
@@ -30,11 +30,11 @@ export default class ImagesDropzoneBlock extends Component {
 	
 	
 	handleImageRemoval = index => {
-		const { images, onChange } = this.props
+		const { value, onChange } = this.props
 		
-		const imagesNew = [...images.slice(0, index), null, ...images.slice(index + 1, images.length)]
+		const valueNew = [...value.slice(0, index), null, ...value.slice(index + 1, value.length)]
 		
-		onChange(imagesNew)
+		onChange(valueNew)
 	}
 	
 	
@@ -44,17 +44,17 @@ export default class ImagesDropzoneBlock extends Component {
 	
 	
 	render() {
-		const { images } = this.props
+		const { value } = this.props
 		
-		const firstNonExistingIndex = images.findIndex(elem => !elem)
+		const firstNonExistingIndex = value.findIndex(elem => !elem)
 		
-		const isRemovable = index => images[index] && (firstNonExistingIndex - 1 === index || firstNonExistingIndex === -1 && index === 3)
+		const isRemovable = index => value[index] && (firstNonExistingIndex - 1 === index || firstNonExistingIndex === -1 && index === 3)
 		
 		return <div>
-			{ images.map((elem, index) => <NumberedImageDropzone key={ index } number={ index + 1 }
-					onChange={ this.handleNumberedImageChange[index] } disabled={ index !== 0 && !images[index - 1] }
+			{ value.map((elem, index) => <NumberedImageDropzone key={ index } number={ index + 1 }
+					onChange={ this.handleNumberedImageChange[index] } disabled={ index !== 0 && !value[index - 1] }
 					style={ this.style.imageDropzone } removable={ isRemovable(index) }
-					onRemove={ this.handleNumberedImageRemoval[index] } { ...images[index] || {} } />,
+					onRemove={ this.handleNumberedImageRemoval[index] } { ...value[index] || {} } />,
 			) }
 		</div>
 	}
