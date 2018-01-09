@@ -7,9 +7,9 @@ import { neutral } from '../../../../util/colors'
 
 const style = {
 	mainContainer: {
-		height: '40px',
 		display: 'inline-flex',
 		marginRight: '33px',
+		marginBottom: '4px',
 	},
 	
 	wrapper: {
@@ -19,6 +19,7 @@ const style = {
 	
 	tag: {
 		marginRight: '4px',
+		marginBottom: '4px',
 		height: '32px',
 	},
 	
