@@ -115,7 +115,7 @@ export default ({
 			<RaisedButton style={ style.button } label={ <FormattedMessage id='save' /> }
 					primary={ true }
 					onClick={ () => onSave(value) }
-					disabled={ errorsDetected || submitting }
+					disabled={ errorsDetected || submitting || !modified }
 			/>
 			
 			<ConfirmedRaisedButton style={ style.button } skipConfirmation={ !modified }
