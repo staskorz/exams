@@ -3,7 +3,7 @@
 1. ~~Tags~~
 1. Revisions
 1. Show all tests results, and option to show high result per test per year, and option to filter by period (Year)
-1. Default question weight 100/[number of questions]
+1. ~~Default question weight 100/number_of_questions~~
 1. Remove exam results for a specific user
 1. Remove exam and its results
 1. Wrong order of characters
