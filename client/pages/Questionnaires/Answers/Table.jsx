@@ -2,51 +2,38 @@ import React from 'react'
 import { WindowScroller, AutoSizer, Table, Column } from 'react-virtualized'
 import { Link } from 'react-router-dom'
 
-import formatDate from '../util/date-js-to-formatted'
-import { primary, attention } from '../util/colors'
-
-
-const MINIMAL_PASSING_MARK = 70
+import formatDate from '../../../util/date-js-to-formatted'
+import { primary } from '../../../util/colors'
 
 
 const style = {
-	link: {
+	questionnaireName: {
 		color: primary,
-	},
-	
-	failedMark: {
-		color: attention,
 	},
 }
 
 
-export default ({ examResults, intl: { formatMessage } }) => {
-	const translatedExamName = formatMessage({ id: 'examName' })
+export default ({ questionnaireAnswers, intl: { formatMessage } }) => {
+	const translatedQuestionnaireName = formatMessage({ id: 'questionnaireName' })
 	const translatedName = formatMessage({ id: 'name' })
 	const translatedEmployeeId = formatMessage({ id: 'employeeId' })
 	const translatedUsername = formatMessage({ id: 'username' })
 	const translatedDate = formatMessage({ id: 'date' })
-	const translatedMark = formatMessage({ id: 'mark' })
 	
 	const dateCellRenderer = ({ cellData }) => formatDate(cellData)
 	
-	const examNameCellRenderer = ({ rowData: { examName, examId } }) => <Link
-			style={ style.link }
-			to={ '/exams/edit/' + examId }>{ examName }
+	const questionnaireNameCellRenderer = ({ rowData: { questionnaireName, questionnaireId } }) => <Link
+			style={ style.questionnaireName }
+			to={ '/questionnaires/edit/' + questionnaireId }>{ questionnaireName }
 	</Link>
 	
-	const examMarkCellRenderer = ({ rowData: { _id, mark } }) => <Link
-			style={ mark < MINIMAL_PASSING_MARK ? style.failedMark : style.link }
-			to={ '/exams/answers/' + _id }>{ mark }
-	</Link>
-	
-	const numColumns = 6
+	const numColumns = 5
 	
 	return <WindowScroller>
 		{ ({ height, isScrolling, scrollTop }) => <AutoSizer disableHeight>
 			{ ({ width }) => <Table
-					rowCount={ examResults.length }
-					rowGetter={ ({ index }) => examResults[index] }
+					rowCount={ questionnaireAnswers.length }
+					rowGetter={ ({ index }) => questionnaireAnswers[index] }
 					rowHeight={ 48 }
 					headerHeight={ 58 }
 					width={ width }
@@ -68,17 +55,10 @@ export default ({ examResults, intl: { formatMessage } }) => {
 				/>
 				
 				<Column
-						dataKey='name'
-						label={ translatedExamName }
+						dataKey='questionnaireName'
+						label={ translatedQuestionnaireName }
 						width={ width / numColumns }
-						cellRenderer={ examNameCellRenderer }
-				/>
-				
-				<Column
-						dataKey='mark'
-						label={ translatedMark }
-						width={ width / numColumns }
-						cellRenderer={ examMarkCellRenderer }
+						cellRenderer={ questionnaireNameCellRenderer }
 				/>
 			</Table> }
 		</AutoSizer> }

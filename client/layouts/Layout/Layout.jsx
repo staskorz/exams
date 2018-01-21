@@ -95,19 +95,12 @@ export default ({ currentUser, children }) => {
 		menuItems = <span>
 			<NavLink exact to='/' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
 					id='home' /></NavLink>
-			<NavLink to='/create-exam' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='createExam' /></NavLink>
-			<NavLink to='/create-questionnaire' style={ styles.link }
-					activeStyle={ styles.linkActive }><FormattedMessage
-					id='createQuestionnaire' /></NavLink>
-			<NavLink to='/list-exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='listExams' /></NavLink>
-			<NavLink to='/list-questionnaires' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='listQuestionnaires' /></NavLink>
-			<NavLink to='/list-users' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='listUsers' /></NavLink>
-			<NavLink to='/exam-choice' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
-					id='chooseExam' /></NavLink>
+			<NavLink to='/exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='exams' /></NavLink>
+			<NavLink to='/questionnaires' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='questionnaires' /></NavLink>
+			<NavLink to='/users' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
+					id='users' /></NavLink>
 		</span>
 	} else {
 		title = <span style={ styles.title }><SchoolIcon color='white' style={ styles.titleIcon } /><FormattedMessage

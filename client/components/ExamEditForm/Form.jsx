@@ -60,7 +60,7 @@ let leaveConfirmed = false
 
 const confirmedLeave = history => {
 	leaveConfirmed = true
-	history.push('/list-exams')
+	history.push('/exams/list')
 }
 
 

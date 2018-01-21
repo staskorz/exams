@@ -1,5 +1,6 @@
 export default {
 	exams: 'מבחנים',
+	questionnaires: 'שאלונים',
 	home: 'ראשי',
 	createExam: 'צור מבחן',
 	listExams: 'רשימת מבחנים',
@@ -81,4 +82,8 @@ export default {
 	tags: 'תגיות',
 	tagsUpdateError: 'שגיאת עדכון תגיות',
 	autoWeight: 'משקל אוטומטי',
+	list: 'רשימה',
+	create: 'חדש',
+	choice: 'בחירה',
+	users: 'משתמשים',
 }
