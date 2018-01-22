@@ -61,7 +61,7 @@ export default ({ examResults, intl: { formatMessage } }) => {
 				<Column dataKey='username' label={ translatedUsername } width={ width / numColumns } />
 				
 				<Column
-						dataKey='timestamp'
+						dataKey='examTimestamp'
 						label={ translatedDate }
 						width={ width / numColumns }
 						cellRenderer={ dateCellRenderer }
