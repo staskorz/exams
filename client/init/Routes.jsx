@@ -6,7 +6,6 @@ import Home from '../pages/Home'
 import Exams from '../pages/Exams'
 import Questionnaires from '../pages/Questionnaires'
 import Users from '../pages/Users'
-import withCurrentUser from '../hocs/with-current-user'
 import NotFound from '../pages/NotFound'
 
 
@@ -17,7 +16,7 @@ const RedirectToTakeQuestionnaire = ({ match: { params: { questionnaireId } } })
 export default () => <Router>
 	<Layout>
 		<Switch>
-			<Route exact path='/' component={ withCurrentUser(Home) } />
+			<Route exact path='/' component={ Home } />
 			<Route path='/exams' component={ Exams } />
 			<Route path='/questionnaires' component={ Questionnaires } />
 			<Route path='/users' component={ Users } />
