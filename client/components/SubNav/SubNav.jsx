@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { neutralLight } from '../util/colors'
+import { neutralLight } from '../../util/colors'
 
 
 const style = {
@@ -22,7 +22,7 @@ const style = {
 }
 
 
-export default ({ children }) => <div>
+export default ({ currentUser: { role }, children }) => role === 'operator' ? <div>
 	<div style={ style.mainContainer }>{ children }</div>
 	<div style={ style.verticalSpacer }></div>
-</div>
+</div> : null
