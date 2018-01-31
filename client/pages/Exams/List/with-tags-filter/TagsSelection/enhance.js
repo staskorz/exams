@@ -16,5 +16,9 @@ export default compose(
 			onDeselect: ({ selectedTags, setSelectedTags }) => deselectedTag => {
 				setSelectedTags(selectedTags.filter(tag => tag !== deselectedTag))
 			},
+			
+			onClear: ({ setSelectedTags }) => () => {
+				setSelectedTags([])
+			},
 		}),
 )

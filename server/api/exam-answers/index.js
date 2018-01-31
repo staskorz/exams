@@ -13,7 +13,9 @@ const router = Router()
 
 router.get('/:examAnswersId', ensureRoleOperatorMiddleware, getById)
 router.get('/exam/:examId', ensureRoleOperatorMiddleware, getByExamId)
+router.get('/exam/:examId/year/:year', ensureRoleOperatorMiddleware, getByExamId)
 router.get('/user/:userId', ensureRoleOperatorMiddleware, getByUserId)
+router.get('/user/:userId/year/:year', ensureRoleOperatorMiddleware, getByUserId)
 router.post('/:examId', create)
 
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { Chip, IconButton } from 'material-ui'
 import ClearIcon from 'material-ui/svg-icons/content/clear'
 
-import { neutral } from '../../../../../util/colors'
+import { neutral } from '../util/colors'
 
 
 const style = {
@@ -42,7 +42,7 @@ const style = {
 }
 
 
-export default ({ availableTags, selectedTags, onSelect, onDeselect, setSelectedTags }) => <div
+export default ({ availableTags, selectedTags, onSelect, onDeselect, onClear }) => <div
 		style={ style.mainContainer }>
 	<div style={ style.wrapper }>{
 		availableTags.map(tag => <Chip
@@ -56,7 +56,7 @@ export default ({ availableTags, selectedTags, onSelect, onDeselect, setSelected
 		</Chip>)
 	}</div>
 	
-	<IconButton style={ style.clearIcon } disabled={ !selectedTags.length } onClick={ () => setSelectedTags([]) }>
+	<IconButton style={ style.clearIcon } disabled={ !selectedTags.length } onClick={ onClear }>
 		<ClearIcon />
 	</IconButton>
 </div>

@@ -9,15 +9,36 @@ export default compose(
 		}),
 		
 		lifecycle({
-			componentDidMount() {
-				const { examId } = this.props.match.params
+			load() {
+				const { year, match: { params: { examId } } } = this.props
 				
-				rest.get('/api/exam-answers/exam/' + examId).then(examResults => {
+				let path = '/api/exam-answers/exam/' + examId
+				
+				if(year) {
+					path += '/year/' + year
+				}
+				
+				rest.get(path).then(({ results, years }) => {
 					this.setState({
 						loading: false,
-						examResults,
+						examResults: results,
+						availableTags: years,
 					})
 				})
+			},
+			
+			componentDidMount() {
+				this.load()
+			},
+			
+			componentDidUpdate(prevProps) {
+				if(prevProps.year !== this.props.year) {
+					this.setState({
+						loading: true,
+					})
+					
+					this.load()
+				}
 			},
 		}),
 )

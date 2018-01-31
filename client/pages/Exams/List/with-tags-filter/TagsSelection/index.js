@@ -1,5 +1,5 @@
 import enhance from './enhance'
-import TagsSelection from './TagsSelection'
+import TagsSelection from '../../../../../components/TagsSelection'
 
 
 export default enhance(TagsSelection)
