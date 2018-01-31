@@ -23,6 +23,11 @@ const styles = {
 		verticalAlign: 'text-bottom',
 	},
 	
+	menu: {
+		position: 'relative',
+		top: '-1px',
+	},
+	
 	link: {
 		color: 'white',
 		textDecoration: 'none',
@@ -96,14 +101,9 @@ export default ({ currentUser, children }) => {
 	}
 	
 	let title
-	let menuItems
 	
 	if(role === 'operator') {
-		title = <Link to='/' style={ styles.title }>
-			<SchoolIcon color='white' style={ styles.titleIcon } /><FormattedMessage id='exams' />
-		</Link>
-		
-		menuItems = <span>
+		const menu = <span style={ styles.menu }>
 			<NavLink exact to='/' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
 					id='home' /></NavLink>
 			<NavLink to='/exams' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
@@ -113,11 +113,13 @@ export default ({ currentUser, children }) => {
 			<NavLink to='/users' style={ styles.link } activeStyle={ styles.linkActive }><FormattedMessage
 					id='users' /></NavLink>
 		</span>
+		
+		title = <span><Link to='/' style={ styles.title }>
+			<SchoolIcon color='white' style={ styles.titleIcon } /><FormattedMessage id='exams' />
+		</Link>{ menu }</span>
 	} else {
 		title = <span style={ styles.title }><SchoolIcon color='white' style={ styles.titleIcon } /><FormattedMessage
 				id='exams' /></span>
-		
-		menuItems = ''
 	}
 	
 	return <div>
@@ -127,8 +129,6 @@ export default ({ currentUser, children }) => {
 				
 				iconElementRight={
 					<span>
-						{ menuItems }
-						
 						<span style={ styles.loggedInUser }>{ username }</span>
 								
 								<img style={ styles.logo } src='/company-logo.png' alt='logo' width='159px'
