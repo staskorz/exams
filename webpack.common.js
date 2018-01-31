@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 
 
 module.exports = {
@@ -40,6 +41,13 @@ module.exports = {
 			},
 		],
 	},
+	
+	plugins: [
+		new webpack.DefinePlugin({
+			'process.env.npm_package_version': JSON.stringify(process.env.npm_package_version),
+		}),
+	],
+	
 	
 	context: path.join(__dirname, 'client'),
 	

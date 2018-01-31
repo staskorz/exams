@@ -67,6 +67,17 @@ const styles = {
 		pointerEvents: 'none',
 		zIndex: '-1',
 	},
+	
+	version: {
+		position: 'fixed',
+		right: '5px',
+		bottom: '5px',
+		fontFamily: 'Roboto, sans-serif',
+		fontSize: '12px',
+		color: 'rgba(0, 0, 0, 0.270588)',
+		pointerEvents: 'none',
+		zIndex: '-1',
+	},
 }
 
 
@@ -133,6 +144,8 @@ export default ({ currentUser, children }) => {
 		{ children }
 		
 		<div style={ styles.by }>Stas Korzovsky, 2016 - 2018</div>
+		
+		<div style={ styles.version }>v{ process.env.npm_package_version }</div>
 		
 		<Notification />
 	</div>

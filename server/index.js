@@ -13,9 +13,10 @@ import refreshUserMiddleware from './express-middleware/refresh-user'
 import api from './api'
 
 
-const { NODE_ENV, HTTP_PORT, NTLM_USER_OVERRIDE } = process.env
+const { NODE_ENV, HTTP_PORT, NTLM_USER_OVERRIDE, npm_package_version } = process.env
 
 
+console.log('Version:', npm_package_version)
 console.log('NODE_ENV:', NODE_ENV)
 
 NTLM_USER_OVERRIDE && console.log('NTLM_USER_OVERRIDE:', NTLM_USER_OVERRIDE)
