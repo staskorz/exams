@@ -6,7 +6,7 @@ import SubNav from '../../components/SubNav'
 import SubNavLink from '../../components/SubNavLink'
 import NotFound from '../NotFound'
 
-import List from './List/index'
+import List from './List'
 import Create from './Create'
 import Edit from './Edit'
 import Choice from './Choice'

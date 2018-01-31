@@ -1,4 +1,4 @@
-import Form from './Form/index'
+import Form from './Form'
 import enhance from './enhance'
 
 

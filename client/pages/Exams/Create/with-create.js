@@ -2,7 +2,7 @@ import { withHandlers } from 'recompose'
 
 import calculateAutoWeight from '../../../components/ExamEditForm/calculate-auto-weight'
 import transformExamClientToServer from '../../../util/transform-exam-client-to-server'
-import * as rest from '../../../rest/index'
+import * as rest from '../../../rest'
 
 
 export default withHandlers({

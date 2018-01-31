@@ -1,4 +1,4 @@
-import ExamEditForm from '../../../components/ExamEditForm/index'
+import ExamEditForm from '../../../components/ExamEditForm'
 
 import enhance from './enhance'
 

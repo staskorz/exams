@@ -1,6 +1,6 @@
 import { compose, withProps, lifecycle } from 'recompose'
 
-import * as rest from '../rest/index'
+import * as rest from '../rest'
 
 import withLoadingIndicator from './with-loading-indicator'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import enhance from './enhance'
-import TagsSelection from './TagsSelection/index'
+import TagsSelection from './TagsSelection'
 
 
 export default WrappedComponent => enhance(props => <div>

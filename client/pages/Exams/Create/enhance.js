@@ -2,7 +2,7 @@ import { compose, withProps } from 'recompose'
 import { injectIntl } from 'react-intl'
 import { withRouter } from 'react-router-dom'
 
-import withState from '../../../components/ExamEditForm/with-state/index'
+import withState from '../../../components/ExamEditForm/with-state'
 
 import withCreate from './with-create'
 

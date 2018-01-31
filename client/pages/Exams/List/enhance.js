@@ -9,7 +9,7 @@ import withAvailableTags from './with-available-tags'
 import withSetPublished from './with-set-published'
 import withSetTags from './with-set-tags'
 import withFilter from './with-filter'
-import withTagsFilter from './with-tags-filter/index'
+import withTagsFilter from './with-tags-filter'
 
 
 export default compose(

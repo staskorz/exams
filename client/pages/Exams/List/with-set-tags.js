@@ -1,7 +1,7 @@
 import { withHandlers } from 'recompose'
 
-import * as rest from '../../../rest/index'
-import { notify } from '../../../components/Notification/index'
+import * as rest from '../../../rest'
+import { notify } from '../../../components/Notification'
 
 
 export default withHandlers({

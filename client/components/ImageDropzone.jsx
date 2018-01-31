@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AddPhotoIcon from 'material-ui/svg-icons/image/add-a-photo'
 
 import Dropzone from './Dropzone'
-import resizeImage from '../resize-image/index'
+import resizeImage from '../resize-image'
 import blobToUint8array from '../util/blob-to-uint8array'
 import uint8arrayToBlob from '../util/uint8array-to-blob'
 

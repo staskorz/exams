@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 import { neutral } from '../../../util/colors'
 import formatDate from '../../../util/date-js-to-formatted'
-import Tags from './Tags/index'
+import Tags from './Tags'
 
 
 const style = {

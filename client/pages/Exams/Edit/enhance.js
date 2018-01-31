@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 
 import withLoadingIndicator from '../../../hocs/with-loading-indicator'
 import transformExamServerToClient from '../../../util/transform-exam-server-to-client'
-import withState from '../../../components/ExamEditForm/with-state/index'
+import withState from '../../../components/ExamEditForm/with-state'
 
 import withExam from './with-exam'
 import withUpdate from './with-update'
