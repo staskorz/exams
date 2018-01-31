@@ -67,11 +67,9 @@ const confirmedLeave = history => {
 export default ({
 					value, onNameChange, onQuestionChange, onQuestionAdd, onQuestionRemove, errors, errorsDetected,
 					autoWeight, onAutoWeightChange, modified, onSave, submitting,
-					history, intl: { formatMessage }, match: { params: { examId } },
+					history, intl: { formatMessage },
 				}) => <div style={ style.mainContainer } className='main-container-padding'>
 	<Prompt message='Are you sure you want to leave this page?' when={ modified && !leaveConfirmed } />
-	
-	<h1 style={ style.h1 }><FormattedMessage id={ examId ? 'editExam' : 'createExam' } /></h1>
 	
 	<form>
 		<div className='formContainer' style={ style.formContainer }>

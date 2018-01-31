@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { neutralLight } from '../../util/colors'
+import { neutral, neutralLight } from '../../util/colors'
 
 
 const style = {
@@ -14,6 +14,15 @@ const style = {
 		height: '48px',
 		width: '100%',
 		zIndex: '800',
+		cursor: 'hand',
+	},
+	
+	locationHint: {
+		color: neutral,
+		fontSize: '18px',
+		lineHeight: '48px',
+		marginRight: '16px',
+		textDecoration: 'underline',
 	},
 	
 	verticalSpacer: {
@@ -22,7 +31,7 @@ const style = {
 }
 
 
-export default ({ currentUser: { role }, children }) => role === 'operator' ? <div>
-	<div style={ style.mainContainer }>{ children }</div>
+export default ({ currentUser: { role }, children, locationHint }) => role === 'operator' ? <div>
+	<div style={ style.mainContainer }>{ children } <span style={ style.locationHint }>{ locationHint }</span></div>
 	<div style={ style.verticalSpacer }></div>
 </div> : null

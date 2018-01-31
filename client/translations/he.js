@@ -71,6 +71,7 @@ export default {
 	mustCheckAtLeastOneAnswer: 'יש לסמן תשובה אחת לפחות',
 	mustCheckOneAnswer: 'יש לסמן תשובה אחת',
 	edit: 'ערוך',
+	editing: 'עריכה',
 	answers: 'תשובות',
 	results: 'תוצאות',
 	submit: 'שלח',

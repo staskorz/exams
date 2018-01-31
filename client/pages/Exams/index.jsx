@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect, matchPath } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 
 import SubNav from '../../components/SubNav'
@@ -19,8 +19,23 @@ import Answers from './Answers'
 const RedirectToList = ({ match }) => <Redirect to={ `${match.url}/list` } />
 
 
-export default ({ match }) => <div>
-	<SubNav>
+const locationHint = (base, path) => {
+	const match = partialPath => matchPath(path, { path: base + partialPath })
+	
+	if(match('/results/:examId') || match('/results-by-user/:userId')) {
+		return <FormattedMessage id='results' />
+	} else if(match('/edit/:examId')) {
+		return <FormattedMessage id='editing' />
+	} else if(match('/take/:examId')) {
+		return <FormattedMessage id='takeExam' />
+	} else if(match('/answers/:answersId')) {
+		return <FormattedMessage id='answers' />
+	}
+}
+
+
+export default ({ match, location: { pathname } }) => <div>
+	<SubNav locationHint={ locationHint(match.url, pathname) }>
 		<SubNavLink to={ `${match.url}/list` } label={ <FormattedMessage id='list' /> } />
 		<SubNavLink to={ `${match.url}/create` } label={ <FormattedMessage id='create' /> } />
 		<SubNavLink to={ `${match.url}/choice` } label={ <FormattedMessage id='choice' /> } />
