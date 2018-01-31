@@ -1,6 +1,6 @@
 #Exams Roadmap
 
-1. Allow filtering exam result by year
+1. ~~Allow filtering exam result by year~~
 1. Revisions
 1. Filter by user status enabled / disabled
 1. Wrong order of characters
