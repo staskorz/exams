@@ -7,6 +7,7 @@ import ntlmAuthenticationMiddleware from './express-middleware/ntlm-authenticati
 import setUserFromHeaderMiddleware from './express-middleware/set-user-from-header'
 import noCacheMiddleware from './express-middleware/no-cache'
 import dbConnection from './mongodb/connection'
+import createIndexes from './mongodb/createIndexes'
 import injectUserMiddleware from './express-middleware/inject-user'
 import injectDbConnectionMiddleware from './mongodb/inject-connection-middleware'
 import refreshUserMiddleware from './express-middleware/refresh-user'
@@ -28,7 +29,7 @@ const HTTP_SERVER_PORT = HTTP_PORT || 3000
 const app = express()
 
 
-dbConnection.then(db => {
+dbConnection.then(createIndexes).then(db => {
 	// eslint-disable-next-line no-console
 	console.log('Connected to MongoDB')
 	
