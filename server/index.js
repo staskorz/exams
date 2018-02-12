@@ -3,7 +3,6 @@ import 'dotenv/config'
 import express from 'express'
 import path from 'path'
 
-import ntlmAuthenticationMiddleware from './express-middleware/ntlm-authentication'
 import setUserFromHeaderMiddleware from './express-middleware/set-user-from-header'
 import noCacheMiddleware from './express-middleware/no-cache'
 import dbConnection from './mongodb/connection'
@@ -33,12 +32,7 @@ dbConnection.then(createIndexes).then(db => {
 	// eslint-disable-next-line no-console
 	console.log('Connected to MongoDB')
 	
-	if(NODE_ENV === 'development') {
-		// the NTLM authentication is done in webpack-dev-server and passed as a header
-		app.use(setUserFromHeaderMiddleware)
-	} else {
-		app.use(ntlmAuthenticationMiddleware())
-	}
+	app.use(setUserFromHeaderMiddleware)
 	
 	const usersCollection = db.collection('users')
 	

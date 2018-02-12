@@ -4,7 +4,7 @@ dotenv.config()
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const path = require('path')
-const ntlmAuthenticationMiddleware = require('./server/express-middleware/ntlm-authentication')
+const authMiddleware = require('./webpack.dev.auth')
 
 
 const webpackCommonConfig = require('./webpack.common')
@@ -16,15 +16,6 @@ const HTTP_SERVER_PORT = HTTP_PORT || 3000
 
 
 const SERVER_URL = 'http://localhost:' + HTTP_SERVER_PORT
-
-
-const setUserInHeaderMiddleware = (req, res, next) => {
-	if(req.connection && req.connection.user) {
-		req.headers['webpack-dev-server-ntlm-user'] = req.connection.user
-	}
-	
-	next()
-}
 
 
 module.exports = webpackMerge(webpackCommonConfig, {
@@ -84,9 +75,7 @@ module.exports = webpackMerge(webpackCommonConfig, {
 			'/api': SERVER_URL,
 		},
 		before: app => {
-			app.use(ntlmAuthenticationMiddleware())
-			
-			app.use(setUserInHeaderMiddleware)
+			app.use(authMiddleware)
 		},
 	},
 })
