@@ -1,7 +1,6 @@
 import 'dotenv/config'
 
 import express from 'express'
-import path from 'path'
 
 import version from './version'
 import setUserFromHeaderMiddleware from './express-middleware/set-user-from-header'
@@ -48,12 +47,6 @@ dbConnection.then(createIndexes).then(db => {
 	app.use(noCacheMiddleware)
 	
 	app.use('/api', api)
-	
-	const staticResourcesPath = path.join(__dirname, '..', 'client')
-	
-	app.use(express.static(staticResourcesPath))
-	
-	app.get('*', (req, res) => res.sendFile(path.join(staticResourcesPath, 'index.html')))
 	
 	app.listen(HTTP_SERVER_PORT, () => {
 		// eslint-disable-next-line no-console
