@@ -3,6 +3,7 @@ import 'dotenv/config'
 import express from 'express'
 import path from 'path'
 
+import version from './version'
 import ntlmAuthenticationMiddleware from './express-middleware/ntlm-authentication'
 import setUserFromHeaderMiddleware from './express-middleware/set-user-from-header'
 import noCacheMiddleware from './express-middleware/no-cache'
@@ -14,10 +15,10 @@ import refreshUserMiddleware from './express-middleware/refresh-user'
 import api from './api'
 
 
-const { NODE_ENV, HTTP_PORT, NTLM_USER_OVERRIDE, npm_package_version } = process.env
+const { NODE_ENV, HTTP_PORT, NTLM_USER_OVERRIDE } = process.env
 
 
-console.log('Version:', npm_package_version)
+console.log('Version:', version)
 console.log('NODE_ENV:', NODE_ENV)
 
 NTLM_USER_OVERRIDE && console.log('NTLM_USER_OVERRIDE:', NTLM_USER_OVERRIDE)
