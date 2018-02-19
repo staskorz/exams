@@ -5,6 +5,8 @@ services:
     restart: always
     image: mongo:3.6.2
     volumes:
-      - mongodb:/data/db
+      - mongo-db:/data/db
+      - mongo-config:/data/configdb
 volumes:
-  mongodb:
+  mongo-db:
+  mongo-config:
