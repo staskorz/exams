@@ -5,8 +5,40 @@ services:
     restart: always
     image: mongo:3.6.2
     volumes:
-      - mongo-db:/data/db
-      - mongo-config:/data/configdb
+      - mongodb-db:/data/db
+      - mongodb-config:/data/configdb
+  api:
+    restart: always
+    image: node:8.9.4
+    depends_on:
+      - mongodb
+    links:
+      - mongodb:mongodb
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+      - AD_URL=${AD_URL}
+      - AD_BASE_DN=${AD_BASE_DN}
+      - AD_USERNAME=${AD_USERNAME}
+      - AD_PASSWORD=${AD_PASSWORD}
+      - AD_GROUP_OPERATORS=${AD_GROUP_OPERATORS}
+      - HTTP_PORT=${HTTP_PORT}
+    volumes:
+      - .local/api/:/home/node/app/
+    command: ["node", "dist/server/index.js"]
+  proxy:
+    restart: always
+    image: staskorz/nginx-spnego:1.12.2
+    depends_on:
+      - api
+    links:
+      - api:api
+    volumes:
+      - .local/static/:/var/www/html/
+      - .local/proxy/nginx.conf:/etc/nginx/nginx.conf
+      - .local/proxy/krb5.conf:/etc/krb5.conf
+      - .local/proxy/krb5.keytab:/etc/krb5.keytab
+
 volumes:
-  mongo-db:
-  mongo-config:
+  mongodb-db:
+  mongodb-config:
