@@ -24,7 +24,6 @@
     "material-ui": "^0.20.0",
     "moment": "^2.15.1",
     "mongodb": "^3.0.2",
-    "node-sspi": "^0.2.2",
     "papaparse": "^4.1.2",
     "pica": "^4.0.1",
     "prop-types": "^15.6.0",
@@ -73,5 +72,8 @@
       "server/",
       "common/"
     ]
+  },
+  "optionalDependencies": {
+    "node-sspi": "^0.2.2"
   }
 }
