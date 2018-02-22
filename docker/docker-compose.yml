@@ -23,6 +23,8 @@ services:
       - AD_PASSWORD=${AD_PASSWORD}
       - AD_GROUP_OPERATORS=${AD_GROUP_OPERATORS}
       - HTTP_PORT=${HTTP_PORT}
+      - IP_ADDRESS=${IP_ADDRESS}
+      - MONGODB_URL=${MONGODB_URL}
     volumes:
       - .local/api/:/home/node/app/
     command: ["node", "dist/server/index.js"]
