@@ -33,6 +33,8 @@ export default usersCollection => (req, res, next) => {
 		console.log('Authenticated username is unknown')
 		
 		res.status(500).send('Authenticated username is unknown')
+		
+		return
 	}
 	
 	const samAccountName = extractSamAccountName(username)
