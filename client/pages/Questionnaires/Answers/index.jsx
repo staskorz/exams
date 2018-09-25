@@ -1,6 +1,6 @@
 import React from 'react'
 
-import dateJsToCsv from '../../../util/date-js-to-csv'
+import dateJsToCsv from '../../../../common/util/date-js-to-csv'
 import Download from '../../../components/Download'
 
 import enhance from './enhance'
