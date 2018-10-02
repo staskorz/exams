@@ -1,6 +1,6 @@
 {
   "name": "exams",
-  "version": "2.1.0",
+  "version": "2.2.1",
   "private": true,
   "scripts": {
     "dev-server": "cross-env NODE_ENV=development nodemon --exec babel-node --watch server --watch common server/index.js",
