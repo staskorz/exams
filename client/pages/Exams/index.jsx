@@ -14,6 +14,7 @@ import Results from './Results'
 import ResultsByUser from './ResultsByUser'
 import Take from './Take'
 import Answers from './Answers'
+import ExportAll from './ExportAll'
 
 
 const RedirectToList = ({ match }) => <Redirect to={ `${match.url}/list` } />
@@ -39,6 +40,7 @@ export default ({ match, location: { pathname } }) => <div>
 		<SubNavLink to={ `${match.url}/list` } label={ <FormattedMessage id='list' /> } />
 		<SubNavLink to={ `${match.url}/create` } label={ <FormattedMessage id='create' /> } />
 		<SubNavLink to={ `${match.url}/choice` } label={ <FormattedMessage id='choice' /> } />
+		<SubNavLink to={ `${match.url}/export` } label={ <FormattedMessage id='export' /> } />
 	</SubNav>
 	
 	<Switch>
@@ -47,6 +49,7 @@ export default ({ match, location: { pathname } }) => <div>
 		<Route path={ `${match.url}/list` } component={ List } />
 		<Route path={ `${match.url}/create` } component={ Create } />
 		<Route path={ `${match.url}/choice` } component={ Choice } />
+		<Route path={ `${match.url}/export` } component={ ExportAll } />
 		
 		<Route path={ `${match.url}/results/:examId` } component={ Results } />
 		<Route path={ `${match.url}/results-by-user/:userId` } component={ ResultsByUser } />
