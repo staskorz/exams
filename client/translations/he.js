@@ -88,4 +88,5 @@ export default {
 	choice: 'בחירה',
 	users: 'משתמשים',
 	noSuitableRecords: 'לא נמצאו רשומות מתאימות',
+	export: 'יצוא',
 }
